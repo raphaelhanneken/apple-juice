@@ -37,6 +37,8 @@ class ApplicationController: NSObject {
 
   /// Holds the app's status bar item.
   var statusItem: NSStatusItem?
+  /// Access to battery information.
+  let battery = Battery()
 
   // MARK: Methods
 
@@ -45,7 +47,11 @@ class ApplicationController: NSObject {
     super.init()
     // Configure the status bar item.
     self.statusItem = self.configureStatusItem()
-
+    // Listen for PowerSourceChanged notifications, posted by self.battery. And call
+    // updateStatusItem: to reflect the changes on the status bar item.
+    NSNotificationCenter.defaultCenter().addObserver(self, selector: Selector("updateStatusItem:"),
+      name: PowerSourceChanged, object: self.battery)
+    // Display the status bar item.
     self.updateStatusItem(self)
   }
 
