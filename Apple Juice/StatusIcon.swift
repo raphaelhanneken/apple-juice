@@ -27,6 +27,7 @@
 
 import Cocoa
 
+/// Methods to draw the status bat item's icon.
 class StatusIcon {
   /// A little offset to draw the capacity bar in the correct position.
   private static let capacityBarOffset: CGFloat = 2.0
