@@ -15,7 +15,38 @@
 		8EE129701C4695B5000D404F /* Battery.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EE1296F1C4695B5000D404F /* Battery.swift */; };
 		8EE129721C46CA1B000D404F /* UserPreferences.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EE129711C46CA1B000D404F /* UserPreferences.swift */; };
 		8EE129741C46D3C7000D404F /* NotificationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EE129731C46D3C7000D404F /* NotificationController.swift */; };
+		8EE1297D1C46F891000D404F /* NotificationCenter.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8EE1297C1C46F891000D404F /* NotificationCenter.framework */; };
+		8EE129821C46F891000D404F /* TodayViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EE129811C46F891000D404F /* TodayViewController.swift */; };
+		8EE129841C46F891000D404F /* ListRowViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EE129831C46F891000D404F /* ListRowViewController.swift */; };
+		8EE129871C46F891000D404F /* TodayViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8EE129851C46F891000D404F /* TodayViewController.xib */; };
+		8EE1298A1C46F891000D404F /* ListRowViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8EE129881C46F891000D404F /* ListRowViewController.xib */; };
+		8EE1298E1C46F891000D404F /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 8EE1298C1C46F891000D404F /* InfoPlist.strings */; };
+		8EE129911C46F891000D404F /* Battery.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 8EE1297A1C46F891000D404F /* Battery.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 /* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		8EE1298F1C46F891000D404F /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 8EBEB43A1C466091001DBE91 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 8EE129791C46F891000D404F;
+			remoteInfo = Battery;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		8EE129951C46F891000D404F /* Embed App Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (
+				8EE129911C46F891000D404F /* Battery.appex in Embed App Extensions */,
+			);
+			name = "Embed App Extensions";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		8EBEB4421C466091001DBE91 /* Apple Juice.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Apple Juice.app"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -28,6 +59,15 @@
 		8EE1296F1C4695B5000D404F /* Battery.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Battery.swift; sourceTree = "<group>"; };
 		8EE129711C46CA1B000D404F /* UserPreferences.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserPreferences.swift; sourceTree = "<group>"; };
 		8EE129731C46D3C7000D404F /* NotificationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NotificationController.swift; sourceTree = "<group>"; };
+		8EE1297A1C46F891000D404F /* Battery.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = Battery.appex; sourceTree = BUILT_PRODUCTS_DIR; };
+		8EE1297C1C46F891000D404F /* NotificationCenter.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = NotificationCenter.framework; path = System/Library/Frameworks/NotificationCenter.framework; sourceTree = SDKROOT; };
+		8EE129801C46F891000D404F /* Battery.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = Battery.entitlements; sourceTree = "<group>"; };
+		8EE129811C46F891000D404F /* TodayViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodayViewController.swift; sourceTree = "<group>"; };
+		8EE129831C46F891000D404F /* ListRowViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListRowViewController.swift; sourceTree = "<group>"; };
+		8EE129861C46F891000D404F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/TodayViewController.xib; sourceTree = "<group>"; };
+		8EE129891C46F891000D404F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/ListRowViewController.xib; sourceTree = "<group>"; };
+		8EE1298B1C46F891000D404F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		8EE1298D1C46F891000D404F /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -38,6 +78,14 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		8EE129771C46F891000D404F /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				8EE1297D1C46F891000D404F /* NotificationCenter.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
@@ -45,6 +93,8 @@
 			isa = PBXGroup;
 			children = (
 				8EBEB4441C466091001DBE91 /* Apple Juice */,
+				8EE1297E1C46F891000D404F /* Battery */,
+				8EE1297B1C46F891000D404F /* Frameworks */,
 				8EBEB4431C466091001DBE91 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -53,6 +103,7 @@
 			isa = PBXGroup;
 			children = (
 				8EBEB4421C466091001DBE91 /* Apple Juice.app */,
+				8EE1297A1C46F891000D404F /* Battery.appex */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -89,6 +140,36 @@
 			name = UI;
 			sourceTree = "<group>";
 		};
+		8EE1297B1C46F891000D404F /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				8EE1297C1C46F891000D404F /* NotificationCenter.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		8EE1297E1C46F891000D404F /* Battery */ = {
+			isa = PBXGroup;
+			children = (
+				8EE129811C46F891000D404F /* TodayViewController.swift */,
+				8EE129831C46F891000D404F /* ListRowViewController.swift */,
+				8EE129851C46F891000D404F /* TodayViewController.xib */,
+				8EE129881C46F891000D404F /* ListRowViewController.xib */,
+				8EE1298B1C46F891000D404F /* Info.plist */,
+				8EE1298C1C46F891000D404F /* InfoPlist.strings */,
+				8EE1297F1C46F891000D404F /* Supporting Files */,
+			);
+			path = Battery;
+			sourceTree = "<group>";
+		};
+		8EE1297F1C46F891000D404F /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				8EE129801C46F891000D404F /* Battery.entitlements */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -100,15 +181,34 @@
 				8EBEB43F1C466091001DBE91 /* Frameworks */,
 				8EBEB4401C466091001DBE91 /* Resources */,
 				8EE129751C46E993000D404F /* ShellScript */,
+				8EE129951C46F891000D404F /* Embed App Extensions */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				8EE129901C46F891000D404F /* PBXTargetDependency */,
 			);
 			name = "Apple Juice";
 			productName = "Apple Juice";
 			productReference = 8EBEB4421C466091001DBE91 /* Apple Juice.app */;
 			productType = "com.apple.product-type.application";
+		};
+		8EE129791C46F891000D404F /* Battery */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 8EE129941C46F891000D404F /* Build configuration list for PBXNativeTarget "Battery" */;
+			buildPhases = (
+				8EE129761C46F891000D404F /* Sources */,
+				8EE129771C46F891000D404F /* Frameworks */,
+				8EE129781C46F891000D404F /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = Battery;
+			productName = Battery;
+			productReference = 8EE1297A1C46F891000D404F /* Battery.appex */;
+			productType = "com.apple.product-type.app-extension";
 		};
 /* End PBXNativeTarget section */
 
@@ -121,6 +221,9 @@
 				ORGANIZATIONNAME = "Raphael Hanneken";
 				TargetAttributes = {
 					8EBEB4411C466091001DBE91 = {
+						CreatedOnToolsVersion = 7.2;
+					};
+					8EE129791C46F891000D404F = {
 						CreatedOnToolsVersion = 7.2;
 					};
 				};
@@ -139,6 +242,7 @@
 			projectRoot = "";
 			targets = (
 				8EBEB4411C466091001DBE91 /* Apple Juice */,
+				8EE129791C46F891000D404F /* Battery */,
 			);
 		};
 /* End PBXProject section */
@@ -150,6 +254,16 @@
 			files = (
 				8EBEB4481C466091001DBE91 /* Assets.xcassets in Resources */,
 				8EBEB44B1C466091001DBE91 /* MainMenu.xib in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		8EE129781C46F891000D404F /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				8EE129871C46F891000D404F /* TodayViewController.xib in Resources */,
+				8EE1298E1C46F891000D404F /* InfoPlist.strings in Resources */,
+				8EE1298A1C46F891000D404F /* ListRowViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -185,7 +299,24 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		8EE129761C46F891000D404F /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				8EE129821C46F891000D404F /* TodayViewController.swift in Sources */,
+				8EE129841C46F891000D404F /* ListRowViewController.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		8EE129901C46F891000D404F /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 8EE129791C46F891000D404F /* Battery */;
+			targetProxy = 8EE1298F1C46F891000D404F /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		8EBEB4491C466091001DBE91 /* MainMenu.xib */ = {
@@ -194,6 +325,30 @@
 				8EBEB44A1C466091001DBE91 /* Base */,
 			);
 			name = MainMenu.xib;
+			sourceTree = "<group>";
+		};
+		8EE129851C46F891000D404F /* TodayViewController.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				8EE129861C46F891000D404F /* Base */,
+			);
+			name = TodayViewController.xib;
+			sourceTree = "<group>";
+		};
+		8EE129881C46F891000D404F /* ListRowViewController.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				8EE129891C46F891000D404F /* Base */,
+			);
+			name = ListRowViewController.xib;
+			sourceTree = "<group>";
+		};
+		8EE1298C1C46F891000D404F /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				8EE1298D1C46F891000D404F /* en */,
+			);
+			name = InfoPlist.strings;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
@@ -284,6 +439,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				COMBINE_HIDPI_IMAGES = YES;
+				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
 				INFOPLIST_FILE = "Apple Juice/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "io.raphaelhanneken.Apple-Juice";
@@ -296,10 +452,37 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				COMBINE_HIDPI_IMAGES = YES;
+				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
 				INFOPLIST_FILE = "Apple Juice/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "io.raphaelhanneken.Apple-Juice";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+		8EE129921C46F891000D404F /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_ENTITLEMENTS = Battery/Battery.entitlements;
+				COMBINE_HIDPI_IMAGES = YES;
+				INFOPLIST_FILE = Battery/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @executable_path/../../../../Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "io.raphaelhanneken.Apple-Juice.Battery";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+			};
+			name = Debug;
+		};
+		8EE129931C46F891000D404F /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_ENTITLEMENTS = Battery/Battery.entitlements;
+				COMBINE_HIDPI_IMAGES = YES;
+				INFOPLIST_FILE = Battery/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @executable_path/../../../../Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "io.raphaelhanneken.Apple-Juice.Battery";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
 			};
 			name = Release;
 		};
@@ -323,6 +506,14 @@
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
+		};
+		8EE129941C46F891000D404F /* Build configuration list for PBXNativeTarget "Battery" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				8EE129921C46F891000D404F /* Debug */,
+				8EE129931C46F891000D404F /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
 		};
 /* End XCConfigurationList section */
 	};
