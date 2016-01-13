@@ -27,8 +27,32 @@
 
 import Foundation
 
+/// Methods to post user notifications about the current charging status.
 class NotificationController {
-  
+
+  ///  Posts a plugged and charged user notification.
+  static func pluggedAndChargedNotification() {
+    // Create a new user notification.
+    let notification = NSUserNotification()
+    // Configure the notification.
+    notification.title = "Charged"
+    notification.informativeText = "Your battery is now fully charged."
+    // Deliver notification.
+    NSUserNotificationCenter.defaultUserNotificationCenter().deliverNotification(notification)
+  }
+
+  ///  Posts a low percentage user notification.
+  ///
+  ///  - parameter percentage: The current percentage.
+  static func lowPercentageNotification(forPercentage percentage: NotificationKey) {
+    // Create a new user notification.
+    let notification = NSUserNotification()
+    // Configure the notification.
+    notification.title = "Low Battery"
+    notification.informativeText = "Your Mac will sleep soon unless plugged into a power outlet."
+    // Deliver notification.
+    NSUserNotificationCenter.defaultUserNotificationCenter().deliverNotification(notification)
+  }
 }
 
 // MARK: NotificationKey's
@@ -41,6 +65,7 @@ class NotificationController {
 ///  - twentyPercent:   Twenty percent notification.
 ///  - hundredPercent:  Hundred percent notification.
 enum NotificationKey: Int {
+  case none            = 0
   case fivePercent     = 5
   case tenPercent      = 10
   case fifeteenPercent = 15
