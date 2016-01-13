@@ -153,10 +153,8 @@
 			children = (
 				8EE129811C46F891000D404F /* TodayViewController.swift */,
 				8EE129831C46F891000D404F /* ListRowViewController.swift */,
-				8EE129851C46F891000D404F /* TodayViewController.xib */,
-				8EE129881C46F891000D404F /* ListRowViewController.xib */,
-				8EE1298B1C46F891000D404F /* Info.plist */,
-				8EE1298C1C46F891000D404F /* InfoPlist.strings */,
+				8EE129961C46F8CE000D404F /* UI */,
+				8EE129971C46F8DB000D404F /* Resources */,
 				8EE1297F1C46F891000D404F /* Supporting Files */,
 			);
 			path = Battery;
@@ -168,6 +166,24 @@
 				8EE129801C46F891000D404F /* Battery.entitlements */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		8EE129961C46F8CE000D404F /* UI */ = {
+			isa = PBXGroup;
+			children = (
+				8EE129851C46F891000D404F /* TodayViewController.xib */,
+				8EE129881C46F891000D404F /* ListRowViewController.xib */,
+			);
+			name = UI;
+			sourceTree = "<group>";
+		};
+		8EE129971C46F8DB000D404F /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				8EE1298B1C46F891000D404F /* Info.plist */,
+				8EE1298C1C46F891000D404F /* InfoPlist.strings */,
+			);
+			name = Resources;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
