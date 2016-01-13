@@ -39,6 +39,8 @@ class ApplicationController: NSObject {
   var statusItem: NSStatusItem?
   /// Access to battery information.
   let battery = Battery()
+  /// Manage user preferences.
+  let userPrefs = UserPreferences()
 
   // MARK: Methods
 
@@ -156,14 +158,20 @@ class ApplicationController: NSObject {
   ///
   ///  - parameter sender: Menu item that send the message.
   @IBAction func showPercentage(sender: NSMenuItem) {
-
+    // Toggle the show time preference.
+    self.userPrefs.showTime = false
+    // Update the status bar item to reflect the changes.
+    self.updateStatusItem(self)
   }
 
   ///  Show time remaining instead of percentage.
   ///
   ///  - parameter sender: Menu item that send the message.
   @IBAction func showTime(sender: NSMenuItem) {
-
+    // Toggle the show time preference.
+    self.userPrefs.showTime = true
+    // Update the status bar item to reflect the changes.
+    self.updateStatusItem(self)
   }
 
   ///  Open the energy saver preference pane.
