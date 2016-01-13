@@ -110,7 +110,8 @@ class ApplicationController: NSObject {
           // Draw the status icon on the right hand side.
           button.imagePosition = .ImageRight
           // Set the status bar item's title.
-          button.attributedTitle = self.attributedTitle(withPercentage: percentage)
+          button.attributedTitle = self.attributedTitle(withPercentage: percentage,
+            andTime: self.battery.timeRemainingFormatted())
       }
     } catch {
       print(error)
@@ -130,7 +131,14 @@ class ApplicationController: NSObject {
       try self.battery.open()
       // Get the updated information and set them as item title.
       self.currentSource.title = "Source: \(self.battery.currentSource())"
-      self.currentCharge.title = self.battery.timeRemainingFormatted()
+      // Check wether the user wants the remaining time or not.
+      if self.userPrefs.showTime {
+        if let percentage = self.battery.percentage() {
+          self.currentCharge.title = "\(percentage) %"
+        }
+      } else {
+        self.currentCharge.title = self.battery.timeRemainingFormatted()
+      }
       // Unwrap additional information.
       if let currentCharge = self.battery.currentCharge(),
         maxCapacity = self.battery.maxCapacity() {
@@ -144,11 +152,16 @@ class ApplicationController: NSObject {
   ///  Creates an attributed string for the status bar item.
   ///
   ///  - parameter percent: Current percentage of the battery's charging status.
-  private func attributedTitle(withPercentage percent: Int) -> NSAttributedString {
+  private func attributedTitle(withPercentage percent: Int,
+    andTime time: String) -> NSAttributedString {
     // Define some attributes to make the status item look like Apple's battery gauge.
     let attrs = [NSFontAttributeName : NSFont.systemFontOfSize(12.0),
        NSBaselineOffsetAttributeName : 1.0]
-    let title = "\(percent) %"
+    var title = "\(percent) % "
+    // Set the title to the remaining time.
+    if self.userPrefs.showTime {
+      title = "\(time) "
+    }
     return NSAttributedString(string: title, attributes: attrs)
   }
 
