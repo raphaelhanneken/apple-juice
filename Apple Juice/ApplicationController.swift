@@ -85,15 +85,45 @@ class ApplicationController: NSObject {
     guard let button = self.statusItem?.button else {
       return
     }
-    // Set the battery image.
-    button.image = StatusIcon.batteryDischarging(currentPercentage: 50)
-    // Set the image position.
-    button.imagePosition = .ImageRight
-    // Set the button's title.
-    button.attributedTitle = NSAttributedString(string: "50 % ", attributes: nil)
+
+    do {
+      // Try closing the IO connection in any case.
+      defer { self.battery.close() }
+      // Open an IO connection to the defined battery service.
+      try self.battery.open()
+      // Unwrap the necessary information...
+      if let plugged = self.battery.isPlugged(), charging = self.battery.isCharging(),
+        charged = self.battery.isCharged(), percentage = self.battery.percentage() {
+          // ...and draw the appropriate status bar icon.
+          if charged && plugged {
+            button.image = StatusIcon.batteryChargedAndPlugged
+          } else if charging {
+            button.image = StatusIcon.batteryCharging
+          } else {
+            button.image = StatusIcon.batteryDischarging(currentPercentage: percentage)
+          }
+          // Draw the status icon on the right hand side.
+          button.imagePosition = .ImageRight
+          // Set the status bar item's title.
+          button.attributedTitle = self.attributedTitle(withPercentage: percentage)
+      }
+    } catch {
+      print(error)
+    }
     // Define the image as template.
     if let img = button.image {
       img.template = true
     }
+  }
+
+  ///  Creates an attributed string for the status bar item.
+  ///
+  ///  - parameter percent: Current percentage of the battery's charging status.
+  private func attributedTitle(withPercentage percent: Int) -> NSAttributedString {
+    // Define some attributes to make the status item look like Apple's battery gauge.
+    let attrs = [NSFontAttributeName : NSFont.systemFontOfSize(12.0),
+       NSBaselineOffsetAttributeName : 1.0]
+    let title = "\(percent) %"
+    return NSAttributedString(string: title, attributes: attrs)
   }
 }
