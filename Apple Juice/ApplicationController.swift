@@ -51,7 +51,7 @@ class ApplicationController: NSObject {
     self.statusItem = self.configureStatusItem()
     // Listen for PowerSourceChanged notifications, posted by self.battery.
     NSNotificationCenter.defaultCenter().addObserver(self, selector: Selector("powerSourceChanged:"),
-      name: PowerSourceChanged, object: self.battery)
+      name: PowerSourceChanged, object: nil)
     // Display the status bar item.
     self.updateStatusItem(self)
   }
@@ -160,6 +160,41 @@ class ApplicationController: NSObject {
 
   ///  Checks if the user wants to get notified about the current charging status.
   func postUserNotification() {
+    do {
+      // Try closing the IO connection in any case.
+      defer { self.battery.close() }
+      // Open an IO connection to the defined battery service.
+      try self.battery.open()
+      // Unwrap necessary information.
+      guard let percentage = self.battery.percentage(), plugged = self.battery.isPlugged(),
+        charged = self.battery.isCharged() else {
+          return
+      }
+
+      // Check if we're plugged, charged and the user wants to receive pluggedAndCharged
+      // notifications.
+      if plugged && charged && self.userPrefs.notifications.contains(.hundredPercent)
+        && self.userPrefs.lastNotified != .hundredPercent {
+          // Post a plugged & charged notification.
+          NotificationController.pluggedAndChargedNotification()
+          // Save the hundredPercent notification key as last notified.
+          self.userPrefs.lastNotified = .hundredPercent
+      } else {
+        // Create a notification key.
+        if let notificationKey = NotificationKey(rawValue: percentage) {
+          // Check if the user wants to receive notifications for this key.
+          if self.userPrefs.notifications.contains(notificationKey)
+            && self.userPrefs.lastNotified != notificationKey {
+              // Post a low percentage notification and...
+              NotificationController.lowPercentageNotification(forPercentage: notificationKey)
+              // ...set lastNotified to the notification key.
+              self.userPrefs.lastNotified = notificationKey
+          }
+        }
+      }
+    } catch {
+      print(error)
+    }
   }
 
   ///  Creates an attributed string for the status bar item.
