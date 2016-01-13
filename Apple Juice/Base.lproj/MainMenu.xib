@@ -703,19 +703,34 @@
                         <items>
                             <menuItem title="5 %" id="BqN-sm-Uru">
                                 <modifierMask key="keyEquivalentModifierMask"/>
+                                <connections>
+                                    <binding destination="OgL-rZ-xAG" name="value" keyPath="values.FivePercentNotificationPref" id="dFS-9B-FLf"/>
+                                </connections>
                             </menuItem>
                             <menuItem title="10 %" id="yXd-MQ-b9b">
                                 <modifierMask key="keyEquivalentModifierMask"/>
+                                <connections>
+                                    <binding destination="OgL-rZ-xAG" name="value" keyPath="values.TenPercentNotificationPref" id="pk3-fW-qx5"/>
+                                </connections>
                             </menuItem>
                             <menuItem title="15 %" id="IiQ-lQ-6Kw">
                                 <modifierMask key="keyEquivalentModifierMask"/>
+                                <connections>
+                                    <binding destination="OgL-rZ-xAG" name="value" keyPath="values.FifeteenPercentNotificationPref" id="qgh-4q-kHe"/>
+                                </connections>
                             </menuItem>
                             <menuItem title="20 %" id="Pag-Zv-yRx">
                                 <modifierMask key="keyEquivalentModifierMask"/>
+                                <connections>
+                                    <binding destination="OgL-rZ-xAG" name="value" keyPath="values.TwentyPercentNotificationPref" id="GGC-Ot-acB"/>
+                                </connections>
                             </menuItem>
                             <menuItem isSeparatorItem="YES" id="fZI-EN-bOn"/>
                             <menuItem title="100 %" id="bgK-RS-y5X">
                                 <modifierMask key="keyEquivalentModifierMask"/>
+                                <connections>
+                                    <binding destination="OgL-rZ-xAG" name="value" keyPath="values.HundredPercentNotificationPref" id="Vuz-F7-ftw"/>
+                                </connections>
                             </menuItem>
                         </items>
                     </menu>
