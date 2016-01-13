@@ -47,7 +47,7 @@ class StatusIcon {
   ///  - returns: The battery icon based on the given parameters.
   static func batteryDischarging(currentPercentage percentage: Int) -> NSImage? {
     // Get the images to draw the battery icon.
-    guard let batteryOutline = StatusIcon.batteryImage(named: "BatteryOutline"),
+    guard let batteryOutline = StatusIcon.batteryImage(named: "BatteryEmpty"),
       batteryLeft  = StatusIcon.batteryImage(named: "BatteryLevelCapB-L"),
       batteryRight = StatusIcon.batteryImage(named: "BatteryLevelCapB-R"),
       batteryMid   = StatusIcon.batteryImage(named: "BatteryLevelCapB-M") else {
