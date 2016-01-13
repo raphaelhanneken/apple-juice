@@ -65,10 +65,10 @@ class NotificationController {
 ///  - twentyPercent:   Twenty percent notification.
 ///  - hundredPercent:  Hundred percent notification.
 enum NotificationKey: Int {
-  case none            = 0
-  case fivePercent     = 5
-  case tenPercent      = 10
-  case fifeteenPercent = 15
-  case twentyPercent   = 20
-  case hundredPercent  = 100
+  case None            = 0
+  case FivePercent     = 5
+  case TenPercent      = 10
+  case FifeteenPercent = 15
+  case TwentyPercent   = 20
+  case HundredPercent  = 100
 }

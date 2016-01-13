@@ -50,8 +50,8 @@ class ApplicationController: NSObject {
     // Configure the status bar item.
     self.statusItem = self.configureStatusItem()
     // Listen for PowerSourceChanged notifications, posted by self.battery.
-    NSNotificationCenter.defaultCenter().addObserver(self, selector: Selector("powerSourceChanged:"),
-      name: PowerSourceChanged, object: nil)
+    NSNotificationCenter.defaultCenter().addObserver(self,
+      selector: Selector("powerSourceChanged:"), name: powerSourceChangedNotification, object: nil)
     // Display the status bar item.
     self.updateStatusItem(self)
   }
@@ -173,12 +173,12 @@ class ApplicationController: NSObject {
 
       // Check if we're plugged, charged and the user wants to receive pluggedAndCharged
       // notifications.
-      if plugged && charged && self.userPrefs.notifications.contains(.hundredPercent)
-        && self.userPrefs.lastNotified != .hundredPercent {
+      if plugged && charged && self.userPrefs.notifications.contains(.HundredPercent)
+        && self.userPrefs.lastNotified != .HundredPercent {
           // Post a plugged & charged notification.
           NotificationController.pluggedAndChargedNotification()
           // Save the hundredPercent notification key as last notified.
-          self.userPrefs.lastNotified = .hundredPercent
+          self.userPrefs.lastNotified = .HundredPercent
       } else {
         // Create a notification key.
         if let notificationKey = NotificationKey(rawValue: percentage) {
@@ -197,9 +197,11 @@ class ApplicationController: NSObject {
     }
   }
 
-  ///  Creates an attributed string for the status bar item.
+  ///  Creates an attributed string for the status bar item's title.
   ///
   ///  - parameter percent: Current percentage of the battery's charging status.
+  ///  - parameter time:    The estimated remaining time in a human readable format.
+  ///  - returns: The attributed string with percentage or time information, respectively.
   private func attributedTitle(withPercentage percent: Int,
     andTime time: String) -> NSAttributedString {
     // Define some attributes to make the status item look like Apple's battery gauge.

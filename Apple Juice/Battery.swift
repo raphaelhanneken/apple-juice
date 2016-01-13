@@ -30,19 +30,20 @@ import IOKit.ps
 import IOKit
 
 /// Notification that gets posted whenever a power source is changed.
-let PowerSourceChanged = "io.github.raphaelhanneken.apple-juice.powersourcechanged"
+let powerSourceChangedNotification = "io.github.raphaelhanneken.apple-juice.powersourcechanged"
 
 /// Gets called whenever any power source is added, removed, or changed.
-let IOPSCallback: IOPowerSourceCallbackType = { _ in
+let powerSourceCallback: IOPowerSourceCallbackType = { _ in
   // Post a PowerSourceChanged notification.
-  NSNotificationCenter.defaultCenter().postNotificationName(PowerSourceChanged, object: nil)
+  NSNotificationCenter.defaultCenter().postNotificationName(powerSourceChangedNotification,
+    object: nil)
 }
 
 /// Access information about the build in battery.
 class Battery {
 
   /// The battery's IO service name.
-  private let BatteryServiceName = "AppleSmartBattery"
+  private let batteryIOServiceName = "AppleSmartBattery"
   /// An IOService object that matches battery's IO service dict.
   private var service: io_object_t = 0
 
@@ -50,7 +51,7 @@ class Battery {
 
   init() {
     // Get notified when the power source information changes.
-    let loop = IOPSNotificationCreateRunLoopSource(IOPSCallback, nil).takeUnretainedValue()
+    let loop = IOPSNotificationCreateRunLoopSource(powerSourceCallback, nil).takeUnretainedValue()
     // Add the notification loop to the current run loop.
     CFRunLoopAddSource(CFRunLoopGetCurrent(), loop, kCFRunLoopDefaultMode)
   }
@@ -70,7 +71,7 @@ class Battery {
     }
     // Get an IOService object for the defined
     self.service = IOServiceGetMatchingService(kIOMasterPortDefault,
-      IOServiceNameMatching(self.BatteryServiceName))
+      IOServiceNameMatching(self.batteryIOServiceName))
     // Throw a BatteryError if the IO service couldn't be opened.
     if self.service == 0 {
       throw BatteryError.ServiceNotFound
