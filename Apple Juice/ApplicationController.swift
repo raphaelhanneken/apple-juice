@@ -25,7 +25,7 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 // THE SOFTWARE.
 
-import Foundation
+import Cocoa
 
 class ApplicationController: NSObject {
   /// Holds a reference to the application menu.
@@ -34,4 +34,47 @@ class ApplicationController: NSObject {
   @IBOutlet weak var currentCharge: NSMenuItem!
   /// Holds a reference to the power source menu item.
   @IBOutlet weak var currentSource: NSMenuItem!
+
+  /// Holds the app's status bar item.
+  var statusItem: NSStatusItem?
+
+  // MARK: Methods
+
+  override init() {
+    // Initialize our parent class.
+    super.init()
+    // Configure the status bar item.
+    self.statusItem = self.configureStatusItem()
+
+    self.updateStatusItem(self)
+  }
+
+  ///  Creates and configures the app's status bar item.
+  ///
+  ///  - returns: The application's status bar item.
+  func configureStatusItem() -> NSStatusItem {
+    // Find a place to life.
+    let statusItem = NSStatusBar.systemStatusBar().statusItemWithLength(NSVariableStatusItemLength)
+    // Set properties.
+    statusItem.target = self
+    statusItem.action = Selector("displayAppMenu:")
+
+    return statusItem
+  }
+
+  ///  Displays the app menu on screen.
+  ///
+  ///  - parameter sender: The object that send the message.
+  func displayAppMenu(sender: AnyObject) {
+    if let statusItem = self.statusItem {
+      statusItem.popUpStatusItemMenu(self.appMenu)
+    }
+  }
+
+  ///  Updates the application's status bar item.
+  ///
+  ///  - parameter sender: Object that send the message.
+  func updateStatusItem(sender: AnyObject) {
+    
+  }
 }
