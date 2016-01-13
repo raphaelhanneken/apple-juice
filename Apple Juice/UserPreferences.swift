@@ -59,9 +59,22 @@ class UserPreferences {
     get { return userDefaults.boolForKey(TwentyPercentNotificationKey) }
   }
 
+  /// Notify the user when the battery is fully charged.
   var hundredPercentNotification: Bool {
     get { return userDefaults.boolForKey(HundredPercentNotificationKey) }
   }
+
+  /// Saves the NotificationKey the user was last informed of.
+  var lastNotified: NotificationKey? {
+    get { return NotificationKey(rawValue: userDefaults.integerForKey(LastNotified)) }
+    set {
+      if let notificationKey = newValue {
+        userDefaults.setInteger(notificationKey.rawValue, forKey: LastNotified)
+      }
+    }
+  }
+
+  // MARK: Methods
 
   init() {
     self.registerUserDefaults()
@@ -91,3 +104,5 @@ private let FifeteenPercentNotificationKey = "FifeteenPercentNotificationPref"
 private let TwentyPercentNotificationKey = "TwentyPercentNotificationPref"
 /// Hundred percent notification preference key.
 private let HundredPercentNotificationKey = "HundredPercentNotificationPref"
+/// Save the percentage when the user was last notified.
+private let LastNotified = "LastNotifiedPref"

@@ -31,3 +31,19 @@ class NotificationController {
   
 }
 
+// MARK: NotificationKey's
+
+///  Defines a notification at a given percentage.
+///
+///  - fivePercent:     Five percent notification.
+///  - tenPercent:      Ten percent notification.
+///  - fifeteenPercent: Fifeteen percent notification.
+///  - twentyPercent:   Twenty percent notification.
+///  - hundredPercent:  Hundred percent notification.
+enum NotificationKey: Int {
+  case fivePercent     = 5
+  case tenPercent      = 10
+  case fifeteenPercent = 15
+  case twentyPercent   = 20
+  case hundredPercent  = 100
+}
