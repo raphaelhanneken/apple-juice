@@ -1,5 +1,5 @@
 //
-// ApplicationDelegate.swift
+// ApplicationController.swift
 // Apple Juice
 // https://github.com/raphaelhanneken/apple-juice
 //
@@ -49,10 +49,9 @@ class ApplicationController: NSObject {
     super.init()
     // Configure the status bar item.
     self.statusItem = self.configureStatusItem()
-    // Listen for PowerSourceChanged notifications, posted by self.battery. And call
-    // updateStatusItem: to reflect the changes on the status bar item.
-    NSNotificationCenter.defaultCenter().addObserver(self, selector: Selector("updateStatusItem:"),
-      name: PowerSourceChanged, object: self.battery)
+    // Listen for PowerSourceChanged notifications, posted by self.battery.
+    NSNotificationCenter.defaultCenter().addObserver(self, selector: Selector("powerSourceChanged:"),
+      name: PowerSourceChanged, object: nil)
     // Display the status bar item.
     self.updateStatusItem(self)
   }
@@ -143,6 +142,55 @@ class ApplicationController: NSObject {
       if let currentCharge = self.battery.currentCharge(),
         maxCapacity = self.battery.maxCapacity() {
           self.currentCharge.title += " (\(currentCharge) / \(maxCapacity) mAh)"
+      }
+    } catch {
+      print(error)
+    }
+  }
+
+  ///  Gets called whenever the power source changes. Calls updateMenuItem:
+  ///  and postUserNotification.
+  ///  - parameter sender: Object that send the message.
+  func powerSourceChanged(sender: AnyObject) {
+    // Update status bar item to reflect changes.
+    self.updateStatusItem(self)
+    // Check if the user wants to get notified.
+    self.postUserNotification()
+  }
+
+  ///  Checks if the user wants to get notified about the current charging status.
+  func postUserNotification() {
+    do {
+      // Try closing the IO connection in any case.
+      defer { self.battery.close() }
+      // Open an IO connection to the defined battery service.
+      try self.battery.open()
+      // Unwrap necessary information.
+      guard let percentage = self.battery.percentage(), plugged = self.battery.isPlugged(),
+        charged = self.battery.isCharged() else {
+          return
+      }
+
+      // Check if we're plugged, charged and the user wants to receive pluggedAndCharged
+      // notifications.
+      if plugged && charged && self.userPrefs.notifications.contains(.hundredPercent)
+        && self.userPrefs.lastNotified != .hundredPercent {
+          // Post a plugged & charged notification.
+          NotificationController.pluggedAndChargedNotification()
+          // Save the hundredPercent notification key as last notified.
+          self.userPrefs.lastNotified = .hundredPercent
+      } else {
+        // Create a notification key.
+        if let notificationKey = NotificationKey(rawValue: percentage) {
+          // Check if the user wants to receive notifications for this key.
+          if self.userPrefs.notifications.contains(notificationKey)
+            && self.userPrefs.lastNotified != notificationKey {
+              // Post a low percentage notification and...
+              NotificationController.lowPercentageNotification(forPercentage: notificationKey)
+              // ...set lastNotified to the notification key.
+              self.userPrefs.lastNotified = notificationKey
+          }
+        }
       }
     } catch {
       print(error)

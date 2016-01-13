@@ -18,4 +18,10 @@ class AppDelegate: NSObject, NSApplicationDelegate {
   func applicationWillTerminate(aNotification: NSNotification) {
     // Insert code here to tear down your application
   }
+
+  // Post messages to the user notification center.
+  func userNotificationCenter(center: NSUserNotificationCenter,
+    shouldPresentNotification notification: NSUserNotification) -> Bool {
+      return true
+  }
 }

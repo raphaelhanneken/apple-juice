@@ -40,28 +40,66 @@ class UserPreferences {
   }
 
   /// Notify the user at five percent left.
-  var fivePercentNotification: Bool {
-    get { return userDefaults.boolForKey(FivePercentNotificationKey) }
+  var fivePercentNotification: Int {
+    get { return userDefaults.integerForKey(FivePercentNotificationKey) }
   }
 
   /// Notify the user at ten percent left.
-  var tenPercentNotification: Bool {
-    get { return userDefaults.boolForKey(TenPercentNotificationKey) }
+  var tenPercentNotification: Int {
+    get { return userDefaults.integerForKey(TenPercentNotificationKey) }
   }
 
   /// Notify the user at fifeteen percent left.
-  var fifeteenPercentNotification: Bool {
-    get { return userDefaults.boolForKey(FifeteenPercentNotificationKey) }
+  var fifeteenPercentNotification: Int {
+    get { return userDefaults.integerForKey(FifeteenPercentNotificationKey) }
   }
 
   /// Notify the user at twenty percent left.
-  var twentyPercentNotification: Bool {
-    get { return userDefaults.boolForKey(TwentyPercentNotificationKey) }
+  var twentyPercentNotification: Int {
+    get { return userDefaults.integerForKey(TwentyPercentNotificationKey) }
   }
 
-  var hundredPercentNotification: Bool {
-    get { return userDefaults.boolForKey(HundredPercentNotificationKey) }
+  /// Notify the user when the battery is fully charged.
+  var hundredPercentNotification: Int {
+    get { return userDefaults.integerForKey(HundredPercentNotificationKey) }
   }
+
+  /// Saves the NotificationKey the user was last informed of.
+  var lastNotified: NotificationKey? {
+    get { return NotificationKey(rawValue: userDefaults.integerForKey(LastNotified)) }
+    set {
+      if let notificationKey = newValue {
+        userDefaults.setInteger(notificationKey.rawValue, forKey: LastNotified)
+      }
+    }
+  }
+
+  /// A set of all notifications the user is interested in.
+  var notifications: Set<NotificationKey> {
+    // Create an empty set.
+    var result: Set<NotificationKey> = []
+
+    // Check for notification settings.
+    if self.fivePercentNotification == 1 {
+      result.insert(.fivePercent)
+    }
+    if self.tenPercentNotification == 1{
+      result.insert(.tenPercent)
+    }
+    if self.fifeteenPercentNotification == 1 {
+      result.insert(.fifeteenPercent)
+    }
+    if self.twentyPercentNotification == 1 {
+      result.insert(.twentyPercent)
+    }
+    if self.hundredPercentNotification == 1{
+      result.insert(.hundredPercent)
+    }
+
+    return result
+  }
+
+  // MARK: Methods
 
   init() {
     self.registerUserDefaults()
@@ -69,9 +107,10 @@ class UserPreferences {
 
   ///  Register user defaults.
   private func registerUserDefaults() {
-    let defaults = [ShowTimeKey : false, FivePercentNotificationKey : false,
-      TenPercentNotificationKey : false, FifeteenPercentNotificationKey : false,
-      TwentyPercentNotificationKey : false]
+    let defaults: Dictionary<String, AnyObject> = [ShowTimeKey : false,
+      FivePercentNotificationKey : 0, TenPercentNotificationKey : 0,
+      FifeteenPercentNotificationKey : 0, TwentyPercentNotificationKey : 0,
+      LastNotified : 0]
 
     self.userDefaults.registerDefaults(defaults)
   }
@@ -91,3 +130,5 @@ private let FifeteenPercentNotificationKey = "FifeteenPercentNotificationPref"
 private let TwentyPercentNotificationKey = "TwentyPercentNotificationPref"
 /// Hundred percent notification preference key.
 private let HundredPercentNotificationKey = "HundredPercentNotificationPref"
+/// Save the percentage when the user was last notified.
+private let LastNotified = "LastNotifiedPref"
