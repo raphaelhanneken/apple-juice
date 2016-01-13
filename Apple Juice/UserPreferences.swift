@@ -74,6 +74,31 @@ class UserPreferences {
     }
   }
 
+  /// A set of all notifications the user is interested in.
+  var notifications: Set<NotificationKey> {
+    // Create an empty set.
+    var result: Set<NotificationKey> = []
+
+    // Check for notification settings.
+    if self.fivePercentNotification == 1 {
+      result.insert(.fivePercent)
+    }
+    if self.tenPercentNotification == 1{
+      result.insert(.tenPercent)
+    }
+    if self.fifeteenPercentNotification == 1 {
+      result.insert(.fifeteenPercent)
+    }
+    if self.twentyPercentNotification == 1 {
+      result.insert(.twentyPercent)
+    }
+    if self.hundredPercentNotification == 1{
+      result.insert(.hundredPercent)
+    }
+
+    return result
+  }
+
   // MARK: Methods
 
   init() {
