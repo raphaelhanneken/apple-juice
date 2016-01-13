@@ -663,5 +663,57 @@
                 </menuItem>
             </items>
         </menu>
+        <menu id="tlM-TC-O58">
+            <items>
+                <menuItem title="Unknown..." enabled="NO" id="Jwd-Td-BfA">
+                    <modifierMask key="keyEquivalentModifierMask"/>
+                </menuItem>
+                <menuItem title="Source: Unknown..." enabled="NO" id="P8z-Da-8Sb">
+                    <modifierMask key="keyEquivalentModifierMask"/>
+                </menuItem>
+                <menuItem isSeparatorItem="YES" id="OYt-Th-ZmC"/>
+                <menuItem title="Show Percent" id="kMe-ps-Frc">
+                    <modifierMask key="keyEquivalentModifierMask"/>
+                </menuItem>
+                <menuItem title="Show Time" id="pCY-Rb-LY6">
+                    <modifierMask key="keyEquivalentModifierMask"/>
+                </menuItem>
+                <menuItem title="Notifications" id="uGl-yK-qDZ">
+                    <modifierMask key="keyEquivalentModifierMask"/>
+                    <menu key="submenu" title="Notifications" id="s9C-tt-TOv">
+                        <items>
+                            <menuItem title="5 %" id="BqN-sm-Uru">
+                                <modifierMask key="keyEquivalentModifierMask"/>
+                            </menuItem>
+                            <menuItem title="10 %" id="yXd-MQ-b9b">
+                                <modifierMask key="keyEquivalentModifierMask"/>
+                            </menuItem>
+                            <menuItem title="15 %" id="IiQ-lQ-6Kw">
+                                <modifierMask key="keyEquivalentModifierMask"/>
+                            </menuItem>
+                            <menuItem title="20 %" id="Pag-Zv-yRx">
+                                <modifierMask key="keyEquivalentModifierMask"/>
+                            </menuItem>
+                            <menuItem isSeparatorItem="YES" id="fZI-EN-bOn"/>
+                            <menuItem title="100 %" id="bgK-RS-y5X">
+                                <modifierMask key="keyEquivalentModifierMask"/>
+                            </menuItem>
+                        </items>
+                    </menu>
+                </menuItem>
+                <menuItem isSeparatorItem="YES" id="HoG-Jh-UIk"/>
+                <menuItem title="Check for Updates..." id="OFJ-1T-Wc5">
+                    <modifierMask key="keyEquivalentModifierMask"/>
+                </menuItem>
+                <menuItem title="Energy Saver Preferences..." id="nUK-pj-k8O">
+                    <modifierMask key="keyEquivalentModifierMask"/>
+                </menuItem>
+                <menuItem isSeparatorItem="YES" id="bcW-nq-A9L"/>
+                <menuItem title="Quit" id="fXh-MN-Omu">
+                    <modifierMask key="keyEquivalentModifierMask"/>
+                </menuItem>
+            </items>
+            <point key="canvasLocation" x="171.5" y="237.5"/>
+        </menu>
     </objects>
 </document>
