@@ -1,5 +1,5 @@
 //
-// ApplicationDelegate.swift
+// ApplicationController.swift
 // Apple Juice
 // https://github.com/raphaelhanneken/apple-juice
 //
@@ -49,9 +49,8 @@ class ApplicationController: NSObject {
     super.init()
     // Configure the status bar item.
     self.statusItem = self.configureStatusItem()
-    // Listen for PowerSourceChanged notifications, posted by self.battery. And call
-    // updateStatusItem: to reflect the changes on the status bar item.
-    NSNotificationCenter.defaultCenter().addObserver(self, selector: Selector("updateStatusItem:"),
+    // Listen for PowerSourceChanged notifications, posted by self.battery.
+    NSNotificationCenter.defaultCenter().addObserver(self, selector: Selector("powerSourceChanged:"),
       name: PowerSourceChanged, object: self.battery)
     // Display the status bar item.
     self.updateStatusItem(self)
@@ -147,6 +146,20 @@ class ApplicationController: NSObject {
     } catch {
       print(error)
     }
+  }
+
+  ///  Gets called whenever the power source changes. Calls updateMenuItem:
+  ///  and postUserNotification.
+  ///  - parameter sender: Object that send the message.
+  func powerSourceChanged(sender: AnyObject) {
+    // Update status bar item to reflect changes.
+    self.updateStatusItem(self)
+    // Check if the user wants to get notified.
+    self.postUserNotification()
+  }
+
+  ///  Checks if the user wants to get notified about the current charging status.
+  func postUserNotification() {
   }
 
   ///  Creates an attributed string for the status bar item.
