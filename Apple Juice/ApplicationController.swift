@@ -75,6 +75,19 @@ class ApplicationController: NSObject {
   ///
   ///  - parameter sender: Object that send the message.
   func updateStatusItem(sender: AnyObject) {
-    
+    // Unwrap the status item's button.
+    guard let button = self.statusItem?.button else {
+      return
+    }
+    // Set the battery image.
+    button.image = StatusIcon.batteryDischarging(currentPercentage: 50)
+    // Set the image position.
+    button.imagePosition = .ImageRight
+    // Set the button's title.
+    button.attributedTitle = NSAttributedString(string: "50 % ", attributes: nil)
+    // Define the image as template.
+    if let img = button.image {
+      img.template = true
+    }
   }
 }
