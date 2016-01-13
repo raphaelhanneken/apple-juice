@@ -149,4 +149,27 @@ class ApplicationController: NSObject {
     let title = "\(percent) %"
     return NSAttributedString(string: title, attributes: attrs)
   }
+
+  // MARK: IBAction's
+
+  ///  Show percentage instead of remaining time.
+  ///
+  ///  - parameter sender: Menu item that send the message.
+  @IBAction func showPercentage(sender: NSMenuItem) {
+
+  }
+
+  ///  Show time remaining instead of percentage.
+  ///
+  ///  - parameter sender: Menu item that send the message.
+  @IBAction func showTime(sender: NSMenuItem) {
+
+  }
+
+  ///  Open the energy saver preference pane.
+  ///
+  ///  - parameter sender: The menu item that send the message.
+  @IBAction func energySaverPreferences(sender: NSMenuItem) {
+    NSWorkspace.sharedWorkspace().openFile("/System/Library/PreferencePanes/EnergySaver.prefPane")
+  }
 }

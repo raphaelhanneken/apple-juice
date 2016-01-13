@@ -679,11 +679,17 @@
                     <modifierMask key="keyEquivalentModifierMask"/>
                 </menuItem>
                 <menuItem isSeparatorItem="YES" id="OYt-Th-ZmC"/>
-                <menuItem title="Show Percent" id="kMe-ps-Frc">
+                <menuItem title="Show Percentage" id="kMe-ps-Frc">
                     <modifierMask key="keyEquivalentModifierMask"/>
+                    <connections>
+                        <action selector="showPercentage:" target="FRD-GK-LcV" id="pre-gO-xmG"/>
+                    </connections>
                 </menuItem>
                 <menuItem title="Show Time" id="pCY-Rb-LY6">
                     <modifierMask key="keyEquivalentModifierMask"/>
+                    <connections>
+                        <action selector="showTime:" target="FRD-GK-LcV" id="8Zz-uv-ZdV"/>
+                    </connections>
                 </menuItem>
                 <menuItem title="Notifications" id="uGl-yK-qDZ">
                     <modifierMask key="keyEquivalentModifierMask"/>
@@ -714,10 +720,16 @@
                 </menuItem>
                 <menuItem title="Energy Saver Preferences..." id="nUK-pj-k8O">
                     <modifierMask key="keyEquivalentModifierMask"/>
+                    <connections>
+                        <action selector="energySaverPreferences:" target="FRD-GK-LcV" id="eSm-lB-1d2"/>
+                    </connections>
                 </menuItem>
                 <menuItem isSeparatorItem="YES" id="bcW-nq-A9L"/>
                 <menuItem title="Quit" id="fXh-MN-Omu">
                     <modifierMask key="keyEquivalentModifierMask"/>
+                    <connections>
+                        <action selector="terminate:" target="-1" id="f0e-26-aRM"/>
+                    </connections>
                 </menuItem>
             </items>
             <point key="canvasLocation" x="171.5" y="237.5"/>
