@@ -51,11 +51,27 @@
 			isa = PBXGroup;
 			children = (
 				8EBEB4451C466091001DBE91 /* AppDelegate.swift */,
-				8EBEB4471C466091001DBE91 /* Assets.xcassets */,
-				8EBEB4491C466091001DBE91 /* MainMenu.xib */,
-				8EBEB44C1C466091001DBE91 /* Info.plist */,
+				8EE129681C4661BA000D404F /* UI */,
+				8EE129671C4661AC000D404F /* Resources */,
 			);
 			path = "Apple Juice";
+			sourceTree = "<group>";
+		};
+		8EE129671C4661AC000D404F /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				8EBEB4471C466091001DBE91 /* Assets.xcassets */,
+				8EBEB44C1C466091001DBE91 /* Info.plist */,
+			);
+			name = Resources;
+			sourceTree = "<group>";
+		};
+		8EE129681C4661BA000D404F /* UI */ = {
+			isa = PBXGroup;
+			children = (
+				8EBEB4491C466091001DBE91 /* MainMenu.xib */,
+			);
+			name = UI;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -269,6 +285,7 @@
 				8EBEB4511C466091001DBE91 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
