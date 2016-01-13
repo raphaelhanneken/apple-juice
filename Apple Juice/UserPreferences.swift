@@ -40,28 +40,28 @@ class UserPreferences {
   }
 
   /// Notify the user at five percent left.
-  var fivePercentNotification: Bool {
-    get { return userDefaults.boolForKey(FivePercentNotificationKey) }
+  var fivePercentNotification: Int {
+    get { return userDefaults.integerForKey(FivePercentNotificationKey) }
   }
 
   /// Notify the user at ten percent left.
-  var tenPercentNotification: Bool {
-    get { return userDefaults.boolForKey(TenPercentNotificationKey) }
+  var tenPercentNotification: Int {
+    get { return userDefaults.integerForKey(TenPercentNotificationKey) }
   }
 
   /// Notify the user at fifeteen percent left.
-  var fifeteenPercentNotification: Bool {
-    get { return userDefaults.boolForKey(FifeteenPercentNotificationKey) }
+  var fifeteenPercentNotification: Int {
+    get { return userDefaults.integerForKey(FifeteenPercentNotificationKey) }
   }
 
   /// Notify the user at twenty percent left.
-  var twentyPercentNotification: Bool {
-    get { return userDefaults.boolForKey(TwentyPercentNotificationKey) }
+  var twentyPercentNotification: Int {
+    get { return userDefaults.integerForKey(TwentyPercentNotificationKey) }
   }
 
   /// Notify the user when the battery is fully charged.
-  var hundredPercentNotification: Bool {
-    get { return userDefaults.boolForKey(HundredPercentNotificationKey) }
+  var hundredPercentNotification: Int {
+    get { return userDefaults.integerForKey(HundredPercentNotificationKey) }
   }
 
   /// Saves the NotificationKey the user was last informed of.
@@ -82,9 +82,10 @@ class UserPreferences {
 
   ///  Register user defaults.
   private func registerUserDefaults() {
-    let defaults = [ShowTimeKey : false, FivePercentNotificationKey : false,
-      TenPercentNotificationKey : false, FifeteenPercentNotificationKey : false,
-      TwentyPercentNotificationKey : false]
+    let defaults: Dictionary<String, AnyObject> = [ShowTimeKey : false,
+      FivePercentNotificationKey : 0, TenPercentNotificationKey : 0,
+      FifeteenPercentNotificationKey : 0, TwentyPercentNotificationKey : 0,
+      LastNotified : 0]
 
     self.userDefaults.registerDefaults(defaults)
   }
