@@ -123,7 +123,7 @@ class Battery {
         return nil
     }
 
-    return Int(round(Double(currentCapacity / maxCapacity) * 100.0))
+    return Int(round(Double(currentCapacity) / Double(maxCapacity) * 100.0))
   }
 
   ///  Gets the current charge in mAh.
