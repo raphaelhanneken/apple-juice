@@ -28,5 +28,10 @@
 import Foundation
 
 class ApplicationController: NSObject {
-
+  /// Holds a reference to the application menu.
+  @IBOutlet weak var appMenu: NSMenu!
+  /// Holds a reference to the charging status menu item.
+  @IBOutlet weak var currentCharge: NSMenuItem!
+  /// Holds a reference to the power source menu item.
+  @IBOutlet weak var currentSource: NSMenuItem!
 }

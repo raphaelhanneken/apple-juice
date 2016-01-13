@@ -14,6 +14,13 @@
         <customObject id="-3" userLabel="Application" customClass="NSObject"/>
         <customObject id="Voe-Tx-rLC" customClass="AppDelegate" customModule="Apple_Juice" customModuleProvider="target"/>
         <customObject id="YLy-65-1bz" customClass="NSFontManager"/>
+        <customObject id="FRD-GK-LcV" customClass="ApplicationController" customModule="Apple_Juice" customModuleProvider="target">
+            <connections>
+                <outlet property="appMenu" destination="tlM-TC-O58" id="mvw-5v-nFn"/>
+                <outlet property="currentCharge" destination="Jwd-Td-BfA" id="wKz-yB-mmp"/>
+                <outlet property="currentSource" destination="P8z-Da-8Sb" id="eGL-1q-yuj"/>
+            </connections>
+        </customObject>
         <menu title="Main Menu" systemMenu="main" id="AYu-sK-qS6">
             <items>
                 <menuItem title="Apple Juice" id="1Xt-HY-uBw">
