@@ -72,6 +72,9 @@ class ApplicationController: NSObject {
   ///
   ///  - parameter sender: The object that send the message.
   func displayAppMenu(sender: AnyObject) {
+    // Update the information displayed within the app menu.
+    self.updateMenuItems()
+    // Show the application menu.
     if let statusItem = self.statusItem {
       statusItem.popUpStatusItemMenu(self.appMenu)
     }
@@ -113,6 +116,26 @@ class ApplicationController: NSObject {
     // Define the image as template.
     if let img = button.image {
       img.template = true
+    }
+  }
+
+  ///  Updates the information within the app menu.
+  func updateMenuItems() {
+    do {
+      // Try closing the IO connection in any case.
+      defer { self.battery.close() }
+      // Open an IO connection to the defined battery service.
+      try self.battery.open()
+      // Get the updated information and set them as item title.
+      self.currentSource.title = "Source: \(self.battery.currentSource())"
+      self.currentCharge.title = self.battery.timeRemainingFormatted()
+      // Unwrap additional information.
+      if let currentCharge = self.battery.currentCharge(),
+        maxCapacity = self.battery.maxCapacity() {
+          self.currentCharge.title += " (\(currentCharge) / \(maxCapacity) mAh)"
+      }
+    } catch {
+      print(error)
     }
   }
 
