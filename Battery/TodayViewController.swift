@@ -32,7 +32,7 @@ class TodayViewController: NSViewController, NCWidgetProviding, NCWidgetListView
 NCWidgetSearchViewDelegate {
 
   @IBOutlet var listViewController: NCWidgetListViewController!
-  
+
   var searchController: NCWidgetSearchViewController?
 
   // MARK: - NSViewController
