@@ -167,7 +167,7 @@ class ApplicationController: NSObject {
       try self.battery.open()
       // Unwrap necessary information.
       guard let percentage = self.battery.percentage(), plugged = self.battery.isPlugged(),
-        charged = self.battery.isCharged() else {
+        charged = self.battery.isCharged(), charging = self.battery.isCharging() else {
           return
       }
 
@@ -179,7 +179,7 @@ class ApplicationController: NSObject {
           NotificationController.pluggedAndChargedNotification()
           // Save the hundredPercent notification key as last notified.
           self.userPrefs.lastNotified = .HundredPercent
-      } else {
+      } else if !charging {
         // Create a notification key.
         if let notificationKey = NotificationKey(rawValue: percentage) {
           // Check if the user wants to receive notifications for this key.
