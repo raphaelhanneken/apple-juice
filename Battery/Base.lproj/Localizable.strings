@@ -2,3 +2,9 @@
   Localizable.strings
   Apple Juice Widget
 */
+
+"unknown"       = "Unknown";
+"charged"       = "Charged";
+"watts"         = "Watts";
+"power adapter" = "Power Adapter"
+"battery"       = "Battery"
