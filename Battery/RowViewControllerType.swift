@@ -30,9 +30,75 @@ import Foundation
 /// Defines the type for the RowViewController
 class RowViewControllerType {
 
+  /// Holds the row view title, e.g. "Cycle Count"
+  var title: String = ""
+  /// Holds the row view value, e.g. 385
+  var value: AnyObject?
+
+  init(withType type: RowViewControllerTypeDef) {
+    self.getInformation(forType: type)
+  }
+
+  ///  Get the appropriate battery information for the supplied RowViewType.
+  ///
+  ///  - parameter type: The RowViewType to get information for.
+  private func getInformation(forType type: RowViewControllerTypeDef) {
+    do {
+      // Try closing the battery connection in any case!
+      defer { Battery.close() }
+      // Open a new IO connection to the battery service.
+      try Battery.open()
+      // Shadow the row properties.
+      let title: String
+      let value: AnyObject?
+      // Check which typ the row represents.
+      switch type {
+      case .TimeRemaining:
+        title = "Time Remaining:"
+        value = Battery.timeRemainingFormatted()
+      case .CurrentCharge:
+        title = "Percentage:"
+        value = Battery.percentage()
+      case .PowerUsage:
+        title = "Power Usage:"
+        value = Battery.powerUsage()
+      case .Capacity:
+        title = "Charge:"
+        if let currentCharge = Battery.currentCharge(), maxCapacity = Battery.maxCapacity() {
+          value = "\(currentCharge) / \(maxCapacity) mAh"
+        } else {
+          value = "-- / --"
+        }
+      case .CycleCount:
+        title = "Cycle Count:"
+        value = Battery.cycleCount()
+      case .Temperature:
+        title = "Temperature:"
+        if let celsius = Battery.temperature(), fahrenheit = Battery.temperature(.Fahrenheit) {
+          value = "\(celsius) °C / \(fahrenheit) °F"
+        } else {
+          value = "-- / --"
+        }
+      case .Source:
+        title = "Power Source:"
+        value = Battery.currentSource()
+      case .DesignCycleCount:
+        title = "Design Cycle Count:"
+        value = Battery.designCycleCount()
+      case .DesignCapacity:
+        title = "Design Capacity:"
+        value = Battery.designCapacity()
+      }
+      // Write the title and value to the properies.
+      self.title = title
+      self.value = value
+    } catch {
+      print(error)
+    }
+  }
 }
 
-///  Represents a RowViewControllerType with information about a certain 
+///  Represents a RowViewControllerType with information about a certain
 ///  battery status.
 ///
 ///  - TimeRemaining:    The time remaining until full.
