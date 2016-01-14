@@ -14,6 +14,7 @@
         <customObject id="-3" userLabel="Application" customClass="NSObject"/>
         <customObject id="Voe-Tx-rLC" customClass="AppDelegate" customModule="Apple_Juice" customModuleProvider="target"/>
         <customObject id="YLy-65-1bz" customClass="NSFontManager"/>
+        <customObject id="Avc-Ie-Abt" customClass="SUUpdater"/>
         <customObject id="FRD-GK-LcV" customClass="ApplicationController" customModule="Apple_Juice" customModuleProvider="target">
             <connections>
                 <outlet property="appMenu" destination="tlM-TC-O58" id="mvw-5v-nFn"/>
@@ -738,6 +739,9 @@
                 <menuItem isSeparatorItem="YES" id="HoG-Jh-UIk"/>
                 <menuItem title="Check for Updates..." id="OFJ-1T-Wc5">
                     <modifierMask key="keyEquivalentModifierMask"/>
+                    <connections>
+                        <action selector="checkForUpdates:" target="Avc-Ie-Abt" id="Aqj-nm-y4m"/>
+                    </connections>
                 </menuItem>
                 <menuItem title="Energy Saver Preferences..." id="nUK-pj-k8O">
                     <modifierMask key="keyEquivalentModifierMask"/>
