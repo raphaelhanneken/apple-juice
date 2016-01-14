@@ -35,8 +35,8 @@ class NotificationController {
     // Create a new user notification.
     let notification = NSUserNotification()
     // Configure the notification.
-    notification.title = "Charged"
-    notification.informativeText = "Your battery is now fully charged."
+    notification.title = NSLocalizedString("charged", comment: "")
+    notification.informativeText = NSLocalizedString("charged message", comment: "")
     // Deliver notification.
     NSUserNotificationCenter.defaultUserNotificationCenter().deliverNotification(notification)
   }
@@ -48,8 +48,8 @@ class NotificationController {
     // Create a new user notification.
     let notification = NSUserNotification()
     // Configure the notification.
-    notification.title = "Low Battery"
-    notification.informativeText = "Your Mac will sleep soon unless plugged into a power outlet."
+    notification.title = NSLocalizedString("low battery", comment: "")
+    notification.informativeText = NSLocalizedString("low battery message", comment: "")
     // Deliver notification.
     NSUserNotificationCenter.defaultUserNotificationCenter().deliverNotification(notification)
   }
