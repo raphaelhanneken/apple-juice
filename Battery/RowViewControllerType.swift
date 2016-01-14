@@ -31,3 +31,27 @@ import Foundation
 class RowViewControllerType {
 
 }
+
+///  Represents a RowViewControllerType with information about a certain 
+///  battery status.
+///
+///  - TimeRemaining:    The time remaining until full.
+///  - CurrentCharge:    The current charge in percent.
+///  - PowerUsage:       The current power usage in Watts.
+///  - Capacity:         The current charge and max capacity in mAh.
+///  - CycleCount:       The battery's cycle count.
+///  - Temperature:      The current temperature in C/F.
+///  - Source:           The current power source.
+///  - DesignCycleCount: The design cycle count.
+///  - DesignCapacity:   The design capacity in mAh.
+enum RowViewControllerTypeDef {
+  case TimeRemaining
+  case CurrentCharge
+  case PowerUsage
+  case Capacity
+  case CycleCount
+  case Temperature
+  case Source
+  case DesignCycleCount
+  case DesignCapacity
+}
