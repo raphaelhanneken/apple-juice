@@ -15,6 +15,7 @@
 		8EBF29DE1C4845F6005BBAE0 /* Sparkle.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8EBF29DD1C4845F6005BBAE0 /* Sparkle.framework */; };
 		8EBF29DF1C4845F6005BBAE0 /* Sparkle.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 8EBF29DD1C4845F6005BBAE0 /* Sparkle.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		8EBF29E31C484633005BBAE0 /* Sparkle.framework.dSYM in CopyFiles */ = {isa = PBXBuildFile; fileRef = 8EBF29E21C484633005BBAE0 /* Sparkle.framework.dSYM */; };
+		8EBF29E51C48489F005BBAE0 /* dsa_pub.pem in Resources */ = {isa = PBXBuildFile; fileRef = 8EBF29E41C48489F005BBAE0 /* dsa_pub.pem */; };
 		8EE1296A1C4663F7000D404F /* ApplicationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EE129691C4663F7000D404F /* ApplicationController.swift */; };
 		8EE1296E1C469326000D404F /* StatusIcon.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EE1296D1C469326000D404F /* StatusIcon.swift */; };
 		8EE129701C4695B5000D404F /* Battery.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EE1296F1C4695B5000D404F /* Battery.swift */; };
@@ -84,6 +85,7 @@
 		8EBEB44C1C466091001DBE91 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		8EBF29DD1C4845F6005BBAE0 /* Sparkle.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Sparkle.framework; path = Carthage/Build/Mac/Sparkle.framework; sourceTree = "<group>"; };
 		8EBF29E21C484633005BBAE0 /* Sparkle.framework.dSYM */ = {isa = PBXFileReference; lastKnownFileType = wrapper.dsym; name = Sparkle.framework.dSYM; path = Carthage/Build/Mac/Sparkle.framework.dSYM; sourceTree = "<group>"; };
+		8EBF29E41C48489F005BBAE0 /* dsa_pub.pem */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = dsa_pub.pem; sourceTree = "<group>"; };
 		8EE129691C4663F7000D404F /* ApplicationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ApplicationController.swift; sourceTree = "<group>"; };
 		8EE1296D1C469326000D404F /* StatusIcon.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StatusIcon.swift; sourceTree = "<group>"; };
 		8EE1296F1C4695B5000D404F /* Battery.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Battery.swift; sourceTree = "<group>"; };
@@ -160,6 +162,7 @@
 			children = (
 				8EBEB4471C466091001DBE91 /* Assets.xcassets */,
 				8EBEB44C1C466091001DBE91 /* Info.plist */,
+				8EBF29E41C48489F005BBAE0 /* dsa_pub.pem */,
 			);
 			name = Resources;
 			sourceTree = "<group>";
@@ -306,6 +309,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				8EBEB4481C466091001DBE91 /* Assets.xcassets in Resources */,
+				8EBF29E51C48489F005BBAE0 /* dsa_pub.pem in Resources */,
 				8EBEB44B1C466091001DBE91 /* MainMenu.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
