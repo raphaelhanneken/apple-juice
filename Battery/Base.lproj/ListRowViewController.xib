@@ -17,12 +17,12 @@
             <rect key="frame" x="0.0" y="0.0" width="320" height="36"/>
             <subviews>
                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="KU6-MB-4x2">
-                    <rect key="frame" x="-2" y="9" width="165" height="18"/>
+                    <rect key="frame" x="-2" y="9" width="178" height="18"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="18" id="FKY-8B-7Uh"/>
                     </constraints>
                     <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Label" id="pgq-dU-GDk">
-                        <font key="font" metaFont="system" size="14"/>
+                        <font key="font" metaFont="system" size="12"/>
                         <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                         <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                     </textFieldCell>
@@ -31,12 +31,12 @@
                     </connections>
                 </textField>
                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="euH-3U-fLb">
-                    <rect key="frame" x="167" y="9" width="135" height="18"/>
+                    <rect key="frame" x="175" y="9" width="135" height="18"/>
                     <constraints>
                         <constraint firstAttribute="width" constant="131" id="5uN-hG-X1K"/>
                     </constraints>
                     <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="right" title="Label" id="x8N-bE-czA">
-                        <font key="font" metaFont="system" size="14"/>
+                        <font key="font" metaFont="system" size="12"/>
                         <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                         <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                     </textFieldCell>
@@ -53,10 +53,10 @@
                 </textField>
             </subviews>
             <constraints>
-                <constraint firstAttribute="trailing" secondItem="euH-3U-fLb" secondAttribute="trailing" constant="20" symbolic="YES" id="AOP-XL-TJC"/>
+                <constraint firstAttribute="trailing" secondItem="euH-3U-fLb" secondAttribute="trailing" constant="12" id="AOP-XL-TJC"/>
                 <constraint firstItem="KU6-MB-4x2" firstAttribute="leading" secondItem="Hz6-mo-xeY" secondAttribute="leading" id="D9y-qp-eJW"/>
                 <constraint firstItem="KU6-MB-4x2" firstAttribute="baseline" secondItem="euH-3U-fLb" secondAttribute="baseline" id="Gaj-xN-047"/>
-                <constraint firstItem="euH-3U-fLb" firstAttribute="leading" secondItem="KU6-MB-4x2" secondAttribute="trailing" constant="8" symbolic="YES" id="Uz3-Cd-oja"/>
+                <constraint firstItem="euH-3U-fLb" firstAttribute="leading" secondItem="KU6-MB-4x2" secondAttribute="trailing" constant="3" id="Uz3-Cd-oja"/>
                 <constraint firstItem="euH-3U-fLb" firstAttribute="centerY" secondItem="Hz6-mo-xeY" secondAttribute="centerY" id="VV3-bN-5wb"/>
                 <constraint firstItem="euH-3U-fLb" firstAttribute="firstBaseline" secondItem="KU6-MB-4x2" secondAttribute="firstBaseline" id="WE1-HB-5Op"/>
                 <constraint firstAttribute="height" constant="36" id="fs3-pZ-Lgq"/>
