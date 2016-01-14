@@ -51,42 +51,36 @@ class RowViewControllerType: NSObject {
       defer { Battery.close() }
       // Open a new IO connection to the battery service.
       try Battery.open()
-      // Shadow the row properties.
-      let title: String
-      let value: String
       // Check which typ the row represents.
       switch type {
       case .TimeRemaining:
-        title = "Time Remaining:"
-        value = Battery.timeRemainingFormatted()
+        self.title = "Time Remaining:"
+        self.value = Battery.timeRemainingFormatted()
       case .CurrentCharge:
-        title = "Percentage:"
-        value = Battery.percentage()
+        self.title = "Percentage:"
+        self.value = Battery.percentage()
       case .PowerUsage:
-        title = "Power Usage:"
-        value = Battery.powerUsage()
+        self.title = "Power Usage:"
+        self.value = Battery.powerUsage()
       case .Capacity:
-        title = "Charge:"
-        value = Battery.currentCharge()
+        self.title = "Charge:"
+        self.value = Battery.currentCharge()
       case .CycleCount:
-        title = "Cycle Count:"
-        value = Battery.cycleCount()
+        self.title = "Cycle Count:"
+        self.value = Battery.cycleCount()
       case .Temperature:
-        title = "Temperature:"
-        value = Battery.temperature()
+        self.title = "Temperature:"
+        self.value = Battery.temperature()
       case .Source:
-        title = "Power Source:"
-        value = Battery.currentSource()
+        self.title = "Power Source:"
+        self.value = Battery.currentSource()
       case .DesignCycleCount:
-        title = "Design Cycle Count:"
-        value = Battery.designCycleCount()
+        self.title = "Design Cycle Count:"
+        self.value = Battery.designCycleCount()
       case .DesignCapacity:
-        title = "Design Capacity:"
-        value = Battery.designCapacity()
+        self.title = "Design Capacity:"
+        self.value = Battery.designCapacity()
       }
-      // Write the title and value to the properies.
-      self.title = title
-      self.value = value
     } catch {
       print(error)
     }
