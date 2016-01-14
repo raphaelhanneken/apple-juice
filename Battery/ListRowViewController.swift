@@ -29,6 +29,11 @@ import Cocoa
 
 class ListRowViewController: NSViewController {
 
+  /// Holds the title for the row view.
+  @IBOutlet weak var rowTitle: NSTextField!
+  /// Holds the value for the row view.
+  @IBOutlet weak var rowValue: NSTextField!
+
   override var nibName: String? {
     return "ListRowViewController"
   }

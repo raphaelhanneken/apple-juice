@@ -7,6 +7,8 @@
     <objects>
         <customObject id="-2" userLabel="File's Owner" customClass="ListRowViewController" customModule="Battery" customModuleProvider="target">
             <connections>
+                <outlet property="rowTitle" destination="KU6-MB-4x2" id="bb8-J8-WZc"/>
+                <outlet property="rowValue" destination="euH-3U-fLb" id="iB5-xg-dzV"/>
                 <outlet property="view" destination="Hz6-mo-xeY" id="0bl-1N-x8E"/>
             </connections>
         </customObject>
@@ -25,9 +27,6 @@
                         <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                         <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                     </textFieldCell>
-                    <connections>
-                        <binding destination="-2" name="value" keyPath="self.representedObject.description" id="mRI-fA-4DV"/>
-                    </connections>
                 </textField>
                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="euH-3U-fLb">
                     <rect key="frame" x="167" y="5" width="135" height="17"/>
