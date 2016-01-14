@@ -44,7 +44,7 @@ class TodayViewController: NSViewController, NCWidgetProviding, NCWidgetListView
 
     // Set up the widget list view controller.
     // The contents property should contain an object for each row in the list.
-    self.listViewController.contents = ["Hello World!"]
+    self.listViewController.contents = self.getBatteryInformation()
   }
 
   override func dismissViewController(viewController: NSViewController) {
@@ -64,7 +64,9 @@ class TodayViewController: NSViewController, NCWidgetProviding, NCWidgetListView
     // refreshed. Pass NCUpdateResultNoData to indicate that nothing has changed
     // or NCUpdateResultNewData to indicate that there is new data since the
     // last invocation of this method.
-    completionHandler(.NoData)
+
+    // Always pass .NewData since at least the current charge will have changed at every call.
+    completionHandler(.NewData)
   }
 
   func widgetMarginInsetsForProposedMarginInsets(var defaultMarginInset: NSEdgeInsets) -> NSEdgeInsets {
@@ -147,4 +149,21 @@ class TodayViewController: NSViewController, NCWidgetProviding, NCWidgetListView
     // The user has selected a search result from the list.
   }
 
+  ///  Creates an array of all the information to display within the today widget.
+  ///
+  ///  - returns: The array with the necessary RowViewControllerType.
+  func getBatteryInformation() -> [RowViewControllerType] {
+    let contents = [
+      RowViewControllerType(withType: .TimeRemaining),
+      RowViewControllerType(withType: .CurrentCharge),
+      RowViewControllerType(withType: .PowerUsage),
+      RowViewControllerType(withType: .Capacity),
+      RowViewControllerType(withType: .CycleCount),
+      RowViewControllerType(withType: .Temperature),
+      RowViewControllerType(withType: .Source),
+      RowViewControllerType(withType: .DesignCycleCount),
+      RowViewControllerType(withType: .DesignCapacity)
+    ]
+    return contents
+  }
 }
