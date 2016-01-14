@@ -127,10 +127,10 @@ class Battery {
   ///
   ///  - returns: the design capacity in mAh.
   static func designCapacity() -> String {
-    guard let dCapacity = self.getRegistryPropertyForKey(.DesignCapacity) as? Int else {
+    guard let capacity = self.getRegistryPropertyForKey(.DesignCapacity) as? Int else {
       return "--"
     }
-    return "\(dCapacity)"
+    return "\(capacity)"
   }
 
   ///  Gets the current source of power.
@@ -197,6 +197,9 @@ class Battery {
       .takeRetainedValue()
   }
 
+  ///  Gets the current capacity.
+  ///
+  ///  - returns: The current capacity.
   private static func currentCapacity() -> Int? {
     return self.getRegistryPropertyForKey(.CurrentCharge) as? Int
   }
