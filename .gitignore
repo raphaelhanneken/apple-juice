@@ -27,3 +27,7 @@ build/
 
 # Sparkle DSAKey
 dsa_pub.pem
+
+# Carthage
+Cartfile.resolved
+Carthage/
