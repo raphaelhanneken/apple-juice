@@ -12,6 +12,9 @@
 		8EBEB4461C466091001DBE91 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EBEB4451C466091001DBE91 /* AppDelegate.swift */; };
 		8EBEB4481C466091001DBE91 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8EBEB4471C466091001DBE91 /* Assets.xcassets */; };
 		8EBEB44B1C466091001DBE91 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8EBEB4491C466091001DBE91 /* MainMenu.xib */; };
+		8EBF29DE1C4845F6005BBAE0 /* Sparkle.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8EBF29DD1C4845F6005BBAE0 /* Sparkle.framework */; };
+		8EBF29DF1C4845F6005BBAE0 /* Sparkle.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 8EBF29DD1C4845F6005BBAE0 /* Sparkle.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		8EBF29E31C484633005BBAE0 /* Sparkle.framework.dSYM in CopyFiles */ = {isa = PBXBuildFile; fileRef = 8EBF29E21C484633005BBAE0 /* Sparkle.framework.dSYM */; };
 		8EE1296A1C4663F7000D404F /* ApplicationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EE129691C4663F7000D404F /* ApplicationController.swift */; };
 		8EE1296E1C469326000D404F /* StatusIcon.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EE1296D1C469326000D404F /* StatusIcon.swift */; };
 		8EE129701C4695B5000D404F /* Battery.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EE1296F1C4695B5000D404F /* Battery.swift */; };
@@ -37,6 +40,27 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
+		8EBF29E01C4845F6005BBAE0 /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				8EBF29DF1C4845F6005BBAE0 /* Sparkle.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		8EBF29E11C48461A005BBAE0 /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 16;
+			files = (
+				8EBF29E31C484633005BBAE0 /* Sparkle.framework.dSYM in CopyFiles */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		8EE129951C46F891000D404F /* Embed App Extensions */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
@@ -58,6 +82,8 @@
 		8EBEB4471C466091001DBE91 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		8EBEB44A1C466091001DBE91 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/MainMenu.xib; sourceTree = "<group>"; };
 		8EBEB44C1C466091001DBE91 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		8EBF29DD1C4845F6005BBAE0 /* Sparkle.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Sparkle.framework; path = Carthage/Build/Mac/Sparkle.framework; sourceTree = "<group>"; };
+		8EBF29E21C484633005BBAE0 /* Sparkle.framework.dSYM */ = {isa = PBXFileReference; lastKnownFileType = wrapper.dsym; name = Sparkle.framework.dSYM; path = Carthage/Build/Mac/Sparkle.framework.dSYM; sourceTree = "<group>"; };
 		8EE129691C4663F7000D404F /* ApplicationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ApplicationController.swift; sourceTree = "<group>"; };
 		8EE1296D1C469326000D404F /* StatusIcon.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StatusIcon.swift; sourceTree = "<group>"; };
 		8EE1296F1C4695B5000D404F /* Battery.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Battery.swift; sourceTree = "<group>"; };
@@ -79,6 +105,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8EBF29DE1C4845F6005BBAE0 /* Sparkle.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -96,6 +123,7 @@
 		8EBEB4391C466091001DBE91 = {
 			isa = PBXGroup;
 			children = (
+				8EBF29E21C484633005BBAE0 /* Sparkle.framework.dSYM */,
 				8EBEB4441C466091001DBE91 /* Apple Juice */,
 				8EE1297E1C46F891000D404F /* Battery */,
 				8EE1297B1C46F891000D404F /* Frameworks */,
@@ -147,6 +175,7 @@
 		8EE1297B1C46F891000D404F /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				8EBF29DD1C4845F6005BBAE0 /* Sparkle.framework */,
 				8EE1297C1C46F891000D404F /* NotificationCenter.framework */,
 			);
 			name = Frameworks;
@@ -204,6 +233,8 @@
 				8EBEB4401C466091001DBE91 /* Resources */,
 				8EE129751C46E993000D404F /* ShellScript */,
 				8EE129951C46F891000D404F /* Embed App Extensions */,
+				8EBF29E01C4845F6005BBAE0 /* Embed Frameworks */,
+				8EBF29E11C48461A005BBAE0 /* CopyFiles */,
 			);
 			buildRules = (
 			);
@@ -464,6 +495,10 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				COMBINE_HIDPI_IMAGES = YES;
 				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/Mac",
+				);
 				INFOPLIST_FILE = "Apple Juice/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "io.raphaelhanneken.Apple-Juice";
@@ -477,6 +512,10 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				COMBINE_HIDPI_IMAGES = YES;
 				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/Mac",
+				);
 				INFOPLIST_FILE = "Apple Juice/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "io.raphaelhanneken.Apple-Juice";
