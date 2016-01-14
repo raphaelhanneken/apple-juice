@@ -28,14 +28,17 @@
 import Foundation
 
 /// Defines the type for the RowViewController
-class RowViewControllerType {
+class RowViewControllerType: NSObject {
 
   /// Holds the row view title, e.g. "Cycle Count"
   var title: String = ""
   /// Holds the row view value, e.g. 385
-  var value: AnyObject?
+  var value: String = ""
 
   init(withType type: RowViewControllerTypeDef) {
+    // Initialize the parent.
+    super.init()
+    // Get the battery information for the supplied row type def.
     self.getInformation(forType: type)
   }
 
@@ -50,7 +53,7 @@ class RowViewControllerType {
       try Battery.open()
       // Shadow the row properties.
       let title: String
-      let value: AnyObject?
+      let value: String
       // Check which typ the row represents.
       switch type {
       case .TimeRemaining:
@@ -64,21 +67,13 @@ class RowViewControllerType {
         value = Battery.powerUsage()
       case .Capacity:
         title = "Charge:"
-        if let currentCharge = Battery.currentCharge(), maxCapacity = Battery.maxCapacity() {
-          value = "\(currentCharge) / \(maxCapacity) mAh"
-        } else {
-          value = "-- / --"
-        }
+        value = Battery.currentCharge()
       case .CycleCount:
         title = "Cycle Count:"
         value = Battery.cycleCount()
       case .Temperature:
         title = "Temperature:"
-        if let celsius = Battery.temperature(), fahrenheit = Battery.temperature(.Fahrenheit) {
-          value = "\(celsius) °C / \(fahrenheit) °F"
-        } else {
-          value = "-- / --"
-        }
+        value = Battery.temperature()
       case .Source:
         title = "Power Source:"
         value = Battery.currentSource()
@@ -95,6 +90,10 @@ class RowViewControllerType {
     } catch {
       print(error)
     }
+  }
+
+  override var description: String {
+    return "\(self.title) \(self.value)"
   }
 }
 
