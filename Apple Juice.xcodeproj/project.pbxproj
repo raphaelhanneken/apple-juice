@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		8E1BAC5C1C47E6970011544C /* RowViewControllerType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E1BAC5B1C47E6970011544C /* RowViewControllerType.swift */; };
+		8E1BAC5E1C4800EA0011544C /* Battery.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E1BAC5D1C4800EA0011544C /* Battery.swift */; };
 		8EBEB4461C466091001DBE91 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EBEB4451C466091001DBE91 /* AppDelegate.swift */; };
 		8EBEB4481C466091001DBE91 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8EBEB4471C466091001DBE91 /* Assets.xcassets */; };
 		8EBEB44B1C466091001DBE91 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8EBEB4491C466091001DBE91 /* MainMenu.xib */; };
@@ -51,6 +52,7 @@
 
 /* Begin PBXFileReference section */
 		8E1BAC5B1C47E6970011544C /* RowViewControllerType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RowViewControllerType.swift; sourceTree = "<group>"; };
+		8E1BAC5D1C4800EA0011544C /* Battery.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Battery.swift; sourceTree = "<group>"; };
 		8EBEB4421C466091001DBE91 /* Apple Juice.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Apple Juice.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		8EBEB4451C466091001DBE91 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		8EBEB4471C466091001DBE91 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -156,6 +158,7 @@
 				8EE129811C46F891000D404F /* TodayViewController.swift */,
 				8EE129831C46F891000D404F /* ListRowViewController.swift */,
 				8E1BAC5B1C47E6970011544C /* RowViewControllerType.swift */,
+				8E1BAC5D1C4800EA0011544C /* Battery.swift */,
 				8EE129961C46F8CE000D404F /* UI */,
 				8EE129971C46F8DB000D404F /* Resources */,
 				8EE1297F1C46F891000D404F /* Supporting Files */,
@@ -325,6 +328,7 @@
 				8E1BAC5C1C47E6970011544C /* RowViewControllerType.swift in Sources */,
 				8EE129821C46F891000D404F /* TodayViewController.swift in Sources */,
 				8EE129841C46F891000D404F /* ListRowViewController.swift in Sources */,
+				8E1BAC5E1C4800EA0011544C /* Battery.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
