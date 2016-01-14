@@ -54,31 +54,31 @@ class RowViewControllerType: NSObject {
       // Check which typ the row represents.
       switch type {
       case .TimeRemaining:
-        self.title = "Time Remaining:"
+        self.title = NSLocalizedString("time remaining", comment: "")
         self.value = Battery.timeRemainingFormatted()
       case .CurrentCharge:
-        self.title = "Percentage:"
+        self.title = NSLocalizedString("percentage", comment: "")
         self.value = Battery.percentage()
       case .PowerUsage:
-        self.title = "Power Usage:"
+        self.title = NSLocalizedString("power usage", comment: "")
         self.value = Battery.powerUsage()
       case .Capacity:
-        self.title = "Charge:"
+        self.title = NSLocalizedString("charge", comment: "")
         self.value = Battery.currentCharge()
       case .CycleCount:
-        self.title = "Cycle Count:"
+        self.title = NSLocalizedString("cycle count", comment: "")
         self.value = Battery.cycleCount()
       case .Temperature:
-        self.title = "Temperature:"
+        self.title = NSLocalizedString("temp", comment: "")
         self.value = Battery.temperature()
       case .Source:
-        self.title = "Power Source:"
+        self.title = NSLocalizedString("power source", comment: "")
         self.value = Battery.currentSource()
       case .DesignCycleCount:
-        self.title = "Design Cycle Count:"
+        self.title = NSLocalizedString("design cycle count", comment: "")
         self.value = Battery.designCycleCount()
       case .DesignCapacity:
-        self.title = "Design Capacity:"
+        self.title = NSLocalizedString("design capacity", comment: "")
         self.value = Battery.designCapacity()
       }
     } catch {
