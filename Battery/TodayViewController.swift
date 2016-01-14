@@ -28,9 +28,11 @@
 import Cocoa
 import NotificationCenter
 
-class TodayViewController: NSViewController, NCWidgetProviding, NCWidgetListViewDelegate, NCWidgetSearchViewDelegate {
+class TodayViewController: NSViewController, NCWidgetProviding, NCWidgetListViewDelegate,
+NCWidgetSearchViewDelegate {
 
   @IBOutlet var listViewController: NCWidgetListViewController!
+  
   var searchController: NCWidgetSearchViewController?
 
   // MARK: - NSViewController
@@ -69,10 +71,11 @@ class TodayViewController: NSViewController, NCWidgetProviding, NCWidgetListView
     completionHandler(.NewData)
   }
 
-  func widgetMarginInsetsForProposedMarginInsets(var defaultMarginInset: NSEdgeInsets) -> NSEdgeInsets {
-    // Override the left margin so that the list view is flush with the edge.
-    defaultMarginInset.left = 0
-    return defaultMarginInset
+  func widgetMarginInsetsForProposedMarginInsets(var defaultMarginInset: NSEdgeInsets)
+    -> NSEdgeInsets {
+      // Override the left margin so that the list view is flush with the edge.
+      defaultMarginInset.left = 0
+      return defaultMarginInset
   }
 
   var widgetAllowsEditing: Bool {
@@ -96,11 +99,12 @@ class TodayViewController: NSViewController, NCWidgetProviding, NCWidgetListView
 
   // MARK: - NCWidgetListViewDelegate
 
-  func widgetList(list: NCWidgetListViewController!, viewControllerForRow row: Int) -> NSViewController! {
-    // Return a new view controller subclass for displaying an item of widget
-    // content. The NCWidgetListViewController will set the representedObject
-    // of this view controller to one of the objects in its contents array.
-    return ListRowViewController()
+  func widgetList(list: NCWidgetListViewController!, viewControllerForRow row: Int)
+    -> NSViewController! {
+      // Return a new view controller subclass for displaying an item of widget
+      // content. The NCWidgetListViewController will set the representedObject
+      // of this view controller to one of the objects in its contents array.
+      return ListRowViewController()
   }
 
   func widgetListPerformAddAction(list: NCWidgetListViewController!) {
@@ -135,9 +139,11 @@ class TodayViewController: NSViewController, NCWidgetProviding, NCWidgetListView
 
   // MARK: - NCWidgetSearchViewDelegate
 
-  func widgetSearch(searchController: NCWidgetSearchViewController!, searchForTerm searchTerm: String!, maxResults max: Int) {
-    // The user has entered a search term. Set the controller's searchResults property to the matching items.
-    searchController.searchResults = []
+  func widgetSearch(searchController: NCWidgetSearchViewController!,
+    searchForTerm searchTerm: String!, maxResults max: Int) {
+      // The user has entered a search term. Set the controller's
+      // searchResults property to the matching items.
+      searchController.searchResults = []
   }
 
   func widgetSearchTermCleared(searchController: NCWidgetSearchViewController!) {
@@ -145,13 +151,14 @@ class TodayViewController: NSViewController, NCWidgetProviding, NCWidgetListView
     searchController.searchResults = nil
   }
 
-  func widgetSearch(searchController: NCWidgetSearchViewController!, resultSelected object: AnyObject!) {
-    // The user has selected a search result from the list.
+  func widgetSearch(searchController: NCWidgetSearchViewController!,
+    resultSelected object: AnyObject!) {
+      // The user has selected a search result from the list.
   }
 
   ///  Creates an array of all the information to display within the today widget.
   ///
-  ///  - returns: The array with the necessary RowViewControllerType.
+  ///  - returns: The array with the necessary RowViewControllerType's.
   func getBatteryInformation() -> [RowViewControllerType] {
     let contents = [
       RowViewControllerType(withType: .TimeRemaining),
