@@ -96,6 +96,11 @@
 		8EBF29F71C485896005BBAE0 /* de */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = de; path = de.lproj/MainMenu.xib; sourceTree = "<group>"; };
 		8EBF29F81C48589F005BBAE0 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/MainMenu.xib; sourceTree = "<group>"; };
 		8EBF29F91C48658B005BBAE0 /* Base */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = Base; path = Base.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		8EBF29FB1C486640005BBAE0 /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/TodayViewController.strings; sourceTree = "<group>"; };
+		8EBF29FC1C486640005BBAE0 /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/ListRowViewController.strings; sourceTree = "<group>"; };
+		8EBF29FD1C486640005BBAE0 /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/Localizable.strings; sourceTree = "<group>"; };
+		8EBF29FE1C486640005BBAE0 /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		8EBF29FF1C4866CF005BBAE0 /* fr */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = fr; path = fr.lproj/MainMenu.xib; sourceTree = "<group>"; };
 		8EE129691C4663F7000D404F /* ApplicationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ApplicationController.swift; sourceTree = "<group>"; };
 		8EE1296D1C469326000D404F /* StatusIcon.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StatusIcon.swift; sourceTree = "<group>"; };
 		8EE1296F1C4695B5000D404F /* Battery.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Battery.swift; sourceTree = "<group>"; };
@@ -303,6 +308,7 @@
 				en,
 				Base,
 				de,
+				fr,
 			);
 			mainGroup = 8EBEB4391C466091001DBE91;
 			productRefGroup = 8EBEB4431C466091001DBE91 /* Products */;
@@ -397,6 +403,7 @@
 				8EBEB44A1C466091001DBE91 /* Base */,
 				8EBF29F71C485896005BBAE0 /* de */,
 				8EBF29F81C48589F005BBAE0 /* en */,
+				8EBF29FF1C4866CF005BBAE0 /* fr */,
 			);
 			name = MainMenu.xib;
 			sourceTree = "<group>";
@@ -407,6 +414,7 @@
 				8EBF29EB1C485493005BBAE0 /* en */,
 				8EBF29ED1C48552D005BBAE0 /* Base */,
 				8EBF29F31C485741005BBAE0 /* de */,
+				8EBF29FD1C486640005BBAE0 /* fr */,
 			);
 			name = Localizable.strings;
 			sourceTree = "<group>";
@@ -416,6 +424,7 @@
 			children = (
 				8EE129861C46F891000D404F /* Base */,
 				8EBF29F11C485741005BBAE0 /* de */,
+				8EBF29FB1C486640005BBAE0 /* fr */,
 			);
 			name = TodayViewController.xib;
 			sourceTree = "<group>";
@@ -425,6 +434,7 @@
 			children = (
 				8EE129891C46F891000D404F /* Base */,
 				8EBF29F21C485741005BBAE0 /* de */,
+				8EBF29FC1C486640005BBAE0 /* fr */,
 			);
 			name = ListRowViewController.xib;
 			sourceTree = "<group>";
@@ -435,6 +445,7 @@
 				8EE1298D1C46F891000D404F /* en */,
 				8EBF29F41C485741005BBAE0 /* de */,
 				8EBF29F91C48658B005BBAE0 /* Base */,
+				8EBF29FE1C486640005BBAE0 /* fr */,
 			);
 			name = InfoPlist.strings;
 			sourceTree = "<group>";
