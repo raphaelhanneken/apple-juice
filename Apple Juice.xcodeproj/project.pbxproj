@@ -95,6 +95,7 @@
 		8EBF29F41C485741005BBAE0 /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		8EBF29F71C485896005BBAE0 /* de */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = de; path = de.lproj/MainMenu.xib; sourceTree = "<group>"; };
 		8EBF29F81C48589F005BBAE0 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/MainMenu.xib; sourceTree = "<group>"; };
+		8EBF29F91C48658B005BBAE0 /* Base */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = Base; path = Base.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		8EE129691C4663F7000D404F /* ApplicationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ApplicationController.swift; sourceTree = "<group>"; };
 		8EE1296D1C469326000D404F /* StatusIcon.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StatusIcon.swift; sourceTree = "<group>"; };
 		8EE1296F1C4695B5000D404F /* Battery.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Battery.swift; sourceTree = "<group>"; };
@@ -433,6 +434,7 @@
 			children = (
 				8EE1298D1C46F891000D404F /* en */,
 				8EBF29F41C485741005BBAE0 /* de */,
+				8EBF29F91C48658B005BBAE0 /* Base */,
 			);
 			name = InfoPlist.strings;
 			sourceTree = "<group>";
