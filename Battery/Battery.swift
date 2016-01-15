@@ -110,7 +110,8 @@ class Battery {
       amperage = self.getRegistryPropertyForKey(.Amperage) as? Double else {
         return NSLocalizedString("unknown", comment: "")
     }
-    return "\((voltage * amperage) / 1000000) " + NSLocalizedString("watts", comment: "")
+    return "\(round(((voltage * amperage) / 1000000) * 10) / 10) "
+      + NSLocalizedString("watts", comment: "")
   }
 
   ///  Gets the current charge in mAh.
