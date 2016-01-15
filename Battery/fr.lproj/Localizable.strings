@@ -2,3 +2,20 @@
   Localizable.strings
   Apple Juice Widget
 */
+
+"unknown"       = "Inconnu";
+"charged"       = "Chargé";
+"watts"         = "Watts";
+"power adapter" = "Adaptateur Secteur";
+"battery"       = "Batterie";
+
+/* Categories */
+"time remaining"     = "Temps Restant:";
+"percentage"         = "Pourcentage:";
+"power usage"        = "Consommation:";
+"charge"             = "Charger:";
+"cycle count"        = "Nombre de Cycles:";
+"temp"               = "Température:";
+"power source"       = "Source d'énergie:";
+"design cycle count" = "Comptage de Cycle:";
+"design capacity"    = "Capacité de conception:";
