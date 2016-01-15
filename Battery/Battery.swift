@@ -171,20 +171,14 @@ class Battery {
 
   ///  Gets the current temperature of the battery, in the supplied format.
   ///
-  ///  - parameter unit: Temperature unit. Default: Celsius.
   ///  - returns: The current temperature of the battery.
-  static func temperature(unit: TemperatureUnit = .Celsius) -> String {
+  static func temperature() -> String {
     guard let prop = self.getRegistryPropertyForKey(.Temperature) as? Double else {
       return "-- / --"
     }
-    let temperature = prop / 100.0
-
-    switch unit {
-    case .Fahrenheit:
-      return "\(round((temperature * 1.8) + 32)) °F"
-    case .Celsius:
-      return "\(round(temperature)) °C"
-    }
+    // Calculate the temperature in celsius
+    let temp = round((prop / 100) / 10) * 10
+    return "\(temp) °C / \(temp * 1.8 + 32) °F"
   }
 
   // MARK: Private Methods
