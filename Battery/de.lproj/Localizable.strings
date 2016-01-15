@@ -17,5 +17,5 @@
 "cycle count"        = "Ladezyklen:";
 "temp"               = "Temperatur:";
 "power source"       = "Stromversorgung:";
-"design cycle count" = "Max. Ladezyklen:";
-"design capacity"    = "Fabrik Kapazität:";
+"design cycle count" = "Design Ladezyklen:";
+"design capacity"    = "Design Kapazität:";
