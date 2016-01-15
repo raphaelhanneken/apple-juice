@@ -1,0 +1,6 @@
+# Untrack leftovers from other branches
+Apple Juice/
+Battery/
+Carthage/
+Cartfile.resolved
+*.xcodeproj
