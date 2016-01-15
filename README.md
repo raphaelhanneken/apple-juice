@@ -1,5 +1,5 @@
 # Apple Juice #
-An advanced battery gauge for OS X. *Apple Juice* can show you the estimated time remaining, right within the status bar and notifies you about certain percentages, if you want.
+An advanced battery gauge for OS X. *Apple Juice* can show you the estimated time remaining, right within the status bar and notify you about certain percentages, if you want.
 
 ![Apple Juice Appmenu](screenshot_appmenu.png)
 ![Apple Juice Notifications](screenshot_notifications.png)
@@ -21,6 +21,9 @@ You have two options:
 
 *Since I don’t have an Apple Developer account, you have to allow third party apps within the system preferences.
  `System Preferences: Security & Privacy: Allow apps downloaded from: Anywhere`.
+
+## Why does this project exist? ##
+There are plenty of other solutions out there, so why make another one? I wanted an app that looks like it’s part of the system. As if it were built directly into OS X. Which can show me a lot of information, but only when I need them. And, most importantly, it should display notifications for several percentages. Since I haven’t found such an app, I've made one myself.
 
 ## How do I contribute? ##
 You can fork this project, make your changes and send me a pull request. Just make sure you fork the latest development version and that [SwiftLint](https://github.com/realm/SwiftLint) succeeds. Or, since the whole source code is licensed under the MIT License, fork *Apple Juice* and make your own thing.
