@@ -131,7 +131,7 @@ class Battery {
     guard let capacity = self.getRegistryPropertyForKey(.DesignCapacity) as? Int else {
       return "--"
     }
-    return "\(capacity)"
+    return "\(capacity) mAh"
   }
 
   ///  Gets the current source of power.
