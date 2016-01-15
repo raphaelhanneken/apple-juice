@@ -17,12 +17,12 @@
             <rect key="frame" x="0.0" y="0.0" width="320" height="36"/>
             <subviews>
                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="KU6-MB-4x2">
-                    <rect key="frame" x="-2" y="9" width="178" height="18"/>
+                    <rect key="frame" x="-2" y="9" width="204" height="18"/>
                     <constraints>
-                        <constraint firstAttribute="height" constant="18" id="FKY-8B-7Uh"/>
+                        <constraint firstAttribute="width" constant="200" id="g34-3p-q7I"/>
                     </constraints>
                     <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Label" id="pgq-dU-GDk">
-                        <font key="font" metaFont="system" size="12"/>
+                        <font key="font" metaFont="cellTitle"/>
                         <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                         <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                     </textFieldCell>
@@ -31,12 +31,12 @@
                     </connections>
                 </textField>
                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="euH-3U-fLb">
-                    <rect key="frame" x="175" y="9" width="135" height="18"/>
+                    <rect key="frame" x="197" y="9" width="115" height="18"/>
                     <constraints>
-                        <constraint firstAttribute="width" constant="131" id="5uN-hG-X1K"/>
+                        <constraint firstAttribute="width" constant="111" id="VJI-rH-slJ"/>
                     </constraints>
                     <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="right" title="Label" id="x8N-bE-czA">
-                        <font key="font" metaFont="system" size="12"/>
+                        <font key="font" metaFont="cellTitle"/>
                         <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                         <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                     </textFieldCell>
@@ -53,13 +53,13 @@
                 </textField>
             </subviews>
             <constraints>
-                <constraint firstAttribute="trailing" secondItem="euH-3U-fLb" secondAttribute="trailing" constant="12" id="AOP-XL-TJC"/>
-                <constraint firstItem="KU6-MB-4x2" firstAttribute="leading" secondItem="Hz6-mo-xeY" secondAttribute="leading" id="D9y-qp-eJW"/>
-                <constraint firstItem="KU6-MB-4x2" firstAttribute="baseline" secondItem="euH-3U-fLb" secondAttribute="baseline" id="Gaj-xN-047"/>
-                <constraint firstItem="euH-3U-fLb" firstAttribute="leading" secondItem="KU6-MB-4x2" secondAttribute="trailing" constant="3" id="Uz3-Cd-oja"/>
-                <constraint firstItem="euH-3U-fLb" firstAttribute="centerY" secondItem="Hz6-mo-xeY" secondAttribute="centerY" id="VV3-bN-5wb"/>
-                <constraint firstItem="euH-3U-fLb" firstAttribute="firstBaseline" secondItem="KU6-MB-4x2" secondAttribute="firstBaseline" id="WE1-HB-5Op"/>
+                <constraint firstAttribute="trailing" secondItem="euH-3U-fLb" secondAttribute="trailing" constant="10" id="9DG-9s-zbs"/>
+                <constraint firstItem="euH-3U-fLb" firstAttribute="baseline" secondItem="KU6-MB-4x2" secondAttribute="baseline" id="SX2-Ut-ZVh"/>
+                <constraint firstItem="KU6-MB-4x2" firstAttribute="firstBaseline" secondItem="euH-3U-fLb" secondAttribute="firstBaseline" id="a1b-jo-QYg"/>
+                <constraint firstItem="KU6-MB-4x2" firstAttribute="leading" secondItem="Hz6-mo-xeY" secondAttribute="leading" id="bTG-Mz-jgl"/>
+                <constraint firstItem="euH-3U-fLb" firstAttribute="centerY" secondItem="Hz6-mo-xeY" secondAttribute="centerY" id="bh5-4S-8xF"/>
                 <constraint firstAttribute="height" constant="36" id="fs3-pZ-Lgq"/>
+                <constraint firstItem="KU6-MB-4x2" firstAttribute="top" secondItem="Hz6-mo-xeY" secondAttribute="top" constant="9" id="gZV-MB-hAp"/>
             </constraints>
             <point key="canvasLocation" x="280" y="236"/>
         </customView>
