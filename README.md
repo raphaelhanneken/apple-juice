@@ -1,10 +1,13 @@
 # Apple Juice #
-An advanced battery gauge for OS X. *Apple Juice* shows you the estimated time remaining, right within the status bar and notifies you about certain percentages.
+An advanced battery gauge for OS X. *Apple Juice* can show you the estimated time remaining, right within the status bar and notifies you about certain percentages, if you want.
+
 ![Apple Juice Appmenu](screenshot_appmenu.png)
 ![Apple Juice Notifications](screenshot_notifications.png)
 
 __Today Widget__
+
 Get even more information about your current battery status, without cluttering your screen, with the *Apple Juice Today Widget*. Just take a quick glance at your battery’s stats, whenever you want.
+
 ![Apple Juice Today Widget](screenshot_today.png)
 ![Apple Juice Today Widget Expanded](screenshot_today_all.png)
 
