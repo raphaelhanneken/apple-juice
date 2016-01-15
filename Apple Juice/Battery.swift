@@ -104,11 +104,11 @@ class Battery {
   func timeRemainingFormatted() -> String {
     guard let charged = self.isCharged(),
       time = self.timeRemaining() else {
-        return "Unknown"
+        return NSLocalizedString("unknown", comment: "")
     }
 
     if charged {
-      return "Charged"
+      return NSLocalizedString("charged", comment: "")
     } else {
       return String(format: "%d:%02d", arguments: [time / 60, time % 60])
     }
@@ -153,13 +153,13 @@ class Battery {
   ///  - returns: The currently connected source of power.
   func currentSource() -> String {
     guard let powered = self.isPlugged() else {
-      return "Unknown"
+      return NSLocalizedString("unknown", comment: "")
     }
 
     if powered {
-      return "Power Adapter"
+      return NSLocalizedString("power adapter", comment: "")
     } else {
-      return "Battery"
+      return NSLocalizedString("battery", comment: "")
     }
   }
 

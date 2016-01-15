@@ -129,7 +129,8 @@ class ApplicationController: NSObject {
       // Open an IO connection to the defined battery service.
       try self.battery.open()
       // Get the updated information and set them as item title.
-      self.currentSource.title = "Source: \(self.battery.currentSource())"
+      self.currentSource.title = "\(NSLocalizedString("source", comment: ""))"
+        + " \(self.battery.currentSource())"
       // Check wether the user wants the remaining time or not.
       if self.userPrefs.showTime {
         if let percentage = self.battery.percentage() {
