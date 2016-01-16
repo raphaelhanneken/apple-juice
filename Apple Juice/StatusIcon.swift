@@ -54,17 +54,24 @@ class StatusIcon {
       batteryMid   = StatusIcon.batteryImage(named: "BatteryLevelCapB-M") else {
         return nil
     }
+    // Get the height of the capacity bar.
+    let capacityBarHeight = batteryLeft.size.height
+    // Calculate the offset to achieve this little gap between the capacity bar and the outline.
+    let capacityBarOffsetTop = batteryOutline.size.height - (capacityBarOffset + capacityBarHeight)
+    // Calculate the width of the capacity bar.
+    var capacityBarWidth = CGFloat(ceil(Double(percentage / 12))) * batteryMid.size.width
 
-    let capacityBarHeight    = batteryLeft.size.height
-    let capacityBarOffsetTop = batteryOutline.size.height - capacityBarOffset - capacityBarHeight
-    var capacityBarLength    = CGFloat(Double(percentage) / 13) * batteryMid.size.width
-
-    if batteryMid.size.width >= capacityBarLength {
-      capacityBarLength = (2 * batteryMid.size.width) + 0.1
+    // Don't draw the capacity bar smaller than two single battery images, to prevent
+    // graphic errors.
+    if (2 * batteryMid.size.width) >= capacityBarWidth {
+      capacityBarWidth = (2 * batteryMid.size.width) + 0.1
     }
-    let drawingRect = NSRect(x: capacityBarOffset, y: capacityBarOffsetTop,
-      width: capacityBarLength, height: capacityBarHeight)
 
+    // Define the drawing rect.
+    let drawingRect = NSRect(x: capacityBarOffset, y: capacityBarOffsetTop,
+      width: capacityBarWidth, height: capacityBarHeight)
+    
+    // Finally, draw the actual menu bar icon.
     batteryOutline.lockFocus()
     NSDrawThreePartImage(drawingRect, batteryLeft, batteryMid, batteryRight, false,
       .CompositeCopy, 1, false)
