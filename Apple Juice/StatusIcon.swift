@@ -70,7 +70,7 @@ class StatusIcon {
     // Define the drawing rect.
     let drawingRect = NSRect(x: capacityBarOffset, y: capacityBarOffsetTop,
       width: capacityBarWidth, height: capacityBarHeight)
-    
+
     // Finally, draw the actual menu bar icon.
     batteryOutline.lockFocus()
     NSDrawThreePartImage(drawingRect, batteryLeft, batteryMid, batteryRight, false,
