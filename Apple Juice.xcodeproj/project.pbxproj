@@ -142,10 +142,21 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		8E03E9DC1C4BCFBA00D12D11 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				8EBEB44C1C466091001DBE91 /* Info.plist */,
+				8EBF29E41C48489F005BBAE0 /* dsa_pub.pem */,
+			);
+			name = "Supporting Files";
+			path = "Apple Juice";
+			sourceTree = "<group>";
+		};
 		8EBEB4391C466091001DBE91 = {
 			isa = PBXGroup;
 			children = (
 				8EBEB4441C466091001DBE91 /* Apple Juice */,
+				8E03E9DC1C4BCFBA00D12D11 /* Supporting Files */,
 				8EE1297E1C46F891000D404F /* Battery */,
 				8EE1297B1C46F891000D404F /* Frameworks */,
 				8EBEB4431C466091001DBE91 /* Products */,
@@ -180,8 +191,6 @@
 			isa = PBXGroup;
 			children = (
 				8EBEB4471C466091001DBE91 /* Assets.xcassets */,
-				8EBEB44C1C466091001DBE91 /* Info.plist */,
-				8EBF29E41C48489F005BBAE0 /* dsa_pub.pem */,
 				8EBF29EC1C485493005BBAE0 /* Localizable.strings */,
 			);
 			name = Resources;
@@ -300,6 +309,11 @@
 				TargetAttributes = {
 					8EBEB4411C466091001DBE91 = {
 						CreatedOnToolsVersion = 7.2;
+						SystemCapabilities = {
+							com.apple.Sandbox = {
+								enabled = 0;
+							};
+						};
 					};
 					8EE129791C46F891000D404F = {
 						CreatedOnToolsVersion = 7.2;
