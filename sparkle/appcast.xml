@@ -25,5 +25,25 @@
           length="5851919"
           type="application/octet-stream" />
     </item>
+    
+    <item>
+      <title>Apple Juice v1.0.1</title>
+        <description>
+          <![CDATA[
+          <ul>
+            <li>Fixes a bug with the status icon at low percentages.</li>
+          </ul>
+          ]]>
+        </description>
+        <pubDate>Sun, 17 Jan 2016 14:00:00 +0100</pubDate>
+        <sparkle:minimumSystemVersion>10.11</sparkle:minimumSystemVersion>
+        <enclosure
+          url="https://github.com/raphaelhanneken/apple-juice/releases/download/1.0.1/Apple.Juice.dmg"
+          sparkle:version="102"
+          sparkle:shortVersionString="1.0"
+          sparkle:dsaSignature="MCwCFDQ9+GfwlEPf+yLJKvlB02UQHHLkAhQhWMMHRzqTX1FKObfPkI2aDFCEUQ=="
+          length="6229340"
+          type="application/octet-stream" />
+    </item>
   </channel>
 </rss>
