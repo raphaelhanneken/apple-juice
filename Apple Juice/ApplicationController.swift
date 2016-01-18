@@ -112,9 +112,7 @@ class ApplicationController: NSObject {
           button.attributedTitle = self.attributedTitle(withPercentage: percentage,
             andTime: self.battery.timeRemainingFormatted())
       }
-    } catch {
-      print(error)
-    }
+    } catch { print(error) }
     // Define the image as template.
     if let img = button.image {
       img.template = true
@@ -144,9 +142,7 @@ class ApplicationController: NSObject {
         maxCapacity = self.battery.maxCapacity() {
           self.currentCharge.title += " (\(currentCharge) / \(maxCapacity) mAh)"
       }
-    } catch {
-      print(error)
-    }
+    } catch { print(error) }
   }
 
   ///  Gets called whenever the power source changes. Calls updateMenuItem:
@@ -166,36 +162,39 @@ class ApplicationController: NSObject {
       defer { self.battery.close() }
       // Open an IO connection to the defined battery service.
       try self.battery.open()
-      // Unwrap necessary information.
+      // Unwrap the necessary information.
       guard let percentage = self.battery.percentage(), plugged = self.battery.isPlugged(),
         charged = self.battery.isCharged(), charging = self.battery.isCharging() else {
           return
       }
-
-      // Check if we're plugged, charged and the user wants to receive pluggedAndCharged
-      // notifications.
-      if plugged && charged && self.userPrefs.notifications.contains(.HundredPercent)
-        && self.userPrefs.lastNotified != .HundredPercent {
-          // Post a plugged & charged notification.
-          NotificationController.pluggedAndChargedNotification()
-          // Save the hundredPercent notification key as last notified.
-          self.userPrefs.lastNotified = .HundredPercent
-      } else if !charging {
-        // Create a notification key.
-        if let notificationKey = NotificationKey(rawValue: percentage) {
-          // Check if the user wants to receive notifications for this key.
-          if self.userPrefs.notifications.contains(notificationKey)
-            && self.userPrefs.lastNotified != notificationKey {
-              // Post a low percentage notification and...
-              NotificationController.lowPercentageNotification(forPercentage: notificationKey)
-              // ...set lastNotified to the notification key.
-              self.userPrefs.lastNotified = notificationKey
-          }
+      // Check if we're plugged and charged.
+      if plugged && charged {
+        // Does the user wants to get notified about the plugged & charged status?
+        if self.userPrefs.notifications.contains(.HundredPercent)
+          && self.userPrefs.lastNotified != .HundredPercent {
+            // Post a plugged & charged notification.
+            NotificationController.pluggedAndChargedNotification()
+            // Save the hundredPercent notification key as last notified.
+            self.userPrefs.lastNotified = .HundredPercent
         }
+      } else if !charging {
+        // Since we're not charging, check if we should post a low percentage notification.
+        guard let notificationKey = NotificationKey(rawValue: percentage)
+          where self.userPrefs.notifications.contains(notificationKey) else {
+            return
+        }
+        // Check that we haven't already notified the user about the current percentage.
+        if self.userPrefs.lastNotified != notificationKey {
+          // Post a low percentage notification.
+          NotificationController.lowPercentageNotification(forPercentage: notificationKey)
+          // Set lastNotified to the current notification key.
+          self.userPrefs.lastNotified = notificationKey
+        }
+      } else {
+        // Reset the lastNotified property.
+        self.userPrefs.lastNotified = .None
       }
-    } catch {
-      print(error)
-    }
+    } catch { print(error) }
   }
 
   ///  Creates an attributed string for the status bar item's title.
