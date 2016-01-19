@@ -4,13 +4,13 @@
 */
 
 // Menu
-"charged"       = "Charged";
-"unknown"       = "Unknown";
-"battery"       = "Battery";
-"power adapter" = "Power Adapter";
-"source"        = "Source:";
+"charged"       = "Carico";
+"unknown"       = "Sconosciuto";
+"battery"       = "Batteria";
+"power adapter" = "Adattatore di alimentazione";
+"source"        = "Fonte:";
 
 // Notifications
-"charged message"     = "Your battery is now fully charged.";
-"low battery"         = "Low Battery";
-"low battery message" = "Your Mac will sleep soon unless plugged into a power outlet.";
+"charged message"     = "La batteria è ora completamente carica.";
+"low battery"         = "Batteria scarica";
+"low battery message" = "Il Mac dormire presto a meno che collegato a una presa di corrente.";
