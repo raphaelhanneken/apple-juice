@@ -42,6 +42,14 @@ class StatusIcon {
     return StatusIcon.batteryImage(named: "BatteryCharging")
   }
 
+  static var batteryDeadCropped: NSImage? {
+    return StatusIcon.batteryImage(named: "BatteryDeadCropped")
+  }
+
+  static var batteryNone: NSImage? {
+    return StatusIcon.batteryImage(named: "BatteryNone")
+  }
+
   ///  Draws a battery icon based on the current percentage charge of the battery.
   ///
   ///  - parameter percentage: The current percentage charge of the battery.
