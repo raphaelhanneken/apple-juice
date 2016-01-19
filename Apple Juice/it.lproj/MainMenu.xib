@@ -698,9 +698,9 @@
                         <binding destination="OgL-rZ-xAG" name="hidden" keyPath="values.ShowTimePref" id="Hkb-Y2-L4K"/>
                     </connections>
                 </menuItem>
-                <menuItem title="Notifications" id="uGl-yK-qDZ">
+                <menuItem title="Le Notifiche" id="uGl-yK-qDZ">
                     <modifierMask key="keyEquivalentModifierMask"/>
-                    <menu key="submenu" title="Notifications" id="s9C-tt-TOv">
+                    <menu key="submenu" title="Le Notifiche" id="s9C-tt-TOv">
                         <items>
                             <menuItem title="5 %" id="BqN-sm-Uru">
                                 <modifierMask key="keyEquivalentModifierMask"/>
@@ -737,20 +737,20 @@
                     </menu>
                 </menuItem>
                 <menuItem isSeparatorItem="YES" id="HoG-Jh-UIk"/>
-                <menuItem title="Check for Updates..." id="OFJ-1T-Wc5">
+                <menuItem title="Ricerca aggiornamenti…" id="OFJ-1T-Wc5">
                     <modifierMask key="keyEquivalentModifierMask"/>
                     <connections>
                         <action selector="checkForUpdates:" target="Avc-Ie-Abt" id="Aqj-nm-y4m"/>
                     </connections>
                 </menuItem>
-                <menuItem title="Energy Saver Preferences..." id="nUK-pj-k8O">
+                <menuItem title="Impostazioni Risparmio Energia" id="nUK-pj-k8O">
                     <modifierMask key="keyEquivalentModifierMask"/>
                     <connections>
                         <action selector="energySaverPreferences:" target="FRD-GK-LcV" id="eSm-lB-1d2"/>
                     </connections>
                 </menuItem>
                 <menuItem isSeparatorItem="YES" id="bcW-nq-A9L"/>
-                <menuItem title="Quit" id="fXh-MN-Omu">
+                <menuItem title="Esci" id="fXh-MN-Omu">
                     <modifierMask key="keyEquivalentModifierMask"/>
                     <connections>
                         <action selector="terminate:" target="-1" id="f0e-26-aRM"/>
