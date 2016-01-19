@@ -3,19 +3,19 @@
   Apple Juice Widget
 */
 
-"unknown"       = "Unknown";
-"charged"       = "Charged";
-"watts"         = "Watts";
-"power adapter" = "Power Adapter";
-"battery"       = "Battery";
+"unknown"       = "Sconosciuto";
+"charged"       = "Carico";
+"watts"         = "Watt";
+"power adapter" = "Adattatore di alimentazione";
+"battery"       = "Batteria";
 
 /* Categories */
-"time remaining"     = "Time Remaining:";
-"percentage"         = "Percentage:";
-"power usage"        = "Power Usage:";
-"charge"             = "Charge:";
-"cycle count"        = "Cycle Count:";
-"temp"               = "Temperature:";
-"power source"       = "Power Source:";
-"design cycle count" = "Design Cycle Count:";
-"design capacity"    = "Design Capacity:";
+"time remaining"     = "Tempo Rimanente:";
+"percentage"         = "Percentuale:";
+"power usage"        = "Il Consumo di Energia:";
+"charge"             = "Carica:";
+"cycle count"        = "Conteggio dei Cicli:";
+"temp"               = "Temperatura:";
+"power source"       = "Fonte:";
+"design cycle count" = "Conteggio di Ciclo di Progettazione:";
+"design capacity"    = "Capacità di Progettazione:";
