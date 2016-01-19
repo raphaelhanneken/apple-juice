@@ -80,6 +80,12 @@
 /* Begin PBXFileReference section */
 		8E1BAC5B1C47E6970011544C /* RowViewControllerType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RowViewControllerType.swift; sourceTree = "<group>"; };
 		8E1BAC5D1C4800EA0011544C /* Battery.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Battery.swift; sourceTree = "<group>"; };
+		8E954FA61C4EE528006D0F34 /* it */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = it; path = it.lproj/TodayViewController.strings; sourceTree = "<group>"; };
+		8E954FA71C4EE528006D0F34 /* it */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = it; path = it.lproj/ListRowViewController.strings; sourceTree = "<group>"; };
+		8E954FA81C4EE528006D0F34 /* it */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = it; path = it.lproj/Localizable.strings; sourceTree = "<group>"; };
+		8E954FA91C4EE528006D0F34 /* it */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = it; path = it.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		8E954FAA1C4EE528006D0F34 /* it */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = it; path = it.lproj/Localizable.strings; sourceTree = "<group>"; };
+		8E954FAB1C4EE533006D0F34 /* it */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = it; path = it.lproj/MainMenu.xib; sourceTree = "<group>"; };
 		8EBEB4421C466091001DBE91 /* Apple Juice.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Apple Juice.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		8EBEB4451C466091001DBE91 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		8EBEB4471C466091001DBE91 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -329,6 +335,7 @@
 				Base,
 				de,
 				fr,
+				it,
 			);
 			mainGroup = 8EBEB4391C466091001DBE91;
 			productRefGroup = 8EBEB4431C466091001DBE91 /* Products */;
@@ -425,6 +432,7 @@
 				8EBF29F71C485896005BBAE0 /* de */,
 				8EBF29F81C48589F005BBAE0 /* en */,
 				8EBF29FF1C4866CF005BBAE0 /* fr */,
+				8E954FAB1C4EE533006D0F34 /* it */,
 			);
 			name = MainMenu.xib;
 			sourceTree = "<group>";
@@ -436,6 +444,7 @@
 				8EBF29ED1C48552D005BBAE0 /* Base */,
 				8EBF29F31C485741005BBAE0 /* de */,
 				8EBF29FD1C486640005BBAE0 /* fr */,
+				8E954FA81C4EE528006D0F34 /* it */,
 			);
 			name = Localizable.strings;
 			sourceTree = "<group>";
@@ -447,6 +456,7 @@
 				8EBF2A051C4869D2005BBAE0 /* en */,
 				8EBF2A061C4869D3005BBAE0 /* de */,
 				8EBF2A071C4869D4005BBAE0 /* fr */,
+				8E954FAA1C4EE528006D0F34 /* it */,
 			);
 			name = Localizable.strings;
 			sourceTree = "<group>";
@@ -457,6 +467,7 @@
 				8EE129861C46F891000D404F /* Base */,
 				8EBF29F11C485741005BBAE0 /* de */,
 				8EBF29FB1C486640005BBAE0 /* fr */,
+				8E954FA61C4EE528006D0F34 /* it */,
 			);
 			name = TodayViewController.xib;
 			sourceTree = "<group>";
@@ -467,6 +478,7 @@
 				8EE129891C46F891000D404F /* Base */,
 				8EBF29F21C485741005BBAE0 /* de */,
 				8EBF29FC1C486640005BBAE0 /* fr */,
+				8E954FA71C4EE528006D0F34 /* it */,
 			);
 			name = ListRowViewController.xib;
 			sourceTree = "<group>";
@@ -478,6 +490,7 @@
 				8EBF29F41C485741005BBAE0 /* de */,
 				8EBF29F91C48658B005BBAE0 /* Base */,
 				8EBF29FE1C486640005BBAE0 /* fr */,
+				8E954FA91C4EE528006D0F34 /* it */,
 			);
 			name = InfoPlist.strings;
 			sourceTree = "<group>";
