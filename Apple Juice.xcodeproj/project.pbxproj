@@ -213,9 +213,9 @@
 		8EE1297B1C46F891000D404F /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				8EBF29E21C484633005BBAE0 /* Sparkle.framework.dSYM */,
 				8EBF29DD1C4845F6005BBAE0 /* Sparkle.framework */,
 				8EE1297C1C46F891000D404F /* NotificationCenter.framework */,
+				8EBF29E21C484633005BBAE0 /* Sparkle.framework.dSYM */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
