@@ -112,7 +112,7 @@ class ApplicationController: NSObject {
           button.attributedTitle = self.attributedTitle(withPercentage: percentage,
             andTime: self.battery.timeRemainingFormatted())
       }
-    } catch { print(error) }
+    } catch { self.batteryError(type: error as? BatteryError) }
     // Define the image as template.
     if let img = button.image {
       img.template = true
@@ -142,7 +142,7 @@ class ApplicationController: NSObject {
         maxCapacity = self.battery.maxCapacity() {
           self.currentCharge.title += " (\(currentCharge) / \(maxCapacity) mAh)"
       }
-    } catch { print(error) }
+    } catch { self.batteryError(type: error as? BatteryError) }
   }
 
   ///  Gets called whenever the power source changes. Calls updateMenuItem:
@@ -194,7 +194,7 @@ class ApplicationController: NSObject {
         // Reset the lastNotified property.
         self.userPrefs.lastNotified = .None
       }
-    } catch { print(error) }
+    } catch { self.batteryError(type: error as? BatteryError) }
   }
 
   ///  Creates an attributed string for the status bar item's title.
@@ -213,6 +213,28 @@ class ApplicationController: NSObject {
       title = "\(time) "
     }
     return NSAttributedString(string: title, attributes: attrs)
+  }
+
+  ///  Display a battery error.
+  ///
+  ///  - parameter type: The BatteryError that was thrown.
+  func batteryError(type type: BatteryError?) {
+    // Unwrap the menu bar item's button.
+    guard let button = self.statusItem?.button,
+      type = type else {
+        return
+    }
+    // Get the right icon and set an error message for the supplied error
+    switch type {
+    case .ConnectionAlreadyOpen:
+      button.image = StatusIcon.batteryDeadCropped
+    case .ServiceNotFound:
+      button.image = StatusIcon.batteryNone
+    }
+    // Define the image as template
+    if let img = button.image {
+      img.template = true
+    }
   }
 
   // MARK: IBAction's
