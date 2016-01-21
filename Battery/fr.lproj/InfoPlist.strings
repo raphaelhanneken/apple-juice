@@ -1,4 +1,3 @@
 /* Display name and description for this extension. */
 "CFBundleDisplayName" = "Batterie";
-"com.apple.notificationcenter.widget.description" = "Informations sur la batterie supplémentaires.";
-
+"com.apple.notificationcenter.widget.description" = "Informations sur la Batterie";

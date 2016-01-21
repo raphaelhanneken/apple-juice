@@ -163,14 +163,12 @@
 				8EBF29E41C48489F005BBAE0 /* dsa_pub.pem */,
 			);
 			name = "Supporting Files";
-			path = "Apple Juice";
 			sourceTree = "<group>";
 		};
 		8EBEB4391C466091001DBE91 = {
 			isa = PBXGroup;
 			children = (
 				8EBEB4441C466091001DBE91 /* Apple Juice */,
-				8E03E9DC1C4BCFBA00D12D11 /* Supporting Files */,
 				8EE1297E1C46F891000D404F /* Battery */,
 				8EE1297B1C46F891000D404F /* Frameworks */,
 				8EBEB4431C466091001DBE91 /* Products */,
@@ -197,6 +195,7 @@
 				8EE129711C46CA1B000D404F /* UserPreferences.swift */,
 				8EE129681C4661BA000D404F /* UI */,
 				8EE129671C4661AC000D404F /* Resources */,
+				8E03E9DC1C4BCFBA00D12D11 /* Supporting Files */,
 			);
 			path = "Apple Juice";
 			sourceTree = "<group>";
