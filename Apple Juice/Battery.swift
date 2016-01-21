@@ -103,11 +103,11 @@ class Battery {
   ///  - returns: The time in a human readable format.
   func timeRemainingFormatted() -> String {
     guard let charged = self.isCharged(),
-      time = self.timeRemaining() else {
+      time = self.timeRemaining(), plugged = self.isPlugged() else {
         return NSLocalizedString("unknown", comment: "")
     }
 
-    if charged {
+    if charged && plugged {
       return NSLocalizedString("charged", comment: "")
     } else {
       return String(format: "%d:%02d", arguments: [time / 60, time % 60])
