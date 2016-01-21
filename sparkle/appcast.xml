@@ -5,27 +5,30 @@
     <link>http://raphaelhanneken.github.io/apple-juice/sparkle/appcast.xml</link>
     <description>Most recent changes with links to updates.</description>
     <language>en</language>
-  
+
     <item>
-      <title>Apple Juice v1.0.0</title>
+      <title>Apple Juice v1.0.2</title>
         <description>
           <![CDATA[
-          <p>
-            An advanced battery gauge for OS X.
-          </p>
+          <ul>
+            <li>Better information on errors.</li>
+            <li>Italian translation.</li>
+            <li>Spanish translation.</li>
+            <li>Minor improvements and fixes.</li>
+          </ul>
           ]]>
         </description>
-        <pubDate>Fri, 15 Jan 2016 00:00:00 +0100</pubDate>
+        <pubDate>Wed, 20 Jan 2016 21:00:00 +0100</pubDate>
         <sparkle:minimumSystemVersion>10.11</sparkle:minimumSystemVersion>
         <enclosure
-          url="https://github.com/raphaelhanneken/apple-juice/releases/download/1.0.0/Apple.Juice.dmg"
-          sparkle:version="98"
+          url="https://github.com/raphaelhanneken/apple-juice/releases/download/1.0.2/Apple.Juice.dmg"
+          sparkle:version="119"
           sparkle:shortVersionString="1.0"
-          sparkle:dsaSignature="MCwCFFg9QDSpWe+8VkWsYIz5pjqZ4R4AAhQZ7Zc8a7gJdSTUmkfhwZKDYjV8UQ=="
-          length="5851919"
+          sparkle:dsaSignature="MCwCFAniZoISqfYh5lHMqw8QrSPgGzimAhQOJCzgA2B37Pc/a77tELFe3Qd4fw=="
+          length="6122596"
           type="application/octet-stream" />
     </item>
-    
+
     <item>
       <title>Apple Juice v1.0.1</title>
         <description>
@@ -43,6 +46,26 @@
           sparkle:shortVersionString="1.0"
           sparkle:dsaSignature="MCwCFDQ9+GfwlEPf+yLJKvlB02UQHHLkAhQhWMMHRzqTX1FKObfPkI2aDFCEUQ=="
           length="6229340"
+          type="application/octet-stream" />
+    </item>
+
+    <item>
+      <title>Apple Juice v1.0.0</title>
+        <description>
+          <![CDATA[
+          <p>
+            An advanced battery gauge for OS X.
+          </p>
+          ]]>
+        </description>
+        <pubDate>Fri, 15 Jan 2016 00:00:00 +0100</pubDate>
+        <sparkle:minimumSystemVersion>10.11</sparkle:minimumSystemVersion>
+        <enclosure
+          url="https://github.com/raphaelhanneken/apple-juice/releases/download/1.0.0/Apple.Juice.dmg"
+          sparkle:version="98"
+          sparkle:shortVersionString="1.0"
+          sparkle:dsaSignature="MCwCFFg9QDSpWe+8VkWsYIz5pjqZ4R4AAhQZ7Zc8a7gJdSTUmkfhwZKDYjV8UQ=="
+          length="5851919"
           type="application/octet-stream" />
     </item>
   </channel>
