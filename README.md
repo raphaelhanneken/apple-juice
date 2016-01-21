@@ -16,7 +16,9 @@ Probably as accurate as it gets. The information come directly from OS X’s IO 
 
 ## How do I install it? ##
 You have two options:
+
 1. Download the [latest binary](https://github.com/raphaelhanneken/apple-juice/releases/latest) and drop it into your `Applications folder`*.
+
 2. Download the source code and build it yourself, with Xcode. You'll also need to install [Carthage](https://github.com/Carthage/Carthage), if you haven’t done so already, and run `carthage update` from your Terminal. Otherwise Xcode won't find the [Sparkle Framework](https://github.com/sparkle-project/Sparkle), since I haven’t put it under version control. 
 
 *Since I don’t have an Apple Developer account, you have to allow third party apps within the system preferences.
