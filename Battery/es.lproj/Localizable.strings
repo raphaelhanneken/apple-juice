@@ -1,0 +1,21 @@
+/* 
+  Localizable.strings
+  Apple Juice Widget
+*/
+
+"unknown"       = "Desconocido";
+"charged"       = "Cargado";
+"watts"         = "Vatios";
+"power adapter" = "Adaptador de Corriente";
+"battery"       = "Batería";
+
+/* Categories */
+"time remaining"     = "Tiempo Restante:";
+"percentage"         = "Porcentaje:";
+"power usage"        = "Consumo de Energía:";
+"charge"             = "Cargar:";
+"cycle count"        = "Contador de Cíclos:";
+"temp"               = "Temperatura:";
+"power source"       = "Fuente de Alimentación:";
+"design cycle count" = "Recuento de Ciclo de Diseño:";
+"design capacity"    = "Capacidad de Diseño:";

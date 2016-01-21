@@ -1,0 +1,16 @@
+/* 
+  Localizable.strings
+  Apple Juice
+*/
+
+// Menu
+"charged"       = "Cargado";
+"unknown"       = "Desconocido";
+"battery"       = "Batería";
+"power adapter" = "Adaptador de Corriente";
+"source"        = "Fuente:";
+
+// Notifications
+"charged message"     = "La batería está completamente cargada.";
+"low battery"         = "Batería baja";
+"low battery message" = "Tu Mac dormirá pronto a no ser enchufado a una toma de corriente.";
