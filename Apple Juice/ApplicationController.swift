@@ -48,12 +48,12 @@ class ApplicationController: NSObject {
     // Initialize our parent class.
     super.init()
     // Configure the status bar item.
-    self.statusItem = self.configureStatusItem()
+    statusItem = configureStatusItem()
     // Listen for PowerSourceChanged notifications, posted by self.battery.
     NSNotificationCenter.defaultCenter().addObserver(self,
       selector: Selector("powerSourceChanged:"), name: powerSourceChangedNotification, object: nil)
     // Display the status bar item.
-    self.updateStatusItem(self)
+    updateStatusItem(self)
   }
 
   ///  Creates and configures the app's status bar item.
@@ -74,10 +74,10 @@ class ApplicationController: NSObject {
   ///  - parameter sender: The object that send the message.
   func displayAppMenu(sender: AnyObject) {
     // Update the information displayed within the app menu.
-    self.updateMenuItems()
+    updateMenuItems()
     // Show the application menu.
-    if let statusItem = self.statusItem {
-      statusItem.popUpStatusItemMenu(self.appMenu)
+    if let statusItem = statusItem {
+      statusItem.popUpStatusItemMenu(appMenu)
     }
   }
 
@@ -86,18 +86,18 @@ class ApplicationController: NSObject {
   ///  - parameter sender: Object that send the message.
   func updateStatusItem(sender: AnyObject) {
     // Unwrap the status item's button.
-    guard let button = self.statusItem?.button else {
+    guard let button = statusItem?.button else {
       return
     }
 
     do {
       // Try closing the IO connection in any case.
-      defer { self.battery.close() }
+      defer { battery.close() }
       // Open an IO connection to the defined battery service.
-      try self.battery.open()
+      try battery.open()
       // Unwrap the necessary information...
-      if let plugged = self.battery.isPlugged(), charging = self.battery.isCharging(),
-        charged = self.battery.isCharged(), percentage = self.battery.percentage() {
+      if let plugged = battery.isPlugged(), charging = battery.isCharging(),
+        charged = battery.isCharged(), percentage = battery.percentage() {
           // ...and draw the appropriate status bar icon.
           if charged && plugged {
             button.image = StatusIcon.batteryChargedAndPlugged
@@ -109,10 +109,10 @@ class ApplicationController: NSObject {
           // Draw the status icon on the right hand side.
           button.imagePosition = .ImageRight
           // Set the status bar item's title.
-          button.attributedTitle = self.attributedTitle(withPercentage: percentage,
-            andTime: self.battery.timeRemainingFormatted())
+          button.attributedTitle = attributedTitle(withPercentage: percentage,
+            andTime: battery.timeRemainingFormatted())
       }
-    } catch { self.batteryError(type: error as? BatteryError) }
+    } catch { batteryError(type: error as? BatteryError) }
     // Define the image as template.
     if let img = button.image {
       img.template = true
@@ -123,26 +123,25 @@ class ApplicationController: NSObject {
   func updateMenuItems() {
     do {
       // Try closing the IO connection in any case.
-      defer { self.battery.close() }
+      defer { battery.close() }
       // Open an IO connection to the defined battery service.
-      try self.battery.open()
+      try battery.open()
       // Get the updated information and set them as item title.
-      self.currentSource.title = "\(NSLocalizedString("source", comment: ""))"
-        + " \(self.battery.currentSource())"
+      currentSource.title = "\(NSLocalizedString("source", comment: ""))"
+        + " \(battery.currentSource())"
       // Check wether the user wants the remaining time or not.
-      if self.userPrefs.showTime {
-        if let percentage = self.battery.percentage() {
-          self.currentCharge.title = "\(percentage) %"
+      if userPrefs.showTime {
+        if let percentage = battery.percentage() {
+          currentCharge.title = "\(percentage) %"
         }
       } else {
-        self.currentCharge.title = self.battery.timeRemainingFormatted()
+        currentCharge.title = battery.timeRemainingFormatted()
       }
       // Unwrap additional information.
-      if let currentCharge = self.battery.currentCharge(),
-        maxCapacity = self.battery.maxCapacity() {
-          self.currentCharge.title += " (\(currentCharge) / \(maxCapacity) mAh)"
+      if let charge = battery.currentCharge(), capacity = battery.maxCapacity() {
+          currentCharge.title += " (\(charge) / \(capacity) mAh)"
       }
-    } catch { self.batteryError(type: error as? BatteryError) }
+    } catch { batteryError(type: error as? BatteryError) }
   }
 
   ///  Gets called whenever the power source changes. Calls updateMenuItem:
@@ -150,51 +149,51 @@ class ApplicationController: NSObject {
   ///  - parameter sender: Object that send the message.
   func powerSourceChanged(sender: AnyObject) {
     // Update status bar item to reflect changes.
-    self.updateStatusItem(self)
+    updateStatusItem(self)
     // Check if the user wants to get notified.
-    self.postUserNotification()
+    postUserNotification()
   }
 
   ///  Checks if the user wants to get notified about the current charging status.
   func postUserNotification() {
     do {
       // Try closing the IO connection in any case.
-      defer { self.battery.close() }
+      defer { battery.close() }
       // Open an IO connection to the defined battery service.
-      try self.battery.open()
+      try battery.open()
       // Unwrap the necessary information.
-      guard let percentage = self.battery.percentage(), plugged = self.battery.isPlugged(),
-        charged = self.battery.isCharged(), charging = self.battery.isCharging() else {
+      guard let percentage = battery.percentage(), plugged = battery.isPlugged(),
+        charged = battery.isCharged(), charging = battery.isCharging() else {
           return
       }
       // Check if we're plugged and charged.
       if plugged && charged {
         // Does the user wants to get notified about the plugged & charged status?
-        if self.userPrefs.notifications.contains(.HundredPercent)
-          && self.userPrefs.lastNotified != .HundredPercent {
+        if userPrefs.notifications.contains(.HundredPercent)
+          && userPrefs.lastNotified != .HundredPercent {
             // Post a plugged & charged notification.
             NotificationController.pluggedAndChargedNotification()
             // Save the hundredPercent notification key as last notified.
-            self.userPrefs.lastNotified = .HundredPercent
+            userPrefs.lastNotified = .HundredPercent
         }
       } else if !charging {
         // Since we're not charging, check if we should post a low percentage notification.
         guard let notificationKey = NotificationKey(rawValue: percentage)
-          where self.userPrefs.notifications.contains(notificationKey) else {
+          where userPrefs.notifications.contains(notificationKey) else {
             return
         }
         // Check that we haven't already notified the user about the current percentage.
-        if self.userPrefs.lastNotified != notificationKey {
+        if userPrefs.lastNotified != notificationKey {
           // Post a low percentage notification.
           NotificationController.lowPercentageNotification(forPercentage: notificationKey)
           // Set lastNotified to the current notification key.
-          self.userPrefs.lastNotified = notificationKey
+          userPrefs.lastNotified = notificationKey
         }
       } else {
         // Reset the lastNotified property.
-        self.userPrefs.lastNotified = .None
+        userPrefs.lastNotified = .None
       }
-    } catch { self.batteryError(type: error as? BatteryError) }
+    } catch { batteryError(type: error as? BatteryError) }
   }
 
   ///  Creates an attributed string for the status bar item's title.
@@ -209,7 +208,7 @@ class ApplicationController: NSObject {
        NSBaselineOffsetAttributeName : 1.0]
     var title = "\(percent) % "
     // Set the title to the remaining time.
-    if self.userPrefs.showTime {
+    if userPrefs.showTime {
       title = "\(time) "
     }
     return NSAttributedString(string: title, attributes: attrs)
@@ -220,7 +219,7 @@ class ApplicationController: NSObject {
   ///  - parameter type: The BatteryError that was thrown.
   func batteryError(type type: BatteryError?) {
     // Unwrap the menu bar item's button.
-    guard let button = self.statusItem?.button,
+    guard let button = statusItem?.button,
       type = type else {
         return
     }
@@ -244,9 +243,9 @@ class ApplicationController: NSObject {
   ///  - parameter sender: Menu item that send the message.
   @IBAction func showPercentage(sender: NSMenuItem) {
     // Toggle the show time preference.
-    self.userPrefs.showTime = false
+    userPrefs.showTime = false
     // Update the status bar item to reflect the changes.
-    self.updateStatusItem(self)
+    updateStatusItem(self)
   }
 
   ///  Show time remaining instead of percentage.
@@ -254,9 +253,9 @@ class ApplicationController: NSObject {
   ///  - parameter sender: Menu item that send the message.
   @IBAction func showTime(sender: NSMenuItem) {
     // Toggle the show time preference.
-    self.userPrefs.showTime = true
+    userPrefs.showTime = true
     // Update the status bar item to reflect the changes.
-    self.updateStatusItem(self)
+    updateStatusItem(self)
   }
 
   ///  Open the energy saver preference pane.

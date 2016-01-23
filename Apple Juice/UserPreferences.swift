@@ -80,19 +80,19 @@ class UserPreferences {
     var result: Set<NotificationKey> = []
 
     // Check for notification settings.
-    if self.fivePercentNotification == 1 {
+    if fivePercentNotification == 1 {
       result.insert(.FivePercent)
     }
-    if self.tenPercentNotification == 1 {
+    if tenPercentNotification == 1 {
       result.insert(.TenPercent)
     }
-    if self.fifeteenPercentNotification == 1 {
+    if fifeteenPercentNotification == 1 {
       result.insert(.FifeteenPercent)
     }
-    if self.twentyPercentNotification == 1 {
+    if twentyPercentNotification == 1 {
       result.insert(.TwentyPercent)
     }
-    if self.hundredPercentNotification == 1 {
+    if hundredPercentNotification == 1 {
       result.insert(.HundredPercent)
     }
 
@@ -102,7 +102,7 @@ class UserPreferences {
   // MARK: Methods
 
   init() {
-    self.registerUserDefaults()
+    registerUserDefaults()
   }
 
   ///  Register user defaults.
@@ -112,7 +112,7 @@ class UserPreferences {
       fifeteenPercentNotificationKey : 0, twentyPercentNotificationKey : 0,
       lastNotifiedKey : 0]
 
-    self.userDefaults.registerDefaults(defaults)
+    userDefaults.registerDefaults(defaults)
   }
 }
 

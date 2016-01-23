@@ -62,18 +62,18 @@ class Battery {
   ///            * ServiceNotFound exception, if the IOSERVICE_BATTERY couldn't be found.
   func open() throws {
     // If the IO service is still open...
-    if self.service != 0 {
+    if service != 0 {
       // ...try closing it.
-      if !self.close() {
+      if !close() {
         // Throw a BatteryError in case the IO connection won't close.
         throw BatteryError.ConnectionAlreadyOpen
       }
     }
     // Get an IOService object for the defined
-    self.service = IOServiceGetMatchingService(kIOMasterPortDefault,
-      IOServiceNameMatching(self.batteryIOServiceName))
+    service = IOServiceGetMatchingService(kIOMasterPortDefault,
+      IOServiceNameMatching(batteryIOServiceName))
     // Throw a BatteryError if the IO service couldn't be opened.
-    if self.service == 0 {
+    if service == 0 {
       throw BatteryError.ServiceNotFound
     }
   }
@@ -83,10 +83,10 @@ class Battery {
   ///  - returns: True on success; false otherwise.
   func close() -> Bool {
     // Release the IO object...
-    let result = IOObjectRelease(self.service)
+    let result = IOObjectRelease(service)
     // ...and reset the service property.
     if result == kIOReturnSuccess {
-      self.service = 0
+      service = 0
     }
     return (result == kIOReturnSuccess)
   }
@@ -95,15 +95,15 @@ class Battery {
   ///
   ///  - returns: The time in minutes.
   func timeRemaining() -> Int? {
-    return self.getRegistryPropertyForKey(.TimeRemaining) as? Int
+    return getRegistryPropertyForKey(.TimeRemaining) as? Int
   }
 
   ///  Time until the battery is empy or fully charged, in a human readable format.
   ///
   ///  - returns: The time in a human readable format.
   func timeRemainingFormatted() -> String {
-    guard let charged = self.isCharged(),
-      time = self.timeRemaining(), plugged = self.isPlugged() else {
+    guard let charged = isCharged(),
+      time = timeRemaining(), plugged = isPlugged() else {
         return NSLocalizedString("unknown", comment: "")
     }
 
@@ -119,8 +119,8 @@ class Battery {
   ///
   ///  - returns: The current percentage of the battery.
   func percentage() -> Int? {
-    guard let maxCapacity = self.maxCapacity(),
-      currentCapacity = self.currentCharge() else {
+    guard let maxCapacity = maxCapacity(),
+      currentCapacity = currentCharge() else {
         return nil
     }
 
@@ -131,28 +131,28 @@ class Battery {
   ///
   ///  - returns: The current charge in mAh.
   func currentCharge() -> Int? {
-    return self.getRegistryPropertyForKey(.CurrentCharge) as? Int
+    return getRegistryPropertyForKey(.CurrentCharge) as? Int
   }
 
   ///  Gets the maximum capacity in mAh.
   ///
   ///  - returns: The maximum capacity in mAh.
   func maxCapacity() -> Int? {
-    return self.getRegistryPropertyForKey(.MaxCapacity) as? Int
+    return getRegistryPropertyForKey(.MaxCapacity) as? Int
   }
 
   ///  Gets the design capacity in mAh.
   ///
   ///  - returns: the design capacity in mAh.
   func designCapacity() -> Int? {
-    return self.getRegistryPropertyForKey(.DesignCapacity) as? Int
+    return getRegistryPropertyForKey(.DesignCapacity) as? Int
   }
 
   ///  Gets the current source of power.
   ///
   ///  - returns: The currently connected source of power.
   func currentSource() -> String {
-    guard let powered = self.isPlugged() else {
+    guard let powered = isPlugged() else {
       return NSLocalizedString("unknown", comment: "")
     }
 
@@ -167,35 +167,35 @@ class Battery {
   ///
   ///  - returns: true when the battery currently gets charged; false otherwise.
   func isCharging() -> Bool? {
-    return self.getRegistryPropertyForKey(.IsCharging) as? Bool
+    return getRegistryPropertyForKey(.IsCharging) as? Bool
   }
 
   ///  Is the battery charged?
   ///
   ///  - returns: True/false, wheter or not the battery is charged.
   func isCharged() -> Bool? {
-    return self.getRegistryPropertyForKey(.FullyCharged) as? Bool
+    return getRegistryPropertyForKey(.FullyCharged) as? Bool
   }
 
   ///  Checks wether or not a unlimited power supply is plugged in.
   ///
   ///  - returns: true when an unlimited power supple is plugged in; false otherwise.
   func isPlugged() -> Bool? {
-    return self.getRegistryPropertyForKey(.ACPowered) as? Bool
+    return getRegistryPropertyForKey(.ACPowered) as? Bool
   }
 
   ///  Gets the current cycle count.
   ///
   ///  - returns: The current cycle count.
   func cycleCount() -> Int? {
-    return self.getRegistryPropertyForKey(.CycleCount) as? Int
+    return getRegistryPropertyForKey(.CycleCount) as? Int
   }
 
   ///  Gets the designed cycle count.
   ///
   ///  - returns: The design cycle count.
   func designCycleCount() -> Int? {
-    return self.getRegistryPropertyForKey(.DesignCycleCount) as? Int
+    return getRegistryPropertyForKey(.DesignCycleCount) as? Int
   }
 
   // MARK: Private Methods
@@ -214,7 +214,7 @@ class Battery {
   ///  - parameter unit: Temperature unit. Default: Celsius.
   ///  - returns: The current temperature of the battery.
   func temperature(unit: TemperatureUnit = .Celsius) -> Double? {
-    guard let prop = self.getRegistryPropertyForKey(.Temperature) as? Double else {
+    guard let prop = getRegistryPropertyForKey(.Temperature) as? Double else {
       return nil
     }
     let temperature = prop / 100.0
