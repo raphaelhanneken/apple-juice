@@ -22,7 +22,7 @@ You have two options:
 2. Download the source code and build it yourself, with Xcode. You'll also need to install [Carthage](https://github.com/Carthage/Carthage), if you haven’t done so already, and run `carthage update` from your Terminal. Otherwise Xcode won't find the [Sparkle Framework](https://github.com/sparkle-project/Sparkle), since I haven’t put it under version control. 
 
 *Since I don’t have an Apple Developer account, you have to allow third party apps within the system preferences.
- `System Preferences: Security & Privacy: Allow apps downloaded from: Anywhere`.
+ ```System Preferences: Security & Privacy: Allow apps downloaded from: Anywhere```.
 
 ## Why does this project exist? ##
 There are plenty of other solutions out there, so why make another one? I wanted an app that looks like it’s part of the system. As if it were built directly into OS X. Which can show me a lot of information, but only when I need them. And, most importantly, it should display notifications for several percentages. Since I haven’t found such an app, I've made one myself.
