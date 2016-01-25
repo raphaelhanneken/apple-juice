@@ -30,17 +30,17 @@ import IOKit.ps
 import IOKit
 
 /// Notification that gets posted whenever a power source is changed.
-let powerSourceChangedNotification = "io.github.raphaelhanneken.apple-juice.powersourcechanged"
+internal let powerSourceChangedNotification = "com.raphaelhanneken.apple-juice.powersourcechanged"
 
 /// Gets called whenever any power source is added, removed, or changed.
-let powerSourceCallback: IOPowerSourceCallbackType = { _ in
+private let powerSourceCallback: IOPowerSourceCallbackType = { _ in
   // Post a PowerSourceChanged notification.
   NSNotificationCenter.defaultCenter().postNotificationName(powerSourceChangedNotification,
     object: nil)
 }
 
 /// Access information about the build in battery.
-class Battery {
+final class Battery {
 
   /// The battery's IO service name.
   private let batteryIOServiceName = "AppleSmartBattery"
@@ -49,7 +49,7 @@ class Battery {
 
   // MARK: Methods
 
-  init() {
+  internal init() {
     // Get notified when the power source information changes.
     let loop = IOPSNotificationCreateRunLoopSource(powerSourceCallback, nil).takeUnretainedValue()
     // Add the notification loop to the current run loop.
@@ -60,7 +60,7 @@ class Battery {
   ///
   ///  - throws: * ConnectionAlreadyOpen exception, if the last connection wasn't closed properly.
   ///            * ServiceNotFound exception, if the IOSERVICE_BATTERY couldn't be found.
-  func open() throws {
+  internal func open() throws {
     // If the IO service is still open...
     if service != 0 {
       // ...try closing it.
@@ -81,7 +81,7 @@ class Battery {
   ///  Closes the connection the the battery's IO service.
   ///
   ///  - returns: True on success; false otherwise.
-  func close() -> Bool {
+  internal func close() -> Bool {
     // Release the IO object...
     let result = IOObjectRelease(service)
     // ...and reset the service property.
@@ -94,14 +94,14 @@ class Battery {
   ///  Time until the battery is empty or fully charged.
   ///
   ///  - returns: The time in minutes.
-  func timeRemaining() -> Int? {
+  internal func timeRemaining() -> Int? {
     return getRegistryPropertyForKey(.TimeRemaining) as? Int
   }
 
   ///  Time until the battery is empy or fully charged, in a human readable format.
   ///
   ///  - returns: The time in a human readable format.
-  func timeRemainingFormatted() -> String {
+  internal func timeRemainingFormatted() -> String {
     guard let charged = isCharged(),
       time = timeRemaining(), plugged = isPlugged() else {
         return NSLocalizedString("unknown", comment: "")
@@ -118,7 +118,7 @@ class Battery {
   ///  maximum capacity.
   ///
   ///  - returns: The current percentage of the battery.
-  func percentage() -> Int? {
+  internal func percentage() -> Int? {
     guard let maxCapacity = maxCapacity(),
       currentCapacity = currentCharge() else {
         return nil
@@ -130,28 +130,28 @@ class Battery {
   ///  Gets the current charge in mAh.
   ///
   ///  - returns: The current charge in mAh.
-  func currentCharge() -> Int? {
+  internal func currentCharge() -> Int? {
     return getRegistryPropertyForKey(.CurrentCharge) as? Int
   }
 
   ///  Gets the maximum capacity in mAh.
   ///
   ///  - returns: The maximum capacity in mAh.
-  func maxCapacity() -> Int? {
+  internal func maxCapacity() -> Int? {
     return getRegistryPropertyForKey(.MaxCapacity) as? Int
   }
 
   ///  Gets the design capacity in mAh.
   ///
   ///  - returns: the design capacity in mAh.
-  func designCapacity() -> Int? {
+  internal func designCapacity() -> Int? {
     return getRegistryPropertyForKey(.DesignCapacity) as? Int
   }
 
   ///  Gets the current source of power.
   ///
   ///  - returns: The currently connected source of power.
-  func currentSource() -> String {
+  internal func currentSource() -> String {
     guard let powered = isPlugged() else {
       return NSLocalizedString("unknown", comment: "")
     }
@@ -166,54 +166,43 @@ class Battery {
   ///  Checks wether or not the battery is currently charging.
   ///
   ///  - returns: true when the battery currently gets charged; false otherwise.
-  func isCharging() -> Bool? {
+  internal func isCharging() -> Bool? {
     return getRegistryPropertyForKey(.IsCharging) as? Bool
   }
 
   ///  Is the battery charged?
   ///
   ///  - returns: True/false, wheter or not the battery is charged.
-  func isCharged() -> Bool? {
+  internal func isCharged() -> Bool? {
     return getRegistryPropertyForKey(.FullyCharged) as? Bool
   }
 
   ///  Checks wether or not a unlimited power supply is plugged in.
   ///
   ///  - returns: true when an unlimited power supple is plugged in; false otherwise.
-  func isPlugged() -> Bool? {
+  internal func isPlugged() -> Bool? {
     return getRegistryPropertyForKey(.ACPowered) as? Bool
   }
 
   ///  Gets the current cycle count.
   ///
   ///  - returns: The current cycle count.
-  func cycleCount() -> Int? {
+  internal func cycleCount() -> Int? {
     return getRegistryPropertyForKey(.CycleCount) as? Int
   }
 
   ///  Gets the designed cycle count.
   ///
   ///  - returns: The design cycle count.
-  func designCycleCount() -> Int? {
+  internal func designCycleCount() -> Int? {
     return getRegistryPropertyForKey(.DesignCycleCount) as? Int
-  }
-
-  // MARK: Private Methods
-
-  ///  Get the registry entry's property for the supplied SmartBatteryKey.
-  ///
-  ///  - parameter key: A SmartBatteryKey to get the property for.
-  ///  - returns: The property of the given SmartBatteryKey.
-  private func getRegistryPropertyForKey(key: SmartBatteryKey) -> AnyObject? {
-    return IORegistryEntryCreateCFProperty(service, key.rawValue, kCFAllocatorDefault, 0)
-      .takeRetainedValue()
   }
 
   ///  Gets the current temperature of the battery, in the supplied format.
   ///
   ///  - parameter unit: Temperature unit. Default: Celsius.
   ///  - returns: The current temperature of the battery.
-  func temperature(unit: TemperatureUnit = .Celsius) -> Double? {
+  internal func temperature(unit: TemperatureUnit = .Celsius) -> Double? {
     guard let prop = getRegistryPropertyForKey(.Temperature) as? Double else {
       return nil
     }
@@ -226,6 +215,17 @@ class Battery {
       return round(temperature)
     }
   }
+
+  // MARK: Private Methods
+
+  ///  Get the registry entry's property for the supplied SmartBatteryKey.
+  ///
+  ///  - parameter key: A SmartBatteryKey to get the property for.
+  ///  - returns: The property of the given SmartBatteryKey.
+  private func getRegistryPropertyForKey(key: SmartBatteryKey) -> AnyObject? {
+    return IORegistryEntryCreateCFProperty(service, key.rawValue, kCFAllocatorDefault, 0)
+      .takeRetainedValue()
+  }
 }
 
 // MARK: BatteryErrorType
@@ -236,9 +236,20 @@ class Battery {
 ///                           is already open.
 ///  - ServiceNotFound:       Gets thrown in case the IO service string (Battery.BatteryServiceName)
 ///                           wasn't found.
-enum BatteryError: ErrorType {
+internal enum BatteryError: ErrorType {
   case ConnectionAlreadyOpen
   case ServiceNotFound
+}
+
+// MARK: TemperatureUnits
+
+///  Describes temperature units.
+///
+///  - Celsius:    Celsius
+///  - Fahrenheit: Fahrenheit
+internal enum TemperatureUnit {
+  case Celsius
+  case Fahrenheit
 }
 
 // MARK: SmartBatteryKey's
@@ -257,7 +268,7 @@ enum BatteryError: ErrorType {
 ///  - Temperature:      The current temperature of the battery.
 ///  - TimeRemaining:    The remaining time until the battery is empty/fully charged.
 ///  - Voltage:          The electric charge the battery is working with.
-enum SmartBatteryKey: String {
+private enum SmartBatteryKey: String {
   case ACPowered        = "ExternalConnected"
   case Amperage         = "Amperage"
   case CurrentCharge    = "CurrentCapacity"
@@ -270,15 +281,4 @@ enum SmartBatteryKey: String {
   case Temperature      = "Temperature"
   case TimeRemaining    = "TimeRemaining"
   case Voltage          = "Voltage"
-}
-
-// MARK: TemperatureUnits
-
-///  Describes temperature units.
-///
-///  - Celsius:    Celsius
-///  - Fahrenheit: Fahrenheit
-enum TemperatureUnit {
-  case Celsius
-  case Fahrenheit
 }

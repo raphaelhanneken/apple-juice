@@ -27,7 +27,7 @@
 
 import Cocoa
 
-class ApplicationController: NSObject {
+final class ApplicationController: NSObject {
   /// Holds a reference to the application menu.
   @IBOutlet weak var appMenu: NSMenu!
   /// Holds a reference to the charging status menu item.
@@ -36,15 +36,15 @@ class ApplicationController: NSObject {
   @IBOutlet weak var currentSource: NSMenuItem!
 
   /// Holds the app's status bar item.
-  var statusItem: NSStatusItem?
+  private var statusItem: NSStatusItem?
   /// Access to battery information.
-  let battery = Battery()
+  private let battery = Battery()
   /// Manage user preferences.
-  let userPrefs = UserPreferences()
+  private let userPrefs = UserPreferences()
 
   // MARK: Methods
 
-  override init() {
+  internal override init() {
     // Initialize our parent class.
     super.init()
     // Configure the status bar item.
@@ -56,10 +56,34 @@ class ApplicationController: NSObject {
     updateStatusItem(self)
   }
 
+  ///  Gets called whenever the power source changes. Calls updateMenuItem:
+  ///  and postUserNotification.
+  ///  - parameter sender: Object that send the message.
+  internal func powerSourceChanged(sender: AnyObject) {
+    // Update status bar item to reflect changes.
+    updateStatusItem(self)
+    // Check if the user wants to get notified.
+    postUserNotification()
+  }
+
+  ///  Displays the app menu on screen.
+  ///
+  ///  - parameter sender: The object that send the message.
+  internal func displayAppMenu(sender: AnyObject) {
+    // Update the information displayed within the app menu.
+    updateMenuItems()
+    // Show the application menu.
+    if let statusItem = statusItem {
+      statusItem.popUpStatusItemMenu(appMenu)
+    }
+  }
+
+  // MARK: Private Methods
+
   ///  Creates and configures the app's status bar item.
   ///
   ///  - returns: The application's status bar item.
-  func configureStatusItem() -> NSStatusItem {
+  private func configureStatusItem() -> NSStatusItem {
     // Find a place to life.
     let statusItem = NSStatusBar.systemStatusBar().statusItemWithLength(NSVariableStatusItemLength)
     // Set properties.
@@ -69,22 +93,10 @@ class ApplicationController: NSObject {
     return statusItem
   }
 
-  ///  Displays the app menu on screen.
-  ///
-  ///  - parameter sender: The object that send the message.
-  func displayAppMenu(sender: AnyObject) {
-    // Update the information displayed within the app menu.
-    updateMenuItems()
-    // Show the application menu.
-    if let statusItem = statusItem {
-      statusItem.popUpStatusItemMenu(appMenu)
-    }
-  }
-
   ///  Updates the application's status bar item.
   ///
   ///  - parameter sender: Object that send the message.
-  func updateStatusItem(sender: AnyObject) {
+  private func updateStatusItem(sender: AnyObject) {
     // Unwrap the status item's button.
     guard let button = statusItem?.button else {
       return
@@ -120,7 +132,7 @@ class ApplicationController: NSObject {
   }
 
   ///  Updates the information within the app menu.
-  func updateMenuItems() {
+  private func updateMenuItems() {
     do {
       // Try closing the IO connection in any case.
       defer { battery.close() }
@@ -144,18 +156,8 @@ class ApplicationController: NSObject {
     } catch { batteryError(type: error as? BatteryError) }
   }
 
-  ///  Gets called whenever the power source changes. Calls updateMenuItem:
-  ///  and postUserNotification.
-  ///  - parameter sender: Object that send the message.
-  func powerSourceChanged(sender: AnyObject) {
-    // Update status bar item to reflect changes.
-    updateStatusItem(self)
-    // Check if the user wants to get notified.
-    postUserNotification()
-  }
-
   ///  Checks if the user wants to get notified about the current charging status.
-  func postUserNotification() {
+  private func postUserNotification() {
     do {
       // Try closing the IO connection in any case.
       defer { battery.close() }
@@ -217,7 +219,7 @@ class ApplicationController: NSObject {
   ///  Display a battery error.
   ///
   ///  - parameter type: The BatteryError that was thrown.
-  func batteryError(type type: BatteryError?) {
+  private func batteryError(type type: BatteryError?) {
     // Unwrap the menu bar item's button.
     guard let button = statusItem?.button,
       type = type else {
