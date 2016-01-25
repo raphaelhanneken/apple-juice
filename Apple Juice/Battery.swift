@@ -49,7 +49,7 @@ final class Battery {
 
   // MARK: Methods
 
-  internal init?() throws {
+  internal init() throws {
     try openServiceConnection()
     // Get notified when the power source information changes.
     let loop = IOPSNotificationCreateRunLoopSource(powerSourceCallback, nil).takeUnretainedValue()
