@@ -49,7 +49,8 @@ final class Battery {
 
   // MARK: Methods
 
-  internal init() {
+  internal init?() throws {
+    try openServiceConnection()
     // Get notified when the power source information changes.
     let loop = IOPSNotificationCreateRunLoopSource(powerSourceCallback, nil).takeUnretainedValue()
     // Add the notification loop to the current run loop.
@@ -60,11 +61,11 @@ final class Battery {
   ///
   ///  - throws: * ConnectionAlreadyOpen exception, if the last connection wasn't closed properly.
   ///            * ServiceNotFound exception, if the IOSERVICE_BATTERY couldn't be found.
-  internal func open() throws {
+  private func openServiceConnection() throws {
     // If the IO service is still open...
     if service != 0 {
       // ...try closing it.
-      if !close() {
+      if !closeServiceConnection() {
         // Throw a BatteryError in case the IO connection won't close.
         throw BatteryError.ConnectionAlreadyOpen
       }
@@ -81,7 +82,7 @@ final class Battery {
   ///  Closes the connection the the battery's IO service.
   ///
   ///  - returns: True on success; false otherwise.
-  internal func close() -> Bool {
+  private func closeServiceConnection() -> Bool {
     // Release the IO object...
     let result = IOObjectRelease(service)
     // ...and reset the service property.
