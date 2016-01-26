@@ -92,19 +92,11 @@ final class Battery {
     return (result == kIOReturnSuccess)
   }
 
-  ///  Time until the battery is empty or fully charged.
-  ///
-  ///  - returns: The time in minutes.
-  internal func timeRemaining() -> Int? {
-    return getRegistryPropertyForKey(.TimeRemaining) as? Int
-  }
-
   ///  Time until the battery is empy or fully charged, in a human readable format.
   ///
   ///  - returns: The time in a human readable format.
   internal func timeRemainingFormatted() -> String {
-    guard let charged = isCharged(),
-      time = timeRemaining(), plugged = isPlugged() else {
+    guard let charged = isCharged(), time = timeRemaining(), plugged = isPlugged() else {
         return NSLocalizedString("unknown", comment: "")
     }
 
@@ -115,13 +107,19 @@ final class Battery {
     }
   }
 
-  ///  Calculates the current percentage, based on the remaining and
-  ///  maximum capacity.
+  ///  Time until the battery is empty or fully charged.
+  ///
+  ///  - returns: The time in minutes.
+  internal func timeRemaining() -> Int? {
+    return getRegistryPropertyForKey(.TimeRemaining) as? Int
+  }
+
+  ///  Calculates the current percentage, based on the current charge and
+  ///  the maximum capacity.
   ///
   ///  - returns: The current percentage of the battery.
   internal func percentage() -> Int? {
-    guard let maxCapacity = maxCapacity(),
-      currentCapacity = currentCharge() else {
+    guard let maxCapacity = maxCapacity(), currentCapacity = currentCharge() else {
         return nil
     }
 
@@ -142,38 +140,31 @@ final class Battery {
     return getRegistryPropertyForKey(.MaxCapacity) as? Int
   }
 
-  ///  Gets the design capacity in mAh.
-  ///
-  ///  - returns: the design capacity in mAh.
-  internal func designCapacity() -> Int? {
-    return getRegistryPropertyForKey(.DesignCapacity) as? Int
-  }
-
   ///  Gets the current source of power.
   ///
   ///  - returns: The currently connected source of power.
   internal func currentSource() -> String {
-    guard let powered = isPlugged() else {
+    guard let plugged = isPlugged() else {
       return NSLocalizedString("unknown", comment: "")
     }
 
-    if powered {
+    if plugged {
       return NSLocalizedString("power adapter", comment: "")
     } else {
       return NSLocalizedString("battery", comment: "")
     }
   }
 
-  ///  Checks wether or not the battery is currently charging.
+  ///  Is the battery currently connected to a power outlet and charging?
   ///
-  ///  - returns: true when the battery currently gets charged; false otherwise.
+  ///  - returns: True or false, whether the battery is chargin or not.
   internal func isCharging() -> Bool? {
     return getRegistryPropertyForKey(.IsCharging) as? Bool
   }
 
   ///  Is the battery charged?
   ///
-  ///  - returns: True/false, wheter or not the battery is charged.
+  ///  - returns: True/false, wheter the battery is charged or not.
   internal func isCharged() -> Bool? {
     return getRegistryPropertyForKey(.FullyCharged) as? Bool
   }
@@ -183,38 +174,6 @@ final class Battery {
   ///  - returns: true when an unlimited power supple is plugged in; false otherwise.
   internal func isPlugged() -> Bool? {
     return getRegistryPropertyForKey(.ACPowered) as? Bool
-  }
-
-  ///  Gets the current cycle count.
-  ///
-  ///  - returns: The current cycle count.
-  internal func cycleCount() -> Int? {
-    return getRegistryPropertyForKey(.CycleCount) as? Int
-  }
-
-  ///  Gets the designed cycle count.
-  ///
-  ///  - returns: The design cycle count.
-  internal func designCycleCount() -> Int? {
-    return getRegistryPropertyForKey(.DesignCycleCount) as? Int
-  }
-
-  ///  Gets the current temperature of the battery, in the supplied format.
-  ///
-  ///  - parameter unit: Temperature unit. Default: Celsius.
-  ///  - returns: The current temperature of the battery.
-  internal func temperature(unit: TemperatureUnit = .Celsius) -> Double? {
-    guard let prop = getRegistryPropertyForKey(.Temperature) as? Double else {
-      return nil
-    }
-    let temperature = prop / 100.0
-
-    switch unit {
-    case .Fahrenheit:
-      return round((temperature * 1.8) + 32)
-    case .Celsius:
-      return round(temperature)
-    }
   }
 
   // MARK: Private Methods
@@ -240,17 +199,6 @@ final class Battery {
 internal enum BatteryError: ErrorType {
   case ConnectionAlreadyOpen
   case ServiceNotFound
-}
-
-// MARK: TemperatureUnits
-
-///  Describes temperature units.
-///
-///  - Celsius:    Celsius
-///  - Fahrenheit: Fahrenheit
-internal enum TemperatureUnit {
-  case Celsius
-  case Fahrenheit
 }
 
 // MARK: SmartBatteryKey's
