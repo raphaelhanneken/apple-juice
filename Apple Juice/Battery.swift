@@ -57,41 +57,6 @@ final class Battery {
     CFRunLoopAddSource(CFRunLoopGetCurrent(), loop, kCFRunLoopDefaultMode)
   }
 
-  ///  Opens a connection to the battery's IO service.
-  ///
-  ///  - throws: * ConnectionAlreadyOpen exception, if the last connection wasn't closed properly.
-  ///            * ServiceNotFound exception, if the IOSERVICE_BATTERY couldn't be found.
-  private func openServiceConnection() throws {
-    // If the IO service is still open...
-    if service != 0 {
-      // ...try closing it.
-      if !closeServiceConnection() {
-        // Throw a BatteryError in case the IO connection won't close.
-        throw BatteryError.ConnectionAlreadyOpen
-      }
-    }
-    // Get an IOService object for the defined
-    service = IOServiceGetMatchingService(kIOMasterPortDefault,
-      IOServiceNameMatching(batteryIOServiceName))
-    // Throw a BatteryError if the IO service couldn't be opened.
-    if service == 0 {
-      throw BatteryError.ServiceNotFound
-    }
-  }
-
-  ///  Closes the connection the the battery's IO service.
-  ///
-  ///  - returns: True on success; false otherwise.
-  private func closeServiceConnection() -> Bool {
-    // Release the IO object...
-    let result = IOObjectRelease(service)
-    // ...and reset the service property.
-    if result == kIOReturnSuccess {
-      service = 0
-    }
-    return (result == kIOReturnSuccess)
-  }
-
   ///  Time until the battery is empy or fully charged, in a human readable format.
   ///
   ///  - returns: The time in a human readable format.
@@ -177,6 +142,41 @@ final class Battery {
   }
 
   // MARK: Private Methods
+
+  ///  Opens a connection to the battery's IO service.
+  ///
+  ///  - throws: ConnectionAlreadyOpen exception, if the last connection wasn't closed properly.
+  ///  - throws: ServiceNotFound exception, if the IOSERVICE_BATTERY couldn't be found.
+  private func openServiceConnection() throws {
+    // If the IO service is still open...
+    if service != 0 {
+      // ...try closing it.
+      if !closeServiceConnection() {
+        // Throw a BatteryError in case the IO connection won't close.
+        throw BatteryError.ConnectionAlreadyOpen
+      }
+    }
+    // Get an IOService object for the defined
+    service = IOServiceGetMatchingService(kIOMasterPortDefault,
+      IOServiceNameMatching(batteryIOServiceName))
+    // Throw a BatteryError if the IO service couldn't be opened.
+    if service == 0 {
+      throw BatteryError.ServiceNotFound
+    }
+  }
+
+  ///  Closes the connection the the battery's IO service.
+  ///
+  ///  - returns: True on success; false otherwise.
+  private func closeServiceConnection() -> Bool {
+    // Release the IO object...
+    let result = IOObjectRelease(service)
+    // ...and reset the service property.
+    if result == kIOReturnSuccess {
+      service = 0
+    }
+    return (result == kIOReturnSuccess)
+  }
 
   ///  Get the registry entry's property for the supplied SmartBatteryKey.
   ///
