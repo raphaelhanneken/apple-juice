@@ -82,12 +82,13 @@ final class ApplicationController: NSObject {
   ///
   ///  - parameter sender: The object that send the message.
   func displayAppMenu(sender: AnyObject) {
-    // Update the information displayed within the app menu.
-    updateMenuItems()
-    // Show the application menu.
-    if let statusItem = statusItem {
-      statusItem.popUpStatusItemMenu(appMenu)
-    }
+    // Update the information displayed within the app menu...
+    updateMenuItems({ _ in
+      // ...and show the application menu.
+      if let statusItem = self.statusItem {
+        statusItem.popUpStatusItemMenu(self.appMenu)
+      }
+    })
   }
 
   ///  Updates the status bar item every time the user defaults change.
@@ -143,7 +144,10 @@ final class ApplicationController: NSObject {
   }
 
   ///  Updates the information within the app menu.
-  private func updateMenuItems() {
+  ///
+  ///  - parameter callback: A callback function, that should get
+  ///                        called as soon as the menu items are updated.
+  private func updateMenuItems(callback: () -> Void) {
     guard let battery = battery else {
       return
     }
@@ -162,6 +166,8 @@ final class ApplicationController: NSObject {
     if let charge = battery.currentCharge(), capacity = battery.maxCapacity() {
       currentCharge.title += " (\(charge) / \(capacity) mAh)"
     }
+    // Run the callback.
+    callback()
   }
 
   ///  Checks if the user wants to get notified about the current charging status.
