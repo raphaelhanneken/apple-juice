@@ -119,16 +119,16 @@ final class UserPreferences {
 // MARK: Preference Constants
 
 /// Show time preference key.
-private let showTimeKey = "ShowTimePref"
+private let showTimeKey                    = "ShowTimePref"
 /// Five percent notification preference key.
-private let fivePercentNotificationKey = "FivePercentNotificationPref"
+private let fivePercentNotificationKey     = "FivePercentNotificationPref"
 /// Ten percent notification preference key.
-private let tenPercentNotificationKey = "TenPercentNotificationPref"
+private let tenPercentNotificationKey      = "TenPercentNotificationPref"
 /// Fifeteen percent notification preference key.
 private let fifeteenPercentNotificationKey = "FifeteenPercentNotificationPref"
 /// Twenty percent notification preference key.
-private let twentyPercentNotificationKey = "TwentyPercentNotificationPref"
+private let twentyPercentNotificationKey   = "TwentyPercentNotificationPref"
 /// Hundred percent notification preference key.
-private let hundredPercentNotificationKey = "HundredPercentNotificationPref"
+private let hundredPercentNotificationKey  = "HundredPercentNotificationPref"
 /// Save the percentage when the user was last notified.
-private let lastNotifiedKey = "LastNotifiedPref"
+private let lastNotifiedKey                = "LastNotifiedPref"
