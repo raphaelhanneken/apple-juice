@@ -34,38 +34,38 @@ final class UserPreferences {
   private let userDefaults = NSUserDefaults.standardUserDefaults()
 
   /// Display the current charging status as time remaining? Default: Percentage.
-  internal var showTime: Bool {
+  var showTime: Bool {
     get { return userDefaults.boolForKey(showTimeKey) }
     set { userDefaults.setBool(newValue, forKey: showTimeKey) }
   }
 
   /// Notify the user at five percent left.
-  internal var fivePercentNotification: Int {
+  var fivePercentNotification: Int {
     get { return userDefaults.integerForKey(fivePercentNotificationKey) }
   }
 
   /// Notify the user at ten percent left.
-  internal var tenPercentNotification: Int {
+  var tenPercentNotification: Int {
     get { return userDefaults.integerForKey(tenPercentNotificationKey) }
   }
 
   /// Notify the user at fifeteen percent left.
-  internal var fifeteenPercentNotification: Int {
+  var fifeteenPercentNotification: Int {
     get { return userDefaults.integerForKey(fifeteenPercentNotificationKey) }
   }
 
   /// Notify the user at twenty percent left.
-  internal var twentyPercentNotification: Int {
+  var twentyPercentNotification: Int {
     get { return userDefaults.integerForKey(twentyPercentNotificationKey) }
   }
 
   /// Notify the user when the battery is fully charged.
-  internal var hundredPercentNotification: Int {
+  var hundredPercentNotification: Int {
     get { return userDefaults.integerForKey(hundredPercentNotificationKey) }
   }
 
   /// Saves the NotificationKey the user was last informed of.
-  internal var lastNotified: NotificationKey? {
+  var lastNotified: NotificationKey? {
     get { return NotificationKey(rawValue: userDefaults.integerForKey(lastNotifiedKey)) }
     set {
       if let notificationKey = newValue {
@@ -75,7 +75,7 @@ final class UserPreferences {
   }
 
   /// A set of all notifications the user is interested in.
-  internal var notifications: Set<NotificationKey> {
+  var notifications: Set<NotificationKey> {
     // Create an empty set.
     var result: Set<NotificationKey> = []
 
@@ -101,7 +101,7 @@ final class UserPreferences {
 
   // MARK: Methods
 
-  internal init() {
+  init() {
     registerUserDefaults()
   }
 

@@ -44,7 +44,7 @@ final class ApplicationController {
 
   // MARK: Methods
 
-  internal init() {
+  init() {
     // Configure the status bar item.
     statusItem = configureStatusItem()
     do {
@@ -65,7 +65,7 @@ final class ApplicationController {
   ///  Gets called whenever the power source changes. Calls updateMenuItem:
   ///  and postUserNotification.
   ///  - parameter sender: Object that send the message.
-  internal func powerSourceChanged(sender: AnyObject) {
+  func powerSourceChanged(sender: AnyObject) {
     // Update status bar item to reflect changes.
     updateStatusItem()
     // Check if the user wants to get notified.
@@ -75,7 +75,7 @@ final class ApplicationController {
   ///  Displays the app menu on screen.
   ///
   ///  - parameter sender: The object that send the message.
-  internal func displayAppMenu(sender: AnyObject) {
+  func displayAppMenu(sender: AnyObject) {
     // Update the information displayed within the app menu.
     updateMenuItems()
     // Show the application menu.
