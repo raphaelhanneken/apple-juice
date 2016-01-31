@@ -28,66 +28,97 @@
 import Foundation
 
 /// Defines the type for the RowViewController
-class RowViewControllerType: NSObject {
+class RowViewControllerType {
 
   /// Holds the row view title, e.g. "Cycle Count"
   var title: String = ""
   /// Holds the row view value, e.g. 385
   var value: String = ""
 
+  /// Returns a string that describes the contents of the receiver.
+  var description: String {
+    return "\(self.title) \(self.value)"
+  }
+
   init(withType type: RowViewControllerTypeDef) {
-    // Initialize the parent.
-    super.init()
     // Get the battery information for the supplied row type def.
-    self.getInformation(forType: type)
+    self.setProperties(forType: type)
   }
 
   ///  Get the appropriate battery information for the supplied RowViewType.
   ///
   ///  - parameter type: The RowViewType to get information for.
-  private func getInformation(forType type: RowViewControllerTypeDef) {
+  private func setProperties(forType type: RowViewControllerTypeDef) {
+    // Set the row view's title.
+    setTitle(forType: type)
     do {
       // Try closing the battery connection in any case!
       defer { Battery.close() }
       // Open a new IO connection to the battery service.
       try Battery.open()
-      // Check which typ the row represents.
-      switch type {
-      case .TimeRemaining:
-        self.title = NSLocalizedString("time remaining", comment: "")
-        self.value = Battery.timeRemainingFormatted()
-      case .CurrentCharge:
-        self.title = NSLocalizedString("percentage", comment: "")
-        self.value = Battery.percentage()
-      case .PowerUsage:
-        self.title = NSLocalizedString("power usage", comment: "")
-        self.value = Battery.powerUsage()
-      case .Capacity:
-        self.title = NSLocalizedString("charge", comment: "")
-        self.value = Battery.currentCharge()
-      case .CycleCount:
-        self.title = NSLocalizedString("cycle count", comment: "")
-        self.value = Battery.cycleCount()
-      case .Temperature:
-        self.title = NSLocalizedString("temp", comment: "")
-        self.value = Battery.temperature()
-      case .Source:
-        self.title = NSLocalizedString("power source", comment: "")
-        self.value = Battery.currentSource()
-      case .DesignCycleCount:
-        self.title = NSLocalizedString("design cycle count", comment: "")
-        self.value = Battery.designCycleCount()
-      case .DesignCapacity:
-        self.title = NSLocalizedString("design capacity", comment: "")
-        self.value = Battery.designCapacity()
-      }
+      // Set the row view's value.
+      setValue(forType: type)
     } catch {
+      // Print the error and set the row value to unknown.
       print(error)
+      value = NSLocalizedString("unknown", comment: "")
     }
   }
 
-  override var description: String {
-    return "\(self.title) \(self.value)"
+  // swiftlint:disable cyclomatic_complexity
+
+  ///  Set the row view's title.
+  ///
+  ///  - parameter type: The type the current row view represents.
+  private func setTitle(forType type: RowViewControllerTypeDef) {
+    // Check which type the current row represents.
+    switch type {
+    case .TimeRemaining:
+      self.title = NSLocalizedString("time remaining", comment: "")
+    case .CurrentCharge:
+      self.title = NSLocalizedString("percentage", comment: "")
+    case .PowerUsage:
+      self.title = NSLocalizedString("power usage", comment: "")
+    case .Capacity:
+      self.title = NSLocalizedString("charge", comment: "")
+    case .CycleCount:
+      self.title = NSLocalizedString("cycle count", comment: "")
+    case .Temperature:
+      self.title = NSLocalizedString("temp", comment: "")
+    case .Source:
+      self.title = NSLocalizedString("power source", comment: "")
+    case .DesignCycleCount:
+      self.title = NSLocalizedString("design cycle count", comment: "")
+    case .DesignCapacity:
+      self.title = NSLocalizedString("design capacity", comment: "")
+    }
+  }
+
+  ///  Set the row view's value.
+  ///
+  ///  - parameter type: The type the current row view represents.
+  private func setValue(forType type: RowViewControllerTypeDef) {
+    // Check which type the current row represents.
+    switch type {
+    case .TimeRemaining:
+      self.value = Battery.timeRemainingFormatted()
+    case .CurrentCharge:
+      self.value = Battery.percentage()
+    case .PowerUsage:
+      self.value = Battery.powerUsage()
+    case .Capacity:
+      self.value = Battery.currentCharge()
+    case .CycleCount:
+      self.value = Battery.cycleCount()
+    case .Temperature:
+      self.value = Battery.temperature()
+    case .Source:
+      self.value = Battery.currentSource()
+    case .DesignCycleCount:
+      self.value = Battery.designCycleCount()
+    case .DesignCapacity:
+      self.value = Battery.designCapacity()
+    }
   }
 }
 
