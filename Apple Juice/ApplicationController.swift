@@ -131,11 +131,8 @@ final class ApplicationController: NSObject {
     button.imagePosition = .ImageRight
     // Set the status bar item's title.
     button.attributedTitle = attributedTitle(withPercentage: percentage, andTime: timeRemaining)
-
     // Define the image as template.
-    if let img = button.image {
-      img.template = true
-    }
+    button.image?.template = true
   }
 
   ///  Updates the information within the app menu.
@@ -169,7 +166,6 @@ final class ApplicationController: NSObject {
   private func postUserNotification() {
     // Unwrap the necessary information.
     guard let plugged  = battery?.isPlugged(),
-      charging   = battery?.isCharging(),
       charged    = battery?.isCharged(),
       percentage = battery?.percentage() else {
         return
@@ -184,7 +180,7 @@ final class ApplicationController: NSObject {
           // Save the hundredPercent notification key as last notified.
           userPrefs.lastNotified = .HundredPercent
       }
-    } else if !charging {
+    } else if !plugged {
       // Since we're not charging, check if we should post a low percentage notification.
       guard let notificationKey = NotificationKey(rawValue: percentage)
         where userPrefs.notifications.contains(notificationKey) else {
@@ -236,9 +232,9 @@ final class ApplicationController: NSObject {
       button.image = StatusIcon.batteryNone
     }
     // Define the image as template
-    if let img = button.image {
-      img.template = true
-    }
+    button.image?.template = true
+  }
+
   ///  Listen for powerSourceChangedNotification's and NSUserDefaultsDidChangeNotificaion's.
   private func registerAsObserver() {
     NSNotificationCenter.defaultCenter().addObserver(self,
