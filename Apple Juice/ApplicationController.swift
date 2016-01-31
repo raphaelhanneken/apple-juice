@@ -27,7 +27,7 @@
 
 import Cocoa
 
-final class ApplicationController: NSObject {
+final class ApplicationController {
   /// Holds a reference to the application menu.
   @IBOutlet weak var appMenu: NSMenu!
   /// Holds a reference to the charging status menu item.
@@ -44,9 +44,7 @@ final class ApplicationController: NSObject {
 
   // MARK: Methods
 
-  internal override init() {
-    // Initialize our parent class.
-    super.init()
+  internal init() {
     // Configure the status bar item.
     statusItem = configureStatusItem()
     do {
