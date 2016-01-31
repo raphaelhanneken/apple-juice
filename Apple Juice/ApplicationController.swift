@@ -103,28 +103,27 @@ final class ApplicationController: NSObject {
 
   ///  Updates the application's status bar item.
   private func updateStatusItem() {
-    // Unwrap the status item's button.
-    guard let button = statusItem?.button, battery = battery else {
-      return
+    // Unwrap everything we need here...
+    guard let button = statusItem?.button,
+      timeRemaining  = battery?.timeRemainingFormatted(),
+      plugged        = battery?.isPlugged(),
+      charging       = battery?.isCharging(),
+      charged        = battery?.isCharged(),
+      percentage     = battery?.percentage() else {
+        return
     }
-
-    // Unwrap the necessary information...
-    if let plugged = battery.isPlugged(), charging = battery.isCharging(),
-      charged = battery.isCharged(), percentage = battery.percentage() {
-        // ...and draw the appropriate status bar icon.
-        if charged && plugged {
-          button.image = StatusIcon.batteryChargedAndPlugged
-        } else if charging {
-          button.image = StatusIcon.batteryCharging
-        } else {
-          button.image = StatusIcon.batteryDischarging(currentPercentage: percentage)
-        }
-        // Draw the status icon on the right hand side.
-        button.imagePosition = .ImageRight
-        // Set the status bar item's title.
-        button.attributedTitle = attributedTitle(withPercentage: percentage,
-          andTime: battery.timeRemainingFormatted())
+    // ...and draw the appropriate status bar icon.
+    if charged && plugged {
+      button.image = StatusIcon.batteryChargedAndPlugged
+    } else if charging {
+      button.image = StatusIcon.batteryCharging
+    } else {
+      button.image = StatusIcon.batteryDischarging(currentPercentage: percentage)
     }
+    // Draw the status icon on the right hand side.
+    button.imagePosition = .ImageRight
+    // Set the status bar item's title.
+    button.attributedTitle = attributedTitle(withPercentage: percentage, andTime: timeRemaining)
 
     // Define the image as template.
     if let img = button.image {
@@ -137,7 +136,7 @@ final class ApplicationController: NSObject {
     guard let battery = battery else {
       return
     }
-    // Get the updated information and set them as item title.
+    // Get the updated information and set them as the item title.
     currentSource.title = "\(NSLocalizedString("source", comment: ""))"
       + " \(battery.currentSource())"
     // Check wether the user wants the remaining time or not.
@@ -197,10 +196,9 @@ final class ApplicationController: NSObject {
   ///  - returns: The attributed string with percentage or time information, respectively.
   private func attributedTitle(withPercentage percent: Int, andTime time: String)
     -> NSAttributedString {
-      // Define some attributes to make the status item look like Apple's battery gauge.
+      var title = "\(percent) % "
       let attrs = [NSFontAttributeName : NSFont.systemFontOfSize(12.0),
         NSBaselineOffsetAttributeName : 1.0]
-      var title = "\(percent) % "
       // Set the title to the remaining time.
       if userPrefs.showTime {
         title = "\(time) "
