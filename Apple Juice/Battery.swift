@@ -49,62 +49,20 @@ final class Battery {
 
   // MARK: Methods
 
-  internal init() {
+  internal init() throws {
+    try openServiceConnection()
     // Get notified when the power source information changes.
     let loop = IOPSNotificationCreateRunLoopSource(powerSourceCallback, nil).takeUnretainedValue()
     // Add the notification loop to the current run loop.
     CFRunLoopAddSource(CFRunLoopGetCurrent(), loop, kCFRunLoopDefaultMode)
   }
 
-  ///  Opens a connection to the battery's IO service.
-  ///
-  ///  - throws: * ConnectionAlreadyOpen exception, if the last connection wasn't closed properly.
-  ///            * ServiceNotFound exception, if the IOSERVICE_BATTERY couldn't be found.
-  internal func open() throws {
-    // If the IO service is still open...
-    if service != 0 {
-      // ...try closing it.
-      if !close() {
-        // Throw a BatteryError in case the IO connection won't close.
-        throw BatteryError.ConnectionAlreadyOpen
-      }
-    }
-    // Get an IOService object for the defined
-    service = IOServiceGetMatchingService(kIOMasterPortDefault,
-      IOServiceNameMatching(batteryIOServiceName))
-    // Throw a BatteryError if the IO service couldn't be opened.
-    if service == 0 {
-      throw BatteryError.ServiceNotFound
-    }
-  }
-
-  ///  Closes the connection the the battery's IO service.
-  ///
-  ///  - returns: True on success; false otherwise.
-  internal func close() -> Bool {
-    // Release the IO object...
-    let result = IOObjectRelease(service)
-    // ...and reset the service property.
-    if result == kIOReturnSuccess {
-      service = 0
-    }
-    return (result == kIOReturnSuccess)
-  }
-
-  ///  Time until the battery is empty or fully charged.
-  ///
-  ///  - returns: The time in minutes.
-  internal func timeRemaining() -> Int? {
-    return getRegistryPropertyForKey(.TimeRemaining) as? Int
-  }
-
   ///  Time until the battery is empy or fully charged, in a human readable format.
   ///
   ///  - returns: The time in a human readable format.
   internal func timeRemainingFormatted() -> String {
-    guard let charged = isCharged(),
-      time = timeRemaining(), plugged = isPlugged() else {
-        return NSLocalizedString("unknown", comment: "")
+    guard let charged = isCharged(), time = timeRemaining(), plugged = isPlugged() else {
+      return NSLocalizedString("unknown", comment: "")
     }
 
     if charged && plugged {
@@ -114,14 +72,20 @@ final class Battery {
     }
   }
 
-  ///  Calculates the current percentage, based on the remaining and
-  ///  maximum capacity.
+  ///  Time until the battery is empty or fully charged.
+  ///
+  ///  - returns: The time in minutes.
+  internal func timeRemaining() -> Int? {
+    return getRegistryPropertyForKey(.TimeRemaining) as? Int
+  }
+
+  ///  Calculates the current percentage, based on the current charge and
+  ///  the maximum capacity.
   ///
   ///  - returns: The current percentage of the battery.
   internal func percentage() -> Int? {
-    guard let maxCapacity = maxCapacity(),
-      currentCapacity = currentCharge() else {
-        return nil
+    guard let maxCapacity = maxCapacity(), currentCapacity = currentCharge() else {
+      return nil
     }
 
     return Int(round(Double(currentCapacity) / Double(maxCapacity) * 100.0))
@@ -141,38 +105,31 @@ final class Battery {
     return getRegistryPropertyForKey(.MaxCapacity) as? Int
   }
 
-  ///  Gets the design capacity in mAh.
-  ///
-  ///  - returns: the design capacity in mAh.
-  internal func designCapacity() -> Int? {
-    return getRegistryPropertyForKey(.DesignCapacity) as? Int
-  }
-
   ///  Gets the current source of power.
   ///
   ///  - returns: The currently connected source of power.
   internal func currentSource() -> String {
-    guard let powered = isPlugged() else {
+    guard let plugged = isPlugged() else {
       return NSLocalizedString("unknown", comment: "")
     }
 
-    if powered {
+    if plugged {
       return NSLocalizedString("power adapter", comment: "")
     } else {
       return NSLocalizedString("battery", comment: "")
     }
   }
 
-  ///  Checks wether or not the battery is currently charging.
+  ///  Is the battery currently connected to a power outlet and charging?
   ///
-  ///  - returns: true when the battery currently gets charged; false otherwise.
+  ///  - returns: True or false, whether the battery is chargin or not.
   internal func isCharging() -> Bool? {
     return getRegistryPropertyForKey(.IsCharging) as? Bool
   }
 
   ///  Is the battery charged?
   ///
-  ///  - returns: True/false, wheter or not the battery is charged.
+  ///  - returns: True/false, wheter the battery is charged or not.
   internal func isCharged() -> Bool? {
     return getRegistryPropertyForKey(.FullyCharged) as? Bool
   }
@@ -184,39 +141,42 @@ final class Battery {
     return getRegistryPropertyForKey(.ACPowered) as? Bool
   }
 
-  ///  Gets the current cycle count.
-  ///
-  ///  - returns: The current cycle count.
-  internal func cycleCount() -> Int? {
-    return getRegistryPropertyForKey(.CycleCount) as? Int
-  }
-
-  ///  Gets the designed cycle count.
-  ///
-  ///  - returns: The design cycle count.
-  internal func designCycleCount() -> Int? {
-    return getRegistryPropertyForKey(.DesignCycleCount) as? Int
-  }
-
-  ///  Gets the current temperature of the battery, in the supplied format.
-  ///
-  ///  - parameter unit: Temperature unit. Default: Celsius.
-  ///  - returns: The current temperature of the battery.
-  internal func temperature(unit: TemperatureUnit = .Celsius) -> Double? {
-    guard let prop = getRegistryPropertyForKey(.Temperature) as? Double else {
-      return nil
-    }
-    let temperature = prop / 100.0
-
-    switch unit {
-    case .Fahrenheit:
-      return round((temperature * 1.8) + 32)
-    case .Celsius:
-      return round(temperature)
-    }
-  }
-
   // MARK: Private Methods
+
+  ///  Opens a connection to the battery's IO service.
+  ///
+  ///  - throws: ConnectionAlreadyOpen exception, if the last connection wasn't closed properly.
+  ///  - throws: ServiceNotFound exception, if the IOSERVICE_BATTERY couldn't be found.
+  private func openServiceConnection() throws {
+    // If the IO service is still open...
+    if service != 0 {
+      // ...try closing it.
+      if !closeServiceConnection() {
+        // Throw a BatteryError in case the IO connection won't close.
+        throw BatteryError.ConnectionAlreadyOpen
+      }
+    }
+    // Get an IOService object for the defined
+    service = IOServiceGetMatchingService(kIOMasterPortDefault,
+      IOServiceNameMatching(batteryIOServiceName))
+    // Throw a BatteryError if the IO service couldn't be opened.
+    if service == 0 {
+      throw BatteryError.ServiceNotFound
+    }
+  }
+
+  ///  Closes the connection the the battery's IO service.
+  ///
+  ///  - returns: True on success; false otherwise.
+  private func closeServiceConnection() -> Bool {
+    // Release the IO object...
+    let result = IOObjectRelease(service)
+    // ...and reset the service property.
+    if result == kIOReturnSuccess {
+      service = 0
+    }
+    return (result == kIOReturnSuccess)
+  }
 
   ///  Get the registry entry's property for the supplied SmartBatteryKey.
   ///
@@ -239,17 +199,6 @@ final class Battery {
 internal enum BatteryError: ErrorType {
   case ConnectionAlreadyOpen
   case ServiceNotFound
-}
-
-// MARK: TemperatureUnits
-
-///  Describes temperature units.
-///
-///  - Celsius:    Celsius
-///  - Fahrenheit: Fahrenheit
-internal enum TemperatureUnit {
-  case Celsius
-  case Fahrenheit
 }
 
 // MARK: SmartBatteryKey's
