@@ -41,27 +41,27 @@ final class UserPreferences {
 
   /// Notify the user at five percent left.
   var fivePercentNotification: Int {
-    get { return userDefaults.integerForKey(fivePercentNotificationKey) }
+    return userDefaults.integerForKey(fivePercentNotificationKey)
   }
 
   /// Notify the user at ten percent left.
   var tenPercentNotification: Int {
-    get { return userDefaults.integerForKey(tenPercentNotificationKey) }
+    return userDefaults.integerForKey(tenPercentNotificationKey)
   }
 
   /// Notify the user at fifeteen percent left.
   var fifeteenPercentNotification: Int {
-    get { return userDefaults.integerForKey(fifeteenPercentNotificationKey) }
+    return userDefaults.integerForKey(fifeteenPercentNotificationKey)
   }
 
   /// Notify the user at twenty percent left.
   var twentyPercentNotification: Int {
-    get { return userDefaults.integerForKey(twentyPercentNotificationKey) }
+    return userDefaults.integerForKey(twentyPercentNotificationKey)
   }
 
   /// Notify the user when the battery is fully charged.
   var hundredPercentNotification: Int {
-    get { return userDefaults.integerForKey(hundredPercentNotificationKey) }
+    return userDefaults.integerForKey(hundredPercentNotificationKey)
   }
 
   /// Saves the NotificationKey the user was last informed of.
