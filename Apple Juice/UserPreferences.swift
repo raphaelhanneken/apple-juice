@@ -35,8 +35,7 @@ final class UserPreferences {
 
   /// Display the current charging status as time remaining? Default: Percentage.
   var showTime: Bool {
-    get { return userDefaults.boolForKey(showTimeKey) }
-    set { userDefaults.setBool(newValue, forKey: showTimeKey) }
+    return userDefaults.boolForKey(showTimeKey)
   }
 
   /// Notify the user at five percent left.
