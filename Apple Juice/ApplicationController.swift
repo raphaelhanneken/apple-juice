@@ -37,31 +37,26 @@ final class ApplicationController: NSObject {
 
   /// Holds the app's status bar item.
   private var statusItem: NSStatusItem?
-  /// Manage user preferences.
-  private let userPrefs = UserPreferences()
   /// Access to battery information.
   private var battery: Battery?
+  /// Manage user preferences.
+  private let userPrefs = UserPreferences()
 
   // MARK: Methods
 
   override init() {
+    // Initialize NSObject.
+    super.init()
+    // Configure the status bar item.
+    statusItem = configureStatusItem()
+
     do {
-      // Initialize our parent class.
-      super.init()
-      // Configure the status bar item.
-      statusItem = configureStatusItem()
       // Get access to the battery information.
       try battery = Battery()
       // Display the status bar item.
       updateStatusItem()
-      // Listen for PowerSourceChanged notifications.
-      NSNotificationCenter.defaultCenter().addObserver(self,
-        selector: Selector("powerSourceChanged:"), name: powerSourceChangedNotification,
-        object: nil)
-
-      NSNotificationCenter.defaultCenter().addObserver(self,
-        selector: Selector("userDefaultsDidChange:"), name: NSUserDefaultsDidChangeNotification,
-        object: nil)
+      // Listen for notifications.
+      registerAsObserver()
     } catch {
       // Draw a status item for the catched battery error.
       batteryError(type: error as? BatteryError)
@@ -244,6 +239,14 @@ final class ApplicationController: NSObject {
     if let img = button.image {
       img.template = true
     }
+  ///  Listen for powerSourceChangedNotification's and NSUserDefaultsDidChangeNotificaion's.
+  private func registerAsObserver() {
+    NSNotificationCenter.defaultCenter().addObserver(self,
+      selector: Selector("powerSourceChanged:"), name: powerSourceChangedNotification,
+      object: nil)
+    NSNotificationCenter.defaultCenter().addObserver(self,
+      selector: Selector("userDefaultsDidChange:"), name: NSUserDefaultsDidChangeNotification,
+      object: nil)
   }
 
   // MARK: IBAction's
