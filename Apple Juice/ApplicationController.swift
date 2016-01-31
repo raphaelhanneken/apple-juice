@@ -170,33 +170,28 @@ final class ApplicationController: NSObject {
       percentage = battery?.percentage() else {
         return
     }
-    // Check if we're plugged and charged.
+
+    // Define a new notification key.
+    let notificationKey: NotificationKey?
+
+    // Check what kind of notification key we have here.
     if plugged && charged {
-      // Does the user wants to get notified about the plugged & charged status?
-      if userPrefs.notifications.contains(.HundredPercent)
-        && userPrefs.lastNotified != .HundredPercent {
-          // Post a plugged & charged notification.
-          NotificationController.pluggedAndChargedNotification()
-          // Save the hundredPercent notification key as last notified.
-          userPrefs.lastNotified = .HundredPercent
-      }
+      notificationKey = .HundredPercent
     } else if !plugged {
-      // Since we're not charging, check if we should post a low percentage notification.
-      guard let notificationKey = NotificationKey(rawValue: percentage)
-        where userPrefs.notifications.contains(notificationKey) else {
-          return
-      }
-      // Check that we haven't already notified the user about the current percentage.
-      if userPrefs.lastNotified != notificationKey {
-        // Post a low percentage notification.
-        NotificationController.lowPercentageNotification(forPercentage: notificationKey)
-        // Set lastNotified to the current notification key.
-        userPrefs.lastNotified = notificationKey
-      }
+      notificationKey = NotificationKey(rawValue: percentage)
     } else {
-      // Reset the lastNotified property.
-      userPrefs.lastNotified = .None
+      notificationKey = .None
     }
+    // Check if the user is interested in the current battery status and that we haven't already
+    // notified the user about the current status.
+    guard let key = notificationKey
+      where userPrefs.notifications.contains(key) && userPrefs.lastNotified != key else {
+        return
+    }
+
+    // Post the notification and save it as last notified.
+    NotificationController.postUserNotification(forPercentage: key)
+    userPrefs.lastNotified = key
   }
 
   ///  Creates an attributed string for the status bar item's title.

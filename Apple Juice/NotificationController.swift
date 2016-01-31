@@ -30,8 +30,19 @@ import Foundation
 /// Methods to post user notifications about the current charging status.
 final class NotificationController {
 
+  ///  Post a user notification based on the supplied notification key.
+  ///
+  ///  - parameter percentage: notification key for the current charging status.
+  static func postUserNotification(forPercentage percentage: NotificationKey) {
+    if percentage == .HundredPercent {
+      pluggedAndChargedNotification()
+    } else {
+      lowPercentageNotification(forPercentage: percentage)
+    }
+  }
+
   ///  Posts a plugged and charged user notification.
-  static func pluggedAndChargedNotification() {
+  static private func pluggedAndChargedNotification() {
     // Create a new user notification.
     let notification = NSUserNotification()
     // Configure the notification.
@@ -44,7 +55,7 @@ final class NotificationController {
   ///  Posts a low percentage user notification.
   ///
   ///  - parameter percentage: The current percentage.
-  static func lowPercentageNotification(forPercentage percentage: NotificationKey) {
+  static private func lowPercentageNotification(forPercentage percentage: NotificationKey) {
     // Create a new user notification.
     let notification = NSUserNotification()
     // Configure the notification.
