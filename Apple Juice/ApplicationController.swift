@@ -156,8 +156,10 @@ final class ApplicationController: NSObject {
   ///  Checks if the user wants to get notified about the current charging status.
   private func postUserNotification() {
     // Unwrap the necessary information.
-    guard let battery = battery, percentage = battery.percentage(), plugged = battery.isPlugged(),
-      charged = battery.isCharged(), charging = battery.isCharging() else {
+    guard let plugged  = battery?.isPlugged(),
+      charging   = battery?.isCharging(),
+      charged    = battery?.isCharged(),
+      percentage = battery?.percentage() else {
         return
     }
     // Check if we're plugged and charged.
