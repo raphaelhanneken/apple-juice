@@ -27,7 +27,7 @@
 
 import Cocoa
 
-final class ApplicationController {
+final class ApplicationController: NSObject {
   /// Holds a reference to the application menu.
   @IBOutlet weak var appMenu: NSMenu!
   /// Holds a reference to the charging status menu item.
@@ -44,10 +44,12 @@ final class ApplicationController {
 
   // MARK: Methods
 
-  init() {
-    // Configure the status bar item.
-    statusItem = configureStatusItem()
+  override init() {
     do {
+      // Initialize our parent class.
+      super.init()
+      // Configure the status bar item.
+      statusItem = configureStatusItem()
       // Get access to the battery information.
       try battery = Battery()
       // Display the status bar item.
