@@ -62,7 +62,7 @@ final class Battery {
   ///  - returns: The time in a human readable format.
   internal func timeRemainingFormatted() -> String {
     guard let charged = isCharged(), time = timeRemaining(), plugged = isPlugged() else {
-        return NSLocalizedString("unknown", comment: "")
+      return NSLocalizedString("unknown", comment: "")
     }
 
     if charged && plugged {
@@ -85,7 +85,7 @@ final class Battery {
   ///  - returns: The current percentage of the battery.
   internal func percentage() -> Int? {
     guard let maxCapacity = maxCapacity(), currentCapacity = currentCharge() else {
-        return nil
+      return nil
     }
 
     return Int(round(Double(currentCapacity) / Double(maxCapacity) * 100.0))
