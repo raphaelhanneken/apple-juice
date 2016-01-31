@@ -42,10 +42,12 @@ final class StatusIcon {
     return StatusIcon.batteryImage(named: "BatteryCharging")
   }
 
+  /// Returns the battery image for a ConnectionAlreadyOpen error.
   static var batteryDeadCropped: NSImage? {
     return StatusIcon.batteryImage(named: "BatteryDeadCropped")
   }
 
+  /// Returns the battery image for a ServiceNotFound error.
   static var batteryNone: NSImage? {
     return StatusIcon.batteryImage(named: "BatteryNone")
   }
