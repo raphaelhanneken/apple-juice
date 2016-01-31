@@ -58,6 +58,10 @@ final class ApplicationController: NSObject {
       NSNotificationCenter.defaultCenter().addObserver(self,
         selector: Selector("powerSourceChanged:"), name: powerSourceChangedNotification,
         object: nil)
+
+      NSNotificationCenter.defaultCenter().addObserver(self,
+        selector: Selector("userDefaultsDidChange:"), name: NSUserDefaultsDidChangeNotification,
+        object: nil)
     } catch {
       // Draw a status item for the catched battery error.
       batteryError(type: error as? BatteryError)
@@ -84,6 +88,13 @@ final class ApplicationController: NSObject {
     if let statusItem = statusItem {
       statusItem.popUpStatusItemMenu(appMenu)
     }
+  }
+
+  ///  Updates the status bar item every time the user defaults change.
+  ///
+  ///  - parameter sender: The object that send the message.
+  func userDefaultsDidChange(sender: AnyObject) {
+    updateStatusItem()
   }
 
   // MARK: Private Methods
