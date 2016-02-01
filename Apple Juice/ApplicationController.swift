@@ -78,11 +78,8 @@ final class ApplicationController: NSObject {
   ///  - parameter sender: The object that send the message.
   func displayAppMenu(sender: AnyObject) {
     // Update the information displayed within the app menu...
-    updateMenuItems({ _ in
-      // ...and show the application menu.
-      if let statusItem = self.statusItem {
-        statusItem.popUpStatusItemMenu(self.appMenu)
-      }
+    updateMenuItems({
+      self.statusItem?.popUpStatusItemMenu(self.appMenu)
     })
   }
 
@@ -140,21 +137,20 @@ final class ApplicationController: NSObject {
   ///  - parameter callback: A callback function, that should get
   ///                        called as soon as the menu items are updated.
   private func updateMenuItems(callback: () -> Void) {
+    // Unwrap the battery object.
     guard let battery = battery else {
       return
     }
-    // Get the updated information and set them as the item title.
+    // Get the current source and set the menu item title.
     currentSource.title = "\(NSLocalizedString("source", comment: ""))"
       + " \(battery.currentSource())"
-    // Check wether the user wants the remaining time or not.
-    if userPrefs.showTime {
-      if let percentage = battery.percentage() {
+    // Display the remaining time/percentage.
+    if let percentage = battery.percentage() where userPrefs.showTime {
         currentCharge.title = "\(percentage) %"
-      }
     } else {
       currentCharge.title = battery.timeRemainingFormatted()
     }
-    // Unwrap additional information.
+    // Display the current charge and the current capacity.
     if let charge = battery.currentCharge(), capacity = battery.maxCapacity() {
       currentCharge.title += " (\(charge) / \(capacity) mAh)"
     }
