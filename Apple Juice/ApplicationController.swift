@@ -230,11 +230,13 @@ final class ApplicationController: NSObject {
     button.image?.template = true
   }
 
-  ///  Listen for powerSourceChangedNotification's and NSUserDefaultsDidChangeNotificaion's.
+  ///  Listen for power source and user defaults notifications.
   private func registerAsObserver() {
+    // Get notified, when the power source changes.
     NSNotificationCenter.defaultCenter().addObserver(self,
       selector: Selector("powerSourceChanged:"), name: powerSourceChangedNotification,
       object: nil)
+    // Get notified, when the user defaults change.
     NSNotificationCenter.defaultCenter().addObserver(self,
       selector: Selector("userDefaultsDidChange:"), name: NSUserDefaultsDidChangeNotification,
       object: nil)
