@@ -77,7 +77,6 @@ final class UserPreferences {
   var notifications: Set<NotificationKey> {
     // Create an empty set.
     var result: Set<NotificationKey> = []
-
     // Check for notification settings.
     if fivePercentNotification == 1 {
       result.insert(.FivePercent)
@@ -94,7 +93,6 @@ final class UserPreferences {
     if hundredPercentNotification == 1 {
       result.insert(.HundredPercent)
     }
-
     return result
   }
 

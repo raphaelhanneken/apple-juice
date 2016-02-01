@@ -61,10 +61,11 @@ final class Battery {
   ///
   ///  - returns: The time in a human readable format.
   func timeRemainingFormatted() -> String {
+    // Unwrap the necessary information or return "Unknown" in case something went wrong.
     guard let charged = isCharged(), time = timeRemaining(), plugged = isPlugged() else {
       return NSLocalizedString("unknown", comment: "")
     }
-
+    // If the remaining time is unlimited, just return "Charged".
     if charged && plugged {
       return NSLocalizedString("charged", comment: "")
     } else {
@@ -84,10 +85,11 @@ final class Battery {
   ///
   ///  - returns: The current percentage of the battery.
   func percentage() -> Int? {
+    // Get the necessary information.
     guard let maxCapacity = maxCapacity(), currentCapacity = currentCharge() else {
       return nil
     }
-
+    // Calculate the current percentage.
     return Int(round(Double(currentCapacity) / Double(maxCapacity) * 100.0))
   }
 
@@ -109,10 +111,11 @@ final class Battery {
   ///
   ///  - returns: The currently connected source of power.
   func currentSource() -> String {
+    // Unwrap the necessary information or return "Unknown" in case something went wrong.
     guard let plugged = isPlugged() else {
       return NSLocalizedString("unknown", comment: "")
     }
-
+    // Check if we're currently plugged into a power adapter.
     if plugged {
       return NSLocalizedString("power adapter", comment: "")
     } else {

@@ -34,6 +34,8 @@ final class NotificationController {
   ///
   ///  - parameter percentage: notification key for the current charging status.
   static func postUserNotification(forPercentage percentage: NotificationKey) {
+    // Post a pluggedAndCharged notification at hundred percent; a lowPercentage
+    // notification otherwise.
     if percentage == .HundredPercent {
       pluggedAndChargedNotification()
     } else {

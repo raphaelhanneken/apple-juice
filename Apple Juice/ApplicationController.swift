@@ -101,7 +101,6 @@ final class ApplicationController: NSObject {
     // Set properties.
     statusItem.target = self
     statusItem.action = Selector("displayAppMenu:")
-
     return statusItem
   }
 
@@ -166,10 +165,8 @@ final class ApplicationController: NSObject {
       percentage = battery?.percentage() else {
         return
     }
-
     // Define a new notification key.
     let notificationKey: NotificationKey?
-
     // Check what kind of notification key we have here.
     if plugged && charged {
       notificationKey = .HundredPercent
@@ -184,7 +181,6 @@ final class ApplicationController: NSObject {
       where userPrefs.notifications.contains(key) && userPrefs.lastNotified != key else {
         return
     }
-
     // Post the notification and save it as last notified.
     NotificationController.postUserNotification(forPercentage: key)
     userPrefs.lastNotified = key
