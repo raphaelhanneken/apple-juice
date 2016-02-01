@@ -219,9 +219,9 @@ final class ApplicationController: NSObject {
     // Get the right icon and set an error message for the supplied error
     switch type {
     case .ConnectionAlreadyOpen:
-      button.image = StatusIcon.batteryDeadCropped
+      button.image = StatusIcon.batteryConnectionAlreadyOpen
     case .ServiceNotFound:
-      button.image = StatusIcon.batteryNone
+      button.image = StatusIcon.batteryServiceNotFound
     }
     // Define the image as template
     button.image?.template = true
