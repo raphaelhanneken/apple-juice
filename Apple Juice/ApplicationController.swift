@@ -201,14 +201,15 @@ final class ApplicationController: NSObject {
   ///  - returns: The attributed string with percentage or time information, respectively.
   private func attributedTitle(withPercentage percent: Int, andTime time: String)
     -> NSAttributedString {
-      var title = "\(percent) % "
+      // Define some attributes to make the status bar item look like Apple's battery gauge.
       let attrs = [NSFontAttributeName : NSFont.systemFontOfSize(12.0),
         NSBaselineOffsetAttributeName : 1.0]
-      // Set the title to the remaining time.
+      // Check whether the user wants to see the remaining time or not.
       if userPrefs.showTime {
-        title = "\(time) "
+        return NSAttributedString(string: "\(time) ", attributes: attrs)
+      } else {
+        return NSAttributedString(string: "\(percent) % ", attributes: attrs)
       }
-      return NSAttributedString(string: title, attributes: attrs)
   }
 
   ///  Display a battery error.
