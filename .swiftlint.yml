@@ -1,6 +1,2 @@
 excluded:
   - Carthage
-
-type_body_length:
-  - 250
-  - 300

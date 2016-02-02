@@ -30,7 +30,7 @@ import IOKit.ps
 import IOKit
 
 /// Notification that gets posted whenever a power source is changed.
-internal let powerSourceChangedNotification = "com.raphaelhanneken.apple-juice.powersourcechanged"
+let powerSourceChangedNotification = "com.raphaelhanneken.apple-juice.powersourcechanged"
 
 /// Gets called whenever any power source is added, removed, or changed.
 private let powerSourceCallback: IOPowerSourceCallbackType = { _ in
@@ -49,7 +49,7 @@ final class Battery {
 
   // MARK: Methods
 
-  internal init() throws {
+  init() throws {
     try openServiceConnection()
     // Get notified when the power source information changes.
     let loop = IOPSNotificationCreateRunLoopSource(powerSourceCallback, nil).takeUnretainedValue()
@@ -60,11 +60,12 @@ final class Battery {
   ///  Time until the battery is empy or fully charged, in a human readable format.
   ///
   ///  - returns: The time in a human readable format.
-  internal func timeRemainingFormatted() -> String {
+  func timeRemainingFormatted() -> String {
+    // Unwrap the necessary information or return "Unknown" in case something went wrong.
     guard let charged = isCharged(), time = timeRemaining(), plugged = isPlugged() else {
       return NSLocalizedString("unknown", comment: "")
     }
-
+    // If the remaining time is unlimited, just return "Charged".
     if charged && plugged {
       return NSLocalizedString("charged", comment: "")
     } else {
@@ -75,7 +76,7 @@ final class Battery {
   ///  Time until the battery is empty or fully charged.
   ///
   ///  - returns: The time in minutes.
-  internal func timeRemaining() -> Int? {
+  func timeRemaining() -> Int? {
     return getRegistryPropertyForKey(.TimeRemaining) as? Int
   }
 
@@ -83,36 +84,38 @@ final class Battery {
   ///  the maximum capacity.
   ///
   ///  - returns: The current percentage of the battery.
-  internal func percentage() -> Int? {
+  func percentage() -> Int? {
+    // Get the necessary information.
     guard let maxCapacity = maxCapacity(), currentCapacity = currentCharge() else {
       return nil
     }
-
+    // Calculate the current percentage.
     return Int(round(Double(currentCapacity) / Double(maxCapacity) * 100.0))
   }
 
   ///  Gets the current charge in mAh.
   ///
   ///  - returns: The current charge in mAh.
-  internal func currentCharge() -> Int? {
+  func currentCharge() -> Int? {
     return getRegistryPropertyForKey(.CurrentCharge) as? Int
   }
 
   ///  Gets the maximum capacity in mAh.
   ///
   ///  - returns: The maximum capacity in mAh.
-  internal func maxCapacity() -> Int? {
+  func maxCapacity() -> Int? {
     return getRegistryPropertyForKey(.MaxCapacity) as? Int
   }
 
   ///  Gets the current source of power.
   ///
   ///  - returns: The currently connected source of power.
-  internal func currentSource() -> String {
+  func currentSource() -> String {
+    // Unwrap the necessary information or return "Unknown" in case something went wrong.
     guard let plugged = isPlugged() else {
       return NSLocalizedString("unknown", comment: "")
     }
-
+    // Check if we're currently plugged into a power adapter.
     if plugged {
       return NSLocalizedString("power adapter", comment: "")
     } else {
@@ -123,21 +126,21 @@ final class Battery {
   ///  Is the battery currently connected to a power outlet and charging?
   ///
   ///  - returns: True or false, whether the battery is chargin or not.
-  internal func isCharging() -> Bool? {
+  func isCharging() -> Bool? {
     return getRegistryPropertyForKey(.IsCharging) as? Bool
   }
 
   ///  Is the battery charged?
   ///
   ///  - returns: True/false, wheter the battery is charged or not.
-  internal func isCharged() -> Bool? {
+  func isCharged() -> Bool? {
     return getRegistryPropertyForKey(.FullyCharged) as? Bool
   }
 
   ///  Checks wether or not a unlimited power supply is plugged in.
   ///
   ///  - returns: true when an unlimited power supple is plugged in; false otherwise.
-  internal func isPlugged() -> Bool? {
+  func isPlugged() -> Bool? {
     return getRegistryPropertyForKey(.ACPowered) as? Bool
   }
 
@@ -196,7 +199,7 @@ final class Battery {
 ///                           is already open.
 ///  - ServiceNotFound:       Gets thrown in case the IO service string (Battery.BatteryServiceName)
 ///                           wasn't found.
-internal enum BatteryError: ErrorType {
+enum BatteryError: ErrorType {
   case ConnectionAlreadyOpen
   case ServiceNotFound
 }

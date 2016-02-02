@@ -42,11 +42,13 @@ final class StatusIcon {
     return StatusIcon.batteryImage(named: "BatteryCharging")
   }
 
-  static var batteryDeadCropped: NSImage? {
+  /// Returns the battery image for a ConnectionAlreadyOpen error.
+  static var batteryConnectionAlreadyOpen: NSImage? {
     return StatusIcon.batteryImage(named: "BatteryDeadCropped")
   }
 
-  static var batteryNone: NSImage? {
+  /// Returns the battery image for a ServiceNotFound error.
+  static var batteryServiceNotFound: NSImage? {
     return StatusIcon.batteryImage(named: "BatteryNone")
   }
 
@@ -68,21 +70,19 @@ final class StatusIcon {
     let capacityBarOffsetTop = batteryOutline.size.height - (capacityBarOffset + capacityBarHeight)
     // Calculate the width of the capacity bar.
     var capacityBarWidth = CGFloat(ceil(Double(percentage / 12))) * batteryMid.size.width
-
     // Don't draw the capacity bar smaller than two single battery images, to prevent
     // graphic errors.
     if (2 * batteryMid.size.width) >= capacityBarWidth {
       capacityBarWidth = (2 * batteryMid.size.width) + 0.1
     }
-
     // Define the drawing rect.
     let drawingRect = NSRect(x: capacityBarOffset, y: capacityBarOffsetTop,
       width: capacityBarWidth, height: capacityBarHeight)
 
     // Finally, draw the actual menu bar icon.
     batteryOutline.lockFocus()
-    NSDrawThreePartImage(drawingRect, batteryLeft, batteryMid, batteryRight, false,
-      .CompositeCopy, 1, false)
+    drawThreePartImage(frame: drawingRect, startCap: batteryLeft, fill: batteryMid,
+      endCap: batteryRight)
     batteryOutline.unlockFocus()
 
     return batteryOutline
@@ -95,7 +95,6 @@ final class StatusIcon {
   private static func batteryImage(named name: String) -> NSImage? {
     // Define the path to apple's battery icons.
     let path = "/System/Library/CoreServices/Menu Extras/Battery.menu/Contents/Resources/"
-
     // Open the supplied file as NSImage.
     if let img = NSImage(contentsOfFile: "\(path)\(name).pdf") {
       return img
@@ -103,5 +102,16 @@ final class StatusIcon {
       print("An error occured while reading image named: \(name)")
       return nil
     }
+  }
+
+  ///  Draws a three part tiled image.
+  ///
+  ///  - parameter rect:  The rectangle in which to draw the image.
+  ///  - parameter start: The left edge of the image frame.
+  ///  - parameter fill:  The image used to fill the space between the start and endCap images.
+  ///  - parameter end:   The right edge of the image frame.
+  private static func drawThreePartImage(frame rect: NSRect, startCap start: NSImage,
+    fill: NSImage, endCap end: NSImage) {
+      NSDrawThreePartImage(rect, start, fill, end, false, .CompositeCopy, 1, false)
   }
 }

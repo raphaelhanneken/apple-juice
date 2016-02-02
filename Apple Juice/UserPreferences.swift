@@ -34,38 +34,37 @@ final class UserPreferences {
   private let userDefaults = NSUserDefaults.standardUserDefaults()
 
   /// Display the current charging status as time remaining? Default: Percentage.
-  internal var showTime: Bool {
-    get { return userDefaults.boolForKey(showTimeKey) }
-    set { userDefaults.setBool(newValue, forKey: showTimeKey) }
+  var showTime: Bool {
+    return userDefaults.boolForKey(showTimeKey)
   }
 
   /// Notify the user at five percent left.
-  internal var fivePercentNotification: Int {
-    get { return userDefaults.integerForKey(fivePercentNotificationKey) }
+  var fivePercentNotification: Int {
+    return userDefaults.integerForKey(fivePercentNotificationKey)
   }
 
   /// Notify the user at ten percent left.
-  internal var tenPercentNotification: Int {
-    get { return userDefaults.integerForKey(tenPercentNotificationKey) }
+  var tenPercentNotification: Int {
+    return userDefaults.integerForKey(tenPercentNotificationKey)
   }
 
   /// Notify the user at fifeteen percent left.
-  internal var fifeteenPercentNotification: Int {
-    get { return userDefaults.integerForKey(fifeteenPercentNotificationKey) }
+  var fifeteenPercentNotification: Int {
+    return userDefaults.integerForKey(fifeteenPercentNotificationKey)
   }
 
   /// Notify the user at twenty percent left.
-  internal var twentyPercentNotification: Int {
-    get { return userDefaults.integerForKey(twentyPercentNotificationKey) }
+  var twentyPercentNotification: Int {
+    return userDefaults.integerForKey(twentyPercentNotificationKey)
   }
 
   /// Notify the user when the battery is fully charged.
-  internal var hundredPercentNotification: Int {
-    get { return userDefaults.integerForKey(hundredPercentNotificationKey) }
+  var hundredPercentNotification: Int {
+    return userDefaults.integerForKey(hundredPercentNotificationKey)
   }
 
   /// Saves the NotificationKey the user was last informed of.
-  internal var lastNotified: NotificationKey? {
+  var lastNotified: NotificationKey? {
     get { return NotificationKey(rawValue: userDefaults.integerForKey(lastNotifiedKey)) }
     set {
       if let notificationKey = newValue {
@@ -75,10 +74,9 @@ final class UserPreferences {
   }
 
   /// A set of all notifications the user is interested in.
-  internal var notifications: Set<NotificationKey> {
+  var notifications: Set<NotificationKey> {
     // Create an empty set.
     var result: Set<NotificationKey> = []
-
     // Check for notification settings.
     if fivePercentNotification == 1 {
       result.insert(.FivePercent)
@@ -95,13 +93,12 @@ final class UserPreferences {
     if hundredPercentNotification == 1 {
       result.insert(.HundredPercent)
     }
-
     return result
   }
 
   // MARK: Methods
 
-  internal init() {
+  init() {
     registerUserDefaults()
   }
 
@@ -119,16 +116,16 @@ final class UserPreferences {
 // MARK: Preference Constants
 
 /// Show time preference key.
-private let showTimeKey = "ShowTimePref"
+private let showTimeKey                    = "ShowTimePref"
 /// Five percent notification preference key.
-private let fivePercentNotificationKey = "FivePercentNotificationPref"
+private let fivePercentNotificationKey     = "FivePercentNotificationPref"
 /// Ten percent notification preference key.
-private let tenPercentNotificationKey = "TenPercentNotificationPref"
+private let tenPercentNotificationKey      = "TenPercentNotificationPref"
 /// Fifeteen percent notification preference key.
 private let fifeteenPercentNotificationKey = "FifeteenPercentNotificationPref"
 /// Twenty percent notification preference key.
-private let twentyPercentNotificationKey = "TwentyPercentNotificationPref"
+private let twentyPercentNotificationKey   = "TwentyPercentNotificationPref"
 /// Hundred percent notification preference key.
-private let hundredPercentNotificationKey = "HundredPercentNotificationPref"
+private let hundredPercentNotificationKey  = "HundredPercentNotificationPref"
 /// Save the percentage when the user was last notified.
-private let lastNotifiedKey = "LastNotifiedPref"
+private let lastNotifiedKey                = "LastNotifiedPref"
