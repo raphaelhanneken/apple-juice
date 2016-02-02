@@ -68,7 +68,7 @@ final class NotificationController {
   }
 }
 
-// MARK: NotificationKey's
+// MARK: - NotificationKey's
 
 ///  Defines a notification at a given percentage.
 ///

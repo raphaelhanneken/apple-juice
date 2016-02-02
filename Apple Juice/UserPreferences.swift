@@ -96,7 +96,7 @@ final class UserPreferences {
     return result
   }
 
-  // MARK: Methods
+  // MARK: - Methods
 
   init() {
     registerUserDefaults()
@@ -113,7 +113,7 @@ final class UserPreferences {
   }
 }
 
-// MARK: Preference Constants
+// MARK: - Preference Constants
 
 /// Show time preference key.
 private let showTimeKey                    = "ShowTimePref"

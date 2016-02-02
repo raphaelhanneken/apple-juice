@@ -42,7 +42,7 @@ final class ApplicationController: NSObject {
   /// Manage user preferences.
   private let userPrefs = UserPreferences()
 
-  // MARK: Methods
+  // MARK: - Methods
 
   override init() {
     // Initialize NSObject.
@@ -90,7 +90,7 @@ final class ApplicationController: NSObject {
     updateStatusItem()
   }
 
-  // MARK: Private Methods
+  // MARK: - Private Methods
 
   ///  Creates and configures the app's status bar item.
   ///
@@ -235,7 +235,7 @@ final class ApplicationController: NSObject {
       object: nil)
   }
 
-  // MARK: IBAction's
+  // MARK: - IBAction's
 
   ///  Open the energy saver preference pane.
   ///

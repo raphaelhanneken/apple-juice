@@ -47,7 +47,7 @@ final class Battery {
   /// An IOService object that matches battery's IO service dict.
   private var service: io_object_t = 0
 
-  // MARK: Methods
+  // MARK: - Methods
 
   init() throws {
     try openServiceConnection()
@@ -144,7 +144,7 @@ final class Battery {
     return getRegistryPropertyForKey(.ACPowered) as? Bool
   }
 
-  // MARK: Private Methods
+  // MARK: - Private Methods
 
   ///  Opens a connection to the battery's IO service.
   ///
@@ -191,7 +191,7 @@ final class Battery {
   }
 }
 
-// MARK: BatteryErrorType
+// MARK: - BatteryErrorType
 
 ///  Exceptions for the Battery class.
 ///
