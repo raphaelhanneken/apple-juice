@@ -133,9 +133,9 @@ final class ApplicationController: NSObject {
 
   ///  Updates the information within the app menu.
   ///
-  ///  - parameter callback: A callback function, that should get
-  ///                        called as soon as the menu items are updated.
-  private func updateMenuItems(callback: () -> Void) {
+  ///  - parameter completionHandler: A callback function, that should get
+  ///    called as soon as the menu items are updated.
+  private func updateMenuItems(completionHandler: () -> Void) {
     // Unwrap the battery object.
     guard let battery = battery else {
       return
@@ -154,7 +154,7 @@ final class ApplicationController: NSObject {
       currentCharge.title += " (\(charge) / \(capacity) mAh)"
     }
     // Run the callback.
-    callback()
+    completionHandler()
   }
 
   ///  Checks if the user wants to get notified about the current charging status.
