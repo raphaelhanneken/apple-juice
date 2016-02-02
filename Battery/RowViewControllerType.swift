@@ -28,7 +28,7 @@
 import Foundation
 
 /// Defines the type for the RowViewController
-class RowViewControllerType {
+class RowViewControllerType: NSObject {
 
   /// Holds the row view title, e.g. "Cycle Count"
   var title: String = ""
@@ -36,11 +36,19 @@ class RowViewControllerType {
   var value: String = ""
 
   /// Returns a string that describes the contents of the receiver.
-  var description: String {
-    return "\(self.title) \(self.value)"
+  override var description: String {
+    return "\(title) \(value)"
+  }
+
+  // MARK: - Init
+
+  override convenience init() {
+    self.init(withType: .Undefined)
   }
 
   init(withType type: RowViewControllerTypeDef) {
+    // Initialze NSObject.
+    super.init()
     // Get the battery information for the supplied row type def.
     self.setProperties(forType: type)
   }
