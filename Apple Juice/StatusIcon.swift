@@ -80,10 +80,8 @@ final class StatusIcon {
       width: capacityBarWidth, height: capacityBarHeight)
 
     // Finally, draw the actual menu bar icon.
-    batteryOutline.lockFocus()
-    drawThreePartImage(frame: drawingRect, startCap: batteryLeft, fill: batteryMid,
-      endCap: batteryRight)
-    batteryOutline.unlockFocus()
+    drawThreePartImage(frame: drawingRect, canvas: batteryOutline, startCap: batteryLeft,
+      fill: batteryMid, endCap: batteryRight)
 
     return batteryOutline
   }
@@ -107,11 +105,14 @@ final class StatusIcon {
   ///  Draws a three part tiled image.
   ///
   ///  - parameter rect:  The rectangle in which to draw the image.
+  ///  - parameter img:   The NSImage object to draw on.
   ///  - parameter start: The left edge of the image frame.
   ///  - parameter fill:  The image used to fill the space between the start and endCap images.
   ///  - parameter end:   The right edge of the image frame.
-  private static func drawThreePartImage(frame rect: NSRect, startCap start: NSImage,
-    fill: NSImage, endCap end: NSImage) {
+  private static func drawThreePartImage(frame rect: NSRect, canvas img: NSImage,
+    startCap start: NSImage, fill: NSImage, endCap end: NSImage) {
+      img.lockFocus()
       NSDrawThreePartImage(rect, start, fill, end, false, .CompositeCopy, 1, false)
+      img.unlockFocus()
   }
 }
