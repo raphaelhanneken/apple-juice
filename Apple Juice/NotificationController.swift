@@ -44,7 +44,7 @@ final class NotificationController {
   }
 
   ///  Posts a plugged and charged user notification.
-  static private func pluggedAndChargedNotification() {
+  private static func pluggedAndChargedNotification() {
     // Create a new user notification.
     let notification = NSUserNotification()
     // Configure the notification.
@@ -57,7 +57,7 @@ final class NotificationController {
   ///  Posts a low percentage user notification.
   ///
   ///  - parameter percentage: The current percentage.
-  static private func lowPercentageNotification(forPercentage percentage: NotificationKey) {
+  private static func lowPercentageNotification(forPercentage percentage: NotificationKey) {
     // Create a new user notification.
     let notification = NSUserNotification()
     // Configure the notification.

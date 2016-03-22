@@ -83,7 +83,8 @@ final class ApplicationController: NSObject {
     })
   }
 
-  ///  Updates the status bar item every time the user defaults change.
+  ///  Updates the status bar item every time the user defaults
+  ///  change (e.g., the user chooses to display the remaining time instead of percentage).
   ///
   ///  - parameter sender: The object that send the message.
   func userDefaultsDidChange(sender: AnyObject) {
@@ -160,7 +161,7 @@ final class ApplicationController: NSObject {
   ///  Checks if the user wants to get notified about the current charging status.
   private func postUserNotification() {
     // Unwrap the necessary information.
-    guard let plugged  = battery?.isPlugged(),
+    guard let plugged = battery?.isPlugged(),
       charged    = battery?.isCharged(),
       percentage = battery?.percentage() else {
         return
