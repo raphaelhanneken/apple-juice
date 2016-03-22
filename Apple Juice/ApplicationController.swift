@@ -176,14 +176,15 @@ final class ApplicationController: NSObject {
     } else {
       notificationKey = .None
     }
-    // Check if the user is interested in the current battery status and that we haven't already
-    // notified the user about the current status.
-    guard let key = notificationKey
-      where userPrefs.notifications.contains(key) && userPrefs.lastNotified != key else {
-        return
+    // Unwrap the notification key and return, when we already informed the user
+    // about the current percentage.
+    guard let key = notificationKey where userPrefs.lastNotified != key else {
+      return
     }
     // Post the notification and save it as last notified.
-    NotificationController.postUserNotification(forPercentage: key)
+    if userPrefs.notifications.contains(key) {
+      NotificationController.postUserNotification(forPercentage: key)
+    }
     userPrefs.lastNotified = key
   }
 
