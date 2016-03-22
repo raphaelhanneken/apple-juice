@@ -7,6 +7,24 @@
     <language>en</language>
 
     <item>
+      <title>Apple Juice v1.1</title>
+        <description>
+          <![CDATA[
+          <p>Updated to Swift v2.2.</p>
+          ]]>
+        </description>
+        <pubDate>Tue, 22 Mar 2016 14:00:00 +0100</pubDate>
+        <sparkle:minimumSystemVersion>10.11</sparkle:minimumSystemVersion>
+        <enclosure
+          url="https://github.com/raphaelhanneken/apple-juice/releases/download/1.1.0/Apple.Juice.dmg"
+          sparkle:version="165"
+          sparkle:shortVersionString="1.1"
+          sparkle:dsaSignature="MCwCFBKwA3WO7IyJw86/TYFeO4KTmPj3AhQJhpoHbQy1ywc6OMz3XXGRpUSwKA=="
+          length="5927272"
+          type="application/octet-stream" />
+    </item>
+
+    <item>
       <title>Apple Juice v1.0.2</title>
         <description>
           <![CDATA[
