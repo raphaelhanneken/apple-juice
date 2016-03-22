@@ -101,7 +101,7 @@ final class ApplicationController: NSObject {
     let statusItem = NSStatusBar.systemStatusBar().statusItemWithLength(NSVariableStatusItemLength)
     // Set properties.
     statusItem.target = self
-    statusItem.action = Selector("displayAppMenu:")
+    statusItem.action = #selector(ApplicationController.displayAppMenu(_:))
     return statusItem
   }
 
@@ -228,12 +228,14 @@ final class ApplicationController: NSObject {
   private func registerAsObserver() {
     // Get notified, when the power source changes.
     NSNotificationCenter.defaultCenter().addObserver(self,
-      selector: Selector("powerSourceChanged:"), name: powerSourceChangedNotification,
-      object: nil)
+      selector: #selector(ApplicationController.powerSourceChanged(_:)),
+          name: powerSourceChangedNotification,
+        object: nil)
     // Get notified, when the user defaults change.
     NSNotificationCenter.defaultCenter().addObserver(self,
-      selector: Selector("userDefaultsDidChange:"), name: NSUserDefaultsDidChangeNotification,
-      object: nil)
+      selector: #selector(ApplicationController.userDefaultsDidChange(_:)),
+          name: NSUserDefaultsDidChangeNotification,
+        object: nil)
   }
 
   // MARK: - IBAction's
