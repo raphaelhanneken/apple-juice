@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="9531" systemVersion="15D21" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="10116" systemVersion="15E65" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
     <dependencies>
         <deployment identifier="macosx"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="9531"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="10116"/>
     </dependencies>
     <objects>
         <customObject id="-2" userLabel="File's Owner" customClass="NSApplication">
@@ -28,10 +28,10 @@
                     <modifierMask key="keyEquivalentModifierMask"/>
                     <menu key="submenu" title="Apple Juice" systemMenu="apple" id="uQy-DD-JDr">
                         <items>
-                            <menuItem title="About Apple Juice" id="5kV-Vb-QxS">
+                            <menuItem title="About Apple Juice" id="fAW-xg-O7p">
                                 <modifierMask key="keyEquivalentModifierMask"/>
                                 <connections>
-                                    <action selector="orderFrontStandardAboutPanel:" target="-1" id="Exp-CZ-Vem"/>
+                                    <action selector="orderFrontStandardAboutPanel:" target="-1" id="qyH-e3-NeY"/>
                                 </connections>
                             </menuItem>
                             <menuItem isSeparatorItem="YES" id="VOq-y0-SEH"/>
@@ -683,12 +683,12 @@
                 <menuItem title="Prozent anzeigen" id="kMe-ps-Frc">
                     <modifierMask key="keyEquivalentModifierMask"/>
                     <connections>
-                        <binding destination="OgL-rZ-xAG" name="value" keyPath="values.ShowTimePref" id="PLE-Do-Guf">
+                        <binding destination="OgL-rZ-xAG" name="hidden" keyPath="values.ShowTimePref" id="I7A-KT-ub3">
                             <dictionary key="options">
                                 <string key="NSValueTransformerName">NSNegateBoolean</string>
                             </dictionary>
                         </binding>
-                        <binding destination="OgL-rZ-xAG" name="hidden" keyPath="values.ShowTimePref" id="I7A-KT-ub3">
+                        <binding destination="OgL-rZ-xAG" name="value" keyPath="values.ShowTimePref" id="PLE-Do-Guf">
                             <dictionary key="options">
                                 <string key="NSValueTransformerName">NSNegateBoolean</string>
                             </dictionary>
@@ -698,8 +698,8 @@
                 <menuItem title="Zeit anzeigen" id="pCY-Rb-LY6">
                     <modifierMask key="keyEquivalentModifierMask"/>
                     <connections>
-                        <binding destination="OgL-rZ-xAG" name="value" keyPath="values.ShowTimePref" id="Mzj-eR-qTA"/>
                         <binding destination="OgL-rZ-xAG" name="hidden" keyPath="values.ShowTimePref" id="Hkb-Y2-L4K"/>
+                        <binding destination="OgL-rZ-xAG" name="value" keyPath="values.ShowTimePref" id="Mzj-eR-qTA"/>
                     </connections>
                 </menuItem>
                 <menuItem title="Benachrichtigungen" id="uGl-yK-qDZ">
@@ -747,10 +747,16 @@
                         <action selector="checkForUpdates:" target="Avc-Ie-Abt" id="Aqj-nm-y4m"/>
                     </connections>
                 </menuItem>
-                <menuItem title="Systemeinstellung „Energie sparen“ …" id="nUK-pj-k8O">
+                <menuItem title="Systemeinstellung Energie sparen…" id="nUK-pj-k8O">
                     <modifierMask key="keyEquivalentModifierMask"/>
                     <connections>
                         <action selector="energySaverPreferences:" target="FRD-GK-LcV" id="eSm-lB-1d2"/>
+                    </connections>
+                </menuItem>
+                <menuItem title="Über Apple Juice" id="5kV-Vb-QxS">
+                    <modifierMask key="keyEquivalentModifierMask"/>
+                    <connections>
+                        <action selector="orderFrontStandardAboutPanel:" target="-1" id="Exp-CZ-Vem"/>
                     </connections>
                 </menuItem>
                 <menuItem isSeparatorItem="YES" id="bcW-nq-A9L"/>

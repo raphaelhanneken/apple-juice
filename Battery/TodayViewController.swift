@@ -73,9 +73,9 @@ NCWidgetSearchViewDelegate {
 
   func widgetMarginInsetsForProposedMarginInsets(defaultMarginInset: NSEdgeInsets)
     -> NSEdgeInsets {
-      // Shadow the default margin inset and override the left margin
-      // so that the list view is flush with the edge.
+      // Shadow the default margin inset...
       var marginInset  = defaultMarginInset
+      // ...and override the left margin so that the list view is flush with the edge.
       marginInset.left = 0
 
       return marginInset
