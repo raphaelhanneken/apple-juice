@@ -14,7 +14,6 @@
 		8EBEB44B1C466091001DBE91 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8EBEB4491C466091001DBE91 /* MainMenu.xib */; };
 		8EBF29DE1C4845F6005BBAE0 /* Sparkle.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8EBF29DD1C4845F6005BBAE0 /* Sparkle.framework */; };
 		8EBF29DF1C4845F6005BBAE0 /* Sparkle.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 8EBF29DD1C4845F6005BBAE0 /* Sparkle.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		8EBF29E31C484633005BBAE0 /* Sparkle.framework.dSYM in CopyFiles */ = {isa = PBXBuildFile; fileRef = 8EBF29E21C484633005BBAE0 /* Sparkle.framework.dSYM */; };
 		8EBF29E51C48489F005BBAE0 /* dsa_pub.pem in Resources */ = {isa = PBXBuildFile; fileRef = 8EBF29E41C48489F005BBAE0 /* dsa_pub.pem */; };
 		8EBF29E91C485493005BBAE0 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 8EBF29EC1C485493005BBAE0 /* Localizable.strings */; };
 		8EBF2A021C4869C1005BBAE0 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 8EBF2A041C4869C1005BBAE0 /* Localizable.strings */; };
@@ -60,7 +59,6 @@
 			dstPath = "";
 			dstSubfolderSpec = 16;
 			files = (
-				8EBF29E31C484633005BBAE0 /* Sparkle.framework.dSYM in CopyFiles */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -100,7 +98,6 @@
 		8EBEB44A1C466091001DBE91 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/MainMenu.xib; sourceTree = "<group>"; };
 		8EBEB44C1C466091001DBE91 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		8EBF29DD1C4845F6005BBAE0 /* Sparkle.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Sparkle.framework; path = Carthage/Build/Mac/Sparkle.framework; sourceTree = "<group>"; };
-		8EBF29E21C484633005BBAE0 /* Sparkle.framework.dSYM */ = {isa = PBXFileReference; lastKnownFileType = wrapper.dsym; name = Sparkle.framework.dSYM; path = Carthage/Build/Mac/Sparkle.framework.dSYM; sourceTree = "<group>"; };
 		8EBF29E41C48489F005BBAE0 /* dsa_pub.pem */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = dsa_pub.pem; sourceTree = "<group>"; };
 		8EBF29EB1C485493005BBAE0 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		8EBF29ED1C48552D005BBAE0 /* Base */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = Base; path = Base.lproj/Localizable.strings; sourceTree = "<group>"; };
@@ -222,7 +219,6 @@
 			children = (
 				8EBF29DD1C4845F6005BBAE0 /* Sparkle.framework */,
 				8EE1297C1C46F891000D404F /* NotificationCenter.framework */,
-				8EBF29E21C484633005BBAE0 /* Sparkle.framework.dSYM */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
