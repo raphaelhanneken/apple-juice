@@ -62,9 +62,12 @@ final class Battery {
   ///  - returns: The time in a human readable format.
   func timeRemainingFormatted() -> String {
     // Unwrap the necessary information or return "Unknown" in case something went wrong.
-    guard let charged = isCharged(), time = timeRemaining(), plugged = isPlugged() else {
+    guard let charged = isCharged(),
+              plugged = isPlugged(),
+                 time = timeRemaining() where time > 0 else {
       return NSLocalizedString("unknown", comment: "")
     }
+
     // If the remaining time is unlimited, just return "Charged".
     if charged && plugged {
       return NSLocalizedString("charged", comment: "")
