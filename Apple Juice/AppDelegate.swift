@@ -30,16 +30,16 @@ import Cocoa
 @NSApplicationMain
 class AppDelegate: NSObject, NSApplicationDelegate {
 
-  func applicationDidFinishLaunching(aNotification: NSNotification) {
+  func applicationDidFinishLaunching(_ aNotification: Notification) {
     // Insert code here to initialize your application
   }
 
-  func applicationWillTerminate(aNotification: NSNotification) {
+  func applicationWillTerminate(_ aNotification: Notification) {
     // Insert code here to tear down your application
   }
 
   // Post messages to the user notification center.
-  func userNotificationCenter(center: NSUserNotificationCenter,
+  func userNotificationCenter(_ center: NSUserNotificationCenter,
     shouldPresentNotification notification: NSUserNotification) -> Bool {
       return true
   }

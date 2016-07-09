@@ -35,7 +35,7 @@ let powerSourceChangedNotification = "com.raphaelhanneken.apple-juice.powersourc
 /// Gets called whenever any power source is added, removed, or changed.
 private let powerSourceCallback: IOPowerSourceCallbackType = { _ in
   // Post a PowerSourceChanged notification.
-  NSNotificationCenter.defaultCenter().postNotificationName(powerSourceChangedNotification,
+  NotificationCenter.default.post(name: Notification.Name(rawValue: powerSourceChangedNotification),
     object: nil)
 }
 
@@ -54,7 +54,7 @@ final class Battery {
     // Get notified when the power source information changes.
     let loop = IOPSNotificationCreateRunLoopSource(powerSourceCallback, nil).takeUnretainedValue()
     // Add the notification loop to the current run loop.
-    CFRunLoopAddSource(CFRunLoopGetCurrent(), loop, kCFRunLoopDefaultMode)
+    CFRunLoopAddSource(CFRunLoopGetCurrent(), loop, CFRunLoopMode.defaultMode)
   }
 
   ///  Time until the battery is empy or fully charged, in a human readable format.
@@ -159,7 +159,7 @@ final class Battery {
       // ...try closing it.
       if !closeServiceConnection() {
         // Throw a BatteryError in case the IO connection won't close.
-        throw BatteryError.ConnectionAlreadyOpen
+        throw BatteryError.connectionAlreadyOpen
       }
     }
     // Get an IOService object for the defined
@@ -167,7 +167,7 @@ final class Battery {
       IOServiceNameMatching(batteryIOServiceName))
     // Throw a BatteryError if the IO service couldn't be opened.
     if service == 0 {
-      throw BatteryError.ServiceNotFound
+      throw BatteryError.serviceNotFound
     }
   }
 
@@ -188,7 +188,7 @@ final class Battery {
   ///
   ///  - parameter key: A SmartBatteryKey to get the property for.
   ///  - returns: The property of the given SmartBatteryKey.
-  private func getRegistryPropertyForKey(key: SmartBatteryKey) -> AnyObject? {
+  private func getRegistryPropertyForKey(_ key: SmartBatteryKey) -> AnyObject? {
     return IORegistryEntryCreateCFProperty(service, key.rawValue, kCFAllocatorDefault, 0)
       .takeRetainedValue()
   }
@@ -202,9 +202,9 @@ final class Battery {
 ///                           is already open.
 ///  - ServiceNotFound:       Gets thrown in case the IO service string (Battery.BatteryServiceName)
 ///                           wasn't found.
-enum BatteryError: ErrorType {
-  case ConnectionAlreadyOpen
-  case ServiceNotFound
+enum BatteryError: ErrorProtocol {
+  case connectionAlreadyOpen
+  case serviceNotFound
 }
 
 // MARK: SmartBatteryKey's

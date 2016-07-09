@@ -112,7 +112,7 @@ final class StatusIcon {
   private static func drawThreePartImage(frame rect: NSRect, canvas img: NSImage,
     startCap start: NSImage, fill: NSImage, endCap end: NSImage) {
       img.lockFocus()
-      NSDrawThreePartImage(rect, start, fill, end, false, .CompositeCopy, 1, false)
+      NSDrawThreePartImage(rect, start, fill, end, false, .copy, 1, false)
       img.unlockFocus()
   }
 }

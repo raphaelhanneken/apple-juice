@@ -43,7 +43,7 @@ class RowViewControllerType: NSObject {
   // MARK: - Init
 
   override convenience init() {
-    self.init(withType: .Undefined)
+    self.init(withType: .undefined)
   }
 
   init(withType type: RowViewControllerTypeDef) {
@@ -63,7 +63,7 @@ class RowViewControllerType: NSObject {
     setTitle(forType: type)
     do {
       // Try closing the battery connection in any case!
-      defer { Battery.close() }
+      defer { _ = Battery.close() }
       // Open a new IO connection to the battery service.
       try Battery.open()
       // Set the row view's value.
@@ -83,25 +83,25 @@ class RowViewControllerType: NSObject {
   private func setTitle(forType type: RowViewControllerTypeDef) {
     // Check which type the current row represents.
     switch type {
-    case .TimeRemaining:
+    case .timeRemaining:
       title = NSLocalizedString("time remaining", comment: "")
-    case .CurrentCharge:
+    case .currentCharge:
       title = NSLocalizedString("percentage", comment: "")
-    case .PowerUsage:
+    case .powerUsage:
       title = NSLocalizedString("power usage", comment: "")
-    case .Capacity:
+    case .capacity:
       title = NSLocalizedString("charge", comment: "")
-    case .CycleCount:
+    case .cycleCount:
       title = NSLocalizedString("cycle count", comment: "")
-    case .Temperature:
+    case .temperature:
       title = NSLocalizedString("temp", comment: "")
-    case .Source:
+    case .source:
       title = NSLocalizedString("power source", comment: "")
-    case .DesignCycleCount:
+    case .designCycleCount:
       title = NSLocalizedString("design cycle count", comment: "")
-    case .DesignCapacity:
+    case .designCapacity:
       title = NSLocalizedString("design capacity", comment: "")
-    case .Undefined:
+    case .undefined:
       title = ""
     }
   }
@@ -112,25 +112,25 @@ class RowViewControllerType: NSObject {
   private func setValue(forType type: RowViewControllerTypeDef) {
     // Check which type the current row represents.
     switch type {
-    case .TimeRemaining:
+    case .timeRemaining:
       value = Battery.timeRemainingFormatted()
-    case .CurrentCharge:
+    case .currentCharge:
       value = Battery.percentage()
-    case .PowerUsage:
+    case .powerUsage:
       value = Battery.powerUsage()
-    case .Capacity:
+    case .capacity:
       value = Battery.currentCharge()
-    case .CycleCount:
+    case .cycleCount:
       value = Battery.cycleCount()
-    case .Temperature:
+    case .temperature:
       value = Battery.temperature()
-    case .Source:
+    case .source:
       value = Battery.currentSource()
-    case .DesignCycleCount:
+    case .designCycleCount:
       value = Battery.designCycleCount()
-    case .DesignCapacity:
+    case .designCapacity:
       value = Battery.designCapacity()
-    case .Undefined:
+    case .undefined:
       value = ""
     }
   }
@@ -152,14 +152,14 @@ class RowViewControllerType: NSObject {
 ///  - DesignCycleCount: The design cycle count.
 ///  - DesignCapacity:   The design capacity in mAh.
 enum RowViewControllerTypeDef {
-  case Undefined
-  case TimeRemaining
-  case CurrentCharge
-  case PowerUsage
-  case Capacity
-  case CycleCount
-  case Temperature
-  case Source
-  case DesignCycleCount
-  case DesignCapacity
+  case undefined
+  case timeRemaining
+  case currentCharge
+  case powerUsage
+  case capacity
+  case cycleCount
+  case temperature
+  case source
+  case designCycleCount
+  case designCapacity
 }

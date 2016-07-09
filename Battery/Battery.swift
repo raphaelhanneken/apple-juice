@@ -50,7 +50,7 @@ class Battery {
       // ...try closing it.
       if !self.close() {
         // Throw a BatteryError in case the IO connection won't close.
-        throw BatteryError.ConnectionAlreadyOpen
+        throw BatteryError.connectionAlreadyOpen
       }
     }
     // Get an IOService object for the defined
@@ -58,7 +58,7 @@ class Battery {
       IOServiceNameMatching(self.batteryIOServiceName))
     // Throw a BatteryError if the IO service couldn't be opened.
     if self.service == 0 {
-      throw BatteryError.ServiceNotFound
+      throw BatteryError.serviceNotFound
     }
   }
 
@@ -187,7 +187,7 @@ class Battery {
   ///
   ///  - parameter key: A SmartBatteryKey to get the property for.
   ///  - returns: The property of the given SmartBatteryKey.
-  private static func getRegistryPropertyForKey(key: SmartBatteryKey) -> AnyObject? {
+  private static func getRegistryPropertyForKey(_ key: SmartBatteryKey) -> AnyObject? {
     return IORegistryEntryCreateCFProperty(service, key.rawValue, kCFAllocatorDefault, 0)
       .takeRetainedValue()
   }
@@ -236,9 +236,9 @@ class Battery {
 ///                           is already open.
 ///  - ServiceNotFound:       Gets thrown in case the IO service string (Battery.BatteryServiceName)
 ///                           wasn't found.
-enum BatteryError: ErrorType {
-  case ConnectionAlreadyOpen
-  case ServiceNotFound
+enum BatteryError: ErrorProtocol {
+  case connectionAlreadyOpen
+  case serviceNotFound
 }
 
 // MARK: SmartBatteryKey's
@@ -279,6 +279,6 @@ enum SmartBatteryKey: String {
 ///  - Celsius:    Celsius
 ///  - Fahrenheit: Fahrenheit
 enum TemperatureUnit {
-  case Celsius
-  case Fahrenheit
+  case celsius
+  case fahrenheit
 }

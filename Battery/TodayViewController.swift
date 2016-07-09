@@ -49,18 +49,9 @@ NCWidgetSearchViewDelegate {
     self.listViewController.contents = self.getBatteryInformation()
   }
 
-  override func dismissViewController(viewController: NSViewController) {
-    super.dismissViewController(viewController)
-
-    // The search controller has been dismissed and is no longer needed.
-    if viewController == self.searchController {
-      self.searchController = nil
-    }
-  }
-
   // MARK: - NCWidgetProviding
 
-  func widgetPerformUpdateWithCompletionHandler(completionHandler: ((NCUpdateResult) -> Void)!) {
+  func widgetPerformUpdate(completionHandler: ((NCUpdateResult) -> Void)) {
     // Refresh the widget's contents in preparation for a snapshot.
     // Call the completion handler block after the widget's contents have been
     // refreshed. Pass NCUpdateResultNoData to indicate that nothing has changed
@@ -68,11 +59,11 @@ NCWidgetSearchViewDelegate {
     // last invocation of this method.
 
     // Always pass .NewData since at least the current charge will have changed at every call.
-    completionHandler(.NewData)
+    completionHandler(.newData)
   }
 
-  func widgetMarginInsetsForProposedMarginInsets(defaultMarginInset: NSEdgeInsets)
-    -> NSEdgeInsets {
+  func widgetMarginInsets(forProposedMarginInsets defaultMarginInset: EdgeInsets)
+    -> EdgeInsets {
       // Shadow the default margin inset...
       var marginInset  = defaultMarginInset
       // ...and override the left margin so that the list view is flush with the edge.
@@ -102,15 +93,15 @@ NCWidgetSearchViewDelegate {
 
   // MARK: - NCWidgetListViewDelegate
 
-  func widgetList(list: NCWidgetListViewController!, viewControllerForRow row: Int)
-    -> NSViewController! {
+  func widgetList(_ list: NCWidgetListViewController, viewControllerForRow row: Int)
+    -> NSViewController {
       // Return a new view controller subclass for displaying an item of widget
       // content. The NCWidgetListViewController will set the representedObject
       // of this view controller to one of the objects in its contents array.
       return ListRowViewController()
   }
 
-  func widgetListPerformAddAction(list: NCWidgetListViewController!) {
+  func widgetListPerformAddAction(_ list: NCWidgetListViewController) {
     // The user has clicked the add button in the list view.
     // Display a search controller for adding new content to the widget.
     self.searchController = NCWidgetSearchViewController()
@@ -119,43 +110,43 @@ NCWidgetSearchViewDelegate {
     // Present the search view controller with an animation.
     // Implement dismissViewController to observe when the view controller
     // has been dismissed and is no longer needed.
-    self.presentViewControllerInWidget(self.searchController)
+    self.present(inWidget: self.searchController!)
   }
 
-  func widgetList(list: NCWidgetListViewController!, shouldReorderRow row: Int) -> Bool {
+  func widgetList(_ list: NCWidgetListViewController, shouldReorderRow row: Int) -> Bool {
     // Return true to allow the item to be reordered in the list by the user.
     return true
   }
 
-  func widgetList(list: NCWidgetListViewController!, didReorderRow row: Int, toRow newIndex: Int) {
+  func widgetList(_ list: NCWidgetListViewController, didReorderRow row: Int, toRow newIndex: Int) {
     // The user has reordered an item in the list.
   }
 
-  func widgetList(list: NCWidgetListViewController!, shouldRemoveRow row: Int) -> Bool {
+  func widgetList(_ list: NCWidgetListViewController, shouldRemoveRow row: Int) -> Bool {
     // Return true to allow the item to be removed from the list by the user.
     return true
   }
 
-  func widgetList(list: NCWidgetListViewController!, didRemoveRow row: Int) {
+  func widgetList(_ list: NCWidgetListViewController, didRemoveRow row: Int) {
     // The user has removed an item from the list.
   }
 
   // MARK: - NCWidgetSearchViewDelegate
 
-  func widgetSearch(searchController: NCWidgetSearchViewController!,
-    searchForTerm searchTerm: String!, maxResults max: Int) {
+  func widgetSearch(_ searchController: NCWidgetSearchViewController,
+    searchForTerm searchTerm: String, maxResults max: Int) {
       // The user has entered a search term. Set the controller's
       // searchResults property to the matching items.
       searchController.searchResults = []
   }
 
-  func widgetSearchTermCleared(searchController: NCWidgetSearchViewController!) {
+  func widgetSearchTermCleared(_ searchController: NCWidgetSearchViewController) {
     // The user has cleared the search field. Remove the search results.
     searchController.searchResults = nil
   }
 
-  func widgetSearch(searchController: NCWidgetSearchViewController!,
-    resultSelected object: AnyObject!) {
+  func widgetSearch(_ searchController: NCWidgetSearchViewController,
+    resultSelected object: AnyObject) {
       // The user has selected a search result from the list.
   }
 
@@ -164,15 +155,15 @@ NCWidgetSearchViewDelegate {
   ///  - returns: The array with the necessary RowViewControllerType's.
   func getBatteryInformation() -> [RowViewControllerType] {
     let contents = [
-      RowViewControllerType(withType: .TimeRemaining),
-      RowViewControllerType(withType: .CurrentCharge),
-      RowViewControllerType(withType: .PowerUsage),
-      RowViewControllerType(withType: .Capacity),
-      RowViewControllerType(withType: .CycleCount),
-      RowViewControllerType(withType: .Temperature),
-      RowViewControllerType(withType: .Source),
-      RowViewControllerType(withType: .DesignCycleCount),
-      RowViewControllerType(withType: .DesignCapacity)
+      RowViewControllerType(withType: .timeRemaining),
+      RowViewControllerType(withType: .currentCharge),
+      RowViewControllerType(withType: .powerUsage),
+      RowViewControllerType(withType: .capacity),
+      RowViewControllerType(withType: .cycleCount),
+      RowViewControllerType(withType: .temperature),
+      RowViewControllerType(withType: .source),
+      RowViewControllerType(withType: .designCycleCount),
+      RowViewControllerType(withType: .designCapacity)
     ]
     return contents
   }

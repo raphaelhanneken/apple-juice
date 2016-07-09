@@ -36,7 +36,7 @@ final class NotificationController {
   static func postUserNotification(forPercentage percentage: NotificationKey) {
     // Post a pluggedAndCharged notification at hundred percent; a lowPercentage
     // notification otherwise.
-    if percentage == .HundredPercent {
+    if percentage == .hundredPercent {
       pluggedAndChargedNotification()
     } else {
       lowPercentageNotification(forPercentage: percentage)
@@ -51,7 +51,7 @@ final class NotificationController {
     notification.title = NSLocalizedString("charged", comment: "")
     notification.informativeText = NSLocalizedString("charged message", comment: "")
     // Deliver notification.
-    NSUserNotificationCenter.defaultUserNotificationCenter().deliverNotification(notification)
+    NSUserNotificationCenter.default.deliver(notification)
   }
 
   ///  Posts a low percentage user notification.
@@ -64,7 +64,7 @@ final class NotificationController {
     notification.title = NSLocalizedString("low battery", comment: "")
     notification.informativeText = NSLocalizedString("low battery message", comment: "")
     // Deliver notification.
-    NSUserNotificationCenter.defaultUserNotificationCenter().deliverNotification(notification)
+    NSUserNotificationCenter.default.deliver(notification)
   }
 }
 
@@ -79,10 +79,10 @@ final class NotificationController {
 ///  - TwentyPercent:   Twenty percent notification.
 ///  - HundredPercent:  Hundred percent notification.
 enum NotificationKey: Int {
-  case None            = 0
-  case FivePercent     = 5
-  case TenPercent      = 10
-  case FifeteenPercent = 15
-  case TwentyPercent   = 20
-  case HundredPercent  = 100
+  case none            = 0
+  case fivePercent     = 5
+  case tenPercent      = 10
+  case fifeteenPercent = 15
+  case twentyPercent   = 20
+  case hundredPercent  = 100
 }
