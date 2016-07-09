@@ -7,6 +7,13 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		8E0D33B01D3118CD002D3463 /* NotificationCenter.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8EE1297C1C46F891000D404F /* NotificationCenter.framework */; };
+		8E0D33B51D3118CD002D3463 /* TodayViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E0D33B41D3118CD002D3463 /* TodayViewController.swift */; };
+		8E0D33B71D3118CD002D3463 /* ListRowViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E0D33B61D3118CD002D3463 /* ListRowViewController.swift */; };
+		8E0D33BA1D3118CD002D3463 /* TodayViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8E0D33B81D3118CD002D3463 /* TodayViewController.xib */; };
+		8E0D33BD1D3118CD002D3463 /* ListRowViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8E0D33BB1D3118CD002D3463 /* ListRowViewController.xib */; };
+		8E0D33C11D3118CD002D3463 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 8E0D33BF1D3118CD002D3463 /* InfoPlist.strings */; };
+		8E0D33C41D3118CD002D3463 /* Apple Juice Widget.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 8E0D33AF1D3118CD002D3463 /* Apple Juice Widget.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		8E1BAC5C1C47E6970011544C /* RowViewControllerType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E1BAC5B1C47E6970011544C /* RowViewControllerType.swift */; };
 		8E1BAC5E1C4800EA0011544C /* Battery.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E1BAC5D1C4800EA0011544C /* Battery.swift */; };
 		8EBEB4461C466091001DBE91 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EBEB4451C466091001DBE91 /* AppDelegate.swift */; };
@@ -32,6 +39,13 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
+		8E0D33C21D3118CD002D3463 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 8EBEB43A1C466091001DBE91 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 8E0D33AE1D3118CD002D3463;
+			remoteInfo = "Apple Juice Widget";
+		};
 		8EE1298F1C46F891000D404F /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 8EBEB43A1C466091001DBE91 /* Project object */;
@@ -68,6 +82,7 @@
 			dstPath = "";
 			dstSubfolderSpec = 13;
 			files = (
+				8E0D33C41D3118CD002D3463 /* Apple Juice Widget.appex in Embed App Extensions */,
 				8EE129911C46F891000D404F /* Battery.appex in Embed App Extensions */,
 			);
 			name = "Embed App Extensions";
@@ -76,6 +91,14 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		8E0D33AF1D3118CD002D3463 /* Apple Juice Widget.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = "Apple Juice Widget.appex"; sourceTree = BUILT_PRODUCTS_DIR; };
+		8E0D33B31D3118CD002D3463 /* Apple_Juice_Widget.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = Apple_Juice_Widget.entitlements; sourceTree = "<group>"; };
+		8E0D33B41D3118CD002D3463 /* TodayViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodayViewController.swift; sourceTree = "<group>"; };
+		8E0D33B61D3118CD002D3463 /* ListRowViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListRowViewController.swift; sourceTree = "<group>"; };
+		8E0D33B91D3118CD002D3463 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/TodayViewController.xib; sourceTree = "<group>"; };
+		8E0D33BC1D3118CD002D3463 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/ListRowViewController.xib; sourceTree = "<group>"; };
+		8E0D33BE1D3118CD002D3463 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		8E0D33C01D3118CD002D3463 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		8E1BAC5B1C47E6970011544C /* RowViewControllerType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RowViewControllerType.swift; sourceTree = "<group>"; };
 		8E1BAC5D1C4800EA0011544C /* Battery.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Battery.swift; sourceTree = "<group>"; };
 		8E5BC0211C50D13D0077228F /* es */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = es; path = es.lproj/TodayViewController.strings; sourceTree = "<group>"; };
@@ -134,6 +157,14 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		8E0D33AC1D3118CD002D3463 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				8E0D33B01D3118CD002D3463 /* NotificationCenter.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		8EBEB43F1C466091001DBE91 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -162,11 +193,50 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
+		8E0D33B11D3118CD002D3463 /* Apple Juice Widget */ = {
+			isa = PBXGroup;
+			children = (
+				8E0D33B41D3118CD002D3463 /* TodayViewController.swift */,
+				8E0D33B61D3118CD002D3463 /* ListRowViewController.swift */,
+				8E0D33C81D311906002D3463 /* UI */,
+				8E0D33C91D31190F002D3463 /* Resources */,
+				8E0D33B21D3118CD002D3463 /* Supporting Files */,
+			);
+			path = "Apple Juice Widget";
+			sourceTree = "<group>";
+		};
+		8E0D33B21D3118CD002D3463 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				8E0D33B31D3118CD002D3463 /* Apple_Juice_Widget.entitlements */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		8E0D33C81D311906002D3463 /* UI */ = {
+			isa = PBXGroup;
+			children = (
+				8E0D33B81D3118CD002D3463 /* TodayViewController.xib */,
+				8E0D33BB1D3118CD002D3463 /* ListRowViewController.xib */,
+			);
+			name = UI;
+			sourceTree = "<group>";
+		};
+		8E0D33C91D31190F002D3463 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				8E0D33BE1D3118CD002D3463 /* Info.plist */,
+				8E0D33BF1D3118CD002D3463 /* InfoPlist.strings */,
+			);
+			name = Resources;
+			sourceTree = "<group>";
+		};
 		8EBEB4391C466091001DBE91 = {
 			isa = PBXGroup;
 			children = (
 				8EBEB4441C466091001DBE91 /* Apple Juice */,
 				8EE1297E1C46F891000D404F /* Battery */,
+				8E0D33B11D3118CD002D3463 /* Apple Juice Widget */,
 				8EE1297B1C46F891000D404F /* Frameworks */,
 				8EBEB4431C466091001DBE91 /* Products */,
 			);
@@ -177,6 +247,7 @@
 			children = (
 				8EBEB4421C466091001DBE91 /* Apple Juice.app */,
 				8EE1297A1C46F891000D404F /* Battery.appex */,
+				8E0D33AF1D3118CD002D3463 /* Apple Juice Widget.appex */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -267,6 +338,23 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
+		8E0D33AE1D3118CD002D3463 /* Apple Juice Widget */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 8E0D33C51D3118CD002D3463 /* Build configuration list for PBXNativeTarget "Apple Juice Widget" */;
+			buildPhases = (
+				8E0D33AB1D3118CD002D3463 /* Sources */,
+				8E0D33AC1D3118CD002D3463 /* Frameworks */,
+				8E0D33AD1D3118CD002D3463 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "Apple Juice Widget";
+			productName = "Apple Juice Widget";
+			productReference = 8E0D33AF1D3118CD002D3463 /* Apple Juice Widget.appex */;
+			productType = "com.apple.product-type.app-extension";
+		};
 		8EBEB4411C466091001DBE91 /* Apple Juice */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 8EBEB44F1C466091001DBE91 /* Build configuration list for PBXNativeTarget "Apple Juice" */;
@@ -283,6 +371,7 @@
 			);
 			dependencies = (
 				8EE129901C46F891000D404F /* PBXTargetDependency */,
+				8E0D33C31D3118CD002D3463 /* PBXTargetDependency */,
 			);
 			name = "Apple Juice";
 			productName = "Apple Juice";
@@ -312,10 +401,14 @@
 		8EBEB43A1C466091001DBE91 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastSwiftUpdateCheck = 0720;
+				LastSwiftUpdateCheck = 0800;
 				LastUpgradeCheck = 0720;
 				ORGANIZATIONNAME = "Raphael Hanneken";
 				TargetAttributes = {
+					8E0D33AE1D3118CD002D3463 = {
+						CreatedOnToolsVersion = 8.0;
+						ProvisioningStyle = Automatic;
+					};
 					8EBEB4411C466091001DBE91 = {
 						CreatedOnToolsVersion = 7.2;
 						LastSwiftMigration = 0800;
@@ -350,11 +443,22 @@
 			targets = (
 				8EBEB4411C466091001DBE91 /* Apple Juice */,
 				8EE129791C46F891000D404F /* Battery */,
+				8E0D33AE1D3118CD002D3463 /* Apple Juice Widget */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		8E0D33AD1D3118CD002D3463 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				8E0D33BA1D3118CD002D3463 /* TodayViewController.xib in Resources */,
+				8E0D33C11D3118CD002D3463 /* InfoPlist.strings in Resources */,
+				8E0D33BD1D3118CD002D3463 /* ListRowViewController.xib in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		8EBEB4401C466091001DBE91 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -396,6 +500,15 @@
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		8E0D33AB1D3118CD002D3463 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				8E0D33B51D3118CD002D3463 /* TodayViewController.swift in Sources */,
+				8E0D33B71D3118CD002D3463 /* ListRowViewController.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		8EBEB43E1C466091001DBE91 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -423,6 +536,11 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
+		8E0D33C31D3118CD002D3463 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 8E0D33AE1D3118CD002D3463 /* Apple Juice Widget */;
+			targetProxy = 8E0D33C21D3118CD002D3463 /* PBXContainerItemProxy */;
+		};
 		8EE129901C46F891000D404F /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = 8EE129791C46F891000D404F /* Battery */;
@@ -431,6 +549,30 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
+		8E0D33B81D3118CD002D3463 /* TodayViewController.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				8E0D33B91D3118CD002D3463 /* Base */,
+			);
+			name = TodayViewController.xib;
+			sourceTree = "<group>";
+		};
+		8E0D33BB1D3118CD002D3463 /* ListRowViewController.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				8E0D33BC1D3118CD002D3463 /* Base */,
+			);
+			name = ListRowViewController.xib;
+			sourceTree = "<group>";
+		};
+		8E0D33BF1D3118CD002D3463 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				8E0D33C01D3118CD002D3463 /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
 		8EBEB4491C466091001DBE91 /* MainMenu.xib */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -512,6 +654,42 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
+		8E0D33C61D3118CD002D3463 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CODE_SIGN_ENTITLEMENTS = "Apple Juice Widget/Apple_Juice_Widget.entitlements";
+				COMBINE_HIDPI_IMAGES = YES;
+				INFOPLIST_FILE = "Apple Juice Widget/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @executable_path/../../../../Frameworks";
+				MACOSX_DEPLOYMENT_TARGET = 10.12;
+				PRODUCT_BUNDLE_IDENTIFIER = "io.raphaelhanneken.applejuice.Apple-Juice-Widget";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_VERSION = 3.0;
+			};
+			name = Debug;
+		};
+		8E0D33C71D3118CD002D3463 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CODE_SIGN_ENTITLEMENTS = "Apple Juice Widget/Apple_Juice_Widget.entitlements";
+				COMBINE_HIDPI_IMAGES = YES;
+				INFOPLIST_FILE = "Apple Juice Widget/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @executable_path/../../../../Frameworks";
+				MACOSX_DEPLOYMENT_TARGET = 10.12;
+				PRODUCT_BUNDLE_IDENTIFIER = "io.raphaelhanneken.applejuice.Apple-Juice-Widget";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
+				SWIFT_VERSION = 3.0;
+			};
+			name = Release;
+		};
 		8EBEB44D1C466091001DBE91 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -595,6 +773,7 @@
 		8EBEB4501C466091001DBE91 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				COMBINE_HIDPI_IMAGES = YES;
 				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
@@ -613,6 +792,7 @@
 		8EBEB4511C466091001DBE91 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				COMBINE_HIDPI_IMAGES = YES;
 				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
@@ -659,6 +839,14 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		8E0D33C51D3118CD002D3463 /* Build configuration list for PBXNativeTarget "Apple Juice Widget" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				8E0D33C61D3118CD002D3463 /* Debug */,
+				8E0D33C71D3118CD002D3463 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
 		8EBEB43D1C466091001DBE91 /* Build configuration list for PBXProject "Apple Juice" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
