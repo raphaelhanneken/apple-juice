@@ -23,7 +23,6 @@
 		8EBF29DF1C4845F6005BBAE0 /* Sparkle.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 8EBF29DD1C4845F6005BBAE0 /* Sparkle.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		8EBF29E51C48489F005BBAE0 /* dsa_pub.pem in Resources */ = {isa = PBXBuildFile; fileRef = 8EBF29E41C48489F005BBAE0 /* dsa_pub.pem */; };
 		8EBF29E91C485493005BBAE0 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 8EBF29EC1C485493005BBAE0 /* Localizable.strings */; };
-		8EBF2A021C4869C1005BBAE0 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 8EBF2A041C4869C1005BBAE0 /* Localizable.strings */; };
 		8EE1296A1C4663F7000D404F /* ApplicationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EE129691C4663F7000D404F /* ApplicationController.swift */; };
 		8EE1296E1C469326000D404F /* StatusIcon.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EE1296D1C469326000D404F /* StatusIcon.swift */; };
 		8EE129701C4695B5000D404F /* Battery.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EE1296F1C4695B5000D404F /* Battery.swift */; };
@@ -36,6 +35,9 @@
 		8EE1298A1C46F891000D404F /* ListRowViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8EE129881C46F891000D404F /* ListRowViewController.xib */; };
 		8EE1298E1C46F891000D404F /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 8EE1298C1C46F891000D404F /* InfoPlist.strings */; };
 		8EE129911C46F891000D404F /* Battery.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 8EE1297A1C46F891000D404F /* Battery.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		8EF30ED31D32B3170010BC49 /* Battery.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EE1296F1C4695B5000D404F /* Battery.swift */; };
+		8EF30ED51D32B3980010BC49 /* ListRowViewControllerType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EF30ED41D32B3980010BC49 /* ListRowViewControllerType.swift */; };
+		8EF30ED61D32C86D0010BC49 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 8EBF2A041C4869C1005BBAE0 /* Localizable.strings */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -154,6 +156,7 @@
 		8EE129891C46F891000D404F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/ListRowViewController.xib; sourceTree = "<group>"; };
 		8EE1298B1C46F891000D404F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		8EE1298D1C46F891000D404F /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		8EF30ED41D32B3980010BC49 /* ListRowViewControllerType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ListRowViewControllerType.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -197,6 +200,7 @@
 			isa = PBXGroup;
 			children = (
 				8E0D33B41D3118CD002D3463 /* TodayViewController.swift */,
+				8EF30ED41D32B3980010BC49 /* ListRowViewControllerType.swift */,
 				8E0D33B61D3118CD002D3463 /* ListRowViewController.swift */,
 				8E0D33C81D311906002D3463 /* UI */,
 				8E0D33C91D31190F002D3463 /* Resources */,
@@ -225,6 +229,7 @@
 		8E0D33C91D31190F002D3463 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				8EBF2A041C4869C1005BBAE0 /* Localizable.strings */,
 				8E0D33BE1D3118CD002D3463 /* Info.plist */,
 				8E0D33BF1D3118CD002D3463 /* InfoPlist.strings */,
 			);
@@ -330,7 +335,6 @@
 			children = (
 				8EE1298B1C46F891000D404F /* Info.plist */,
 				8EE1298C1C46F891000D404F /* InfoPlist.strings */,
-				8EBF2A041C4869C1005BBAE0 /* Localizable.strings */,
 			);
 			name = Resources;
 			sourceTree = "<group>";
@@ -454,6 +458,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				8E0D33BA1D3118CD002D3463 /* TodayViewController.xib in Resources */,
+				8EF30ED61D32C86D0010BC49 /* Localizable.strings in Resources */,
 				8E0D33C11D3118CD002D3463 /* InfoPlist.strings in Resources */,
 				8E0D33BD1D3118CD002D3463 /* ListRowViewController.xib in Resources */,
 			);
@@ -475,7 +480,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				8EE129871C46F891000D404F /* TodayViewController.xib in Resources */,
-				8EBF2A021C4869C1005BBAE0 /* Localizable.strings in Resources */,
 				8EE1298E1C46F891000D404F /* InfoPlist.strings in Resources */,
 				8EE1298A1C46F891000D404F /* ListRowViewController.xib in Resources */,
 			);
@@ -504,8 +508,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8EF30ED31D32B3170010BC49 /* Battery.swift in Sources */,
 				8E0D33B51D3118CD002D3463 /* TodayViewController.swift in Sources */,
 				8E0D33B71D3118CD002D3463 /* ListRowViewController.swift in Sources */,
+				8EF30ED51D32B3980010BC49 /* ListRowViewControllerType.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -610,6 +616,7 @@
 				8E5BC0261C50D13E0077228F /* es */,
 			);
 			name = Localizable.strings;
+			path = ../Battery;
 			sourceTree = "<group>";
 		};
 		8EE129851C46F891000D404F /* TodayViewController.xib */ = {
@@ -846,6 +853,7 @@
 				8E0D33C71D3118CD002D3463 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		8EBEB43D1C466091001DBE91 /* Build configuration list for PBXProject "Apple Juice" */ = {
 			isa = XCConfigurationList;

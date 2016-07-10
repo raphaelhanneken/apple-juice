@@ -1,6 +1,6 @@
 //
 // ListRowViewController.swift
-// Apple Juice
+// Apple Juice Widget
 // https://github.com/raphaelhanneken/apple-juice
 //
 // The MIT License (MIT)

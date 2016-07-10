@@ -1,6 +1,6 @@
 //
 // TodayViewController.swift
-// Apple Juice
+// Apple Juice Widget
 // https://github.com/raphaelhanneken/apple-juice
 //
 // The MIT License (MIT)
@@ -46,7 +46,7 @@ NCWidgetProviding, NCWidgetListViewDelegate, NCWidgetSearchViewDelegate {
 
     // Set up the widget list view controller.
     // The contents property should contain an object for each row in the list.
-    self.listViewController.contents = ["Hello World!"]
+    self.listViewController.contents = setRowViewContents()
   }
 
   override func dismissViewController(_ viewController: NSViewController) {
@@ -156,4 +156,17 @@ NCWidgetProviding, NCWidgetListViewDelegate, NCWidgetSearchViewDelegate {
     // The user has selected a search result from the list.
   }
 
+  /// Initializes the ListRowViewControllerTypes.
+  ///
+  /// - returns: An array of ListRowViewControllerType.
+  private func setRowViewContents() -> [ListRowViewControllerType] {
+    return [
+      ListRowViewControllerType(withDefinition: .timeRemaining),
+      ListRowViewControllerType(withDefinition: .percentage),
+      ListRowViewControllerType(withDefinition: .powerUsage),
+      ListRowViewControllerType(withDefinition: .capacity),
+      ListRowViewControllerType(withDefinition: .cycleCount),
+      ListRowViewControllerType(withDefinition: .source)
+    ]
+  }
 }
