@@ -64,7 +64,7 @@ final class Battery {
     // Unwrap the necessary information or return "Unknown" in case something went wrong.
     guard let charged = isCharged(),
               plugged = isPlugged(),
-                 time = timeRemaining() where time > 0 else {
+                 time = timeRemaining() else {
       return NSLocalizedString("unknown", comment: "")
     }
 
@@ -145,6 +145,24 @@ final class Battery {
   ///  - returns: true when an unlimited power supple is plugged in; false otherwise.
   func isPlugged() -> Bool? {
     return getRegistryPropertyForKey(.ACPowered) as? Bool
+  }
+
+  ///  Calculates the current power usage based on the current voltage and amperage.
+  ///
+  ///  - returns: The current power usage in Watts.
+  func powerUsage() -> Double? {
+    guard let voltage = getRegistryPropertyForKey(.Voltage) as? Double,
+      amperage        = getRegistryPropertyForKey(.Amperage) as? Double else {
+        return nil
+    }
+    return round(((voltage * amperage) / 1000000) * 10) / 10
+  }
+
+  ///  Gets the current cycle count.
+  ///
+  ///  - returns: The current cycle count.
+  func cycleCount() -> Int? {
+    return getRegistryPropertyForKey(.CycleCount) as? Int
   }
 
   // MARK: - Private Methods
