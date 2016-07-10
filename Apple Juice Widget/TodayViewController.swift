@@ -32,6 +32,7 @@ class TodayViewController: NSViewController,
 NCWidgetProviding, NCWidgetListViewDelegate, NCWidgetSearchViewDelegate {
 
   @IBOutlet var listViewController: NCWidgetListViewController!
+
   var searchController: NCWidgetSearchViewController?
 
   // MARK: - NSViewController
@@ -78,7 +79,7 @@ NCWidgetProviding, NCWidgetListViewDelegate, NCWidgetSearchViewDelegate {
   var widgetAllowsEditing: Bool {
     // Return true to indicate that the widget supports editing of content and
     // that the list view should be allowed to enter an edit mode.
-    return true
+    return false
   }
 
   func widgetDidBeginEditing() {
@@ -96,8 +97,8 @@ NCWidgetProviding, NCWidgetListViewDelegate, NCWidgetSearchViewDelegate {
 
   // MARK: - NCWidgetListViewDelegate
 
-  func widgetList(_ list: NCWidgetListViewController, viewControllerForRow row: Int)
-    -> NSViewController {
+  func widgetList(_ list: NCWidgetListViewController,
+                  viewControllerForRow row: Int) -> NSViewController {
       // Return a new view controller subclass for displaying an item of widget
       // content. The NCWidgetListViewController will set the representedObject
       // of this view controller to one of the objects in its contents array.
