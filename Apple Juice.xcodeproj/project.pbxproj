@@ -161,8 +161,8 @@
 		8E0D33B21D3118CD002D3463 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
-				8E0D33B31D3118CD002D3463 /* Apple_Juice_Widget.entitlements */,
 				8EF30EF01D32D1C70010BC49 /* Info.plist */,
+				8E0D33B31D3118CD002D3463 /* Apple_Juice_Widget.entitlements */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
