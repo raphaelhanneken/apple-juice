@@ -11,6 +11,10 @@
 		8E0D33B51D3118CD002D3463 /* TodayViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E0D33B41D3118CD002D3463 /* TodayViewController.swift */; };
 		8E0D33B71D3118CD002D3463 /* ListRowViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E0D33B61D3118CD002D3463 /* ListRowViewController.swift */; };
 		8E0D33C41D3118CD002D3463 /* Apple Juice Widget.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 8E0D33AF1D3118CD002D3463 /* Apple Juice Widget.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		8E58CBA21D339BC200920567 /* TodayViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8EF30EE81D32D0ED0010BC49 /* TodayViewController.xib */; };
+		8E58CBA31D339BC900920567 /* ListRowViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8EF30EEA1D32D0FA0010BC49 /* ListRowViewController.xib */; };
+		8E58CBA41D339BD000920567 /* Apple_Juice_Widget.entitlements in Resources */ = {isa = PBXBuildFile; fileRef = 8E0D33B31D3118CD002D3463 /* Apple_Juice_Widget.entitlements */; };
+		8E58CBA51D339BED00920567 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 8EF30ED71D32CFB90010BC49 /* Localizable.strings */; };
 		8EBEB4461C466091001DBE91 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EBEB4451C466091001DBE91 /* AppDelegate.swift */; };
 		8EBEB4481C466091001DBE91 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8EBEB4471C466091001DBE91 /* Assets.xcassets */; };
 		8EBEB44B1C466091001DBE91 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8EBEB4491C466091001DBE91 /* MainMenu.xib */; };
@@ -336,6 +340,10 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8E58CBA51D339BED00920567 /* Localizable.strings in Resources */,
+				8E58CBA41D339BD000920567 /* Apple_Juice_Widget.entitlements in Resources */,
+				8E58CBA31D339BC900920567 /* ListRowViewController.xib in Resources */,
+				8E58CBA21D339BC200920567 /* TodayViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
