@@ -7,6 +7,24 @@
     <language>en</language>
 
     <item>
+      <title>Apple Juice v1.2</title>
+        <description>
+          <![CDATA[
+            <p>Rebuild with Swift 3.0 and Xcode 8 beta (8S162m).</p>
+          ]]>
+        </description>
+        <pubDate>Tue, 12 Jul 2016 12:00:00 +0100</pubDate>
+        <sparkle:minimumSystemVersion>10.12</sparkle:minimumSystemVersion>
+        <enclosure
+          url="https://github.com/raphaelhanneken/apple-juice/releases/download/1.2.0/Apple.Juice.dmg"
+          sparkle:version="190"
+          sparkle:shortVersionString="1.2"
+          sparkle:dsaSignature="MC0CFHyTYXbIbM4IRSx1yZfZu+ROrINJAhUAg492R21un/NUN0AIWoKsQserQNM="
+          length="7163521"
+          type="application/octet-stream" />
+    </item>
+
+    <item>
       <title>Apple Juice v1.1</title>
         <description>
           <![CDATA[
