@@ -670,6 +670,7 @@
                     </menu>
                 </menuItem>
             </items>
+            <point key="canvasLocation" x="306" y="35"/>
         </menu>
         <menu id="tlM-TC-O58">
             <items>
@@ -741,16 +742,16 @@
                     </menu>
                 </menuItem>
                 <menuItem isSeparatorItem="YES" id="HoG-Jh-UIk"/>
-                <menuItem title="Check for Updates..." id="OFJ-1T-Wc5">
-                    <modifierMask key="keyEquivalentModifierMask"/>
-                    <connections>
-                        <action selector="checkForUpdates:" target="Avc-Ie-Abt" id="Aqj-nm-y4m"/>
-                    </connections>
-                </menuItem>
                 <menuItem title="Energy Saver Preferences..." id="nUK-pj-k8O">
                     <modifierMask key="keyEquivalentModifierMask"/>
                     <connections>
                         <action selector="energySaverPreferences:" target="FRD-GK-LcV" id="eSm-lB-1d2"/>
+                    </connections>
+                </menuItem>
+                <menuItem title="Check for Updates..." id="OFJ-1T-Wc5">
+                    <modifierMask key="keyEquivalentModifierMask"/>
+                    <connections>
+                        <action selector="checkForUpdates:" target="Avc-Ie-Abt" id="Aqj-nm-y4m"/>
                     </connections>
                 </menuItem>
                 <menuItem isSeparatorItem="YES" id="bcW-nq-A9L"/>
@@ -761,7 +762,7 @@
                     </connections>
                 </menuItem>
             </items>
-            <point key="canvasLocation" x="171.5" y="237.5"/>
+            <point key="canvasLocation" x="197" y="191"/>
         </menu>
         <userDefaultsController representsSharedInstance="YES" id="OgL-rZ-xAG"/>
     </objects>
