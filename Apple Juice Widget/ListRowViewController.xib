@@ -27,7 +27,7 @@
                         <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                     </textFieldCell>
                     <connections>
-                        <binding destination="-2" name="value" keyPath="self.representedObject.value" id="HmZ-Sf-9ih">
+                        <binding destination="-2" name="value" keyPath="self.representedObject.value" id="XQv-28-7yh">
                             <dictionary key="options">
                                 <string key="NSMultipleValuesPlaceholder">--</string>
                                 <string key="NSNoSelectionPlaceholder">--</string>
@@ -48,7 +48,7 @@
                         <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                     </textFieldCell>
                     <connections>
-                        <binding destination="-2" name="value" keyPath="self.representedObject.type" id="3bE-ZE-1Em"/>
+                        <binding destination="-2" name="value" keyPath="self.representedObject.title" id="9Dw-r2-IsS"/>
                     </connections>
                 </textField>
             </subviews>

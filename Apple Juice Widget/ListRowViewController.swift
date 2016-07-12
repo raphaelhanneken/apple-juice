@@ -29,14 +29,14 @@ import Cocoa
 
 class ListRowViewController: NSViewController {
 
-    override var nibName: String? {
-        return "ListRowViewController"
-    }
+  override var nibName: String? {
+    return "ListRowViewController"
+  }
 
-    override func loadView() {
-        super.loadView()
+  override func loadView() {
+    super.loadView()
 
-        // Insert code here to customize the view
-    }
+    // Insert code here to customize the view
+  }
 
 }

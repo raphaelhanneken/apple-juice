@@ -31,7 +31,7 @@ import Foundation
 class ListRowViewControllerType: NSObject {
 
   /// Holds the battery property, e.g. time remaining.
-  var type: String = ""
+  var title: String = ""
 
   /// Holds the value for the given type, e.g. 2:28
   var value: String = ""
@@ -39,18 +39,29 @@ class ListRowViewControllerType: NSObject {
   /// Initializes the RowViewControllerType
   ///
   /// - parameter definition: The RowViewControllerTypeDef.
-  init(withDefinition definition: ListRowViewControllerTypeDef) {
+  init(_ type: ListRowViewControllerTypeDef) {
+    // Initialize the parent class.
     super.init()
 
-    type  = NSLocalizedString(definition.rawValue, comment: "Set the row description")
-    value = getInformationFor(typeDef: definition)
+    // Set the row title for the supplied ListRowViewControllerTypeDef.
+    title = NSLocalizedString(type.rawValue, comment: "Set the row description")
+    // Set the value for the supplied ListRowViewControllerTypeDef.
+    if let data = getBatteryInformation(forRowType: type) {
+      value = data
+    }
   }
 
-  private func getInformationFor(typeDef def: ListRowViewControllerTypeDef) -> String {
+  /// Returns the battery information for the supplied row type.
+  ///
+  /// - parameter type: The row type to get information for.
+  /// - returns: A String containing the battery information for the supplied row type definition.
+  private func getBatteryInformation(forRowType type: ListRowViewControllerTypeDef) -> String? {
     do {
+      // Try opening the battery service IO.
       let battery = try Battery()
 
-      switch def {
+      // Get the battery information according to the given row type definition.
+      switch type {
       case .timeRemaining:
         return battery.timeRemainingFormatted()
       case .percentage:
@@ -73,10 +84,11 @@ class ListRowViewControllerType: NSObject {
         return battery.currentSource()
       }
     } catch {
+      // Couldn't open the battery service IO, for some reason...
       print("ERR: Defining ListRowViewControllerTypeDef failed.")
     }
 
-    return "Unknown"
+    return nil
   }
 
 }

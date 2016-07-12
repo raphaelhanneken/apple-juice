@@ -99,10 +99,10 @@ NCWidgetProviding, NCWidgetListViewDelegate, NCWidgetSearchViewDelegate {
 
   func widgetList(_ list: NCWidgetListViewController,
                   viewControllerForRow row: Int) -> NSViewController {
-      // Return a new view controller subclass for displaying an item of widget
-      // content. The NCWidgetListViewController will set the representedObject
-      // of this view controller to one of the objects in its contents array.
-      return ListRowViewController()
+    // Return a new view controller subclass for displaying an item of widget
+    // content. The NCWidgetListViewController will set the representedObject
+    // of this view controller to one of the objects in its contents array.
+    return ListRowViewController()
   }
 
   func widgetListPerformAddAction(_ list: NCWidgetListViewController) {
@@ -161,12 +161,12 @@ NCWidgetProviding, NCWidgetListViewDelegate, NCWidgetSearchViewDelegate {
   /// - returns: An array of ListRowViewControllerType.
   private func setRowViewContents() -> [ListRowViewControllerType] {
     return [
-      ListRowViewControllerType(withDefinition: .timeRemaining),
-      ListRowViewControllerType(withDefinition: .percentage),
-      ListRowViewControllerType(withDefinition: .powerUsage),
-      ListRowViewControllerType(withDefinition: .capacity),
-      ListRowViewControllerType(withDefinition: .cycleCount),
-      ListRowViewControllerType(withDefinition: .source)
+      ListRowViewControllerType(.timeRemaining),
+      ListRowViewControllerType(.percentage),
+      ListRowViewControllerType(.powerUsage),
+      ListRowViewControllerType(.capacity),
+      ListRowViewControllerType(.cycleCount),
+      ListRowViewControllerType(.source)
     ]
   }
 }
