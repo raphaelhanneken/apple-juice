@@ -1,6 +1,6 @@
 //
 // ListRowViewController.swift
-// Apple Juice
+// Apple Juice Widget
 // https://github.com/raphaelhanneken/apple-juice
 //
 // The MIT License (MIT)
@@ -38,4 +38,5 @@ class ListRowViewController: NSViewController {
 
     // Insert code here to customize the view
   }
+
 }

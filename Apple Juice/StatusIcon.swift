@@ -92,7 +92,7 @@ final class StatusIcon {
   ///  - returns: The image.
   private static func batteryImage(named name: String) -> NSImage? {
     // Define the path to apple's battery icons.
-    let path = "/System/Library/CoreServices/Menu Extras/Battery.menu/Contents/Resources/"
+    let path = "/System/Library/PrivateFrameworks/BatteryUIKit.framework/Versions/A/Resources/"
     // Open the supplied file as NSImage.
     if let img = NSImage(contentsOfFile: "\(path)\(name).pdf") {
       return img
@@ -112,7 +112,7 @@ final class StatusIcon {
   private static func drawThreePartImage(frame rect: NSRect, canvas img: NSImage,
     startCap start: NSImage, fill: NSImage, endCap end: NSImage) {
       img.lockFocus()
-      NSDrawThreePartImage(rect, start, fill, end, false, .CompositeCopy, 1, false)
+      NSDrawThreePartImage(rect, start, fill, end, false, .copy, 1, false)
       img.unlockFocus()
   }
 }

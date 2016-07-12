@@ -1,6 +1,6 @@
 //
 // TodayViewController.swift
-// Apple Juice
+// Apple Juice Widget
 // https://github.com/raphaelhanneken/apple-juice
 //
 // The MIT License (MIT)
@@ -28,8 +28,8 @@
 import Cocoa
 import NotificationCenter
 
-class TodayViewController: NSViewController, NCWidgetProviding, NCWidgetListViewDelegate,
-NCWidgetSearchViewDelegate {
+class TodayViewController: NSViewController,
+NCWidgetProviding, NCWidgetListViewDelegate, NCWidgetSearchViewDelegate {
 
   @IBOutlet var listViewController: NCWidgetListViewController!
 
@@ -46,10 +46,10 @@ NCWidgetSearchViewDelegate {
 
     // Set up the widget list view controller.
     // The contents property should contain an object for each row in the list.
-    self.listViewController.contents = self.getBatteryInformation()
+    self.listViewController.contents = setRowViewContents()
   }
 
-  override func dismissViewController(viewController: NSViewController) {
+  override func dismissViewController(_ viewController: NSViewController) {
     super.dismissViewController(viewController)
 
     // The search controller has been dismissed and is no longer needed.
@@ -60,25 +60,20 @@ NCWidgetSearchViewDelegate {
 
   // MARK: - NCWidgetProviding
 
-  func widgetPerformUpdateWithCompletionHandler(completionHandler: ((NCUpdateResult) -> Void)!) {
+  func widgetPerformUpdate(completionHandler: ((NCUpdateResult) -> Void)) {
     // Refresh the widget's contents in preparation for a snapshot.
     // Call the completion handler block after the widget's contents have been
     // refreshed. Pass NCUpdateResultNoData to indicate that nothing has changed
     // or NCUpdateResultNewData to indicate that there is new data since the
     // last invocation of this method.
-
-    // Always pass .NewData since at least the current charge will have changed at every call.
-    completionHandler(.NewData)
+    completionHandler(.noData)
   }
 
-  func widgetMarginInsetsForProposedMarginInsets(defaultMarginInset: NSEdgeInsets)
-    -> NSEdgeInsets {
-      // Shadow the default margin inset...
-      var marginInset  = defaultMarginInset
-      // ...and override the left margin so that the list view is flush with the edge.
-      marginInset.left = 0
-
-      return marginInset
+  func widgetMarginInsets(forProposedMarginInsets defaultMarginInset: EdgeInsets) -> EdgeInsets {
+    // Override the left margin so that the list view is flush with the edge.
+    var newInsets = defaultMarginInset
+    newInsets.left = 0
+    return newInsets
   }
 
   var widgetAllowsEditing: Bool {
@@ -102,78 +97,76 @@ NCWidgetSearchViewDelegate {
 
   // MARK: - NCWidgetListViewDelegate
 
-  func widgetList(list: NCWidgetListViewController!, viewControllerForRow row: Int)
-    -> NSViewController! {
-      // Return a new view controller subclass for displaying an item of widget
-      // content. The NCWidgetListViewController will set the representedObject
-      // of this view controller to one of the objects in its contents array.
-      return ListRowViewController()
+  func widgetList(_ list: NCWidgetListViewController,
+                  viewControllerForRow row: Int) -> NSViewController {
+    // Return a new view controller subclass for displaying an item of widget
+    // content. The NCWidgetListViewController will set the representedObject
+    // of this view controller to one of the objects in its contents array.
+    return ListRowViewController()
   }
 
-  func widgetListPerformAddAction(list: NCWidgetListViewController!) {
+  func widgetListPerformAddAction(_ list: NCWidgetListViewController) {
     // The user has clicked the add button in the list view.
     // Display a search controller for adding new content to the widget.
-    self.searchController = NCWidgetSearchViewController()
-    self.searchController!.delegate = self
+    let searchController = NCWidgetSearchViewController()
+    self.searchController = searchController
+    searchController.delegate = self
 
     // Present the search view controller with an animation.
     // Implement dismissViewController to observe when the view controller
     // has been dismissed and is no longer needed.
-    self.presentViewControllerInWidget(self.searchController)
+    self.present(inWidget: searchController)
   }
 
-  func widgetList(list: NCWidgetListViewController!, shouldReorderRow row: Int) -> Bool {
+  func widgetList(_ list: NCWidgetListViewController, shouldReorderRow row: Int) -> Bool {
     // Return true to allow the item to be reordered in the list by the user.
     return true
   }
 
-  func widgetList(list: NCWidgetListViewController!, didReorderRow row: Int, toRow newIndex: Int) {
+  func widgetList(_ list: NCWidgetListViewController,
+                  didReorderRow row: Int, toRow newIndex: Int) {
     // The user has reordered an item in the list.
   }
 
-  func widgetList(list: NCWidgetListViewController!, shouldRemoveRow row: Int) -> Bool {
+  func widgetList(_ list: NCWidgetListViewController, shouldRemoveRow row: Int) -> Bool {
     // Return true to allow the item to be removed from the list by the user.
     return true
   }
 
-  func widgetList(list: NCWidgetListViewController!, didRemoveRow row: Int) {
+  func widgetList(_ list: NCWidgetListViewController, didRemoveRow row: Int) {
     // The user has removed an item from the list.
   }
 
   // MARK: - NCWidgetSearchViewDelegate
 
-  func widgetSearch(searchController: NCWidgetSearchViewController!,
-    searchForTerm searchTerm: String!, maxResults max: Int) {
-      // The user has entered a search term. Set the controller's
-      // searchResults property to the matching items.
-      searchController.searchResults = []
+  func widgetSearch(_ searchController: NCWidgetSearchViewController,
+                    searchForTerm searchTerm: String, maxResults max: Int) {
+    // The user has entered a search term.
+    // Set the controller's searchResults property to the matching items.
+    searchController.searchResults = []
   }
 
-  func widgetSearchTermCleared(searchController: NCWidgetSearchViewController!) {
+  func widgetSearchTermCleared(_ searchController: NCWidgetSearchViewController) {
     // The user has cleared the search field. Remove the search results.
     searchController.searchResults = nil
   }
 
-  func widgetSearch(searchController: NCWidgetSearchViewController!,
-    resultSelected object: AnyObject!) {
-      // The user has selected a search result from the list.
+  func widgetSearch(_ searchController: NCWidgetSearchViewController,
+                    resultSelected object: AnyObject) {
+    // The user has selected a search result from the list.
   }
 
-  ///  Creates an array of all the information to display within the today widget.
+  /// Initializes the ListRowViewControllerTypes.
   ///
-  ///  - returns: The array with the necessary RowViewControllerType's.
-  func getBatteryInformation() -> [RowViewControllerType] {
-    let contents = [
-      RowViewControllerType(withType: .TimeRemaining),
-      RowViewControllerType(withType: .CurrentCharge),
-      RowViewControllerType(withType: .PowerUsage),
-      RowViewControllerType(withType: .Capacity),
-      RowViewControllerType(withType: .CycleCount),
-      RowViewControllerType(withType: .Temperature),
-      RowViewControllerType(withType: .Source),
-      RowViewControllerType(withType: .DesignCycleCount),
-      RowViewControllerType(withType: .DesignCapacity)
+  /// - returns: An array of ListRowViewControllerType.
+  private func setRowViewContents() -> [ListRowViewControllerType] {
+    return [
+      ListRowViewControllerType(.timeRemaining),
+      ListRowViewControllerType(.percentage),
+      ListRowViewControllerType(.powerUsage),
+      ListRowViewControllerType(.capacity),
+      ListRowViewControllerType(.cycleCount),
+      ListRowViewControllerType(.source)
     ]
-    return contents
   }
 }
