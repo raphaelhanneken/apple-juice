@@ -29,7 +29,7 @@ import Cocoa
 import NotificationCenter
 
 class TodayViewController: NSViewController,
-NCWidgetProviding, NCWidgetListViewDelegate, NCWidgetSearchViewDelegate {
+                           NCWidgetProviding, NCWidgetListViewDelegate, NCWidgetSearchViewDelegate {
 
   @IBOutlet var listViewController: NCWidgetListViewController!
 
@@ -97,8 +97,7 @@ NCWidgetProviding, NCWidgetListViewDelegate, NCWidgetSearchViewDelegate {
 
   // MARK: - NCWidgetListViewDelegate
 
-  func widgetList(_ list: NCWidgetListViewController,
-                  viewControllerForRow row: Int) -> NSViewController {
+  func widgetList(_ list: NCWidgetListViewController, viewControllerForRow row: Int) -> NSViewController {
     // Return a new view controller subclass for displaying an item of widget
     // content. The NCWidgetListViewController will set the representedObject
     // of this view controller to one of the objects in its contents array.
@@ -123,8 +122,7 @@ NCWidgetProviding, NCWidgetListViewDelegate, NCWidgetSearchViewDelegate {
     return true
   }
 
-  func widgetList(_ list: NCWidgetListViewController,
-                  didReorderRow row: Int, toRow newIndex: Int) {
+  func widgetList(_ list: NCWidgetListViewController, didReorderRow row: Int, toRow newIndex: Int) {
     // The user has reordered an item in the list.
   }
 
@@ -151,8 +149,7 @@ NCWidgetProviding, NCWidgetListViewDelegate, NCWidgetSearchViewDelegate {
     searchController.searchResults = nil
   }
 
-  func widgetSearch(_ searchController: NCWidgetSearchViewController,
-                    resultSelected object: AnyObject) {
+  func widgetSearch(_ searchController: NCWidgetSearchViewController, resultSelected object: AnyObject) {
     // The user has selected a search result from the list.
   }
 

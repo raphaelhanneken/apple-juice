@@ -38,5 +38,4 @@ class ListRowViewController: NSViewController {
 
     // Insert code here to customize the view
   }
-
 }

@@ -40,7 +40,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
 
   // Post messages to the user notification center.
   func userNotificationCenter(_ center: NSUserNotificationCenter,
-    shouldPresentNotification notification: NSUserNotification) -> Bool {
-      return true
+                              shouldPresentNotification notification: NSUserNotification) -> Bool {
+    return true
   }
 }

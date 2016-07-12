@@ -105,9 +105,11 @@ final class UserPreferences {
   ///  Register user defaults.
   private func registerUserDefaults() {
     let defaults: Dictionary<String, AnyObject> = [showTimeKey : false,
-      fivePercentNotificationKey : 0, tenPercentNotificationKey : 0,
-      fifeteenPercentNotificationKey : 0, twentyPercentNotificationKey : 0,
-      lastNotifiedKey : 0]
+                                                   fivePercentNotificationKey : 0,
+                                                   tenPercentNotificationKey : 0,
+                                                   fifeteenPercentNotificationKey : 0,
+                                                   twentyPercentNotificationKey : 0,
+                                                   lastNotifiedKey : 0]
 
     userDefaults.register(defaults)
   }

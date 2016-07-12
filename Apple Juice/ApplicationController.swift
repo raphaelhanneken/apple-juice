@@ -161,9 +161,9 @@ final class ApplicationController: NSObject {
   ///  Checks if the user wants to get notified about the current charging status.
   private func postUserNotification() {
     // Unwrap the necessary information.
-    guard let plugged = battery?.isPlugged(),
-      charged    = battery?.isCharged(),
-      percentage = battery?.percentage() else {
+    guard let plugged    = battery?.isPlugged(),
+              charged    = battery?.isCharged(),
+              percentage = battery?.percentage() else {
         return
     }
     // Define a new notification key.
@@ -197,7 +197,7 @@ final class ApplicationController: NSObject {
     -> AttributedString {
       // Define some attributes to make the status bar item look like Apple's battery gauge.
       let attrs = [NSFontAttributeName : NSFont.systemFont(ofSize: 12.0),
-         NSBaselineOffsetAttributeName : 0.0]
+                   NSBaselineOffsetAttributeName : 0.0]
       // Check whether the user wants to see the remaining time or not.
       if userPrefs.showTime {
         return AttributedString(string: "\(time) ", attributes: attrs)
@@ -229,14 +229,14 @@ final class ApplicationController: NSObject {
   private func registerAsObserver() {
     // Get notified, when the power source changes.
     NotificationCenter.default.addObserver(self,
-      selector: #selector(ApplicationController.powerSourceChanged(_:)),
-          name: NSNotification.Name(rawValue: powerSourceChangedNotification),
-        object: nil)
+                                           selector: #selector(ApplicationController.powerSourceChanged(_:)),
+                                           name: NSNotification.Name(rawValue: powerSourceChangedNotification),
+                                           object: nil)
     // Get notified, when the user defaults change.
     NotificationCenter.default.addObserver(self,
-      selector: #selector(ApplicationController.userDefaultsDidChange(_:)),
-          name: UserDefaults.didChangeNotification,
-        object: nil)
+                                           selector: #selector(ApplicationController.userDefaultsDidChange(_:)),
+                                           name: UserDefaults.didChangeNotification,
+                                           object: nil)
   }
 
   // MARK: - IBAction's

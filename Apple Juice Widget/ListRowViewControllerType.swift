@@ -44,7 +44,7 @@ class ListRowViewControllerType: NSObject {
     super.init()
 
     // Set the row title for the supplied ListRowViewControllerTypeDef.
-    title = NSLocalizedString(type.rawValue, comment: "Set the row description")
+    title = NSLocalizedString(type.rawValue, comment: "Set the translated row description")
     // Set the value for the supplied ListRowViewControllerTypeDef.
     if let data = getBatteryInformation(forRowType: type) {
       value = data

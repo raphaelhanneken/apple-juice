@@ -35,8 +35,7 @@ let powerSourceChangedNotification = "com.raphaelhanneken.apple-juice.powersourc
 /// Gets called whenever any power source is added, removed, or changed.
 private let powerSourceCallback: IOPowerSourceCallbackType = { _ in
   // Post a PowerSourceChanged notification.
-  NotificationCenter.default.post(name: Notification.Name(rawValue: powerSourceChangedNotification),
-    object: nil)
+  NotificationCenter.default.post(name: Notification.Name(rawValue: powerSourceChangedNotification), object: nil)
 }
 
 /// Access information about the build in battery.
@@ -64,8 +63,8 @@ final class Battery {
     // Unwrap the necessary information or return "Unknown" in case something went wrong.
     guard let charged = isCharged(),
               plugged = isPlugged(),
-                 time = timeRemaining() else {
-      return NSLocalizedString("unknown", comment: "")
+              time    = timeRemaining() else {
+        return NSLocalizedString("unknown", comment: "")
     }
 
     // If the remaining time is unlimited, just return "Charged".
@@ -89,7 +88,8 @@ final class Battery {
   ///  - returns: The current percentage of the battery.
   func percentage() -> Int? {
     // Get the necessary information.
-    guard let maxCapacity = maxCapacity(), currentCapacity = currentCharge() else {
+    guard let maxCapacity     = maxCapacity(),
+              currentCapacity = currentCharge() else {
       return nil
     }
     // Calculate the current percentage.
@@ -151,8 +151,8 @@ final class Battery {
   ///
   ///  - returns: The current power usage in Watts.
   func powerUsage() -> Double? {
-    guard let voltage = getRegistryPropertyForKey(.Voltage) as? Double,
-      amperage        = getRegistryPropertyForKey(.Amperage) as? Double else {
+    guard let voltage  = getRegistryPropertyForKey(.Voltage) as? Double,
+              amperage = getRegistryPropertyForKey(.Amperage) as? Double else {
         return nil
     }
     return round(((voltage * amperage) / 1000000) * 10) / 10
@@ -181,8 +181,7 @@ final class Battery {
       }
     }
     // Get an IOService object for the defined
-    service = IOServiceGetMatchingService(kIOMasterPortDefault,
-      IOServiceNameMatching(batteryIOServiceName))
+    service = IOServiceGetMatchingService(kIOMasterPortDefault, IOServiceNameMatching(batteryIOServiceName))
     // Throw a BatteryError if the IO service couldn't be opened.
     if service == 0 {
       throw BatteryError.serviceNotFound
@@ -207,8 +206,7 @@ final class Battery {
   ///  - parameter key: A SmartBatteryKey to get the property for.
   ///  - returns: The property of the given SmartBatteryKey.
   private func getRegistryPropertyForKey(_ key: SmartBatteryKey) -> AnyObject? {
-    return IORegistryEntryCreateCFProperty(service, key.rawValue, kCFAllocatorDefault, 0)
-      .takeRetainedValue()
+    return IORegistryEntryCreateCFProperty(service, key.rawValue, kCFAllocatorDefault, 0).takeRetainedValue()
   }
 }
 

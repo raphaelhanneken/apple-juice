@@ -59,9 +59,9 @@ final class StatusIcon {
   static func batteryDischarging(currentPercentage percentage: Int) -> NSImage? {
     // Get the images to draw the battery icon.
     guard let batteryOutline = StatusIcon.batteryImage(named: "BatteryEmpty"),
-      batteryLeft  = StatusIcon.batteryImage(named: "BatteryLevelCapB-L"),
-      batteryRight = StatusIcon.batteryImage(named: "BatteryLevelCapB-R"),
-      batteryMid   = StatusIcon.batteryImage(named: "BatteryLevelCapB-M") else {
+              batteryLeft    = StatusIcon.batteryImage(named: "BatteryLevelCapB-L"),
+              batteryRight   = StatusIcon.batteryImage(named: "BatteryLevelCapB-R"),
+              batteryMid     = StatusIcon.batteryImage(named: "BatteryLevelCapB-M") else {
         return nil
     }
     // Get the height of the capacity bar.
@@ -77,11 +77,11 @@ final class StatusIcon {
     }
     // Define the drawing rect.
     let drawingRect = NSRect(x: capacityBarOffset, y: capacityBarOffsetTop,
-      width: capacityBarWidth, height: capacityBarHeight)
+                             width: capacityBarWidth, height: capacityBarHeight)
 
     // Finally, draw the actual menu bar icon.
     drawThreePartImage(frame: drawingRect, canvas: batteryOutline, startCap: batteryLeft,
-      fill: batteryMid, endCap: batteryRight)
+                       fill: batteryMid, endCap: batteryRight)
 
     return batteryOutline
   }
@@ -98,8 +98,9 @@ final class StatusIcon {
       return img
     } else {
       print("An error occured while reading image named: \(name)")
-      return nil
     }
+
+    return nil
   }
 
   ///  Draws a three part tiled image.
@@ -110,9 +111,9 @@ final class StatusIcon {
   ///  - parameter fill:  The image used to fill the space between the start and endCap images.
   ///  - parameter end:   The right edge of the image frame.
   private static func drawThreePartImage(frame rect: NSRect, canvas img: NSImage,
-    startCap start: NSImage, fill: NSImage, endCap end: NSImage) {
-      img.lockFocus()
-      NSDrawThreePartImage(rect, start, fill, end, false, .copy, 1, false)
-      img.unlockFocus()
+                                         startCap start: NSImage, fill: NSImage, endCap end: NSImage) {
+    img.lockFocus()
+    NSDrawThreePartImage(rect, start, fill, end, false, .copy, 1, false)
+    img.unlockFocus()
   }
 }
