@@ -34,22 +34,22 @@ final class StatusIcon {
 
   /// Returns the charged and plugged battery image.
   static var batteryChargedAndPlugged: NSImage? {
-    return StatusIcon.batteryImage(named: "BatteryChargedAndPlugged")
+    return StatusIcon.batteryImage(named: .charged)
   }
 
   /// Returns the charging battery image.
   static var batteryCharging: NSImage? {
-    return StatusIcon.batteryImage(named: "BatteryCharging")
+    return StatusIcon.batteryImage(named: .charging)
   }
 
   /// Returns the battery image for a ConnectionAlreadyOpen error.
   static var batteryConnectionAlreadyOpen: NSImage? {
-    return StatusIcon.batteryImage(named: "BatteryDeadCropped")
+    return StatusIcon.batteryImage(named: .dead)
   }
 
   /// Returns the battery image for a ServiceNotFound error.
   static var batteryServiceNotFound: NSImage? {
-    return StatusIcon.batteryImage(named: "BatteryNone")
+    return StatusIcon.batteryImage(named: .none)
   }
 
   ///  Draws a battery icon based on the current percentage charge of the battery.
@@ -57,11 +57,11 @@ final class StatusIcon {
   ///  - parameter percentage: The current percentage charge of the battery.
   ///  - returns: The battery icon based on the given parameters.
   static func batteryDischarging(currentPercentage percentage: Int) -> NSImage? {
-    // Get the images to draw the battery icon.
-    guard let batteryOutline = StatusIcon.batteryImage(named: "BatteryEmpty"),
-              batteryLeft    = StatusIcon.batteryImage(named: "BatteryLevelCapB-L"),
-              batteryRight   = StatusIcon.batteryImage(named: "BatteryLevelCapB-R"),
-              batteryMid     = StatusIcon.batteryImage(named: "BatteryLevelCapB-M") else {
+    // Get the required images to draw the battery icon.
+    guard let batteryOutline = StatusIcon.batteryImage(named: .empty),
+              batteryLeft    = StatusIcon.batteryImage(named: .left),
+              batteryRight   = StatusIcon.batteryImage(named: .right),
+              batteryMid     = StatusIcon.batteryImage(named: .middle) else {
         return nil
     }
     // Get the height of the capacity bar.
@@ -90,11 +90,11 @@ final class StatusIcon {
   ///
   ///  - parameter name: Name of the image.
   ///  - returns: The image.
-  private static func batteryImage(named name: String) -> NSImage? {
+  private static func batteryImage(named name: BatteryImage) -> NSImage? {
     // Define the path to apple's battery icons.
     let path = "/System/Library/PrivateFrameworks/BatteryUIKit.framework/Versions/A/Resources/"
     // Open the supplied file as NSImage.
-    if let img = NSImage(contentsOfFile: "\(path)\(name).pdf") {
+    if let img = NSImage(contentsOfFile: "\(path)\(name.rawValue).pdf") {
       return img
     } else {
       print("An error occured while reading image named: \(name)")
@@ -116,4 +116,26 @@ final class StatusIcon {
     NSDrawThreePartImage(rect, start, fill, end, false, .copy, 1, false)
     img.unlockFocus()
   }
+}
+
+
+///  Holds the image names for all battery images.
+///
+///  - left:     Image name for the battery level cap on the left hand side.
+///  - right:    Image name for the battery level cap on the right hand side.
+///  - middle:   The name for the battery level filler image. Between the left and the right cap.
+///  - empty:    Image name for the empty battery image.
+///  - charged:  Image name for the charged battery image.
+///  - charging: Image name for the charging battery image.
+///  - dead:     Image name for the dead/cropped battery image.
+///  - none:     Image name for the "Not found" battery image.
+enum BatteryImage: String {
+  case left     = "BatteryLevelCapB-L"
+  case right    = "BatteryLevelCapB-R"
+  case middle   = "BatteryLevelCapB-M"
+  case empty    = "BatteryEmpty"
+  case charged  = "BatteryChargedAndPlugged"
+  case charging = "BatteryCharging"
+  case dead     = "BatteryDeadCropped"
+  case none     = "BatteryNone"
 }
