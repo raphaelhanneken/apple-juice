@@ -1,8 +1,8 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="10117" systemVersion="15G24b" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="11163.2" systemVersion="16A238m" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
     <dependencies>
         <deployment identifier="macosx"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="10117"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="11163.2"/>
     </dependencies>
     <objects>
         <customObject id="-2" userLabel="File's Owner" customClass="NSApplication">
@@ -740,12 +740,6 @@
                         </items>
                     </menu>
                 </menuItem>
-                <menuItem title="About Apple Juice..." id="5kV-Vb-QxS">
-                    <modifierMask key="keyEquivalentModifierMask"/>
-                    <connections>
-                        <action selector="orderFrontStandardAboutPanel:" target="-1" id="Exp-CZ-Vem"/>
-                    </connections>
-                </menuItem>
                 <menuItem isSeparatorItem="YES" id="HoG-Jh-UIk"/>
                 <menuItem title="Check for Updates..." id="OFJ-1T-Wc5">
                     <modifierMask key="keyEquivalentModifierMask"/>
@@ -767,7 +761,7 @@
                     </connections>
                 </menuItem>
             </items>
-            <point key="canvasLocation" x="171.5" y="237.5"/>
+            <point key="canvasLocation" x="32" y="345"/>
         </menu>
         <userDefaultsController representsSharedInstance="YES" id="OgL-rZ-xAG"/>
     </objects>
