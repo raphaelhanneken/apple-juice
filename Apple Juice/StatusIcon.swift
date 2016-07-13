@@ -34,22 +34,22 @@ final class StatusIcon {
 
   /// Returns the charged and plugged battery image.
   static var batteryChargedAndPlugged: NSImage? {
-    return StatusIcon.batteryImage(named: .charged)
+    return batteryImage(named: .charged)
   }
 
   /// Returns the charging battery image.
   static var batteryCharging: NSImage? {
-    return StatusIcon.batteryImage(named: .charging)
+    return batteryImage(named: .charging)
   }
 
   /// Returns the battery image for a ConnectionAlreadyOpen error.
   static var batteryConnectionAlreadyOpen: NSImage? {
-    return StatusIcon.batteryImage(named: .dead)
+    return batteryImage(named: .dead)
   }
 
   /// Returns the battery image for a ServiceNotFound error.
   static var batteryServiceNotFound: NSImage? {
-    return StatusIcon.batteryImage(named: .none)
+    return batteryImage(named: .none)
   }
 
   ///  Draws a battery icon based on the current percentage charge of the battery.
@@ -58,10 +58,10 @@ final class StatusIcon {
   ///  - returns: The battery icon based on the given parameters.
   static func batteryDischarging(currentPercentage percentage: Int) -> NSImage? {
     // Get the required images to draw the battery icon.
-    guard let batteryEmpty     = StatusIcon.batteryImage(named: .empty),
-              capacityCapLeft  = StatusIcon.batteryImage(named: .left),
-              capacityCapRight = StatusIcon.batteryImage(named: .right),
-              capacityFill     = StatusIcon.batteryImage(named: .middle) else {
+    guard let batteryEmpty     = batteryImage(named: .empty),
+              capacityCapLeft  = batteryImage(named: .left),
+              capacityCapRight = batteryImage(named: .right),
+              capacityFill     = batteryImage(named: .middle) else {
         return nil
     }
     // Get the height of the capacity bar.
