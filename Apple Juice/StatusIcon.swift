@@ -30,7 +30,7 @@ import Cocoa
 /// Methods to draw the status bat item's icon.
 final class StatusIcon {
   /// A little offset to draw the capacity bar in the correct position.
-  private static let capacityBarOffset: CGFloat = 2.0
+  private static let capacityOffsetX: CGFloat = 2.0
 
   /// Returns the charged and plugged battery image.
   static var batteryChargedAndPlugged: NSImage? {
@@ -58,32 +58,32 @@ final class StatusIcon {
   ///  - returns: The battery icon based on the given parameters.
   static func batteryDischarging(currentPercentage percentage: Int) -> NSImage? {
     // Get the required images to draw the battery icon.
-    guard let batteryOutline = StatusIcon.batteryImage(named: .empty),
-              batteryLeft    = StatusIcon.batteryImage(named: .left),
-              batteryRight   = StatusIcon.batteryImage(named: .right),
-              batteryMid     = StatusIcon.batteryImage(named: .middle) else {
+    guard let batteryEmpty     = StatusIcon.batteryImage(named: .empty),
+              capacityCapLeft  = StatusIcon.batteryImage(named: .left),
+              capacityCapRight = StatusIcon.batteryImage(named: .right),
+              capacityFill     = StatusIcon.batteryImage(named: .middle) else {
         return nil
     }
     // Get the height of the capacity bar.
-    let capacityBarHeight = batteryLeft.size.height
+    let capacityHeight = capacityFill.size.height
     // Calculate the offset to achieve this little gap between the capacity bar and the outline.
-    let capacityBarOffsetTop = batteryOutline.size.height - (capacityBarOffset + capacityBarHeight)
+    let capacityOffsetY = batteryEmpty.size.height - (capacityHeight + capacityOffsetX)
     // Calculate the width of the capacity bar.
-    var capacityBarWidth = CGFloat(ceil(Double(percentage / 12))) * batteryMid.size.width
+    var capacityWidth = CGFloat(ceil(Double(percentage / 12))) * capacityFill.size.width
     // Don't draw the capacity bar smaller than two single battery images, to prevent
     // graphic errors.
-    if (2 * batteryMid.size.width) >= capacityBarWidth {
-      capacityBarWidth = (2 * batteryMid.size.width) + 0.1
+    if (2 * capacityFill.size.width) >= capacityWidth {
+      capacityWidth = (2 * capacityFill.size.width) + 0.1
     }
     // Define the drawing rect.
-    let drawingRect = NSRect(x: capacityBarOffset, y: capacityBarOffsetTop,
-                             width: capacityBarWidth, height: capacityBarHeight)
+    let drawingRect = NSRect(x: capacityOffsetX, y: capacityOffsetY,
+                             width: capacityWidth, height: capacityHeight)
 
     // Finally, draw the actual menu bar icon.
-    drawThreePartImage(frame: drawingRect, canvas: batteryOutline, startCap: batteryLeft,
-                       fill: batteryMid, endCap: batteryRight)
+    drawThreePartImage(frame: drawingRect, canvas: batteryEmpty, startCap: capacityCapLeft,
+                       fill: capacityFill, endCap: capacityCapRight)
 
-    return batteryOutline
+    return batteryEmpty
   }
 
   ///  Retrieves the battery image for the supplied image name.
