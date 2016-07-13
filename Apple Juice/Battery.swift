@@ -27,7 +27,7 @@
 
 import Foundation
 import IOKit.ps
-import IOKit
+import IOKit.pwr_mgt
 
 /// Notification that gets posted whenever a power source is changed.
 let powerSourceChangedNotification = "com.raphaelhanneken.apple-juice.powersourcechanged"
