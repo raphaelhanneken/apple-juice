@@ -51,7 +51,7 @@ final class Battery {
   init() throws {
     try openServiceConnection()
     // Get notified when the power source information changes.
-    let loop = IOPSNotificationCreateRunLoopSource(powerSourceCallback, nil).takeUnretainedValue()
+    let loop = IOPSNotificationCreateRunLoopSource(powerSourceCallback, nil).takeRetainedValue()
     // Add the notification loop to the current run loop.
     CFRunLoopAddSource(CFRunLoopGetCurrent(), loop, CFRunLoopMode.defaultMode)
   }
@@ -206,7 +206,7 @@ final class Battery {
   ///  - parameter key: A SmartBatteryKey to get the property for.
   ///  - returns: The property of the given SmartBatteryKey.
   private func getRegistryPropertyForKey(_ key: SmartBatteryKey) -> AnyObject? {
-    return IORegistryEntryCreateCFProperty(service, key.rawValue, kCFAllocatorDefault, 0).takeRetainedValue()
+    return IORegistryEntryCreateCFProperty(service, key.rawValue, nil, 0).takeRetainedValue()
   }
 }
 
