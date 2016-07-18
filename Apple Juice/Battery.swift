@@ -39,7 +39,7 @@ private let powerSourceCallback: IOPowerSourceCallbackType = { _ in
 }
 
 /// Access information about the build in battery.
-final class Battery {
+struct Battery {
 
   /// The battery's IO service name.
   private let batteryIOServiceName = "AppleSmartBattery"
@@ -171,7 +171,7 @@ final class Battery {
   ///
   ///  - throws: ConnectionAlreadyOpen exception, if the last connection wasn't closed properly.
   ///  - throws: ServiceNotFound exception, if the IOSERVICE_BATTERY couldn't be found.
-  private func openServiceConnection() throws {
+  private mutating func openServiceConnection() throws {
     // If the IO service is still open...
     if service != 0 {
       // ...try closing it.
@@ -191,7 +191,7 @@ final class Battery {
   ///  Closes the connection the the battery's IO service.
   ///
   ///  - returns: True on success; false otherwise.
-  private func closeServiceConnection() -> Bool {
+  private mutating func closeServiceConnection() -> Bool {
     // Release the IO object...
     let result = IOObjectRelease(service)
     // ...and reset the service property.

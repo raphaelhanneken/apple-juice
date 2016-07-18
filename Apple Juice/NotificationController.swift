@@ -28,7 +28,7 @@
 import Foundation
 
 /// Methods to post user notifications about the current charging status.
-final class NotificationController {
+struct NotificationController {
 
   ///  Post a user notification based on the supplied notification key.
   ///

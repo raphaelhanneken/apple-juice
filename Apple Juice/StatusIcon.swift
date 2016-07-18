@@ -28,7 +28,7 @@
 import Cocoa
 
 /// Methods to draw the status bat item's icon.
-final class StatusIcon {
+struct StatusIcon {
   /// A little offset to draw the capacity bar in the correct position.
   private static let capacityOffsetX: CGFloat = 2.0
 
@@ -97,7 +97,7 @@ final class StatusIcon {
     if let img = NSImage(contentsOfFile: "\(path)\(name.rawValue).pdf") {
       return img
     } else {
-      print("An error occured while reading image named: \(name)")
+      print("An error occured while reading the image named: \(name)")
     }
 
     return nil
