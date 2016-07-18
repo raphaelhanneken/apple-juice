@@ -742,16 +742,16 @@
                     </menu>
                 </menuItem>
                 <menuItem isSeparatorItem="YES" id="HoG-Jh-UIk"/>
-                <menuItem title="Systemeinstellung Energie sparen…" id="nUK-pj-k8O">
-                    <modifierMask key="keyEquivalentModifierMask"/>
-                    <connections>
-                        <action selector="energySaverPreferences:" target="FRD-GK-LcV" id="eSm-lB-1d2"/>
-                    </connections>
-                </menuItem>
                 <menuItem title="Nach Updates suchen..." id="OFJ-1T-Wc5">
                     <modifierMask key="keyEquivalentModifierMask"/>
                     <connections>
                         <action selector="checkForUpdates:" target="Avc-Ie-Abt" id="Aqj-nm-y4m"/>
+                    </connections>
+                </menuItem>
+                <menuItem title="Systemeinstellung Energie sparen…" id="nUK-pj-k8O">
+                    <modifierMask key="keyEquivalentModifierMask"/>
+                    <connections>
+                        <action selector="energySaverPreferences:" target="FRD-GK-LcV" id="eSm-lB-1d2"/>
                     </connections>
                 </menuItem>
                 <menuItem isSeparatorItem="YES" id="bcW-nq-A9L"/>
