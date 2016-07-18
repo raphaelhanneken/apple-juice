@@ -27,7 +27,7 @@
 
 import Cocoa
 
-class ListRowViewController: NSViewController {
+final class ListRowViewController: NSViewController {
 
   override var nibName: String? {
     return "ListRowViewController"

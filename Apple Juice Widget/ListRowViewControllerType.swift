@@ -28,7 +28,7 @@
 import Foundation
 
 /// Represents a single row.
-class ListRowViewControllerType: NSObject {
+final class ListRowViewControllerType: NSObject {
 
   /// Holds the battery property, e.g. time remaining.
   var title: String = ""

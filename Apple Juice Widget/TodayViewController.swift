@@ -28,7 +28,7 @@
 import Cocoa
 import NotificationCenter
 
-class TodayViewController: NSViewController,
+final class TodayViewController: NSViewController,
                            NCWidgetProviding, NCWidgetListViewDelegate, NCWidgetSearchViewDelegate {
 
   @IBOutlet var listViewController: NCWidgetListViewController!
