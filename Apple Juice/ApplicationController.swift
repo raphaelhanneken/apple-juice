@@ -196,8 +196,7 @@ final class ApplicationController: NSObject {
   private func attributedTitle(withPercentage percent: Int, andTime time: String)
     -> AttributedString {
       // Define some attributes to make the status bar item look like Apple's battery gauge.
-      let attrs = [NSFontAttributeName : NSFont.systemFont(ofSize: 12.0),
-                   NSBaselineOffsetAttributeName : 0.0]
+      let attrs = [NSFontAttributeName : NSFont.systemFont(ofSize: 12.0)]
       // Check whether the user wants to see the remaining time or not.
       if userPrefs.showTime {
         return AttributedString(string: "\(time) ", attributes: attrs)
