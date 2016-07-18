@@ -1,16 +1,37 @@
-/* 
-  Localizable.strings
-  Apple Juice
-*/
+//  Localizable.strings
+//  Apple Juice
+//
+//  German
 
-// Menu
-"charged"       = "Geladen";
-"unknown"       = "Unbekannt";
-"battery"       = "Batterie";
-"power adapter" = "Netzteil";
-"source"        = "Stromversorgung:";
 
-// Notifications
-"charged message"     = "Ihre Batterie ist vollständig geladen.";
-"low battery"         = "Batterie fast leer";
-"low battery message" = "Schließen Sie Ihren Mac möglichst bald an ein Netzteil an.";
+//  Menu Items
+
+"Charged"       = "Geladen";
+"Unknown"       = "Unbekannt";
+"Battery"       = "Batterie";
+"Power Adapter" = "Netzteil";
+
+
+//  Notifications
+
+"Message Charged"    = "Ihre Batterie ist vollständig geladen.";
+"Title Low Charge"   = "Batterie fast leer";
+"Message Low Charge" = "Schießen Sie Ihren Mac möglichst bald an ein Netzteil an.";
+
+
+//  Properties
+
+"Time Remaining"     = "Restzeit:";
+"Percentage"         = "Prozent:";
+"Power Usage"        = "Stromverbrauch:";
+"Charge"             = "Kapazität:";
+"Cycle Count"        = "Ladezyklen:";
+"Temperature"        = "Temperatur:";
+"Power Source"       = "Quelle:";
+"Design Cycle Count" = "Design Ladezyklen:";
+"Design Capacity"    = "Design Kapazität:";
+
+
+//  Units
+
+"Watts" = "Watt";

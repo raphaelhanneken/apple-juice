@@ -1,16 +1,37 @@
-/* 
-  Localizable.strings
-  Apple Juice
-*/
+//  Localizable.strings
+//  Apple Juice
+//
+//  French
 
-// Menu
-"charged"       = "Chargé";
-"unknown"       = "Inconnu";
-"battery"       = "Batterie";
-"power adapter" = "Adaptateur Secteur";
-"source"        = "Source d'alimentation:";
 
-// Notifications
-"charged message"     = "Complètement Chargée";
-"low battery"         = "Batterie Faible";
-"low battery message" = "Votre Mac sera bientôt dormir moins branché dans une prise de courant.";
+//  Menu Items
+
+"Charged"       = "Chargé";
+"Unknown"       = "Inconnu";
+"Battery"       = "Batterie";
+"Power Adapter" = "Adaptateur Secteur";
+
+
+//  Notifications
+
+"Message Charged"    = "Complètement Chargée";
+"Title Low Charge"   = "Batterie Faible";
+"Message Low Charge" = "Votre Mac sera bientôt dormir moins branché dans une prise de courant.";
+
+
+//  Properties
+
+"Time Remaining"     = "Temps Restant:";
+"Percentage"         = "Pourcentage:";
+"Power Usage"        = "Consommation:";
+"Charge"             = "Charger:";
+"Cycle Count"        = "Nombre de Cycles:";
+"Temperature"        = "Température:";
+"Power Source"       = "Source:";
+"Design Cycle Count" = "Conception comptage de Cycle:";
+"Design Capacity"    = "Capacité de conception:";
+
+
+//  Units
+
+"Watts" = "Watts";
