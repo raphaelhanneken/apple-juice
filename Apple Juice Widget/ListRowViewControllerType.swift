@@ -44,7 +44,7 @@ final class ListRowViewControllerType: NSObject {
     super.init()
 
     // Set the row title for the supplied ListRowViewControllerTypeDef.
-    title = NSLocalizedString(type.rawValue, comment: "Set the translated row description")
+    title = NSLocalizedString(type.rawValue, comment: "Translate and set the row description")
     // Set the value for the supplied ListRowViewControllerTypeDef.
     if let data = getBatteryInformation(forRowType: type) {
       value = data
@@ -70,7 +70,7 @@ final class ListRowViewControllerType: NSObject {
         }
       case .powerUsage:
         if let powerUsage = battery.powerUsage() {
-          return "\(powerUsage) \(NSLocalizedString("watts", comment: ""))"
+          return "\(powerUsage) \(NSLocalizedString("Watts", comment: "Translate Watts"))"
         }
       case .capacity:
         if let charge = battery.currentCharge(), capacity = battery.maxCapacity() {
@@ -109,10 +109,10 @@ final class ListRowViewControllerType: NSObject {
 ///  - DesignCycleCount: The design cycle count.
 ///  - DesignCapacity:   The design capacity in mAh.
 enum ListRowViewControllerTypeDef: String {
-  case timeRemaining    = "time remaining"
-  case percentage       = "percentage"
-  case powerUsage       = "power usage"
-  case capacity         = "charge"
-  case cycleCount       = "cycle count"
-  case source           = "power source"
+  case timeRemaining    = "Time Remaining"
+  case percentage       = "Percentage"
+  case powerUsage       = "Power Usage"
+  case capacity         = "Charge"
+  case cycleCount       = "Cycle Count"
+  case source           = "Power Source"
 }

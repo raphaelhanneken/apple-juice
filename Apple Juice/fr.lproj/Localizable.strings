@@ -14,9 +14,10 @@
 
 //  Notifications
 
-"Message Charged"    = "Complètement Chargée";
-"Title Low Charge"   = "Batterie Faible";
-"Message Low Charge" = "Votre Mac sera bientôt dormir moins branché dans une prise de courant.";
+"Charged Notification Title"       = "Chargé";
+"Charged Notification Message"     = "Complètement Chargée.";
+"Low Battery Notification Title"   = "Batterie Faible";
+"Low Battery Notification Message" = "Votre Mac sera bientôt dormir moins branché dans une prise de courant.";
 
 
 //  Properties

@@ -207,8 +207,8 @@
 		8EE129671C4661AC000D404F /* Resources */ = {
 			isa = PBXGroup;
 			children = (
-				8EBEB4471C466091001DBE91 /* Assets.xcassets */,
 				8EBF29EC1C485493005BBAE0 /* Localizable.strings */,
+				8EBEB4471C466091001DBE91 /* Assets.xcassets */,
 			);
 			name = Resources;
 			sourceTree = "<group>";

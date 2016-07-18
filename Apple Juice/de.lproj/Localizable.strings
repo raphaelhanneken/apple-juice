@@ -14,9 +14,10 @@
 
 //  Notifications
 
-"Message Charged"    = "Ihre Batterie ist vollständig geladen.";
-"Title Low Charge"   = "Batterie fast leer";
-"Message Low Charge" = "Schießen Sie Ihren Mac möglichst bald an ein Netzteil an.";
+"Charged Notification Title"       = "Geladen";
+"Charged Notification Message"     = "Ihre Batterie ist jetzt vollständig geladen.";
+"Low Battery Notification Title"   = "Batterie fast leer";
+"Low Battery Notification Message" = "Schießen Sie Ihren Mac sobald wie möglich an ein Netzteil an.";
 
 
 //  Properties

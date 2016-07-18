@@ -64,12 +64,12 @@ struct Battery {
     guard let charged = isCharged(),
               plugged = isPlugged(),
               time    = timeRemaining() else {
-        return NSLocalizedString("unknown", comment: "")
+        return NSLocalizedString("Unknown", comment: "Translate Unknown")
     }
 
     // If the remaining time is unlimited, just return "Charged".
     if charged && plugged {
-      return NSLocalizedString("charged", comment: "")
+      return NSLocalizedString("Charged", comment: "Translate Charged")
     } else {
       return String(format: "%d:%02d", arguments: [time / 60, time % 60])
     }
@@ -116,13 +116,13 @@ struct Battery {
   func currentSource() -> String {
     // Unwrap the necessary information or return "Unknown" in case something went wrong.
     guard let plugged = isPlugged() else {
-      return NSLocalizedString("unknown", comment: "")
+      return NSLocalizedString("Unknown", comment: "Translate Unknown")
     }
     // Check if we're currently plugged into a power adapter.
     if plugged {
-      return NSLocalizedString("power adapter", comment: "")
+      return NSLocalizedString("Power Adapter", comment: "Translate Power Adapter")
     } else {
-      return NSLocalizedString("battery", comment: "")
+      return NSLocalizedString("Battery", comment: "Translate Battery")
     }
   }
 

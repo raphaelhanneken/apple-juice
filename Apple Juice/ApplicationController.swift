@@ -142,7 +142,7 @@ final class ApplicationController: NSObject {
       return
     }
     // Get the current source and set the menu item title.
-    currentSource.title = "\(NSLocalizedString("source", comment: ""))"
+    currentSource.title = "\(NSLocalizedString("Power Source", comment: "Translate Source"))"
       + " \(battery.currentSource())"
     // Display the remaining time/percentage.
     if let percentage = battery.percentage() where userPrefs.showTime {

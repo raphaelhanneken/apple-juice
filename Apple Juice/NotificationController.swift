@@ -48,8 +48,11 @@ struct NotificationController {
     // Create a new user notification.
     let notification = NSUserNotification()
     // Configure the notification.
-    notification.title = NSLocalizedString("charged", comment: "")
-    notification.informativeText = NSLocalizedString("charged message", comment: "")
+    notification.title = NSLocalizedString("Charged Notification Title",
+                                           comment: "Translate the notification title.")
+
+    notification.informativeText = NSLocalizedString("Charged Notification Message",
+                                                     comment: "Translate the notification message.")
     // Deliver notification.
     NSUserNotificationCenter.default.deliver(notification)
   }
@@ -61,8 +64,11 @@ struct NotificationController {
     // Create a new user notification.
     let notification = NSUserNotification()
     // Configure the notification.
-    notification.title = NSLocalizedString("low battery", comment: "")
-    notification.informativeText = NSLocalizedString("low battery message", comment: "")
+    notification.title = NSLocalizedString("Low Battery Notification Title",
+                                           comment: "Translate the notification title.")
+
+    notification.informativeText = NSLocalizedString("Low Battery Notification Message",
+                                                     comment: "Translate the notification message.")
     // Deliver notification.
     NSUserNotificationCenter.default.deliver(notification)
   }
