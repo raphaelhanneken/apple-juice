@@ -10,6 +10,7 @@
 "Unknown"       = "Desconocido";
 "Battery"       = "Batería";
 "Power Adapter" = "Adaptador de Corriente";
+"Calculating"   = "Calculador…";
 
 
 //  Notifications

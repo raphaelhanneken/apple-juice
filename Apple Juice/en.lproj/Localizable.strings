@@ -10,6 +10,7 @@
 "Unknown"       = "Unknown";
 "Battery"       = "Battery";
 "Power Adapter" = "Power Adapter";
+"Calculating"   = "Calculating…";
 
 
 //  Notifications
