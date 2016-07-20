@@ -67,18 +67,27 @@ struct Battery {
         return NSLocalizedString("Unknown", comment: "Translate Unknown")
     }
 
-    // If the remaining time is unlimited, just return "Charged".
     if charged && plugged {
+      // The time remaining is unlimited.
       return NSLocalizedString("Charged", comment: "Translate Charged")
+    } else if time == 0 {
+      // The remaining time is not yet known.
+      return NSLocalizedString("Calculating", comment: "Translate Calculating")
     } else {
+      // We have a remaining time, calculate hours and minutes, and return.
       return String(format: "%d:%02d", arguments: [time / 60, time % 60])
     }
   }
 
-  ///  Time until the battery is empty or fully charged.
+  ///  Gets the remaining time until the battery is empty or fully charged.
   ///
-  ///  - returns: The time in minutes.
+  ///  - returns: The remaining time in minutes.
   func timeRemaining() -> Int? {
+    // If the battery is currently __NOT__ charging use IOPSGetTimeRemainingEstimate...
+    guard let plugged = isPlugged() where plugged else {
+      return Int((IOPSGetTimeRemainingEstimate() / 60))
+    }
+    // ...while the battery is charging use the IO Registry.
     return getRegistryPropertyForKey(.TimeRemaining) as? Int
   }
 
