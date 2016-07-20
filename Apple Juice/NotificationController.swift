@@ -36,7 +36,7 @@ struct NotificationController {
   static func postUserNotification(forPercentage percentage: NotificationKey) {
     // Post a pluggedAndCharged notification at hundred percent; a lowPercentage
     // notification otherwise.
-    if percentage == .hundredPercent {
+    if percentage == .HundredPercent {
       pluggedAndChargedNotification()
     } else {
       lowPercentageNotification(forPercentage: percentage)
@@ -78,17 +78,17 @@ struct NotificationController {
 
 ///  Defines a notification at a given percentage.
 ///
-///  - None:            Not a notification percentage.
+///  - Invalid:         Not a valid notification percentage.
 ///  - FivePercent:     Five percent notification.
 ///  - TenPercent:      Ten percent notification.
 ///  - FifeteenPercent: Fifeteen percent notification.
 ///  - TwentyPercent:   Twenty percent notification.
 ///  - HundredPercent:  Hundred percent notification.
-enum NotificationKey: Int {
-  case none            = 0
-  case fivePercent     = 5
-  case tenPercent      = 10
-  case fifeteenPercent = 15
-  case twentyPercent   = 20
-  case hundredPercent  = 100
+public enum NotificationKey: Int {
+  case Invalid         = 0
+  case FivePercent     = 5
+  case TenPercent      = 10
+  case FifeteenPercent = 15
+  case TwentyPercent   = 20
+  case HundredPercent  = 100
 }

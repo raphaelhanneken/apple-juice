@@ -170,15 +170,15 @@ final class ApplicationController: NSObject {
     let notificationKey: NotificationKey?
     // Check what kind of notification key we have here.
     if plugged && charged {
-      notificationKey = .hundredPercent
+      notificationKey = NotificationKey.HundredPercent
     } else if !plugged {
       notificationKey = NotificationKey(rawValue: percentage)
     } else {
-      notificationKey = .none
+      notificationKey = NotificationKey.Invalid
     }
-    // Unwrap the notification key and return, when we already informed the user
-    // about the current percentage.
-    guard let key = notificationKey where userPrefs.lastNotified != key else {
+    // Unwrap the notification key and return if the current percentage isn't a valid notification key
+    // or if we already posted a notification for the current percentage.
+    guard let key = notificationKey where key != .Invalid || key != userPrefs.lastNotified else {
       return
     }
     // Post the notification and save it as last notified.
