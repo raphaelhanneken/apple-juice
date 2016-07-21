@@ -55,8 +55,16 @@ final class ApplicationController: NSObject {
       try battery = Battery()
       // Display the status bar item.
       updateStatusItem()
-      // Listen for notifications.
-      registerAsObserver()
+      // Get notified, when the power source changes.
+      NotificationCenter.default.addObserver(self,
+                                             selector: #selector(ApplicationController.powerSourceChanged(_:)),
+                                             name: NSNotification.Name(rawValue: powerSourceChangedNotification),
+                                             object: nil)
+      // Get notified, when the user defaults change.
+      NotificationCenter.default.addObserver(self,
+                                             selector: #selector(ApplicationController.userDefaultsDidChange(_:)),
+                                             name: UserDefaults.didChangeNotification,
+                                             object: nil)
     } catch {
       // Draw a status item for the catched battery error.
       batteryError(type: error as? BatteryError)
@@ -222,20 +230,6 @@ final class ApplicationController: NSObject {
     }
     // Define the image as template
     button.image?.isTemplate = true
-  }
-
-  ///  Listen for power source and user defaults notifications.
-  private func registerAsObserver() {
-    // Get notified, when the power source changes.
-    NotificationCenter.default.addObserver(self,
-                                           selector: #selector(ApplicationController.powerSourceChanged(_:)),
-                                           name: NSNotification.Name(rawValue: powerSourceChangedNotification),
-                                           object: nil)
-    // Get notified, when the user defaults change.
-    NotificationCenter.default.addObserver(self,
-                                           selector: #selector(ApplicationController.userDefaultsDidChange(_:)),
-                                           name: UserDefaults.didChangeNotification,
-                                           object: nil)
   }
 
   // MARK: - IBAction's
