@@ -67,7 +67,7 @@ final class ApplicationController: NSObject {
                                              object: nil)
     } catch {
       // Draw a status item for the catched battery error.
-      batteryError(type: error as? BatteryError)
+      drawBatteryIcon(forError: error as? BatteryError)
     }
   }
 
@@ -216,13 +216,13 @@ final class ApplicationController: NSObject {
   ///  Display a battery error.
   ///
   ///  - parameter type: The BatteryError that was thrown.
-  private func batteryError(type: BatteryError?) {
+  private func drawBatteryIcon(forError e: BatteryError?) {
     // Unwrap the menu bar item's button.
-    guard let button = statusItem?.button, type = type else {
-      return
+    guard let error = e, button = statusItem?.button else {
+        return
     }
     // Get the right icon and set an error message for the supplied error
-    switch type {
+    switch error {
     case .connectionAlreadyOpen:
       button.image = StatusIcon.batteryConnectionAlreadyOpen
     case .serviceNotFound:
