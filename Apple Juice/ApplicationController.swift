@@ -135,7 +135,7 @@ final class ApplicationController: NSObject {
     // Draw the status icon on the right hand side.
     button.imagePosition = .imageRight
     // Set the status bar item's title.
-    button.attributedTitle = attributedTitle(withPercentage: percentage, andTime: timeRemaining)
+    button.attributedTitle = statusBarItemTitle(withPercentage: percentage, andTime: timeRemaining)
     // Define the image as template.
     button.image?.isTemplate = true
   }
@@ -201,24 +201,23 @@ final class ApplicationController: NSObject {
   ///  - parameter percent: Current percentage of the battery's charging status.
   ///  - parameter time:    The estimated remaining time in a human readable format.
   ///  - returns: The attributed string with percentage or time information, respectively.
-  private func attributedTitle(withPercentage percent: Int, andTime time: String)
-    -> AttributedString {
-      // Define some attributes to make the status bar item look like Apple's battery gauge.
-      let attrs = [NSFontAttributeName : NSFont.menuBarFont(ofSize: 12.0)]
-      // Check whether the user wants to see the remaining time or not.
-      if userPrefs.showTime {
-        return AttributedString(string: "\(time) ", attributes: attrs)
-      } else {
-        return AttributedString(string: "\(percent) % ", attributes: attrs)
-      }
+  private func statusBarItemTitle(withPercentage percent: Int, andTime time: String) -> AttributedString {
+    // Define some attributes to make the status bar item look like Apple's battery gauge.
+    let attrs = [NSFontAttributeName : NSFont.menuBarFont(ofSize: 12.0)]
+    // Check whether the user wants to see the remaining time or not.
+    if userPrefs.showTime {
+      return AttributedString(string: "\(time) ", attributes: attrs)
+    } else {
+      return AttributedString(string: "\(percent) % ", attributes: attrs)
+    }
   }
 
   ///  Display a battery error.
   ///
   ///  - parameter type: The BatteryError that was thrown.
-  private func drawBatteryIcon(forError e: BatteryError?) {
+  private func drawBatteryIcon(forError err: BatteryError?) {
     // Unwrap the menu bar item's button.
-    guard let error = e, button = statusItem?.button else {
+    guard let error = err, button = statusItem?.button else {
         return
     }
     // Get the right icon and set an error message for the supplied error
