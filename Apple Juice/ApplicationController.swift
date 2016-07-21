@@ -133,24 +133,24 @@ final class ApplicationController: NSObject {
   ///  - parameter completionHandler: A callback function, that should get
   ///    called as soon as the menu items are updated.
   private func updateMenuItems(_ completionHandler: () -> Void) {
-    // Unwrap the battery object.
-    guard let battery = battery else {
-      return
+    // Unwrap the necessary battery information.
+    guard let
+      capacity   = battery?.maxCapacity(),
+      charge     = battery?.currentCharge(),
+      source     = battery?.currentSource(),
+      percentage = battery?.percentage() else {
+        return
     }
-    // Get the current source and set the menu item title.
-    currentSource.title = "\(NSLocalizedString("Power Source", comment: "Translate Source"))"
-      + " \(battery.currentSource())"
-    // Display the remaining time/percentage.
-    if let percentage = battery.percentage() where userPrefs.showTime {
-      currentCharge.title = "\(percentage) %"
+    // Set the menu item title for the current charge level.
+    if let time = battery?.timeRemainingFormatted() where !userPrefs.showTime {
+      currentCharge.title = time + " (\(charge) / \(capacity) mAh)"
     } else {
-      currentCharge.title = battery.timeRemainingFormatted()
+      currentCharge.title = "\(percentage) (\(charge) / \(capacity) mAh)"
     }
-    // Display the current charge and the current capacity.
-    if let charge = battery.currentCharge(), capacity = battery.maxCapacity() {
-      currentCharge.title += " (\(charge) / \(capacity) mAh)"
-    }
-    // Run the callback.
+    // Set the menu item title for the current power source.
+    currentSource.title = NSLocalizedString("Power Source", comment: "Translate Source") + " \(source)"
+
+    // Run the supplied completion handler.
     completionHandler()
   }
 
