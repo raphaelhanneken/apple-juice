@@ -60,11 +60,6 @@ final class ApplicationController: NSObject {
                                              selector: #selector(ApplicationController.powerSourceChanged(_:)),
                                              name: NSNotification.Name(rawValue: powerSourceChangedNotification),
                                              object: nil)
-      // Get notified, when the user defaults change.
-      NotificationCenter.default.addObserver(self,
-                                             selector: #selector(ApplicationController.userDefaultsDidChange(_:)),
-                                             name: UserDefaults.didChangeNotification,
-                                             object: nil)
     } catch {
       // Draw a status item for the catched battery error.
       drawBatteryIcon(forError: error as? BatteryError)
@@ -91,14 +86,6 @@ final class ApplicationController: NSObject {
     })
   }
 
-  ///  Updates the status bar item every time the user defaults
-  ///  change (e.g., the user chooses to display the remaining time instead of percentage).
-  ///
-  ///  - parameter sender: The object that send the message.
-  func userDefaultsDidChange(_ sender: AnyObject) {
-    updateStatusItem()
-  }
-
   // MARK: - Private Methods
 
   ///  Creates and configures the app's status bar item.
@@ -107,9 +94,10 @@ final class ApplicationController: NSObject {
   private func configureStatusItem() -> NSStatusItem {
     // Find a place to life.
     let statusItem = NSStatusBar.system().statusItem(withLength: NSVariableStatusItemLength)
-    // Set properties.
+    // Set the status bar item properties.
     statusItem.target = self
     statusItem.action = #selector(ApplicationController.displayAppMenu(_:))
+
     return statusItem
   }
 
