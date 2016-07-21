@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="11163.2" systemVersion="16A238m" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="11163.2" systemVersion="16A254g" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
     <dependencies>
         <deployment identifier="macosx"/>
         <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="11163.2"/>
@@ -670,7 +670,7 @@
                     </menu>
                 </menuItem>
             </items>
-            <point key="canvasLocation" x="87" y="39"/>
+            <point key="canvasLocation" x="-38" y="-19"/>
         </menu>
         <menu id="tlM-TC-O58">
             <items>
@@ -762,7 +762,7 @@
                     </connections>
                 </menuItem>
             </items>
-            <point key="canvasLocation" x="-23" y="191"/>
+            <point key="canvasLocation" x="-148" y="142"/>
         </menu>
         <userDefaultsController representsSharedInstance="YES" id="OgL-rZ-xAG"/>
     </objects>
