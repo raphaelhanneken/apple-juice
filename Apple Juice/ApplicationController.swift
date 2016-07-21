@@ -42,7 +42,7 @@ final class ApplicationController: NSObject {
   /// Manage user preferences.
   private let userPrefs = UserPreferences()
 
-  // MARK: Methods
+  // MARK: - Methods
 
   override init() {
     // Initialize NSObject.
@@ -66,7 +66,7 @@ final class ApplicationController: NSObject {
   ///  Gets called whenever the power source changes. Calls updateMenuItem:
   ///  and postUserNotification.
   ///  - parameter sender: Object that send the message.
-  func powerSourceChanged(sender: AnyObject) {
+  func powerSourceChanged(_ sender: AnyObject) {
     // Update status bar item to reflect changes.
     updateStatusItem()
     // Check if the user wants to get notified.
@@ -76,31 +76,32 @@ final class ApplicationController: NSObject {
   ///  Displays the app menu on screen.
   ///
   ///  - parameter sender: The object that send the message.
-  func displayAppMenu(sender: AnyObject) {
+  func displayAppMenu(_ sender: AnyObject) {
     // Update the information displayed within the app menu...
     updateMenuItems({
-      self.statusItem?.popUpStatusItemMenu(self.appMenu)
+      self.statusItem?.popUpMenu(self.appMenu)
     })
   }
 
-  ///  Updates the status bar item every time the user defaults change.
+  ///  Updates the status bar item every time the user defaults
+  ///  change (e.g., the user chooses to display the remaining time instead of percentage).
   ///
   ///  - parameter sender: The object that send the message.
-  func userDefaultsDidChange(sender: AnyObject) {
+  func userDefaultsDidChange(_ sender: AnyObject) {
     updateStatusItem()
   }
 
-  // MARK: Private Methods
+  // MARK: - Private Methods
 
   ///  Creates and configures the app's status bar item.
   ///
   ///  - returns: The application's status bar item.
   private func configureStatusItem() -> NSStatusItem {
     // Find a place to life.
-    let statusItem = NSStatusBar.systemStatusBar().statusItemWithLength(NSVariableStatusItemLength)
+    let statusItem = NSStatusBar.system().statusItem(withLength: NSVariableStatusItemLength)
     // Set properties.
     statusItem.target = self
-    statusItem.action = Selector("displayAppMenu:")
+    statusItem.action = #selector(ApplicationController.displayAppMenu(_:))
     return statusItem
   }
 
@@ -124,24 +125,24 @@ final class ApplicationController: NSObject {
       button.image = StatusIcon.batteryDischarging(currentPercentage: percentage)
     }
     // Draw the status icon on the right hand side.
-    button.imagePosition = .ImageRight
+    button.imagePosition = .imageRight
     // Set the status bar item's title.
     button.attributedTitle = attributedTitle(withPercentage: percentage, andTime: timeRemaining)
     // Define the image as template.
-    button.image?.template = true
+    button.image?.isTemplate = true
   }
 
   ///  Updates the information within the app menu.
   ///
-  ///  - parameter callback: A callback function, that should get
-  ///                        called as soon as the menu items are updated.
-  private func updateMenuItems(callback: () -> Void) {
+  ///  - parameter completionHandler: A callback function, that should get
+  ///    called as soon as the menu items are updated.
+  private func updateMenuItems(_ completionHandler: () -> Void) {
     // Unwrap the battery object.
     guard let battery = battery else {
       return
     }
     // Get the current source and set the menu item title.
-    currentSource.title = "\(NSLocalizedString("source", comment: ""))"
+    currentSource.title = "\(NSLocalizedString("Power Source", comment: "Translate Source"))"
       + " \(battery.currentSource())"
     // Display the remaining time/percentage.
     if let percentage = battery.percentage() where userPrefs.showTime {
@@ -154,35 +155,36 @@ final class ApplicationController: NSObject {
       currentCharge.title += " (\(charge) / \(capacity) mAh)"
     }
     // Run the callback.
-    callback()
+    completionHandler()
   }
 
   ///  Checks if the user wants to get notified about the current charging status.
   private func postUserNotification() {
     // Unwrap the necessary information.
-    guard let plugged  = battery?.isPlugged(),
-      charged    = battery?.isCharged(),
-      percentage = battery?.percentage() else {
+    guard let plugged    = battery?.isPlugged(),
+              charged    = battery?.isCharged(),
+              percentage = battery?.percentage() else {
         return
     }
     // Define a new notification key.
     let notificationKey: NotificationKey?
     // Check what kind of notification key we have here.
     if plugged && charged {
-      notificationKey = .HundredPercent
+      notificationKey = NotificationKey.HundredPercent
     } else if !plugged {
       notificationKey = NotificationKey(rawValue: percentage)
     } else {
-      notificationKey = .None
+      notificationKey = NotificationKey.Invalid
     }
-    // Check if the user is interested in the current battery status and that we haven't already
-    // notified the user about the current status.
-    guard let key = notificationKey
-      where userPrefs.notifications.contains(key) && userPrefs.lastNotified != key else {
-        return
+    // Unwrap the notification key and return if the current percentage isn't a valid notification key
+    // or if we already posted a notification for the current percentage.
+    guard let key = notificationKey where key != .Invalid && key != userPrefs.lastNotified else {
+      return
     }
     // Post the notification and save it as last notified.
-    NotificationController.postUserNotification(forPercentage: key)
+    if userPrefs.notifications.contains(key) {
+      NotificationController.postUserNotification(forPercentage: key)
+    }
     userPrefs.lastNotified = key
   }
 
@@ -192,55 +194,56 @@ final class ApplicationController: NSObject {
   ///  - parameter time:    The estimated remaining time in a human readable format.
   ///  - returns: The attributed string with percentage or time information, respectively.
   private func attributedTitle(withPercentage percent: Int, andTime time: String)
-    -> NSAttributedString {
+    -> AttributedString {
       // Define some attributes to make the status bar item look like Apple's battery gauge.
-      let attrs = [NSFontAttributeName : NSFont.systemFontOfSize(12.0),
-        NSBaselineOffsetAttributeName : 1.0]
+      let attrs = [NSFontAttributeName : NSFont.menuBarFont(ofSize: 12.0)]
       // Check whether the user wants to see the remaining time or not.
       if userPrefs.showTime {
-        return NSAttributedString(string: "\(time) ", attributes: attrs)
+        return AttributedString(string: "\(time) ", attributes: attrs)
       } else {
-        return NSAttributedString(string: "\(percent) % ", attributes: attrs)
+        return AttributedString(string: "\(percent) % ", attributes: attrs)
       }
   }
 
   ///  Display a battery error.
   ///
   ///  - parameter type: The BatteryError that was thrown.
-  private func batteryError(type type: BatteryError?) {
+  private func batteryError(type: BatteryError?) {
     // Unwrap the menu bar item's button.
     guard let button = statusItem?.button, type = type else {
       return
     }
     // Get the right icon and set an error message for the supplied error
     switch type {
-    case .ConnectionAlreadyOpen:
+    case .connectionAlreadyOpen:
       button.image = StatusIcon.batteryConnectionAlreadyOpen
-    case .ServiceNotFound:
+    case .serviceNotFound:
       button.image = StatusIcon.batteryServiceNotFound
     }
     // Define the image as template
-    button.image?.template = true
+    button.image?.isTemplate = true
   }
 
   ///  Listen for power source and user defaults notifications.
   private func registerAsObserver() {
     // Get notified, when the power source changes.
-    NSNotificationCenter.defaultCenter().addObserver(self,
-      selector: Selector("powerSourceChanged:"), name: powerSourceChangedNotification,
-      object: nil)
+    NotificationCenter.default.addObserver(self,
+                                           selector: #selector(ApplicationController.powerSourceChanged(_:)),
+                                           name: NSNotification.Name(rawValue: powerSourceChangedNotification),
+                                           object: nil)
     // Get notified, when the user defaults change.
-    NSNotificationCenter.defaultCenter().addObserver(self,
-      selector: Selector("userDefaultsDidChange:"), name: NSUserDefaultsDidChangeNotification,
-      object: nil)
+    NotificationCenter.default.addObserver(self,
+                                           selector: #selector(ApplicationController.userDefaultsDidChange(_:)),
+                                           name: UserDefaults.didChangeNotification,
+                                           object: nil)
   }
 
-  // MARK: IBAction's
+  // MARK: - IBAction's
 
   ///  Open the energy saver preference pane.
   ///
   ///  - parameter sender: The menu item that send the message.
-  @IBAction func energySaverPreferences(sender: NSMenuItem) {
-    NSWorkspace.sharedWorkspace().openFile("/System/Library/PreferencePanes/EnergySaver.prefPane")
+  @IBAction func energySaverPreferences(_ sender: NSMenuItem) {
+    NSWorkspace.shared().openFile("/System/Library/PreferencePanes/EnergySaver.prefPane")
   }
 }

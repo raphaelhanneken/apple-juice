@@ -1,6 +1,6 @@
 //
 // ListRowViewController.swift
-// Apple Juice
+// Apple Juice Widget
 // https://github.com/raphaelhanneken/apple-juice
 //
 // The MIT License (MIT)
@@ -27,7 +27,7 @@
 
 import Cocoa
 
-class ListRowViewController: NSViewController {
+final class ListRowViewController: NSViewController {
 
   override var nibName: String? {
     return "ListRowViewController"

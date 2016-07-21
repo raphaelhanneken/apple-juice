@@ -28,7 +28,7 @@
 import Foundation
 
 /// Methods to post user notifications about the current charging status.
-final class NotificationController {
+struct NotificationController {
 
   ///  Post a user notification based on the supplied notification key.
   ///
@@ -44,42 +44,48 @@ final class NotificationController {
   }
 
   ///  Posts a plugged and charged user notification.
-  static private func pluggedAndChargedNotification() {
+  private static func pluggedAndChargedNotification() {
     // Create a new user notification.
     let notification = NSUserNotification()
     // Configure the notification.
-    notification.title = NSLocalizedString("charged", comment: "")
-    notification.informativeText = NSLocalizedString("charged message", comment: "")
+    notification.title = NSLocalizedString("Charged Notification Title",
+                                           comment: "Translate the notification title.")
+
+    notification.informativeText = NSLocalizedString("Charged Notification Message",
+                                                     comment: "Translate the notification message.")
     // Deliver notification.
-    NSUserNotificationCenter.defaultUserNotificationCenter().deliverNotification(notification)
+    NSUserNotificationCenter.default.deliver(notification)
   }
 
   ///  Posts a low percentage user notification.
   ///
   ///  - parameter percentage: The current percentage.
-  static private func lowPercentageNotification(forPercentage percentage: NotificationKey) {
+  private static func lowPercentageNotification(forPercentage percentage: NotificationKey) {
     // Create a new user notification.
     let notification = NSUserNotification()
     // Configure the notification.
-    notification.title = NSLocalizedString("low battery", comment: "")
-    notification.informativeText = NSLocalizedString("low battery message", comment: "")
+    notification.title = NSLocalizedString("Low Battery Notification Title",
+                                           comment: "Translate the notification title.")
+
+    notification.informativeText = NSLocalizedString("Low Battery Notification Message",
+                                                     comment: "Translate the notification message.")
     // Deliver notification.
-    NSUserNotificationCenter.defaultUserNotificationCenter().deliverNotification(notification)
+    NSUserNotificationCenter.default.deliver(notification)
   }
 }
 
-// MARK: NotificationKey's
+// MARK: - NotificationKey's
 
 ///  Defines a notification at a given percentage.
 ///
-///  - None:            Not a notification percentage.
+///  - Invalid:         Not a valid notification percentage.
 ///  - FivePercent:     Five percent notification.
 ///  - TenPercent:      Ten percent notification.
 ///  - FifeteenPercent: Fifeteen percent notification.
 ///  - TwentyPercent:   Twenty percent notification.
 ///  - HundredPercent:  Hundred percent notification.
-enum NotificationKey: Int {
-  case None            = 0
+public enum NotificationKey: Int {
+  case Invalid         = 0
   case FivePercent     = 5
   case TenPercent      = 10
   case FifeteenPercent = 15
