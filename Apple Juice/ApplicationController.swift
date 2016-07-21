@@ -178,7 +178,7 @@ final class ApplicationController: NSObject {
     }
     // Unwrap the notification key and return if the current percentage isn't a valid notification key
     // or if we already posted a notification for the current percentage.
-    guard let key = notificationKey where key != .Invalid || key != userPrefs.lastNotified else {
+    guard let key = notificationKey where key != .Invalid && key != userPrefs.lastNotified else {
       return
     }
     // Post the notification and save it as last notified.
