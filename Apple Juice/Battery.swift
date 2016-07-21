@@ -56,25 +56,23 @@ struct Battery {
     CFRunLoopAddSource(CFRunLoopGetCurrent(), loop, CFRunLoopMode.defaultMode)
   }
 
-  ///  Time until the battery is empy or fully charged, in a human readable format.
+  ///  Time until the battery is empty or fully charged, in a human readable format.
   ///
-  ///  - returns: The time in a human readable format.
+  ///  - returns: The time in a human readable format, e.g. hh:mm.
   func timeRemainingFormatted() -> String {
-    // Unwrap the necessary information or return "Unknown" in case something went wrong.
-    guard let charged = isCharged(),
-              plugged = isPlugged(),
-              time    = timeRemaining() else {
-        return NSLocalizedString("Unknown", comment: "Translate Unknown")
+    // Get and unwrap the necessary information.
+    guard let
+      time    = timeRemaining(),
+      charged = isCharged(),
+      plugged = isPlugged() else {
+        return NSLocalizedString("Calculating", comment: "Translate Calculating")
     }
 
+    // If the battery is charged and plugged into a power supply display "Charged".
+    // Otherwise display the remaining time.
     if charged && plugged {
-      // The time remaining is unlimited.
       return NSLocalizedString("Charged", comment: "Translate Charged")
-    } else if time == 0 {
-      // The remaining time is not yet known.
-      return NSLocalizedString("Calculating", comment: "Translate Calculating")
     } else {
-      // We have a remaining time, calculate hours and minutes, and return.
       return String(format: "%d:%02d", arguments: [time / 60, time % 60])
     }
   }
@@ -83,12 +81,21 @@ struct Battery {
   ///
   ///  - returns: The remaining time in minutes.
   func timeRemaining() -> Int? {
-    // If the battery is currently __NOT__ charging use IOPSGetTimeRemainingEstimate...
-    guard let plugged = isPlugged() where plugged else {
-      return Int((IOPSGetTimeRemainingEstimate() / 60))
+    // Get the estimated time remaining.
+    let time = IOPSGetTimeRemainingEstimate()
+
+    switch time {
+    case -1.0:
+      // The remaining time is currently unknown.
+      return nil
+    case -2.0:
+      // Get the remaining time from the IO Registry, in case IOPSGetTimeRemainingEstimate
+      // returned kIOPSTimeRemainingUnlimited.
+      return getRegistryPropertyForKey(.TimeRemaining) as? Int
+    default:
+      // Return the estimated time divided by 60 (seconds to minutes).
+      return Int(time / 60)
     }
-    // ...while the battery is charging use the IO Registry.
-    return getRegistryPropertyForKey(.TimeRemaining) as? Int
   }
 
   ///  Calculates the current percentage, based on the current charge and
@@ -97,9 +104,10 @@ struct Battery {
   ///  - returns: The current percentage of the battery.
   func percentage() -> Int? {
     // Get the necessary information.
-    guard let maxCapacity     = maxCapacity(),
-              currentCapacity = currentCharge() else {
-      return nil
+    guard let
+      maxCapacity     = maxCapacity(),
+      currentCapacity = currentCharge() else {
+        return nil
     }
     // Calculate the current percentage.
     return Int(round(Double(currentCapacity) / Double(maxCapacity) * 100.0))
@@ -160,8 +168,9 @@ struct Battery {
   ///
   ///  - returns: The current power usage in Watts.
   func powerUsage() -> Double? {
-    guard let voltage  = getRegistryPropertyForKey(.Voltage) as? Double,
-              amperage = getRegistryPropertyForKey(.Amperage) as? Double else {
+    guard let
+      voltage  = getRegistryPropertyForKey(.Voltage) as? Double,
+      amperage = getRegistryPropertyForKey(.Amperage) as? Double else {
         return nil
     }
     return round(((voltage * amperage) / 1000000) * 10) / 10
