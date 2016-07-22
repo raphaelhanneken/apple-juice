@@ -151,6 +151,24 @@ public struct Battery {
     return getRegistryPropertyForKey(.cycleCount) as? Int
   }
 
+  var status: BatteryStatusType? {
+    guard let
+      charging   = isCharging,
+      plugged    = isPlugged,
+      charged    = isCharged,
+      percentage = percentage else {
+        return nil
+    }
+    if charged && plugged {
+      return .pluggedAndCharged(percentage: percentage)
+    }
+    if charging {
+      return .charging(percentage: percentage)
+    } else {
+      return .discharging(percentage: percentage)
+    }
+  }
+
 
   // MARK: - Initializer
 
