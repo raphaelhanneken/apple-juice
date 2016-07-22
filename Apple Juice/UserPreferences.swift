@@ -79,19 +79,19 @@ final class UserPreferences: NSObject {
     var result: Set<NotificationKey> = []
     // Check for notification settings.
     if fivePercentNotification == 1 {
-      result.insert(.FivePercent)
+      result.insert(.fivePercent)
     }
     if tenPercentNotification == 1 {
-      result.insert(.TenPercent)
+      result.insert(.tenPercent)
     }
     if fifeteenPercentNotification == 1 {
-      result.insert(.FifeteenPercent)
+      result.insert(.fifeteenPercent)
     }
     if twentyPercentNotification == 1 {
-      result.insert(.TwentyPercent)
+      result.insert(.twentyPercent)
     }
     if hundredPercentNotification == 1 {
-      result.insert(.HundredPercent)
+      result.insert(.hundredPercent)
     }
     return result
   }
