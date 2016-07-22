@@ -53,13 +53,15 @@ final class ApplicationController: NSObject {
     do {
       // Get access to the battery information.
       try battery = Battery()
-      // Display the status bar item.
-      updateStatusItem()
       // Get notified, when the power source changes.
       NotificationCenter.default.addObserver(self,
                                              selector: #selector(ApplicationController.powerSourceChanged(_:)),
                                              name: NSNotification.Name(rawValue: powerSourceChangedNotification),
                                              object: nil)
+
+      // Get notified, when the user toggles between time and percentage.
+      UserDefaults.standard.addObserver(self, forKeyPath: PreferenceKey.showTime.rawValue,
+                                        options: .new, context: nil)
     } catch {
       // Draw a status item for the catched battery error.
       drawBatteryIcon(forError: error as? BatteryError)
@@ -74,6 +76,13 @@ final class ApplicationController: NSObject {
     updateStatusItem()
     // Check if the user wants to get notified.
     postUserNotification()
+  }
+
+  /// Call updateStatusItem() everytime the user toggles between displaying percentage and time.
+  override func observeValue(forKeyPath keyPath: String?, of object: AnyObject?,
+                             change: [NSKeyValueChangeKey : AnyObject]?, context: UnsafeMutablePointer<Void>?) {
+    print("Value for \(keyPath) changed!")
+    updateStatusItem()
   }
 
   ///  Displays the app menu on screen.
@@ -145,7 +154,7 @@ final class ApplicationController: NSObject {
     if let time = battery?.timeRemainingFormatted where !userPrefs.showTime {
       currentCharge.title = time + " (\(charge) / \(capacity) mAh)"
     } else {
-      currentCharge.title = "\(percentage) (\(charge) / \(capacity) mAh)"
+      currentCharge.title = "\(percentage) % (\(charge) / \(capacity) mAh)"
     }
     // Set the menu item title for the current power source.
     currentSource.title = NSLocalizedString("Power Source", comment: "Translate Source") + " \(source)"
