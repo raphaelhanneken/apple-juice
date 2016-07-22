@@ -27,19 +27,19 @@
 
 import Cocoa
 
-///  Caches a battery image.
+///  Caches a drawn battery image for a certain battery status.
 internal struct BatteryImageCache {
-  ///  Holds the cached battery image.
+  ///  Holds the battery image.
   let image: NSImage?
-  ///  Holds the corresponding BatteryStatusType for the cached image.
+  ///  Holds the corresponding battery status for the image.
   let batteryStatus: BatteryStatusType
   ///  Holds the percentage the image was drawn for.
   let percentage: Int?
 
   ///  Initializes a new BatteryImageCache object.
   ///
-  ///  - status:     The BatteryStatusType.
-  ///  - img:        The corresponding battery image.
+  ///  - status:     The BatteryStatusType corresponding to the battery image.
+  ///  - img:        The drawn battery image.
   ///  - percentage: The percentage the battery image was drawn for.
   init(forStatus status: BatteryStatusType, withImage img: NSImage?, andPercentage percentage: Int?) {
     self.batteryStatus = status
@@ -49,8 +49,8 @@ internal struct BatteryImageCache {
 
   ///  Initialize a new BatteryImageCache object.
   ///
-  ///  - status: The BatteryStatusType.
-  ///  - img:    The Battery image.
+  ///  - status:     The BatteryStatusType corresponding to the battery image.
+  ///  - img:        The drawn battery image.
   init(forStatus status: BatteryStatusType, withImage img: NSImage?) {
     self.init(forStatus: status, withImage: img, andPercentage: nil)
   }
