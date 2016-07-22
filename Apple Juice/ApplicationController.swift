@@ -36,17 +36,20 @@ final class ApplicationController: NSObject {
   @IBOutlet weak var currentSource: NSMenuItem!
 
   /// Holds the app's status bar item.
-  private var statusItem: NSStatusItem?
+  private var statusItem: NSStatusItem!
   /// Access to battery information.
-  private var battery: Battery?
+  private var battery: Battery!
   /// Manage user preferences.
-  private let userPrefs = UserPreferences()
+  private var userPrefs: UserPreferences!
+
 
   // MARK: - Methods
 
   override init() {
-    // Initialize NSObject.
+    // Initialize our parent class.
     super.init()
+    // Initialize the user preferences.
+    userPrefs  = UserPreferences()
     // Configure the status bar item.
     statusItem = configureStatusItem()
 
@@ -70,9 +73,9 @@ final class ApplicationController: NSObject {
 
   ///  Gets called whenever the power source changes. Calls updateMenuItem:
   ///  and postUserNotification.
+  ///
   ///  - parameter sender: Object that send the message.
   func powerSourceChanged(_ sender: AnyObject) {
-    print("powerSourceChanged")
     // Update status bar item to reflect changes.
     updateStatusItem()
     // Check if the user wants to get notified.
@@ -82,7 +85,6 @@ final class ApplicationController: NSObject {
   /// Call updateStatusItem() everytime the user toggles between displaying percentage and time.
   override func observeValue(forKeyPath keyPath: String?, of object: AnyObject?,
                              change: [NSKeyValueChangeKey : AnyObject]?, context: UnsafeMutablePointer<Void>?) {
-    print("Value for \(keyPath) changed!")
     updateStatusItem()
   }
 
@@ -90,11 +92,13 @@ final class ApplicationController: NSObject {
   ///
   ///  - parameter sender: The object that send the message.
   func displayAppMenu(_ sender: AnyObject) {
-    // Update the information displayed within the app menu...
+    // Before showing the app menu, update the information displayed
+    // within it.
     updateMenuItems({
-      self.statusItem?.popUpMenu(self.appMenu)
+      self.statusItem.popUpMenu(self.appMenu)
     })
   }
+
 
   // MARK: - Private Methods
 
@@ -114,12 +118,11 @@ final class ApplicationController: NSObject {
   ///  Updates the application's status bar item.
   private func updateStatusItem() {
     // Unwrap everything we need here...
-    guard let button = statusItem?.button,
-      timeRemaining  = battery?.timeRemainingFormatted,
-      plugged        = battery?.isPlugged,
-      charging       = battery?.isCharging,
-      charged        = battery?.isCharged,
-      percentage     = battery?.percentage else {
+    guard let button = statusItem.button,
+      plugged        = battery.isPlugged,
+      charging       = battery.isCharging,
+      charged        = battery.isCharged,
+      percentage     = battery.percentage else {
         return
     }
     // ...and draw the appropriate status bar icon.
@@ -133,32 +136,32 @@ final class ApplicationController: NSObject {
     // Draw the status icon on the right hand side.
     button.imagePosition = .imageRight
     // Set the status bar item's title.
-    button.attributedTitle = statusBarItemTitle(withPercentage: percentage, andTime: timeRemaining)
+    button.attributedTitle = statusBarItemTitle(withPercentage: percentage,
+                                                andTime: battery.timeRemainingFormatted)
     // Define the image as template.
     button.image?.isTemplate = true
   }
 
   ///  Updates the information within the app menu.
   ///
-  ///  - parameter completionHandler: A callback function, that should get
-  ///    called as soon as the menu items are updated.
+  ///  - parameter completionHandler: A callback function, that should get called
+  ///                                 as soon as the menu items are updated.
   private func updateMenuItems(_ completionHandler: () -> Void) {
     // Unwrap the necessary battery information.
     guard let
-      capacity   = battery?.capacity,
-      charge     = battery?.charge,
-      source     = battery?.powerSource,
-      percentage = battery?.percentage else {
+      capacity   = battery.capacity,
+      charge     = battery.charge,
+      percentage = battery.percentage else {
         return
     }
     // Set the menu item title for the current charge level.
-    if let time = battery?.timeRemainingFormatted where !userPrefs.showTime {
-      currentCharge.title = time + " (\(charge) / \(capacity) mAh)"
-    } else {
+    if userPrefs.showTime {
       currentCharge.title = "\(percentage) % (\(charge) / \(capacity) mAh)"
+    } else {
+      currentCharge.title = battery.timeRemainingFormatted + " (\(charge) / \(capacity) mAh)"
     }
     // Set the menu item title for the current power source.
-    currentSource.title = NSLocalizedString("Power Source", comment: "Translate Source") + " \(source)"
+    currentSource.title = NSLocalizedString("Power Source", comment: "Translate Sourc") + " \(battery.powerSource)"
 
     // Run the supplied completion handler.
     completionHandler()
@@ -167,9 +170,9 @@ final class ApplicationController: NSObject {
   ///  Checks if the user wants to get notified about the current charging status.
   private func postUserNotification() {
     // Unwrap the necessary information.
-    guard let plugged    = battery?.isPlugged,
-              charged    = battery?.isCharged,
-              percentage = battery?.percentage else {
+    guard let plugged    = battery.isPlugged,
+              charged    = battery.isCharged,
+              percentage = battery.percentage else {
         return
     }
     // Define a new notification key.
@@ -198,7 +201,7 @@ final class ApplicationController: NSObject {
   ///
   ///  - parameter percent: Current percentage of the battery's charging status.
   ///  - parameter time:    The estimated remaining time in a human readable format.
-  ///  - returns: The attributed string with percentage or time information, respectively.
+  ///  - returns:           The attributed string with percentage or time information, respectively.
   private func statusBarItemTitle(withPercentage percent: Int, andTime time: String) -> AttributedString {
     // Define some attributes to make the status bar item look like Apple's battery gauge.
     let attrs = [NSFontAttributeName : NSFont.menuBarFont(ofSize: 12.0)]
@@ -215,7 +218,7 @@ final class ApplicationController: NSObject {
   ///  - parameter type: The BatteryError that was thrown.
   private func drawBatteryIcon(forError err: BatteryError?) {
     // Unwrap the menu bar item's button.
-    guard let error = err, button = statusItem?.button else {
+    guard let error = err, button = statusItem.button else {
         return
     }
     // Get the right icon and set an error message for the supplied error
@@ -228,6 +231,7 @@ final class ApplicationController: NSObject {
     // Define the image as template
     button.image?.isTemplate = true
   }
+
 
   // MARK: - IBAction's
 
