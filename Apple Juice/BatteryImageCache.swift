@@ -28,7 +28,7 @@
 import Cocoa
 
 ///  Caches a drawn battery image for a certain battery status.
-internal struct BatteryImageCache {
+struct BatteryImageCache {
   ///  Holds the battery image.
   let image: NSImage?
   ///  Holds the corresponding battery status for the image.

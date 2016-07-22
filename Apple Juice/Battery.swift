@@ -39,7 +39,7 @@ private let powerSourceCallback: IOPowerSourceCallbackType = { _ in
 }
 
 ///  Accesses the battery's IO service.
-public struct Battery {
+struct Battery {
 
   ///  The battery's IO service name.
   private let batteryIOServiceName = "AppleSmartBattery"
@@ -195,14 +195,14 @@ public struct Battery {
       if !closeServiceConnection() {
         // Throw a connectionAlreadyOpen Exception if the
         // IOService connection won't close.
-        throw BatteryError.connectionAlreadyOpen
+        throw BatteryError.connectionAlreadyOpen("Closing the IOService connection failed.")
       }
     }
     // Get an IOService object for the defined battery service name.
     service = IOServiceGetMatchingService(kIOMasterPortDefault, IOServiceNameMatching(batteryIOServiceName))
     if service == 0 {
       // Throw a serviceNotFound exception if the supplied IOService couldn't be opened.
-      throw BatteryError.serviceNotFound
+      throw BatteryError.serviceNotFound("Opening the provided IOService (\(batteryIOServiceName)) failed.")
     }
   }
 
@@ -229,40 +229,15 @@ public struct Battery {
 
 // MARK: - Support
 
-///  Defines the status the battery is currently in.
-///
-///  - pluggedAndCharged: The battery is currently plugged into a power supply and charged.
-///  - charging:          The battery is currently plugged into a power supply and charging.
-///  - discharging:       The battery is currently discharging. Accepts an associated integer value.
-enum BatteryStatusType: Equatable {
-  case pluggedAndCharged
-  case charging
-  case discharging(percentage: Int)
-}
-
-///  Compares two BatteryStatusTypes.
-func == (lhs: BatteryStatusType, rhs: BatteryStatusType) -> Bool {
-  switch (lhs, rhs) {
-  case (.charging, .charging):
-    return true
-  case (.pluggedAndCharged, .pluggedAndCharged):
-    return true
-  case (.discharging(let lhsPercentage), .discharging(let rhsPercentage)):
-    return (lhsPercentage == rhsPercentage)
-  default:
-    return false
-  }
-}
-
-
 ///  Exceptions for the Battery class.
 ///
 ///  - ConnectionAlreadyOpen: Get's thrown in case the connection to the battery's IOService
-///                           is already open.
-///  - ServiceNotFound:       Get's thrown in case the supplied IOService wasn't found.
+///                           is already open. Accepts an error description of type String.
+///  - ServiceNotFound:       Get's thrown in case the supplied IOService wasn't found. 
+///                           Accepts an error description of type String.
 enum BatteryError: ErrorProtocol {
-  case connectionAlreadyOpen
-  case serviceNotFound
+  case connectionAlreadyOpen(String)
+  case serviceNotFound(String)
 }
 
 
@@ -293,4 +268,29 @@ private enum SmartBatteryKey: String {
   case temperature       = "Temperature"
   case timeRemaining     = "TimeRemaining"
   case voltage           = "Voltage"
+}
+
+///  Defines the status the battery is currently in.
+///
+///  - pluggedAndCharged: The battery is currently plugged into a power supply and charged.
+///  - charging:          The battery is currently plugged into a power supply and charging.
+///  - discharging:       The battery is currently discharging. Accepts an associated integer value.
+enum BatteryStatusType: Equatable {
+  case pluggedAndCharged
+  case charging
+  case discharging(percentage: Int)
+}
+
+//   MARK: BatteryStatusType Equatable
+///  Compares two BatteryStatusTypes and return true when they are equal
+///  and false otherwise.
+func == (lhs: BatteryStatusType, rhs: BatteryStatusType) -> Bool {
+  switch (lhs, rhs) {
+  case (.charging, .charging), (.pluggedAndCharged, .pluggedAndCharged):
+    return true
+  case (.discharging(let lhsPercentage), .discharging(let rhsPercentage)):
+    return (lhsPercentage == rhsPercentage)
+  default:
+    return false
+  }
 }

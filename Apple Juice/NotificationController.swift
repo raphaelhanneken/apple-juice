@@ -84,7 +84,7 @@ struct NotificationController {
 ///  - FifeteenPercent: Fifeteen percent notification.
 ///  - TwentyPercent:   Twenty percent notification.
 ///  - HundredPercent:  Hundred percent notification.
-public enum NotificationKey: Int {
+enum NotificationKey: Int {
   case invalid         = 0
   case fivePercent     = 5
   case tenPercent      = 10

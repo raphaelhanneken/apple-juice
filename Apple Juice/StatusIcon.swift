@@ -28,7 +28,7 @@
 import Cocoa
 
 ///  Draws the status bar image.
-internal struct StatusIcon {
+struct StatusIcon {
   ///  Add a little offset to draw the capacity bar in the correct position.
   private let capacityOffsetX: CGFloat = 2.0
   ///  Caches the last drawn battery image.
@@ -73,11 +73,14 @@ internal struct StatusIcon {
     guard let error = err else {
       return nil
     }
+
     // Check the supplied error type.
     switch error {
-    case .connectionAlreadyOpen:
+    case .connectionAlreadyOpen(let message):
+      NSLog(message)
       return batteryImage(named: .dead)
-    case .serviceNotFound:
+    case .serviceNotFound(let message):
+      NSLog(message)
       return batteryImage(named: .none)
     }
   }
@@ -113,7 +116,7 @@ internal struct StatusIcon {
                              width: capacityWidth, height: capacityHeight)
 
     // Draw the actual menu bar image.
-    drawThreePartImage(frame: drawingRect, canvas: batteryEmpty, startCap: capacityCapLeft,
+    drawTheePartBatteryImage(frame: drawingRect, canvas: batteryEmpty, startCap: capacityCapLeft,
                        fill: capacityFill, endCap: capacityCapRight)
 
     return batteryEmpty
@@ -130,8 +133,7 @@ internal struct StatusIcon {
     if let img = NSImage(contentsOfFile: "\(path)\(name.rawValue)") {
       return img
     } else {
-      // The image with the supplied name was not found.
-      print("Image named \(name.rawValue) not found!")
+      NSLog("Could not read contents of file \"\(name.rawValue)\"!")
       return nil
     }
   }
@@ -143,8 +145,8 @@ internal struct StatusIcon {
   ///  - parameter start: The image located on the left end of the frame.
   ///  - parameter fill:  The image used to fill the gap between the start and the end images.
   ///  - parameter end:   The image located on the right end of the frame.
-  private func drawThreePartImage(frame rect: NSRect, canvas img: NSImage,
-                                         startCap start: NSImage, fill: NSImage, endCap end: NSImage) {
+  private func drawTheePartBatteryImage(frame rect: NSRect, canvas img: NSImage,
+                                        startCap start: NSImage, fill: NSImage, endCap end: NSImage) {
     img.lockFocus()
     NSDrawThreePartImage(rect, start, fill, end, false, .copy, 1, false)
     img.unlockFocus()
@@ -162,7 +164,7 @@ internal struct StatusIcon {
 ///  - charging: Charging battery filename.
 ///  - dead:     IOService already open filename.
 ///  - none:     Battery IOService not found filename.
-enum BatteryImage: String {
+private enum BatteryImage: String {
   case left     = "BatteryLevelCapB-L.pdf"
   case right    = "BatteryLevelCapB-R.pdf"
   case middle   = "BatteryLevelCapB-M.pdf"

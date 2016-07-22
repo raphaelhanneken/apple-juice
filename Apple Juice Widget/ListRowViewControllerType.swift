@@ -83,9 +83,12 @@ final class ListRowViewControllerType: NSObject {
       case .source:
         return battery.powerSource
       }
+    } catch BatteryError.serviceNotFound(let message) {
+      NSLog(message)
+    } catch BatteryError.connectionAlreadyOpen(let message) {
+      NSLog(message)
     } catch {
-      // Couldn't open the battery service IO, for some reason...
-      print("ERR: Defining ListRowViewControllerTypeDef failed.")
+      NSLog("Here be Dragons!")
     }
 
     return nil
