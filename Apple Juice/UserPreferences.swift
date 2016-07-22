@@ -27,70 +27,74 @@
 
 import Foundation
 
-/// Manages the user preferences.
+///  Manages the user preferences.
 final class UserPreferences: NSObject {
 
-  /// Holds a reference to the standart user defaults.
+  ///  Holds a reference to the standard user defaults.
   private let userDefaults = UserDefaults.standard
 
-  /// Display the current charging status as time remaining? Default: Percentage.
+  ///  True if the user wants the remaining time to be displayed within the menu bar.
   var showTime: Bool {
     return userDefaults.bool(forKey: PreferenceKey.showTime.rawValue)
   }
 
-  /// Notify the user at five percent left.
-  var fivePercentNotification: Int {
-    return userDefaults.integer(forKey: PreferenceKey.fivePercentNotification.rawValue)
+  ///  True if the user wants a notification at five percent.
+  var fivePercentNotification: Bool {
+    return userDefaults.bool(forKey: PreferenceKey.fivePercentNotification.rawValue)
   }
 
-  /// Notify the user at ten percent left.
-  var tenPercentNotification: Int {
-    return userDefaults.integer(forKey: PreferenceKey.tenPercentNotification.rawValue)
+  ///  True if the user wants a notification at ten percent.
+  var tenPercentNotification: Bool {
+    return userDefaults.bool(forKey: PreferenceKey.tenPercentNotification.rawValue)
   }
 
-  /// Notify the user at fifeteen percent left.
-  var fifeteenPercentNotification: Int {
-    return userDefaults.integer(forKey: PreferenceKey.fifeteenPercentNotification.rawValue)
+  ///  True if the user wants a notification at fifeteen percent.
+  var fifeteenPercentNotification: Bool {
+    return userDefaults.bool(forKey: PreferenceKey.fifeteenPercentNotification.rawValue)
   }
 
-  /// Notify the user at twenty percent left.
-  var twentyPercentNotification: Int {
-    return userDefaults.integer(forKey: PreferenceKey.twentyPercentNotification.rawValue)
+  ///  True if the user wants a notification at twenty percent.
+  var twentyPercentNotification: Bool {
+    return userDefaults.bool(forKey: PreferenceKey.twentyPercentNotification.rawValue)
   }
 
-  /// Notify the user when the battery is fully charged.
-  var hundredPercentNotification: Int {
-    return userDefaults.integer(forKey: PreferenceKey.hundredPercentNotification.rawValue)
+  ///  True if the user wants a notification at hundred percent.
+  var hundredPercentNotification: Bool {
+    return userDefaults.bool(forKey: PreferenceKey.hundredPercentNotification.rawValue)
   }
 
-  /// Saves the NotificationKey the user was last informed of.
+  ///  Keeps the percentage the user was last notified.
   var lastNotified: NotificationKey? {
-    get { return NotificationKey(rawValue: userDefaults.integer(forKey: PreferenceKey.lastNotification.rawValue)) }
+    get {
+      return NotificationKey(rawValue: userDefaults.integer(forKey: PreferenceKey.lastNotification.rawValue))
+    }
     set {
-      if let notificationKey = newValue {
-        userDefaults.set(notificationKey.rawValue, forKey: PreferenceKey.lastNotification.rawValue)
+      guard let notificationKey = newValue else {
+        return
       }
+      userDefaults.set(notificationKey.rawValue, forKey: PreferenceKey.lastNotification.rawValue)
     }
   }
 
-  /// A set of all notifications the user is interested in.
+  /// A set of all percentages where the user is interested.
   var notifications: Set<NotificationKey> {
     // Create an empty set.
     var result: Set<NotificationKey> = []
-    // Check for notification settings.
-    if fivePercentNotification == 1 {
+    // Check the users notification settings and 
+    // add enabled notifications to the result set.
+    if fivePercentNotification {
       result.insert(.fivePercent)
     }
-    if tenPercentNotification == 1 {
+    if tenPercentNotification {
       result.insert(.tenPercent)
     }
-    if fifeteenPercentNotification == 1 {
+    if fifeteenPercentNotification {
       result.insert(.fifeteenPercent)
     }
-    if twentyPercentNotification == 1 {
+    if twentyPercentNotification {
       result.insert(.twentyPercent)
     }
-    if hundredPercentNotification == 1 {
+    if hundredPercentNotification {
       result.insert(.hundredPercent)
     }
     return result
@@ -107,11 +111,11 @@ final class UserPreferences: NSObject {
   ///  Register user defaults.
   private func registerUserDefaults() {
     let defaults = [PreferenceKey.showTime.rawValue : false,
-                    PreferenceKey.fivePercentNotification.rawValue : 0,
-                    PreferenceKey.tenPercentNotification.rawValue : 0,
-                    PreferenceKey.fifeteenPercentNotification.rawValue : 0,
-                    PreferenceKey.twentyPercentNotification.rawValue : 0,
-                    PreferenceKey.hundredPercentNotification.rawValue : 0,
+                    PreferenceKey.fivePercentNotification.rawValue : false,
+                    PreferenceKey.tenPercentNotification.rawValue : false,
+                    PreferenceKey.fifeteenPercentNotification.rawValue : true,
+                    PreferenceKey.twentyPercentNotification.rawValue : false,
+                    PreferenceKey.hundredPercentNotification.rawValue : true,
                     PreferenceKey.lastNotification.rawValue : 0]
 
     userDefaults.register(defaults)
@@ -130,7 +134,7 @@ final class UserPreferences: NSObject {
 ///  - twentyPercentNotification:   Saves if the user wants to get notified at  20%.
 ///  - hundredPercentNotification:  Saves if the user wants to get notified at 100%.
 ///  - lastNotification:            Saves at what percentage the user was last notified.
-internal enum PreferenceKey: String {
+enum PreferenceKey: String {
   case showTime                    = "ShowTimePref"
   case fivePercentNotification     = "FivePercentNotificationPref"
   case tenPercentNotification      = "TenPercentNotificationPref"
