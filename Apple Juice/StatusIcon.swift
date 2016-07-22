@@ -97,6 +97,25 @@ internal struct StatusIcon {
     NSLog("- 02 - Returning cached battery image.")
     return cache?.image
   }
+
+  /// Draw the battery image corresponding to the supplied BatteryError.
+  ///
+  /// - parameter err: The BatteryError to draw the battery image for.
+  /// - returns:       The corresponding battery image.
+  func drawBatteryImage(forError err: BatteryError?) -> NSImage? {
+    guard let error = err else {
+      return nil
+    }
+
+    switch error {
+    case .connectionAlreadyOpen:
+      return batteryConnectionAlreadyOpen
+    case .serviceNotFound:
+      return batteryServiceNotFound
+    }
+  }
+
+
   // MARK: - Private Methods
 
   ///  Draws a battery icon based on the current percentage charge of the battery.

@@ -69,8 +69,14 @@ final class ApplicationController: NSObject {
       UserDefaults.standard.addObserver(self, forKeyPath: PreferenceKey.showTime.rawValue,
                                         options: .new, context: nil)
     } catch {
+      // Unwrap the status item button.
+      guard let button = statusItem.button else {
+        return
+      }
       // Draw a status item for the catched battery error.
-      drawBatteryIcon(forError: error as? BatteryError)
+      button.image = statusIcon.drawBatteryImage(forError: error as? BatteryError)
+      // Define the status icon as template.
+      button.image?.isTemplate = true
     }
   }
 
@@ -209,25 +215,6 @@ final class ApplicationController: NSObject {
     } else {
       return AttributedString(string: "\(percent) % ", attributes: attrs)
     }
-  }
-
-  ///  Display a battery error.
-  ///
-  ///  - parameter type: The BatteryError that was thrown.
-  private func drawBatteryIcon(forError err: BatteryError?) {
-    // Unwrap the menu bar item's button.
-    guard let error = err, button = statusItem.button else {
-        return
-    }
-    // Get the right icon and set an error message for the supplied error
-    switch error {
-    case .connectionAlreadyOpen:
-      button.image = StatusIcon.batteryConnectionAlreadyOpen
-    case .serviceNotFound:
-      button.image = StatusIcon.batteryServiceNotFound
-    }
-    // Define the image as template
-    button.image?.isTemplate = true
   }
 
 
