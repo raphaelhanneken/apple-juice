@@ -130,7 +130,7 @@ final class UserPreferences: NSObject {
 ///  - twentyPercentNotification:   Saves if the user wants to get notified at  20%.
 ///  - hundredPercentNotification:  Saves if the user wants to get notified at 100%.
 ///  - lastNotification:            Saves at what percentage the user was last notified.
-private enum PreferenceKey: String {
+internal enum PreferenceKey: String {
   case showTime                    = "ShowTimePref"
   case fivePercentNotification     = "FivePercentNotificationPref"
   case tenPercentNotification      = "TenPercentNotificationPref"
