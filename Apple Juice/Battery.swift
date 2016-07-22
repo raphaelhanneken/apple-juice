@@ -39,32 +39,21 @@ private let powerSourceCallback: IOPowerSourceCallbackType = { _ in
 }
 
 /// Access information about the build in battery.
-struct Battery {
+public struct Battery {
 
   /// The battery's IO service name.
   private let batteryIOServiceName = "AppleSmartBattery"
   /// An IOService object that matches battery's IO service dict.
   private var service: io_object_t = 0
 
-  // MARK: - Methods
-
-  init() throws {
-    try openServiceConnection()
-    // Get notified when the power source information changes.
-    let loop = IOPSNotificationCreateRunLoopSource(powerSourceCallback, nil).takeRetainedValue()
-    // Add the notification loop to the current run loop.
-    CFRunLoopAddSource(CFRunLoopGetCurrent(), loop, CFRunLoopMode.defaultMode)
-  }
-
-  ///  Time until the battery is empty or fully charged, in a human readable format.
-  ///
-  ///  - returns: The time in a human readable format, e.g. hh:mm.
-  func timeRemainingFormatted() -> String {
+  ///  The remaining time until the battery is empty or fully charged 
+  ///  in a human readable format, e.g. hh:mm.
+  var timeRemainingFormatted: String {
     // Get and unwrap the necessary information.
     guard let
-      time    = timeRemaining(),
-      charged = isCharged(),
-      plugged = isPlugged() else {
+      time    = timeRemaining,
+      charged = isCharged,
+      plugged = isPlugged else {
         return NSLocalizedString("Calculating", comment: "Translate Calculating")
     }
 
@@ -77,10 +66,8 @@ struct Battery {
     }
   }
 
-  ///  Gets the remaining time until the battery is empty or fully charged.
-  ///
-  ///  - returns: The remaining time in minutes.
-  func timeRemaining() -> Int? {
+  ///  The remaining time in minutes until the battery is empty or fully charged.
+  var timeRemaining: Int? {
     // Get the estimated time remaining.
     let time = IOPSGetTimeRemainingEstimate()
 
@@ -91,48 +78,39 @@ struct Battery {
     case -2.0:
       // Get the remaining time from the IO Registry, in case IOPSGetTimeRemainingEstimate
       // returned kIOPSTimeRemainingUnlimited.
-      return getRegistryPropertyForKey(.TimeRemaining) as? Int
+      return getRegistryPropertyForKey(.timeRemaining) as? Int
     default:
       // Return the estimated time divided by 60 (seconds to minutes).
       return Int(time / 60)
     }
   }
 
-  ///  Calculates the current percentage, based on the current charge and
-  ///  the maximum capacity.
-  ///
-  ///  - returns: The current percentage of the battery.
+  ///  The current percentage, based on the current charge and the maximum capacity.
   func percentage() -> Int? {
     // Get the necessary information.
     guard let
-      maxCapacity     = maxCapacity(),
-      currentCapacity = currentCharge() else {
+      capacity = capacity,
+      charge   = charge else {
         return nil
     }
     // Calculate the current percentage.
-    return Int(round(Double(currentCapacity) / Double(maxCapacity) * 100.0))
+    return Int(round(Double(charge) / Double(capacity) * 100.0))
   }
 
-  ///  Gets the current charge in mAh.
-  ///
-  ///  - returns: The current charge in mAh.
-  func currentCharge() -> Int? {
-    return getRegistryPropertyForKey(.CurrentCharge) as? Int
+  ///  The current charge in mAh.
+  var charge: Int? {
+    return getRegistryPropertyForKey(.currentCharge) as? Int
   }
 
-  ///  Gets the maximum capacity in mAh.
-  ///
-  ///  - returns: The maximum capacity in mAh.
-  func maxCapacity() -> Int? {
-    return getRegistryPropertyForKey(.MaxCapacity) as? Int
+  ///  The maximum capacity in mAh.
+  var capacity: Int? {
+    return getRegistryPropertyForKey(.maxCapacity) as? Int
   }
 
-  ///  Gets the current source of power.
-  ///
-  ///  - returns: The currently connected source of power.
-  func currentSource() -> String {
+  ///  The source from which the Mac currently draws its power.
+  var powerSource: String {
     // Unwrap the necessary information or return "Unknown" in case something went wrong.
-    guard let plugged = isPlugged() else {
+    guard let plugged = isPlugged else {
       return NSLocalizedString("Unknown", comment: "Translate Unknown")
     }
     // Check if we're currently plugged into a power adapter.
@@ -143,52 +121,55 @@ struct Battery {
     }
   }
 
-  ///  Is the battery currently connected to a power outlet and charging?
-  ///
-  ///  - returns: True or false, whether the battery is chargin or not.
-  func isCharging() -> Bool? {
-    return getRegistryPropertyForKey(.IsCharging) as? Bool
+  ///  True when the battery is charging and connected to a power outlet.
+  var isCharging: Bool? {
+    return getRegistryPropertyForKey(.isCharging) as? Bool
   }
 
-  ///  Is the battery charged?
-  ///
-  ///  - returns: True/false, wheter the battery is charged or not.
-  func isCharged() -> Bool? {
-    return getRegistryPropertyForKey(.FullyCharged) as? Bool
+  ///  True when the battery is fully charged.
+  var isCharged: Bool? {
+    return getRegistryPropertyForKey(.fullyCharged) as? Bool
   }
 
-  ///  Checks wether or not a unlimited power supply is plugged in.
-  ///
-  ///  - returns: true when an unlimited power supple is plugged in; false otherwise.
-  func isPlugged() -> Bool? {
-    return getRegistryPropertyForKey(.ACPowered) as? Bool
+  ///  True when the battery is connected to a power outlet.
+  var isPlugged: Bool? {
+    return getRegistryPropertyForKey(.externalConnected) as? Bool
   }
 
-  ///  Calculates the current power usage based on the current voltage and amperage.
-  ///
-  ///  - returns: The current power usage in Watts.
-  func powerUsage() -> Double? {
+  ///  The current power usage in Watts.
+  var powerUsage: Double? {
     guard let
-      voltage  = getRegistryPropertyForKey(.Voltage) as? Double,
-      amperage = getRegistryPropertyForKey(.Amperage) as? Double else {
+      voltage  = getRegistryPropertyForKey(.voltage) as? Double,
+      amperage = getRegistryPropertyForKey(.amperage) as? Double else {
         return nil
     }
     return round(((voltage * amperage) / 1000000) * 10) / 10
   }
 
-  ///  Gets the current cycle count.
-  ///
-  ///  - returns: The current cycle count.
-  func cycleCount() -> Int? {
-    return getRegistryPropertyForKey(.CycleCount) as? Int
+  ///  The number of charging cycles.
+  var cycleCount: Int? {
+    return getRegistryPropertyForKey(.cycleCount) as? Int
   }
+
+
+  // MARK: - Initializer
+
+  ///  Initializes a new Battery object.
+  init() throws {
+    try openServiceConnection()
+    // Get notified when the power source information changes.
+    let loop = IOPSNotificationCreateRunLoopSource(powerSourceCallback, nil).takeRetainedValue()
+    // Add the notification loop to the current run loop.
+    CFRunLoopAddSource(CFRunLoopGetCurrent(), loop, CFRunLoopMode.defaultMode)
+  }
+
 
   // MARK: - Private Methods
 
-  ///  Opens a connection to the battery's IO service.
+  ///  Opens a connection to the battery's IOService object.
   ///
-  ///  - throws: ConnectionAlreadyOpen exception, if the last connection wasn't closed properly.
-  ///  - throws: ServiceNotFound exception, if the IOSERVICE_BATTERY couldn't be found.
+  ///  - throws: ConnectionAlreadyOpen, if the last connection wasn't closed properly.
+  ///  - throws: ServiceNotFound, if the supplied batteryIOServiceName wasn't found.
   private mutating func openServiceConnection() throws {
     // If the IO service is still open...
     if service != 0 {
@@ -206,9 +187,9 @@ struct Battery {
     }
   }
 
-  ///  Closes the connection the the battery's IO service.
+  ///  Closes the connection the the battery's IOService object.
   ///
-  ///  - returns: True on success; false otherwise.
+  ///  - returns: True when the connection was successfully closed.
   private mutating func closeServiceConnection() -> Bool {
     // Release the IO object...
     let result = IOObjectRelease(service)
@@ -222,11 +203,12 @@ struct Battery {
   ///  Get the registry entry's property for the supplied SmartBatteryKey.
   ///
   ///  - parameter key: A SmartBatteryKey to get the property for.
-  ///  - returns: The property of the given SmartBatteryKey.
+  ///  - returns:       The property of the given SmartBatteryKey.
   private func getRegistryPropertyForKey(_ key: SmartBatteryKey) -> AnyObject? {
     return IORegistryEntryCreateCFProperty(service, key.rawValue, nil, 0).takeRetainedValue()
   }
 }
+
 
 // MARK: - BatteryErrorType
 
@@ -241,33 +223,34 @@ enum BatteryError: ErrorProtocol {
   case serviceNotFound
 }
 
+
 // MARK: SmartBatteryKey's
 
 ///  Access keys to get the battery information.
 ///
-///  - ACPowered:        Is an external power source connected?
-///  - Amperage:         How much "Juice" is currently being used (Ampere)
-///  - CurrentCapacity:  Current charging status in mAh
-///  - CycleCount:       How often was the current battery charged to 100%
-///  - DesignCapacity:   The maximum capacity the battery could hold, by design.
-///  - DesignCycleCount: How often can the current battery be charged (at least)
-///  - FullyCharged:     Is the battery currently fully charged?
-///  - IsCharging:       Is the battery currently charging?
-///  - MaxCapacity:      The maximum capacity the battery can currently hold.
-///  - Temperature:      The current temperature of the battery.
-///  - TimeRemaining:    The remaining time until the battery is empty/fully charged.
-///  - Voltage:          The electric charge the battery is working with.
+///  - externalConnected: Is an external power source connected?
+///  - amperage:          How much "Juice" is currently being used (Ampere)
+///  - currentCapacity:   Current charging status in mAh
+///  - cycleCount:        How often was the current battery charged to 100%
+///  - designCapacity:    The maximum capacity the battery could hold, by design.
+///  - designCycleCount:  How often can the current battery be charged (at least)
+///  - fullyCharged:      Is the battery currently fully charged?
+///  - isCharging:        Is the battery currently charging?
+///  - maxCapacity:       The maximum capacity the battery can currently hold.
+///  - temperature:       The current temperature of the battery.
+///  - timeRemaining:     The remaining time until the battery is empty/fully charged.
+///  - voltage:           The electric charge the battery is working with.
 private enum SmartBatteryKey: String {
-  case ACPowered        = "ExternalConnected"
-  case Amperage         = "Amperage"
-  case CurrentCharge    = "CurrentCapacity"
-  case CycleCount       = "CycleCount"
-  case DesignCapacity   = "DesignCapacity"
-  case DesignCycleCount = "DesignCycleCount9C"
-  case FullyCharged     = "FullyCharged"
-  case IsCharging       = "IsCharging"
-  case MaxCapacity      = "MaxCapacity"
-  case Temperature      = "Temperature"
-  case TimeRemaining    = "TimeRemaining"
-  case Voltage          = "Voltage"
+  case externalConnected = "ExternalConnected"
+  case amperage          = "Amperage"
+  case currentCharge     = "CurrentCapacity"
+  case cycleCount        = "CycleCount"
+  case designCapacity    = "DesignCapacity"
+  case designCycleCount  = "DesignCycleCount9C"
+  case fullyCharged      = "FullyCharged"
+  case isCharging        = "IsCharging"
+  case maxCapacity       = "MaxCapacity"
+  case temperature       = "Temperature"
+  case timeRemaining     = "TimeRemaining"
+  case voltage           = "Voltage"
 }
