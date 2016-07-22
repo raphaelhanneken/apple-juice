@@ -63,25 +63,25 @@ final class ListRowViewControllerType: NSObject {
       // Get the battery information according to the given row type definition.
       switch type {
       case .timeRemaining:
-        return battery.timeRemainingFormatted()
+        return battery.timeRemainingFormatted
       case .percentage:
         if let percentage = battery.percentage() {
           return "\(percentage) %"
         }
       case .powerUsage:
-        if let powerUsage = battery.powerUsage() {
+        if let powerUsage = battery.powerUsage {
           return "\(powerUsage) \(NSLocalizedString("Watts", comment: "Translate Watts"))"
         }
       case .capacity:
-        if let charge = battery.currentCharge(), capacity = battery.maxCapacity() {
+        if let charge = battery.charge, capacity = battery.capacity {
           return "\(charge) / \(capacity) mAh"
         }
       case .cycleCount:
-        if let cycleCount = battery.cycleCount() {
+        if let cycleCount = battery.cycleCount {
           return "\(cycleCount)"
         }
       case .source:
-        return battery.currentSource()
+        return battery.powerSource
       }
     } catch {
       // Couldn't open the battery service IO, for some reason...

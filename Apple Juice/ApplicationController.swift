@@ -105,11 +105,11 @@ final class ApplicationController: NSObject {
   private func updateStatusItem() {
     // Unwrap everything we need here...
     guard let button = statusItem?.button,
-      timeRemaining  = battery?.timeRemainingFormatted(),
-      plugged        = battery?.isPlugged(),
-      charging       = battery?.isCharging(),
-      charged        = battery?.isCharged(),
-      percentage     = battery?.percentage() else {
+      timeRemaining  = battery?.timeRemainingFormatted,
+      plugged        = battery?.isPlugged,
+      charging       = battery?.isCharging,
+      charged        = battery?.isCharged,
+      percentage     = battery?.percentage else {
         return
     }
     // ...and draw the appropriate status bar icon.
@@ -135,14 +135,14 @@ final class ApplicationController: NSObject {
   private func updateMenuItems(_ completionHandler: () -> Void) {
     // Unwrap the necessary battery information.
     guard let
-      capacity   = battery?.maxCapacity(),
-      charge     = battery?.currentCharge(),
-      source     = battery?.currentSource(),
-      percentage = battery?.percentage() else {
+      capacity   = battery?.capacity,
+      charge     = battery?.charge,
+      source     = battery?.powerSource,
+      percentage = battery?.percentage else {
         return
     }
     // Set the menu item title for the current charge level.
-    if let time = battery?.timeRemainingFormatted() where !userPrefs.showTime {
+    if let time = battery?.timeRemainingFormatted where !userPrefs.showTime {
       currentCharge.title = time + " (\(charge) / \(capacity) mAh)"
     } else {
       currentCharge.title = "\(percentage) (\(charge) / \(capacity) mAh)"
@@ -157,9 +157,9 @@ final class ApplicationController: NSObject {
   ///  Checks if the user wants to get notified about the current charging status.
   private func postUserNotification() {
     // Unwrap the necessary information.
-    guard let plugged    = battery?.isPlugged(),
-              charged    = battery?.isCharged(),
-              percentage = battery?.percentage() else {
+    guard let plugged    = battery?.isPlugged,
+              charged    = battery?.isCharged,
+              percentage = battery?.percentage else {
         return
     }
     // Define a new notification key.
