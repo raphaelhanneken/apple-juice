@@ -65,7 +65,7 @@ final class ListRowViewControllerType: NSObject {
       case .timeRemaining:
         return battery.timeRemainingFormatted
       case .percentage:
-        if let percentage = battery.percentage() {
+        if let percentage = battery.percentage {
           return "\(percentage) %"
         }
       case .powerUsage:

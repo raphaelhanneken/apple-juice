@@ -46,7 +46,7 @@ public struct Battery {
   /// An IOService object that matches battery's IO service dict.
   private var service: io_object_t = 0
 
-  ///  The remaining time until the battery is empty or fully charged 
+  ///  The remaining time until the battery is empty or fully charged
   ///  in a human readable format, e.g. hh:mm.
   var timeRemainingFormatted: String {
     // Get and unwrap the necessary information.
