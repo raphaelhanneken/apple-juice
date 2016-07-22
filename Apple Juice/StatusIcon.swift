@@ -42,39 +42,25 @@ internal struct StatusIcon {
   ///  - parameter status: The BatteryStatusType, which to draw the image for.
   ///  - returns:          The battery image for the provided battery status.
   mutating func drawBatteryImage(forStatus status: BatteryStatusType) -> NSImage? {
-    // Check if an image is already cached.
-    if let cache = self.cache {
-      switch status {
-      case .discharging(let percentage):
-        if percentage != cache.percentage {
-          NSLog("Cache discharging icon for %i %%", percentage)
-          self.cache = BatteryImageCache(forStatus: status,
-                                         withImage: batteryDischarging(currentPercentage: percentage),
-                                         andPercentage: percentage)
-        }
-        fallthrough
-      default:
-        NSLog("- 01 - Returning cached battery image.")
-        return cache.image
-      }
-    } else {
-      // Cache a new battery image.
-      switch status {
-      case .charging:
-        NSLog("Cache charging icon")
-        self.cache = BatteryImageCache(forStatus: status, withImage: batteryCharging)
-      case .pluggedAndCharged:
-        NSLog("Cache pluggedAndCharged icon")
-        self.cache = BatteryImageCache(forStatus: status, withImage: batteryPluggedAndCharged)
-      case .discharging(let percentage):
-        NSLog("Cache discharging icon for %i %%", percentage)
-        self.cache = BatteryImageCache(forStatus: status,
-                                       withImage: batteryDischarging(currentPercentage: percentage),
-                                       andPercentage: percentage)
-      }
+    // Check if the required image is cached.
+    if let cache = self.cache where cache.batteryStatus == status {
+      return cache.image
     }
-    // Return the battery image thats currently cached.
-    NSLog("- 02 - Returning cached battery image.")
+
+    // Cache a new battery image.
+    switch status {
+    case .charging:
+      self.cache = BatteryImageCache(forStatus: status, withImage: batteryImage(named: .charging))
+
+    case .pluggedAndCharged:
+      self.cache = BatteryImageCache(forStatus: status, withImage: batteryImage(named: .charged))
+
+    case .discharging(let percentage):
+      self.cache = BatteryImageCache(forStatus: status,
+                                     withImage: dischargingBatteryImage(forPercentage: percentage),
+                                     andPercentage: percentage)
+    }
+    // Return the newly cached battery image.
     return cache?.image
   }
 
