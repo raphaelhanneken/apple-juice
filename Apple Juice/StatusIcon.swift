@@ -27,12 +27,11 @@
 
 import Cocoa
 
-/// Methods to draw the status bat item's icon.
+///  Draws the status bar image.
 internal struct StatusIcon {
-  /// A little offset to draw the capacity bar in the correct position.
+  ///  Add a little offset to draw the capacity bar in the correct position.
   private let capacityOffsetX: CGFloat = 2.0
-
-  /// Holds a cached battery image.
+  ///  Caches the last drawn battery image.
   private var cache: BatteryImageCache?
 
   /// Returns the charged and plugged battery image.
@@ -60,7 +59,8 @@ internal struct StatusIcon {
 
   ///  Draws a battery image for the supplied BatteryStatusType.
   ///
-  ///  - parameter status: The current BatteryStatusType.
+  ///  - parameter status: The BatteryStatusType, which to draw the image for.
+  ///  - returns:          The battery image for the provided battery status.
   mutating func drawBatteryImage(forStatus status: BatteryStatusType) -> NSImage? {
     // Check if an image is already cached.
     if let cache = self.cache {
@@ -98,15 +98,16 @@ internal struct StatusIcon {
     return cache?.image
   }
 
-  /// Draw the battery image corresponding to the supplied BatteryError.
+  ///  Draw a battery image according to the provided BatteryError.
   ///
-  /// - parameter err: The BatteryError to draw the battery image for.
-  /// - returns:       The corresponding battery image.
+  ///  - parameter err: The BatteryError, which to draw the battery image for.
+  ///  - returns:       The battery image for the supplied BatteryError.
   func drawBatteryImage(forError err: BatteryError?) -> NSImage? {
+    // Unwrap the Error object.
     guard let error = err else {
       return nil
     }
-
+    // Check the supplied error type.
     switch error {
     case .connectionAlreadyOpen:
       return batteryConnectionAlreadyOpen
@@ -118,11 +119,11 @@ internal struct StatusIcon {
 
   // MARK: - Private Methods
 
-  ///  Draws a battery icon based on the current percentage charge of the battery.
+  ///  Draws a battery icon based on the current percentage of the battery.
   ///
-  ///  - parameter percentage: The current percentage charge of the battery.
-  ///  - returns: The battery icon based on the given parameters.
-  private func batteryDischarging(currentPercentage percentage: Int) -> NSImage? {
+  ///  - parameter percentage: The current percentage of the battery.
+  ///  - returns:              A battery image for the supplied percentage.
+  private func dischargingBatteryImage(forPercentage percentage: Int) -> NSImage? {
     // Get the required images to draw the battery icon.
     guard let batteryEmpty     = batteryImage(named: .empty),
               capacityCapLeft  = batteryImage(named: .left),
@@ -130,52 +131,52 @@ internal struct StatusIcon {
               capacityFill     = batteryImage(named: .middle) else {
         return nil
     }
-    // Get the height of the capacity bar.
+    // Get the capacity bar's height.
     let capacityHeight = capacityFill.size.height
-    // Calculate the offset to achieve this little gap between the capacity bar and the outline.
+    // Calculate the offset to achieve that little gap between the capacity bar and the outline.
     let capacityOffsetY = batteryEmpty.size.height - (capacityHeight + capacityOffsetX)
-    // Calculate the width of the capacity bar.
+    // Calculate the capacity bar's width.
     var capacityWidth = CGFloat(round(Double(percentage / 12))) * capacityFill.size.width
-    // Don't draw the capacity bar smaller than two single battery images, to prevent
-    // graphic errors.
+    // Don't draw the capacity bar smaller than two single battery
+    // images, to prevent visual errors.
     if (2 * capacityFill.size.width) >= capacityWidth {
       capacityWidth = (2 * capacityFill.size.width) + 0.1
     }
-    // Define the drawing rect.
+    // Define the drawing rect in which to draw the capacity bar in.
     let drawingRect = NSRect(x: capacityOffsetX, y: capacityOffsetY,
                              width: capacityWidth, height: capacityHeight)
 
-    // Finally, draw the actual menu bar icon.
+    // Draw the actual menu bar image.
     drawThreePartImage(frame: drawingRect, canvas: batteryEmpty, startCap: capacityCapLeft,
                        fill: capacityFill, endCap: capacityCapRight)
 
     return batteryEmpty
   }
 
-  ///  Retrieves the battery image for the supplied image name.
+  ///  Opens an image file for the supplied image name.
   ///
-  ///  - parameter name: Name of the image.
-  ///  - returns: The image.
+  ///  - parameter name: The name of the requested image.
+  ///  - returns:        The requested image.
   private func batteryImage(named name: BatteryImage) -> NSImage? {
     // Define the path to apple's battery icons.
     let path = "/System/Library/PrivateFrameworks/BatteryUIKit.framework/Versions/A/Resources/"
     // Open the supplied file as NSImage.
-    if let img = NSImage(contentsOfFile: "\(path)\(name.rawValue).pdf") {
+    if let img = NSImage(contentsOfFile: "\(path)\(name.rawValue)") {
       return img
     } else {
-      print("An error occured while reading the image named: \(name)")
+      // The image with the supplied name was not found.
+      print("Image named \(name.rawValue) not found!")
+      return nil
     }
-
-    return nil
   }
 
-  ///  Draws a three part tiled image.
+  ///  Draws a three-part image onto a specified canvas image.
   ///
-  ///  - parameter rect:  The rectangle in which to draw the image.
-  ///  - parameter img:   The NSImage object to draw on.
-  ///  - parameter start: The left edge of the image frame.
-  ///  - parameter fill:  The image used to fill the space between the start and endCap images.
-  ///  - parameter end:   The right edge of the image frame.
+  ///  - parameter rect:  The rectangle in which to draw the images.
+  ///  - parameter img:   The image on which to draw the three-part image.
+  ///  - parameter start: The image located on the left end of the frame.
+  ///  - parameter fill:  The image used to fill the gap between the start and the end images.
+  ///  - parameter end:   The image located on the right end of the frame.
   private func drawThreePartImage(frame rect: NSRect, canvas img: NSImage,
                                          startCap start: NSImage, fill: NSImage, endCap end: NSImage) {
     img.lockFocus()
@@ -185,23 +186,23 @@ internal struct StatusIcon {
 }
 
 
-///  Holds the image names for all battery images.
+///  Defines the filenames for Apple's battery images.
 ///
-///  - left:     Image name for the battery level cap on the left hand side.
-///  - right:    Image name for the battery level cap on the right hand side.
-///  - middle:   The name for the battery level filler image. Between the left and the right cap.
-///  - empty:    Image name for the empty battery image.
-///  - charged:  Image name for the charged battery image.
-///  - charging: Image name for the charging battery image.
-///  - dead:     Image name for the dead/cropped battery image.
-///  - none:     Image name for the "Not found" battery image.
+///  - left:     Left-hand side capacity bar cap.
+///  - right:    Right-hand side capacity bar cap.
+///  - middle:   Capacity bar filler filename.
+///  - empty:    Empty battery filename.
+///  - charged:  Charged and plugged battery filename.
+///  - charging: Charging battery filename.
+///  - dead:     IOService already open filename.
+///  - none:     Battery IOService not found filename.
 enum BatteryImage: String {
-  case left     = "BatteryLevelCapB-L"
-  case right    = "BatteryLevelCapB-R"
-  case middle   = "BatteryLevelCapB-M"
-  case empty    = "BatteryEmpty"
-  case charged  = "BatteryChargedAndPlugged"
-  case charging = "BatteryCharging"
-  case dead     = "BatteryDeadCropped"
-  case none     = "BatteryNone"
+  case left     = "BatteryLevelCapB-L.pdf"
+  case right    = "BatteryLevelCapB-R.pdf"
+  case middle   = "BatteryLevelCapB-M.pdf"
+  case empty    = "BatteryEmpty.pdf"
+  case charged  = "BatteryChargedAndPlugged.pdf"
+  case charging = "BatteryCharging.pdf"
+  case dead     = "BatteryDeadCropped.pdf"
+  case none     = "BatteryNone.pdf"
 }

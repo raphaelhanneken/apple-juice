@@ -29,27 +29,28 @@ import Foundation
 import IOKit.ps
 import IOKit.pwr_mgt
 
-/// Notification that gets posted whenever a power source is changed.
+
+///  Notification name for the power source changed callback.
 let powerSourceChangedNotification = "com.raphaelhanneken.apple-juice.powersourcechanged"
 
-/// Gets called whenever any power source is added, removed, or changed.
+///  Posts a notification every time the power source changes.
 private let powerSourceCallback: IOPowerSourceCallbackType = { _ in
-  // Post a PowerSourceChanged notification.
   NotificationCenter.default.post(name: Notification.Name(rawValue: powerSourceChangedNotification), object: nil)
 }
 
-/// Access information about the build in battery.
+///  Accesses the battery's IO service.
 public struct Battery {
 
-  /// The battery's IO service name.
+  ///  The battery's IO service name.
   private let batteryIOServiceName = "AppleSmartBattery"
-  /// An IOService object that matches battery's IO service dict.
+
+  ///  An IOService object that matches battery's IO service dictionary.
   private var service: io_object_t = 0
 
   ///  The remaining time until the battery is empty or fully charged
   ///  in a human readable format, e.g. hh:mm.
   var timeRemainingFormatted: String {
-    // Get and unwrap the necessary information.
+    // Unwrap required information.
     guard let
       time    = timeRemaining,
       charged = isCharged,
@@ -57,7 +58,7 @@ public struct Battery {
         return NSLocalizedString("Calculating", comment: "Translate Calculating")
     }
 
-    // If the battery is charged and plugged into a power supply display "Charged".
+    // If the battery is charged and plugged into an unlimited power supply return "Charged".
     // Otherwise display the remaining time.
     if charged && plugged {
       return NSLocalizedString("Charged", comment: "Translate Charged")
@@ -66,7 +67,7 @@ public struct Battery {
     }
   }
 
-  ///  The remaining time in minutes until the battery is empty or fully charged.
+  ///  The remaining time in _minutes_ until the battery is empty or fully charged.
   var timeRemaining: Int? {
     // Get the estimated time remaining.
     let time = IOPSGetTimeRemainingEstimate()
@@ -87,7 +88,7 @@ public struct Battery {
 
   ///  The current percentage, based on the current charge and the maximum capacity.
   var percentage: Int? {
-    // Get the necessary information.
+    // Unwrap the required information.
     guard let
       capacity = capacity,
       charge   = charge else {
@@ -109,11 +110,10 @@ public struct Battery {
 
   ///  The source from which the Mac currently draws its power.
   var powerSource: String {
-    // Unwrap the necessary information or return "Unknown" in case something went wrong.
     guard let plugged = isPlugged else {
       return NSLocalizedString("Unknown", comment: "Translate Unknown")
     }
-    // Check if we're currently plugged into a power adapter.
+    // Check whether the MacBook currently is plugged into a power adapter.
     if plugged {
       return NSLocalizedString("Power Adapter", comment: "Translate Power Adapter")
     } else {
@@ -121,22 +121,22 @@ public struct Battery {
     }
   }
 
-  ///  True when the battery is charging and connected to a power outlet.
+  ///  Checks whether the battery is charging and connected to a power outlet.
   var isCharging: Bool? {
     return getRegistryPropertyForKey(.isCharging) as? Bool
   }
 
-  ///  True when the battery is fully charged.
+  ///  Checks whether the battery is fully charged.
   var isCharged: Bool? {
     return getRegistryPropertyForKey(.fullyCharged) as? Bool
   }
 
-  ///  True when the battery is connected to a power outlet.
+  ///  Checks whether the battery is plugged into an unlimited power supply.
   var isPlugged: Bool? {
     return getRegistryPropertyForKey(.externalConnected) as? Bool
   }
 
-  ///  The current power usage in Watts.
+  ///  Calculates the current power usage in Watts.
   var powerUsage: Double? {
     guard let
       voltage  = getRegistryPropertyForKey(.voltage) as? Double,
@@ -151,6 +151,7 @@ public struct Battery {
     return getRegistryPropertyForKey(.cycleCount) as? Int
   }
 
+  ///  The current status of the battery, e.g. charging.
   var status: BatteryStatusType? {
     guard let
       charging   = isCharging,
@@ -160,10 +161,10 @@ public struct Battery {
         return nil
     }
     if charged && plugged {
-      return .pluggedAndCharged(percentage: percentage)
+      return .pluggedAndCharged
     }
     if charging {
-      return .charging(percentage: percentage)
+      return .charging
     } else {
       return .discharging(percentage: percentage)
     }
@@ -174,8 +175,9 @@ public struct Battery {
 
   ///  Initializes a new Battery object.
   init() throws {
+    // Try opening a connection to the battery's IOService.
     try openServiceConnection()
-    // Get notified when the power source information changes.
+    // Create a RunLoopSource to post a notification, whenever the power source chages.
     let loop = IOPSNotificationCreateRunLoopSource(powerSourceCallback, nil).takeRetainedValue()
     // Add the notification loop to the current run loop.
     CFRunLoopAddSource(CFRunLoopGetCurrent(), loop, CFRunLoopMode.defaultMode)
@@ -186,93 +188,98 @@ public struct Battery {
 
   ///  Opens a connection to the battery's IOService object.
   ///
-  ///  - throws: ConnectionAlreadyOpen, if the last connection wasn't closed properly.
-  ///  - throws: ServiceNotFound, if the supplied batteryIOServiceName wasn't found.
+  ///  - throws: A BatteryError if something went wrong.
   private mutating func openServiceConnection() throws {
-    // If the IO service is still open...
+    // Check if the IOService connection is still open.
     if service != 0 {
-      // ...try closing it.
       if !closeServiceConnection() {
-        // Throw a BatteryError in case the IO connection won't close.
+        // Throw a connectionAlreadyOpen Exception if the
+        // IOService connection won't close.
         throw BatteryError.connectionAlreadyOpen
       }
     }
-    // Get an IOService object for the defined
+    // Get an IOService object for the defined battery service name.
     service = IOServiceGetMatchingService(kIOMasterPortDefault, IOServiceNameMatching(batteryIOServiceName))
-    // Throw a BatteryError if the IO service couldn't be opened.
     if service == 0 {
+      // Throw a serviceNotFound exception if the supplied IOService couldn't be opened.
       throw BatteryError.serviceNotFound
     }
   }
 
   ///  Closes the connection the the battery's IOService object.
   ///
-  ///  - returns: True when the connection was successfully closed.
+  ///  - returns: True, whether the IOService connection was successfully closed.
   private mutating func closeServiceConnection() -> Bool {
-    // Release the IO object...
-    let result = IOObjectRelease(service)
-    // ...and reset the service property.
-    if result == kIOReturnSuccess {
+    // Release the IOService object and reset the service property.
+    if kIOReturnSuccess == IOObjectRelease(service) {
       service = 0
     }
-    return (result == kIOReturnSuccess)
+    return (service == 0)
   }
 
   ///  Get the registry entry's property for the supplied SmartBatteryKey.
   ///
-  ///  - parameter key: A SmartBatteryKey to get the property for.
-  ///  - returns:       The property of the given SmartBatteryKey.
+  ///  - parameter key: A SmartBatteryKey to get the corresponding registry entry's property.
+  ///  - returns:       The registry entry for the provided SmartBatteryKey.
   private func getRegistryPropertyForKey(_ key: SmartBatteryKey) -> AnyObject? {
     return IORegistryEntryCreateCFProperty(service, key.rawValue, nil, 0).takeRetainedValue()
   }
 }
 
 
-// MARK: - BatteryStatusType
+// MARK: - Support
 
-///  Defines the status the battery is currently in, every case accepts the current
-///  current percentage as integer.
+///  Defines the status the battery is currently in.
 ///
-///  - discharging:       The battery is currently discharging.
 ///  - pluggedAndCharged: The battery is currently plugged into a power supply and charged.
 ///  - charging:          The battery is currently plugged into a power supply and charging.
-enum BatteryStatusType {
+///  - discharging:       The battery is currently discharging. Accepts an associated integer value.
+enum BatteryStatusType: Equatable {
+  case pluggedAndCharged
+  case charging
   case discharging(percentage: Int)
-  case pluggedAndCharged(percentage: Int)
-  case charging(percentage: Int)
+}
+
+///  Compares two BatteryStatusTypes.
+func == (lhs: BatteryStatusType, rhs: BatteryStatusType) -> Bool {
+  switch (lhs, rhs) {
+  case (.charging, .charging):
+    return true
+  case (.pluggedAndCharged, .pluggedAndCharged):
+    return true
+  case (.discharging(let lhsPercentage), .discharging(let rhsPercentage)):
+    return (lhsPercentage == rhsPercentage)
+  default:
+    return false
+  }
 }
 
 
-// MARK: - BatteryErrorType
-
 ///  Exceptions for the Battery class.
 ///
-///  - ConnectionAlreadyOpen: Gets thrown in case the connection to the battery's IO service
+///  - ConnectionAlreadyOpen: Get's thrown in case the connection to the battery's IOService
 ///                           is already open.
-///  - ServiceNotFound:       Gets thrown in case the IO service string (Battery.BatteryServiceName)
-///                           wasn't found.
+///  - ServiceNotFound:       Get's thrown in case the supplied IOService wasn't found.
 enum BatteryError: ErrorProtocol {
   case connectionAlreadyOpen
   case serviceNotFound
 }
 
 
-// MARK: SmartBatteryKey's
-
-///  Access keys to get the battery information.
+///  Keys to look up required information from the IOService dictionary.
 ///
-///  - externalConnected: Is an external power source connected?
-///  - amperage:          How much "Juice" is currently being used (Ampere)
-///  - currentCapacity:   Current charging status in mAh
-///  - cycleCount:        How often was the current battery charged to 100%
-///  - designCapacity:    The maximum capacity the battery could hold, by design.
-///  - designCycleCount:  How often can the current battery be charged (at least)
-///  - fullyCharged:      Is the battery currently fully charged?
-///  - isCharging:        Is the battery currently charging?
+///  - externalConnected: Checks whether the battery is connected to an external power supply.
+///  - amperage:          Information about the current power consumption.
+///  - currentCapacity:   The current charging state in mAh.
+///  - cycleCount:        The number of battery charging cycles.
+///  - designCapacity:    The maximum capacity the battery can hold by design.
+///  - designCycleCount:  Number of charg cycles according to the manufacturer.
+///  - fullyCharged:      Information about whether the battery is fully charged.
+///  - isCharging:        Information about whether the battery is currently charging.
 ///  - maxCapacity:       The maximum capacity the battery can currently hold.
-///  - temperature:       The current temperature of the battery.
-///  - timeRemaining:     The remaining time until the battery is empty/fully charged.
-///  - voltage:           The electric charge the battery is working with.
+///  - temperature:       The temperature in degrees celsius.
+///  - timeRemaining:     The remaining time until the battery is empty or fully charged, respectively.
+///  - voltage:           The current voltage.
 private enum SmartBatteryKey: String {
   case externalConnected = "ExternalConnected"
   case amperage          = "Amperage"
