@@ -28,27 +28,28 @@
 import Cocoa
 
 final class ApplicationController: NSObject {
-  /// Holds a reference to the application menu.
+  /// Holds a weak reference to the application menu.
   @IBOutlet weak var applicationMenu: NSMenu!
-  /// Holds a reference to the charging status menu item.
+  /// Holds a weak reference to the charging status menu item.
   @IBOutlet weak var currentCharge: NSMenuItem!
-  /// Holds a reference to the power source menu item.
+  /// Holds a weak reference to the power source menu item.
   @IBOutlet weak var currentSource: NSMenuItem!
 
   /// Holds the applications status bar item.
   private var statusItem: NSStatusItem!
-  /// Manage the user preferences.
+  /// Manages the user preferences.
   private var userPrefs = UserPreferences()
-  /// Generate the status item icons.
+  /// Generates the status bar item icons.
   private var statusIcon = StatusIcon()
-  /// Access the battery information.
+  /// Access the battery's IOService.
   private var battery: Battery!
 
 
   // MARK: - Methods
 
+  ///  Initialize the ApplicationController.
   override init() {
-    // Initialize our parent class.
+    // Initialize the parent class.
     super.init()
 
     // Initialize the user preferences.
@@ -57,7 +58,7 @@ final class ApplicationController: NSObject {
     statusItem = configureStatusItem()
 
     do {
-      // Get access to the battery information.
+      // Access the battery's IOService.
       try battery = Battery()
       // Get notified, when the power source changes.
       NotificationCenter.default.addObserver(self,
@@ -65,42 +66,57 @@ final class ApplicationController: NSObject {
                                              name: NSNotification.Name(rawValue: powerSourceChangedNotification),
                                              object: nil)
 
-      // Get notified, when the user toggles between time and percentage.
+      // Get notified, when the user toggles between displaying time and percentage.
       UserDefaults.standard.addObserver(self, forKeyPath: PreferenceKey.showTime.rawValue,
                                         options: .new, context: nil)
     } catch {
-      // Unwrap the status item button.
+      // Whoops! Something went terribly wrong here.
       guard let button = statusItem.button else {
         return
       }
       // Draw a status item for the catched battery error.
       button.image = statusIcon.drawBatteryImage(forError: error as? BatteryError)
-      // Define the status icon as template.
+      // Define the status bar item image as template.
       button.image?.isTemplate = true
     }
   }
 
-  ///  Gets called whenever the power source changes. Calls updateMenuItem:
-  ///  and postUserNotification.
+  ///  This message is sent to the receiver, when a powerSourceChanged message was posted. The receiver
+  ///  must be registered as an observer for powerSourceChangedNotification's.
   ///
-  ///  - parameter sender: Object that send the message.
+  ///  - parameter sender: The source object of the posted powerSourceChanged message.
   func powerSourceChanged(_ sender: AnyObject) {
+    NSLog("Power source changed.")
     // Update status bar item to reflect changes.
     updateStatusItem()
-    // Check if the user wants to get notified.
+    // Check whether the user wants to get notified.
     postUserNotification()
   }
 
-  /// Gets called everytime the ShowTimePref key changes.
+  ///  This message is sent to the receiver when the value at the specified key
+  ///  path relative to the given object has changed. The receiver must be
+  ///  registered as an observer for the specified keyPath and object.
+  ///
+  ///  - parameter keyPath: The key path, relative to object, to the value that has changed.
+  ///  - parameter object:  The source object of the key path.
+  ///  - parameter change:  A dictionary that describes the changes that have been made to
+  ///                       the value of the property at the key path keyPath relative to object.
+  ///                       Entries are described in Change Dictionary Keys.
+  ///  - parameter context: The value that was provided when the receiver was registered to receive key-value
+  ///                       observation notifications.
   override func observeValue(forKeyPath keyPath: String?, of object: AnyObject?,
                              change: [NSKeyValueChangeKey : AnyObject]?, context: UnsafeMutablePointer<Void>?) {
-    // Update the status item to reflect the user defaults updates.
+    if let keyPath = keyPath {
+      NSLog("Value for %@ changed.", keyPath as NSString)
+    }
+    // Update the status item to reflect updated user preferences.
     updateStatusItem()
   }
 
-  ///  Displays the app menu on screen.
+  ///  Displays the application menu under the status bar item when the
+  ///  user clicks the item.
   ///
-  ///  - parameter sender: The object that send the message.
+  ///  - parameter sender: The source object that sent the message.
   func displayAppMenu(_ sender: AnyObject) {
     // Before showing the app menu, update the information displayed
     // within it.
@@ -112,7 +128,7 @@ final class ApplicationController: NSObject {
 
   // MARK: - Private Methods
 
-  ///  Creates and configures the app's status bar item.
+  ///  Creates and configures the application's status bar item.
   ///
   ///  - returns: The application's status bar item.
   private func configureStatusItem() -> NSStatusItem {
@@ -127,53 +143,51 @@ final class ApplicationController: NSObject {
 
   ///  Updates the application's status bar item.
   private func updateStatusItem() {
-    NSLog("Updating status item")
     guard let
       button     = statusItem.button,
       status     = battery.status,
       percentage = battery.percentage else {
         return
     }
-    // Set the status bar item title.
+    // Set the attributed status bar item title.
     button.attributedTitle = statusBarItemTitle(withPercentage: percentage,
                                                 andTime: battery.timeRemainingFormatted)
 
-    // Draw the corresponding status bar icon.
+    // Draw the corresponding status bar image.
     button.image = statusIcon.drawBatteryImage(forStatus: status)
-    // Define the image as template.
+    // Define the image as black and white template.
     button.image?.isTemplate = true
-    // Set the image position to the right hand side.
+    // Set the image position relative to it's title.
     button.imagePosition = .imageRight
   }
 
-  ///  Updates the information within the app menu.
+  ///  Updates the information within the application menu.
   ///
-  ///  - parameter completionHandler: A callback function, that should get called
+  ///  - parameter completionHandler: A callback function, that gets called
   ///                                 as soon as the menu items are updated.
   private func updateMenuItems(_ completionHandler: () -> Void) {
-    // Unwrap the necessary battery information.
     guard let
       capacity   = battery.capacity,
       charge     = battery.charge,
       percentage = battery.percentage else {
         return
     }
-    // Set the menu item title for the current charge level.
+    // Set the menu item title for the current charge level, depending on the user preferences
+    // with the current percentage or remaining time, respectively.
     if userPrefs.showTime {
       currentCharge.title = "\(percentage) % (\(charge) / \(capacity) mAh)"
     } else {
       currentCharge.title = battery.timeRemainingFormatted + " (\(charge) / \(capacity) mAh)"
     }
     // Set the menu item title for the current power source.
-    currentSource.title = NSLocalizedString("Power Source", comment: "Translate Sourc") + " \(battery.powerSource)"
+    currentSource.title = NSLocalizedString("Power Source", comment: "Translte Source") + " \(battery.powerSource)"
 
-    // Run the supplied completion handler.
+    // Run the provided completion handler.
     completionHandler()
   }
 
   ///  Checks if the user wants to get notified about the current charging status.
   private func postUserNotification() {
-    // Unwrap the necessary information.
     guard let plugged    = battery.isPlugged,
               charged    = battery.isCharged,
               percentage = battery.percentage else {
@@ -203,11 +217,11 @@ final class ApplicationController: NSObject {
 
   ///  Creates an attributed string for the status bar item's title.
   ///
-  ///  - parameter percent: Current percentage of the battery's charging status.
+  ///  - parameter percent: The battery's current charging state.
   ///  - parameter time:    The estimated remaining time in a human readable format.
-  ///  - returns:           The attributed string with percentage or time information, respectively.
+  ///  - returns:           The attributed title with percentage or time information, respectively.
   private func statusBarItemTitle(withPercentage percent: Int, andTime time: String) -> AttributedString {
-    // Define some attributes to make the status bar item look like Apple's battery gauge.
+    // Define some attributes to make the status bar item look more like Apple's battery gauge.
     let attrs = [NSFontAttributeName : NSFont.menuBarFont(ofSize: 12.0)]
     // Check whether the user wants to see the remaining time or not.
     if userPrefs.showTime {
@@ -222,7 +236,7 @@ final class ApplicationController: NSObject {
 
   ///  Open the energy saver preference pane.
   ///
-  ///  - parameter sender: The menu item that send the message.
+  ///  - parameter sender: The menu item object that sent the message.
   @IBAction func energySaverPreferences(_ sender: NSMenuItem) {
     NSWorkspace.shared().openFile("/System/Library/PreferencePanes/EnergySaver.prefPane")
   }
