@@ -89,7 +89,7 @@ final class ApplicationController: NSObject {
     NSLog("Power source changed.")
     // Update status bar item to reflect changes.
     updateStatusItem()
-    // Check whether the user wants to get notified.
+    // Check if the user wants to get notified.
     postUserNotification()
   }
 
@@ -188,31 +188,31 @@ final class ApplicationController: NSObject {
 
   ///  Checks if the user wants to get notified about the current charging status.
   private func postUserNotification() {
-    guard let plugged    = battery.isPlugged,
-              charged    = battery.isCharged,
-              percentage = battery.percentage else {
-        return
-    }
-    // Define a new notification key.
-    let notificationKey: NotificationKey?
-    // Check what kind of notification key we have here.
-    if plugged && charged {
-      notificationKey = NotificationKey.hundredPercent
-    } else if !plugged {
-      notificationKey = NotificationKey(rawValue: percentage)
-    } else {
-      notificationKey = NotificationKey.invalid
-    }
-    // Unwrap the notification key and return if the current percentage isn't a valid notification key
-    // or if we already posted a notification for the current percentage.
-    guard let key = notificationKey where key != .invalid && key != userPrefs.lastNotified else {
+    guard let batteryState = battery.status else {
       return
     }
-    // Post the notification and save it as last notified.
-    if userPrefs.notifications.contains(key) {
-      NotificationController.postUserNotification(forPercentage: key)
+    // Create a new NotificationKey.
+    let notificationKey: NotificationKey?
+    // Check in which state the battery currently is.
+    switch batteryState {
+    case .pluggedAndCharged:
+      notificationKey = .hundredPercent
+    case .charging:
+      notificationKey = .invalid
+    case .discharging(let percentage):
+      notificationKey = NotificationKey(rawValue: percentage)
     }
-    userPrefs.lastNotified = key
+
+    // Unwrap the notification key, check if it's a valid percentage and assure
+    // the user wasn't already informed about the current charging status.
+    if let key = notificationKey where key != .invalid && key != userPrefs.lastNotified {
+      // Check whether the user is interested in the current percentage.
+      if userPrefs.notifications.contains(key) {
+        // Post a notification and save the current key, so the user won't get notified again.
+        NotificationController.postUserNotification(forPercentage: key)
+        userPrefs.lastNotified = key
+      }
+    }
   }
 
   ///  Creates an attributed string for the status bar item's title.
