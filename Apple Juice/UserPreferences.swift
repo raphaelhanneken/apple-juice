@@ -28,47 +28,47 @@
 import Foundation
 
 /// Manages the user preferences.
-final class UserPreferences {
+final class UserPreferences: NSObject {
 
   /// Holds a reference to the standart user defaults.
   private let userDefaults = UserDefaults.standard
 
   /// Display the current charging status as time remaining? Default: Percentage.
   var showTime: Bool {
-    return userDefaults.bool(forKey: PreferenceKey.ShowTime.rawValue)
+    return userDefaults.bool(forKey: PreferenceKey.showTime.rawValue)
   }
 
   /// Notify the user at five percent left.
   var fivePercentNotification: Int {
-    return userDefaults.integer(forKey: PreferenceKey.FivePercentNotification.rawValue)
+    return userDefaults.integer(forKey: PreferenceKey.fivePercentNotification.rawValue)
   }
 
   /// Notify the user at ten percent left.
   var tenPercentNotification: Int {
-    return userDefaults.integer(forKey: PreferenceKey.TenPercentNotification.rawValue)
+    return userDefaults.integer(forKey: PreferenceKey.tenPercentNotification.rawValue)
   }
 
   /// Notify the user at fifeteen percent left.
   var fifeteenPercentNotification: Int {
-    return userDefaults.integer(forKey: PreferenceKey.FifeteenPercentNotification.rawValue)
+    return userDefaults.integer(forKey: PreferenceKey.fifeteenPercentNotification.rawValue)
   }
 
   /// Notify the user at twenty percent left.
   var twentyPercentNotification: Int {
-    return userDefaults.integer(forKey: PreferenceKey.TwentyPercentNotification.rawValue)
+    return userDefaults.integer(forKey: PreferenceKey.twentyPercentNotification.rawValue)
   }
 
   /// Notify the user when the battery is fully charged.
   var hundredPercentNotification: Int {
-    return userDefaults.integer(forKey: PreferenceKey.HundredPercentNotification.rawValue)
+    return userDefaults.integer(forKey: PreferenceKey.hundredPercentNotification.rawValue)
   }
 
   /// Saves the NotificationKey the user was last informed of.
   var lastNotified: NotificationKey? {
-    get { return NotificationKey(rawValue: userDefaults.integer(forKey: PreferenceKey.LastNotification.rawValue)) }
+    get { return NotificationKey(rawValue: userDefaults.integer(forKey: PreferenceKey.lastNotification.rawValue)) }
     set {
       if let notificationKey = newValue {
-        userDefaults.set(notificationKey.rawValue, forKey: PreferenceKey.LastNotification.rawValue)
+        userDefaults.set(notificationKey.rawValue, forKey: PreferenceKey.lastNotification.rawValue)
       }
     }
   }
@@ -98,19 +98,21 @@ final class UserPreferences {
 
   // MARK: - Methods
 
-  init() {
+  ///  Initialize the user preferences object.
+  override init() {
+    super.init()
     registerUserDefaults()
   }
 
   ///  Register user defaults.
   private func registerUserDefaults() {
-    let defaults = [PreferenceKey.ShowTime.rawValue : false,
-                    PreferenceKey.FivePercentNotification.rawValue : 0,
-                    PreferenceKey.TenPercentNotification.rawValue : 0,
-                    PreferenceKey.FifeteenPercentNotification.rawValue : 0,
-                    PreferenceKey.TwentyPercentNotification.rawValue : 0,
-                    PreferenceKey.HundredPercentNotification.rawValue : 0,
-                    PreferenceKey.LastNotification.rawValue : 0]
+    let defaults = [PreferenceKey.showTime.rawValue : false,
+                    PreferenceKey.fivePercentNotification.rawValue : 0,
+                    PreferenceKey.tenPercentNotification.rawValue : 0,
+                    PreferenceKey.fifeteenPercentNotification.rawValue : 0,
+                    PreferenceKey.twentyPercentNotification.rawValue : 0,
+                    PreferenceKey.hundredPercentNotification.rawValue : 0,
+                    PreferenceKey.lastNotification.rawValue : 0]
 
     userDefaults.register(defaults)
   }
@@ -121,19 +123,19 @@ final class UserPreferences {
 
 ///  Define keys to access the user preferences.
 ///
-///  - ShowTime:                    Saves whether the user wants to see the remaining time within the menu bar.
-///  - FivePercentNotification:     Saves if the user wants to get notified at   5%.
-///  - TenPercentNotification:      Saves if the user wants to get notified at  10%.
-///  - FifeteenPercentNotification: Saves if the user wants to get notified at  15%.
-///  - TwentyPercentNotification:   Saves if the user wants to get notified at  20%.
-///  - HundredPercentNotification:  Saves if the user wants to get notified at 100%.
-///  - LastNotification:            Saves at what percentage the user was last notified.
+///  - showTime:                    Saves whether the user wants to see the remaining time within the menu bar.
+///  - fivePercentNotification:     Saves if the user wants to get notified at   5%.
+///  - tenPercentNotification:      Saves if the user wants to get notified at  10%.
+///  - fifeteenPercentNotification: Saves if the user wants to get notified at  15%.
+///  - twentyPercentNotification:   Saves if the user wants to get notified at  20%.
+///  - hundredPercentNotification:  Saves if the user wants to get notified at 100%.
+///  - lastNotification:            Saves at what percentage the user was last notified.
 private enum PreferenceKey: String {
-  case ShowTime                    = "ShowTimePref"
-  case FivePercentNotification     = "FivePercentNotificationPref"
-  case TenPercentNotification      = "TenPercentNotificationPref"
-  case FifeteenPercentNotification = "FifeteenPercentNotificationPref"
-  case TwentyPercentNotification   = "TwentyPercentNotificationPref"
-  case HundredPercentNotification  = "HundredPercentNotificationPref"
-  case LastNotification            = "LastNotifiedPref"
+  case showTime                    = "ShowTimePref"
+  case fivePercentNotification     = "FivePercentNotificationPref"
+  case tenPercentNotification      = "TenPercentNotificationPref"
+  case fifeteenPercentNotification = "FifeteenPercentNotificationPref"
+  case twentyPercentNotification   = "TwentyPercentNotificationPref"
+  case hundredPercentNotification  = "HundredPercentNotificationPref"
+  case lastNotification            = "LastNotifiedPref"
 }
