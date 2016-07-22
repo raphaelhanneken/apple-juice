@@ -29,18 +29,18 @@ import Cocoa
 
 final class ApplicationController: NSObject {
   /// Holds a reference to the application menu.
-  @IBOutlet weak var appMenu: NSMenu!
+  @IBOutlet weak var applicationMenu: NSMenu!
   /// Holds a reference to the charging status menu item.
   @IBOutlet weak var currentCharge: NSMenuItem!
   /// Holds a reference to the power source menu item.
   @IBOutlet weak var currentSource: NSMenuItem!
 
-  /// Holds the app's status bar item.
+  /// Holds the applications status bar item.
   private var statusItem: NSStatusItem!
-  /// Access to battery information.
-  private var battery: Battery!
-  /// Manage user preferences.
+  /// Manage the user preferences.
   private var userPrefs: UserPreferences!
+  /// Access the battery information.
+  private var battery: Battery!
 
 
   // MARK: - Methods
@@ -48,6 +48,7 @@ final class ApplicationController: NSObject {
   override init() {
     // Initialize our parent class.
     super.init()
+
     // Initialize the user preferences.
     userPrefs  = UserPreferences()
     // Configure the status bar item.
@@ -82,9 +83,10 @@ final class ApplicationController: NSObject {
     postUserNotification()
   }
 
-  /// Call updateStatusItem() everytime the user toggles between displaying percentage and time.
+  /// Gets called everytime the ShowTimePref key changes.
   override func observeValue(forKeyPath keyPath: String?, of object: AnyObject?,
                              change: [NSKeyValueChangeKey : AnyObject]?, context: UnsafeMutablePointer<Void>?) {
+    // Update the status item to reflect the user defaults updates.
     updateStatusItem()
   }
 
@@ -95,7 +97,7 @@ final class ApplicationController: NSObject {
     // Before showing the app menu, update the information displayed
     // within it.
     updateMenuItems({
-      self.statusItem.popUpMenu(self.appMenu)
+      self.statusItem.popUpMenu(self.applicationMenu)
     })
   }
 
