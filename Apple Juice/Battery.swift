@@ -86,7 +86,7 @@ public struct Battery {
   }
 
   ///  The current percentage, based on the current charge and the maximum capacity.
-  func percentage() -> Int? {
+  var percentage: Int? {
     // Get the necessary information.
     guard let
       capacity = capacity,
