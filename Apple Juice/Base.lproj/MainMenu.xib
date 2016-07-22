@@ -681,26 +681,10 @@
                     <modifierMask key="keyEquivalentModifierMask"/>
                 </menuItem>
                 <menuItem isSeparatorItem="YES" id="OYt-Th-ZmC"/>
-                <menuItem title="Show Percentage" id="kMe-ps-Frc">
-                    <modifierMask key="keyEquivalentModifierMask"/>
-                    <connections>
-                        <binding destination="OgL-rZ-xAG" name="hidden" keyPath="values.ShowTimePref" id="I7A-KT-ub3">
-                            <dictionary key="options">
-                                <string key="NSValueTransformerName">NSNegateBoolean</string>
-                            </dictionary>
-                        </binding>
-                        <binding destination="OgL-rZ-xAG" name="value" keyPath="values.ShowTimePref" id="r0A-Ly-vCA">
-                            <dictionary key="options">
-                                <string key="NSValueTransformerName">NSNegateBoolean</string>
-                            </dictionary>
-                        </binding>
-                    </connections>
-                </menuItem>
                 <menuItem title="Show Time" id="pCY-Rb-LY6">
                     <modifierMask key="keyEquivalentModifierMask"/>
                     <connections>
                         <binding destination="OgL-rZ-xAG" name="value" keyPath="values.ShowTimePref" id="0TQ-V1-vMt"/>
-                        <binding destination="OgL-rZ-xAG" name="hidden" keyPath="values.ShowTimePref" id="Hkb-Y2-L4K"/>
                     </connections>
                 </menuItem>
                 <menuItem title="Notifications" id="uGl-yK-qDZ">
