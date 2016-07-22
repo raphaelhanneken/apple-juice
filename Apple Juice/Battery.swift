@@ -210,6 +210,21 @@ public struct Battery {
 }
 
 
+// MARK: - BatteryStatusType
+
+///  Defines the status the battery is currently in, every case accepts the current
+///  current percentage as integer.
+///
+///  - discharging:       The battery is currently discharging.
+///  - pluggedAndCharged: The battery is currently plugged into a power supply and charged.
+///  - charging:          The battery is currently plugged into a power supply and charging.
+enum BatteryStatusType {
+  case discharging(percentage: Int)
+  case pluggedAndCharged(percentage: Int)
+  case charging(percentage: Int)
+}
+
+
 // MARK: - BatteryErrorType
 
 ///  Exceptions for the Battery class.
