@@ -34,26 +34,6 @@ internal struct StatusIcon {
   ///  Caches the last drawn battery image.
   private var cache: BatteryImageCache?
 
-  /// Returns the charged and plugged battery image.
-  private var batteryPluggedAndCharged: NSImage? {
-    return batteryImage(named: .charged)
-  }
-
-  /// Returns the charging battery image.
-  private var batteryCharging: NSImage? {
-    return batteryImage(named: .charging)
-  }
-
-  /// Returns the battery image for a ConnectionAlreadyOpen error.
-  private var batteryConnectionAlreadyOpen: NSImage? {
-    return batteryImage(named: .dead)
-  }
-
-  /// Returns the battery image for a ServiceNotFound error.
-  private var batteryServiceNotFound: NSImage? {
-    return batteryImage(named: .none)
-  }
-
 
   // MARK: - Methods
 
@@ -110,9 +90,9 @@ internal struct StatusIcon {
     // Check the supplied error type.
     switch error {
     case .connectionAlreadyOpen:
-      return batteryConnectionAlreadyOpen
+      return batteryImage(named: .dead)
     case .serviceNotFound:
-      return batteryServiceNotFound
+      return batteryImage(named: .none)
     }
   }
 
