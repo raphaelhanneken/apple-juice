@@ -28,35 +28,82 @@
 import Cocoa
 
 /// Methods to draw the status bat item's icon.
-struct StatusIcon {
+internal struct StatusIcon {
   /// A little offset to draw the capacity bar in the correct position.
-  private static let capacityOffsetX: CGFloat = 2.0
+  private let capacityOffsetX: CGFloat = 2.0
+
+  /// Holds a cached battery image.
+  private var cache: BatteryImageCache?
 
   /// Returns the charged and plugged battery image.
-  static var batteryChargedAndPlugged: NSImage? {
+  private var batteryPluggedAndCharged: NSImage? {
     return batteryImage(named: .charged)
   }
 
   /// Returns the charging battery image.
-  static var batteryCharging: NSImage? {
+  private var batteryCharging: NSImage? {
     return batteryImage(named: .charging)
   }
 
   /// Returns the battery image for a ConnectionAlreadyOpen error.
-  static var batteryConnectionAlreadyOpen: NSImage? {
+  private var batteryConnectionAlreadyOpen: NSImage? {
     return batteryImage(named: .dead)
   }
 
   /// Returns the battery image for a ServiceNotFound error.
-  static var batteryServiceNotFound: NSImage? {
+  private var batteryServiceNotFound: NSImage? {
     return batteryImage(named: .none)
   }
+
+
+  // MARK: - Methods
+
+  ///  Draws a battery image for the supplied BatteryStatusType.
+  ///
+  ///  - parameter status: The current BatteryStatusType.
+  mutating func drawBatteryImage(forStatus status: BatteryStatusType) -> NSImage? {
+    // Check if an image is already cached.
+    if let cache = self.cache {
+      switch status {
+      case .discharging(let percentage):
+        if percentage != cache.percentage {
+          NSLog("Cache discharging icon for %i %%", percentage)
+          self.cache = BatteryImageCache(forStatus: status,
+                                         withImage: batteryDischarging(currentPercentage: percentage),
+                                         andPercentage: percentage)
+        }
+        fallthrough
+      default:
+        NSLog("- 01 - Returning cached battery image.")
+        return cache.image
+      }
+    } else {
+      // Cache a new battery image.
+      switch status {
+      case .charging:
+        NSLog("Cache charging icon")
+        self.cache = BatteryImageCache(forStatus: status, withImage: batteryCharging)
+      case .pluggedAndCharged:
+        NSLog("Cache pluggedAndCharged icon")
+        self.cache = BatteryImageCache(forStatus: status, withImage: batteryPluggedAndCharged)
+      case .discharging(let percentage):
+        NSLog("Cache discharging icon for %i %%", percentage)
+        self.cache = BatteryImageCache(forStatus: status,
+                                       withImage: batteryDischarging(currentPercentage: percentage),
+                                       andPercentage: percentage)
+      }
+    }
+    // Return the battery image thats currently cached.
+    NSLog("- 02 - Returning cached battery image.")
+    return cache?.image
+  }
+  // MARK: - Private Methods
 
   ///  Draws a battery icon based on the current percentage charge of the battery.
   ///
   ///  - parameter percentage: The current percentage charge of the battery.
   ///  - returns: The battery icon based on the given parameters.
-  static func batteryDischarging(currentPercentage percentage: Int) -> NSImage? {
+  private func batteryDischarging(currentPercentage percentage: Int) -> NSImage? {
     // Get the required images to draw the battery icon.
     guard let batteryEmpty     = batteryImage(named: .empty),
               capacityCapLeft  = batteryImage(named: .left),
@@ -90,7 +137,7 @@ struct StatusIcon {
   ///
   ///  - parameter name: Name of the image.
   ///  - returns: The image.
-  private static func batteryImage(named name: BatteryImage) -> NSImage? {
+  private func batteryImage(named name: BatteryImage) -> NSImage? {
     // Define the path to apple's battery icons.
     let path = "/System/Library/PrivateFrameworks/BatteryUIKit.framework/Versions/A/Resources/"
     // Open the supplied file as NSImage.
@@ -110,7 +157,7 @@ struct StatusIcon {
   ///  - parameter start: The left edge of the image frame.
   ///  - parameter fill:  The image used to fill the space between the start and endCap images.
   ///  - parameter end:   The right edge of the image frame.
-  private static func drawThreePartImage(frame rect: NSRect, canvas img: NSImage,
+  private func drawThreePartImage(frame rect: NSRect, canvas img: NSImage,
                                          startCap start: NSImage, fill: NSImage, endCap end: NSImage) {
     img.lockFocus()
     NSDrawThreePartImage(rect, start, fill, end, false, .copy, 1, false)

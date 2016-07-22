@@ -38,7 +38,9 @@ final class ApplicationController: NSObject {
   /// Holds the applications status bar item.
   private var statusItem: NSStatusItem!
   /// Manage the user preferences.
-  private var userPrefs: UserPreferences!
+  private var userPrefs = UserPreferences()
+  /// Generate the status item icons.
+  private var statusIcon = StatusIcon()
   /// Access the battery information.
   private var battery: Battery!
 
@@ -119,29 +121,23 @@ final class ApplicationController: NSObject {
 
   ///  Updates the application's status bar item.
   private func updateStatusItem() {
-    // Unwrap everything we need here...
-    guard let button = statusItem.button,
-      plugged        = battery.isPlugged,
-      charging       = battery.isCharging,
-      charged        = battery.isCharged,
-      percentage     = battery.percentage else {
+    NSLog("Updating status item")
+    guard let
+      button     = statusItem.button,
+      status     = battery.status,
+      percentage = battery.percentage else {
         return
     }
-    // ...and draw the appropriate status bar icon.
-    if charged && plugged {
-      button.image = StatusIcon.batteryChargedAndPlugged
-    } else if charging {
-      button.image = StatusIcon.batteryCharging
-    } else {
-      button.image = StatusIcon.batteryDischarging(currentPercentage: percentage)
-    }
-    // Draw the status icon on the right hand side.
-    button.imagePosition = .imageRight
-    // Set the status bar item's title.
+    // Set the status bar item title.
     button.attributedTitle = statusBarItemTitle(withPercentage: percentage,
                                                 andTime: battery.timeRemainingFormatted)
+
+    // Draw the corresponding status bar icon.
+    button.image = statusIcon.drawBatteryImage(forStatus: status)
     // Define the image as template.
     button.image?.isTemplate = true
+    // Set the image position to the right hand side.
+    button.imagePosition = .imageRight
   }
 
   ///  Updates the information within the app menu.

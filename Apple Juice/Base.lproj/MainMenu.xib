@@ -17,7 +17,7 @@
         <customObject id="Avc-Ie-Abt" customClass="SUUpdater"/>
         <customObject id="FRD-GK-LcV" customClass="ApplicationController" customModule="Apple_Juice" customModuleProvider="target">
             <connections>
-                <outlet property="appMenu" destination="tlM-TC-O58" id="mvw-5v-nFn"/>
+                <outlet property="applicationMenu" destination="tlM-TC-O58" id="Cfu-rX-6U8"/>
                 <outlet property="currentCharge" destination="Jwd-Td-BfA" id="wKz-yB-mmp"/>
                 <outlet property="currentSource" destination="P8z-Da-8Sb" id="eGL-1q-yuj"/>
             </connections>
