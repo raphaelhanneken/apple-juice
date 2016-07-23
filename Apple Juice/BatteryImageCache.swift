@@ -33,25 +33,13 @@ struct BatteryImageCache {
   let image: NSImage?
   ///  Holds the corresponding battery status for the image.
   let batteryStatus: BatteryStatusType
-  ///  Holds the percentage the image was drawn for.
-  let percentage: Int?
 
   ///  Initializes a new BatteryImageCache object.
   ///
   ///  - status:     The BatteryStatusType corresponding to the battery image.
   ///  - img:        The drawn battery image.
-  ///  - percentage: The percentage the battery image was drawn for.
-  init(forStatus status: BatteryStatusType, withImage img: NSImage?, andPercentage percentage: Int?) {
+  init(forStatus status: BatteryStatusType, withImage img: NSImage?) {
     self.batteryStatus = status
     self.image         = img
-    self.percentage    = percentage
-  }
-
-  ///  Initialize a new BatteryImageCache object.
-  ///
-  ///  - status:     The BatteryStatusType corresponding to the battery image.
-  ///  - img:        The drawn battery image.
-  init(forStatus status: BatteryStatusType, withImage img: NSImage?) {
-    self.init(forStatus: status, withImage: img, andPercentage: nil)
   }
 }

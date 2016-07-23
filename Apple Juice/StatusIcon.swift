@@ -57,8 +57,7 @@ struct StatusIcon {
 
     case .discharging(let percentage):
       self.cache = BatteryImageCache(forStatus: status,
-                                     withImage: dischargingBatteryImage(forPercentage: percentage),
-                                     andPercentage: percentage)
+                                     withImage: dischargingBatteryImage(forPercentage: percentage))
     }
     // Return the new image.
     return cache?.image
