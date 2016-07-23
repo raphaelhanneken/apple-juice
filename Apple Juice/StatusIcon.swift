@@ -60,27 +60,23 @@ struct StatusIcon {
                                      withImage: dischargingBatteryImage(forPercentage: percentage),
                                      andPercentage: percentage)
     }
-    // Return the newly cached battery image.
+    // Return the new image.
     return cache?.image
   }
 
-  ///  Draw a battery image according to the provided BatteryError.
+  ///  Draws a battery image according to the provided BatteryError.
   ///
   ///  - parameter err: The BatteryError, which to draw the battery image for.
   ///  - returns:       The battery image for the supplied BatteryError.
   func drawBatteryImage(forError err: BatteryError?) -> NSImage? {
-    // Unwrap the Error object.
     guard let error = err else {
       return nil
     }
-
-    // Check the supplied error type.
+    // Get the corresponding image for the supplied error.
     switch error {
-    case .connectionAlreadyOpen(let message):
-      NSLog(message)
+    case .connectionAlreadyOpen:
       return batteryImage(named: .dead)
-    case .serviceNotFound(let message):
-      NSLog(message)
+    case .serviceNotFound:
       return batteryImage(named: .none)
     }
   }
@@ -88,7 +84,7 @@ struct StatusIcon {
 
   // MARK: - Private Methods
 
-  ///  Draws a battery icon based on the current percentage of the battery.
+  ///  Draws a battery icon based on the battery's current percentage.
   ///
   ///  - parameter percentage: The current percentage of the battery.
   ///  - returns:              A battery image for the supplied percentage.
@@ -116,7 +112,7 @@ struct StatusIcon {
                              width: capacityWidth, height: capacityHeight)
 
     // Draw the actual menu bar image.
-    drawTheePartBatteryImage(frame: drawingRect, canvas: batteryEmpty, startCap: capacityCapLeft,
+    drawThreePartImage(withFrame: drawingRect, canvas: batteryEmpty, startCap: capacityCapLeft,
                        fill: capacityFill, endCap: capacityCapRight)
 
     return batteryEmpty
@@ -145,14 +141,16 @@ struct StatusIcon {
   ///  - parameter start: The image located on the left end of the frame.
   ///  - parameter fill:  The image used to fill the gap between the start and the end images.
   ///  - parameter end:   The image located on the right end of the frame.
-  private func drawTheePartBatteryImage(frame rect: NSRect, canvas img: NSImage,
-                                        startCap start: NSImage, fill: NSImage, endCap end: NSImage) {
+  private func drawThreePartImage(withFrame rect: NSRect, canvas img: NSImage,
+                                  startCap start: NSImage, fill: NSImage, endCap end: NSImage) {
     img.lockFocus()
     NSDrawThreePartImage(rect, start, fill, end, false, .copy, 1, false)
     img.unlockFocus()
   }
 }
 
+
+// MARK: - Support
 
 ///  Defines the filenames for Apple's battery images.
 ///

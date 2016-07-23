@@ -51,16 +51,18 @@ final class ApplicationController: NSObject {
   override init() {
     // Initialize the parent class.
     super.init()
-
-    // Initialize the user preferences.
-    userPrefs  = UserPreferences()
     // Configure the status bar item.
     statusItem = configureStatusItem()
 
     do {
       // Access the battery's IOService.
       try battery = Battery()
-      // Get notified, when the power source changes.
+      // Initialize the user preferences.
+      userPrefs  = UserPreferences()
+      // Update the status bar item.
+      updateStatusItem()
+
+      // Listen for powerSourceChangedNotification's.
       NotificationCenter.default.addObserver(self,
                                              selector: #selector(ApplicationController.powerSourceChanged(_:)),
                                              name: NSNotification.Name(rawValue: powerSourceChangedNotification),
@@ -69,8 +71,8 @@ final class ApplicationController: NSObject {
       // Get notified, when the user toggles between displaying time and percentage.
       UserDefaults.standard.addObserver(self, forKeyPath: PreferenceKey.showTime.rawValue,
                                         options: .new, context: nil)
+
     } catch {
-      // Whoops! Something went terribly wrong here.
       guard let button = statusItem.button else {
         return
       }
@@ -86,7 +88,6 @@ final class ApplicationController: NSObject {
   ///
   ///  - parameter sender: The source object of the posted powerSourceChanged message.
   func powerSourceChanged(_ sender: AnyObject) {
-    NSLog("Power source changed.")
     // Update status bar item to reflect changes.
     updateStatusItem()
     // Check if the user wants to get notified.
@@ -106,9 +107,6 @@ final class ApplicationController: NSObject {
   ///                       observation notifications.
   override func observeValue(forKeyPath keyPath: String?, of object: AnyObject?,
                              change: [NSKeyValueChangeKey : AnyObject]?, context: UnsafeMutablePointer<Void>?) {
-    if let keyPath = keyPath {
-      NSLog("Value for %@ changed.", keyPath as NSString)
-    }
     // Update the status item to reflect updated user preferences.
     updateStatusItem()
   }

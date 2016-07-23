@@ -233,7 +233,7 @@ struct Battery {
 ///
 ///  - ConnectionAlreadyOpen: Get's thrown in case the connection to the battery's IOService
 ///                           is already open. Accepts an error description of type String.
-///  - ServiceNotFound:       Get's thrown in case the supplied IOService wasn't found. 
+///  - ServiceNotFound:       Get's thrown in case the supplied IOService wasn't found.
 ///                           Accepts an error description of type String.
 enum BatteryError: ErrorProtocol {
   case connectionAlreadyOpen(String)

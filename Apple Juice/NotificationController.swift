@@ -74,7 +74,8 @@ struct NotificationController {
   }
 }
 
-// MARK: - NotificationKey's
+
+// MARK: - NotificationKeys
 
 ///  Defines a notification at a given percentage.
 ///

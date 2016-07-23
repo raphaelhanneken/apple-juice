@@ -80,7 +80,7 @@ final class UserPreferences: NSObject {
   var notifications: Set<NotificationKey> {
     // Create an empty set.
     var result: Set<NotificationKey> = []
-    // Check the users notification settings and 
+    // Check the users notification settings and
     // add enabled notifications to the result set.
     if fivePercentNotification {
       result.insert(.fivePercent)
