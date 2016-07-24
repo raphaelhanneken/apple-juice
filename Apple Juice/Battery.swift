@@ -140,7 +140,7 @@ final class Battery {
 
   ///  Checks whether the battery is plugged into an unlimited power supply.
   var isPlugged: Bool? {
-    return getRegistryPropertyForKey(.externalConnected) as? Bool
+    return getRegistryPropertyForKey(.isPlugged) as? Bool
   }
 
   ///  Calculates the current power usage in Watts.
@@ -153,7 +153,7 @@ final class Battery {
     return round(((voltage * amperage) / 1000000) * 10) / 10
   }
 
-  ///  The number of charging cycles.
+  /// The number of charging cycles.
   var cycleCount: Int? {
     return getRegistryPropertyForKey(.cycleCount) as? Int
   }
@@ -178,7 +178,7 @@ final class Battery {
   }
 
 
-  // MARK: - Initializer
+  // MARK: - Methods
 
   ///  Initializes a new Battery object.
   init() throws {
@@ -191,12 +191,12 @@ final class Battery {
   }
 
 
-  // MARK: - Private Methods
+  // MARK: - Private
 
   ///  Opens a connection to the battery's IOService object.
   ///
   ///  - throws: A BatteryError if something went wrong.
-  private mutating func openServiceConnection() throws {
+  private func openServiceConnection() throws {
     // Check if the IOService connection is still open.
     if service != 0 {
       if !closeServiceConnection() {
@@ -216,7 +216,7 @@ final class Battery {
   ///  Closes the connection the the battery's IOService object.
   ///
   ///  - returns: True, whether the IOService connection was successfully closed.
-  private mutating func closeServiceConnection() -> Bool {
+  private func closeServiceConnection() -> Bool {
     // Release the IOService object and reset the service property.
     if kIOReturnSuccess == IOObjectRelease(service) {
       service = 0
@@ -248,33 +248,29 @@ enum BatteryError: ErrorProtocol {
 }
 
 
-///  Keys to look up required information from the IOService dictionary.
+///  Keys to look up requested information from the IOService dictionary ('ioreg -brc AppleSmartBattery').
 ///
-///  - externalConnected: Checks whether the battery is connected to an external power supply.
-///  - amperage:          Information about the current power consumption.
-///  - currentCapacity:   The current charging state in mAh.
-///  - cycleCount:        The number of battery charging cycles.
-///  - designCapacity:    The maximum capacity the battery can hold by design.
-///  - designCycleCount:  Number of charg cycles according to the manufacturer.
-///  - fullyCharged:      Information about whether the battery is fully charged.
-///  - isCharging:        Information about whether the battery is currently charging.
-///  - maxCapacity:       The maximum capacity the battery can currently hold.
-///  - temperature:       The temperature in degrees celsius.
-///  - timeRemaining:     The remaining time until the battery is empty or fully charged, respectively.
-///  - voltage:           The current voltage.
+///  - isPlugged:     Checks whether the battery is connected to an external power supply.
+///  - isCharging:    Information about whether the battery is currently charging.
+///  - currentCharge: The current charging state in mAh.
+///  - maxCapacity:   The maximum capacity the battery can currently hold.
+///  - fullyCharged:  Information about whether the battery is fully charged.
+///  - cycleCount:    The number of battery charging cycles.
+///  - temperature:   The temperature in degrees celsius.
+///  - voltage:       The current voltage.
+///  - amperage:      Information about the current power consumption.
+///  - timeRemaining: The remaining time until the battery is empty or fully charged, respectively.
 private enum SmartBatteryKey: String {
-  case externalConnected = "ExternalConnected"
-  case amperage          = "Amperage"
-  case currentCharge     = "CurrentCapacity"
-  case cycleCount        = "CycleCount"
-  case designCapacity    = "DesignCapacity"
-  case designCycleCount  = "DesignCycleCount9C"
-  case fullyCharged      = "FullyCharged"
-  case isCharging        = "IsCharging"
-  case maxCapacity       = "MaxCapacity"
-  case temperature       = "Temperature"
-  case timeRemaining     = "TimeRemaining"
-  case voltage           = "Voltage"
+  case isPlugged     = "ExternalConnected"
+  case isCharging    = "IsCharging"
+  case currentCharge = "CurrentCapacity"
+  case maxCapacity   = "MaxCapacity"
+  case fullyCharged  = "FullyCharged"
+  case cycleCount    = "CycleCount"
+  case temperature   = "Temperature"
+  case voltage       = "Voltage"
+  case amperage      = "Amperage"
+  case timeRemaining = "TimeRemaining"
 }
 
 ///  Defines the status the battery is currently in.
@@ -289,8 +285,11 @@ enum BatteryStatusType: Equatable {
 }
 
 //   MARK: BatteryStatusType Equatable
-///  Compares two BatteryStatusTypes and return true when they are equal
-///  and false otherwise.
+///  Compares two BatteryStatusTypes for equality.
+///
+///  - parameter lhs: A BatteryStatusType.
+///  - parameter rhs: Another BatteryStatusType.
+///  - returns:       True if the supplied BatteryStatusType's are equal. Otherwise false.
 func == (lhs: BatteryStatusType, rhs: BatteryStatusType) -> Bool {
   switch (lhs, rhs) {
   case (.charging, .charging), (.pluggedAndCharged, .pluggedAndCharged):
