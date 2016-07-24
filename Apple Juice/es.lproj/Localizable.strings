@@ -17,7 +17,7 @@
 
 "Charged Notification Title"       = "Cargado";
 "Charged Notification Message"     = "La batería está completamente cargada.";
-"Low Battery Notification Title"   = "Batería baja";
+"Low Battery Notification Title"   = "Restante %i%%";
 "Low Battery Notification Message" = "Tu Mac dormirá pronto a no ser enchufado a una toma de corriente.";
 
 
@@ -27,11 +27,9 @@
 "Percentage"         = "Porcentaje:";
 "Power Usage"        = "Consumo de Energía:";
 "Charge"             = "Cargar:";
-"Cycle Count"        = "Contador de Cíclos:";
+"Cycle Count"        = "Ciclos de Carga:";
 "Temperature"        = "Temperatura:";
-"Power Source"       = "Fuente:";
-"Design Cycle Count" = "Recuento de Ciclo de Diseño:";
-"Design Capacity"    = "Capacidad de Diseño:";
+"Power Source"       = "Fuente de alimentación:";
 
 
 //  Units

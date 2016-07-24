@@ -27,90 +27,96 @@
 
 import Foundation
 
-/// Manages the user preferences.
-final class UserPreferences {
+///  Manages the user preferences.
+final class UserPreferences: NSObject {
 
-  /// Holds a reference to the standart user defaults.
+  ///  Holds a reference to the standard user defaults.
   private let userDefaults = UserDefaults.standard
 
-  /// Display the current charging status as time remaining? Default: Percentage.
+  ///  True if the user wants the remaining time to be displayed within the menu bar.
   var showTime: Bool {
-    return userDefaults.bool(forKey: PreferenceKey.ShowTime.rawValue)
+    return userDefaults.bool(forKey: PreferenceKey.showTime.rawValue)
   }
 
-  /// Notify the user at five percent left.
-  var fivePercentNotification: Int {
-    return userDefaults.integer(forKey: PreferenceKey.FivePercentNotification.rawValue)
+  ///  True if the user wants a notification at five percent.
+  var fivePercentNotification: Bool {
+    return userDefaults.bool(forKey: PreferenceKey.fivePercentNotification.rawValue)
   }
 
-  /// Notify the user at ten percent left.
-  var tenPercentNotification: Int {
-    return userDefaults.integer(forKey: PreferenceKey.TenPercentNotification.rawValue)
+  ///  True if the user wants a notification at ten percent.
+  var tenPercentNotification: Bool {
+    return userDefaults.bool(forKey: PreferenceKey.tenPercentNotification.rawValue)
   }
 
-  /// Notify the user at fifeteen percent left.
-  var fifeteenPercentNotification: Int {
-    return userDefaults.integer(forKey: PreferenceKey.FifeteenPercentNotification.rawValue)
+  ///  True if the user wants a notification at fifeteen percent.
+  var fifeteenPercentNotification: Bool {
+    return userDefaults.bool(forKey: PreferenceKey.fifeteenPercentNotification.rawValue)
   }
 
-  /// Notify the user at twenty percent left.
-  var twentyPercentNotification: Int {
-    return userDefaults.integer(forKey: PreferenceKey.TwentyPercentNotification.rawValue)
+  ///  True if the user wants a notification at twenty percent.
+  var twentyPercentNotification: Bool {
+    return userDefaults.bool(forKey: PreferenceKey.twentyPercentNotification.rawValue)
   }
 
-  /// Notify the user when the battery is fully charged.
-  var hundredPercentNotification: Int {
-    return userDefaults.integer(forKey: PreferenceKey.HundredPercentNotification.rawValue)
+  ///  True if the user wants a notification at hundred percent.
+  var hundredPercentNotification: Bool {
+    return userDefaults.bool(forKey: PreferenceKey.hundredPercentNotification.rawValue)
   }
 
-  /// Saves the NotificationKey the user was last informed of.
+  ///  Keeps the percentage the user was last notified.
   var lastNotified: NotificationKey? {
-    get { return NotificationKey(rawValue: userDefaults.integer(forKey: PreferenceKey.LastNotification.rawValue)) }
+    get {
+      return NotificationKey(rawValue: userDefaults.integer(forKey: PreferenceKey.lastNotification.rawValue))
+    }
     set {
-      if let notificationKey = newValue {
-        userDefaults.set(notificationKey.rawValue, forKey: PreferenceKey.LastNotification.rawValue)
+      guard let notificationKey = newValue else {
+        return
       }
+      userDefaults.set(notificationKey.rawValue, forKey: PreferenceKey.lastNotification.rawValue)
     }
   }
 
-  /// A set of all notifications the user is interested in.
+  /// A set of all percentages where the user is interested.
   var notifications: Set<NotificationKey> {
     // Create an empty set.
     var result: Set<NotificationKey> = []
-    // Check for notification settings.
-    if fivePercentNotification == 1 {
-      result.insert(.FivePercent)
+    // Check the users notification settings and
+    // add enabled notifications to the result set.
+    if fivePercentNotification {
+      result.insert(.fivePercent)
     }
-    if tenPercentNotification == 1 {
-      result.insert(.TenPercent)
+    if tenPercentNotification {
+      result.insert(.tenPercent)
     }
-    if fifeteenPercentNotification == 1 {
-      result.insert(.FifeteenPercent)
+    if fifeteenPercentNotification {
+      result.insert(.fifeteenPercent)
     }
-    if twentyPercentNotification == 1 {
-      result.insert(.TwentyPercent)
+    if twentyPercentNotification {
+      result.insert(.twentyPercent)
     }
-    if hundredPercentNotification == 1 {
-      result.insert(.HundredPercent)
+    if hundredPercentNotification {
+      result.insert(.hundredPercent)
     }
     return result
   }
 
   // MARK: - Methods
 
-  init() {
+  ///  Initialize the user preferences object.
+  override init() {
+    super.init()
     registerUserDefaults()
   }
 
   ///  Register user defaults.
   private func registerUserDefaults() {
-    let defaults = [PreferenceKey.ShowTime.rawValue : false,
-                    PreferenceKey.FivePercentNotification.rawValue : 0,
-                    PreferenceKey.TenPercentNotification.rawValue : 0,
-                    PreferenceKey.FifeteenPercentNotification.rawValue : 0,
-                    PreferenceKey.TwentyPercentNotification.rawValue : 0,
-                    PreferenceKey.HundredPercentNotification.rawValue : 0,
-                    PreferenceKey.LastNotification.rawValue : 0]
+    let defaults = [PreferenceKey.showTime.rawValue : false,
+                    PreferenceKey.fivePercentNotification.rawValue : false,
+                    PreferenceKey.tenPercentNotification.rawValue : false,
+                    PreferenceKey.fifeteenPercentNotification.rawValue : true,
+                    PreferenceKey.twentyPercentNotification.rawValue : false,
+                    PreferenceKey.hundredPercentNotification.rawValue : true,
+                    PreferenceKey.lastNotification.rawValue : 0]
 
     userDefaults.register(defaults)
   }
@@ -121,19 +127,19 @@ final class UserPreferences {
 
 ///  Define keys to access the user preferences.
 ///
-///  - ShowTime:                    Saves whether the user wants to see the remaining time within the menu bar.
-///  - FivePercentNotification:     Saves if the user wants to get notified at   5%.
-///  - TenPercentNotification:      Saves if the user wants to get notified at  10%.
-///  - FifeteenPercentNotification: Saves if the user wants to get notified at  15%.
-///  - TwentyPercentNotification:   Saves if the user wants to get notified at  20%.
-///  - HundredPercentNotification:  Saves if the user wants to get notified at 100%.
-///  - LastNotification:            Saves at what percentage the user was last notified.
-private enum PreferenceKey: String {
-  case ShowTime                    = "ShowTimePref"
-  case FivePercentNotification     = "FivePercentNotificationPref"
-  case TenPercentNotification      = "TenPercentNotificationPref"
-  case FifeteenPercentNotification = "FifeteenPercentNotificationPref"
-  case TwentyPercentNotification   = "TwentyPercentNotificationPref"
-  case HundredPercentNotification  = "HundredPercentNotificationPref"
-  case LastNotification            = "LastNotifiedPref"
+///  - showTime:                    Saves whether the user wants to see the remaining time within the menu bar.
+///  - fivePercentNotification:     Saves if the user wants to get notified at   5%.
+///  - tenPercentNotification:      Saves if the user wants to get notified at  10%.
+///  - fifeteenPercentNotification: Saves if the user wants to get notified at  15%.
+///  - twentyPercentNotification:   Saves if the user wants to get notified at  20%.
+///  - hundredPercentNotification:  Saves if the user wants to get notified at 100%.
+///  - lastNotification:            Saves at what percentage the user was last notified.
+enum PreferenceKey: String {
+  case showTime                    = "ShowTimePref"
+  case fivePercentNotification     = "FivePercentNotificationPref"
+  case tenPercentNotification      = "TenPercentNotificationPref"
+  case fifeteenPercentNotification = "FifeteenPercentNotificationPref"
+  case twentyPercentNotification   = "TwentyPercentNotificationPref"
+  case hundredPercentNotification  = "HundredPercentNotificationPref"
+  case lastNotification            = "LastNotifiedPref"
 }

@@ -11,6 +11,7 @@
 		8E0D33B51D3118CD002D3463 /* TodayViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E0D33B41D3118CD002D3463 /* TodayViewController.swift */; };
 		8E0D33B71D3118CD002D3463 /* ListRowViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E0D33B61D3118CD002D3463 /* ListRowViewController.swift */; };
 		8E0D33C41D3118CD002D3463 /* Apple Juice Widget.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 8E0D33AF1D3118CD002D3463 /* Apple Juice Widget.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		8E31BF9F1D42651F00055A5B /* BatteryImageCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E31BF9E1D42651F00055A5B /* BatteryImageCache.swift */; };
 		8E58CBA21D339BC200920567 /* TodayViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8EF30EE81D32D0ED0010BC49 /* TodayViewController.xib */; };
 		8E58CBA31D339BC900920567 /* ListRowViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8EF30EEA1D32D0FA0010BC49 /* ListRowViewController.xib */; };
 		8E58CBA41D339BD000920567 /* Apple_Juice_Widget.entitlements in Resources */ = {isa = PBXBuildFile; fileRef = 8E0D33B31D3118CD002D3463 /* Apple_Juice_Widget.entitlements */; };
@@ -26,7 +27,7 @@
 		8EE1296E1C469326000D404F /* StatusIcon.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EE1296D1C469326000D404F /* StatusIcon.swift */; };
 		8EE129701C4695B5000D404F /* Battery.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EE1296F1C4695B5000D404F /* Battery.swift */; };
 		8EE129721C46CA1B000D404F /* UserPreferences.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EE129711C46CA1B000D404F /* UserPreferences.swift */; };
-		8EE129741C46D3C7000D404F /* NotificationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EE129731C46D3C7000D404F /* NotificationController.swift */; };
+		8EE129741C46D3C7000D404F /* StatusNotification.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EE129731C46D3C7000D404F /* StatusNotification.swift */; };
 		8EF30ED31D32B3170010BC49 /* Battery.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EE1296F1C4695B5000D404F /* Battery.swift */; };
 		8EF30ED51D32B3980010BC49 /* ListRowViewControllerType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EF30ED41D32B3980010BC49 /* ListRowViewControllerType.swift */; };
 /* End PBXBuildFile section */
@@ -80,10 +81,14 @@
 		8E0D33B31D3118CD002D3463 /* Apple_Juice_Widget.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = Apple_Juice_Widget.entitlements; sourceTree = "<group>"; };
 		8E0D33B41D3118CD002D3463 /* TodayViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodayViewController.swift; sourceTree = "<group>"; };
 		8E0D33B61D3118CD002D3463 /* ListRowViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListRowViewController.swift; sourceTree = "<group>"; };
-		8E5BC0231C50D13D0077228F /* es */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = es; path = es.lproj/MainMenu.xib; sourceTree = "<group>"; };
+		8E31BF9E1D42651F00055A5B /* BatteryImageCache.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BatteryImageCache.swift; sourceTree = "<group>"; };
 		8E5BC0241C50D13D0077228F /* es */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = es; path = es.lproj/Localizable.strings; sourceTree = "<group>"; };
+		8E7496931D41798800FD5ADA /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/MainMenu.strings; sourceTree = "<group>"; };
+		8E7496941D41798E00FD5ADA /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/MainMenu.strings; sourceTree = "<group>"; };
+		8E7496951D41799200FD5ADA /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/MainMenu.strings; sourceTree = "<group>"; };
+		8E7496961D41799600FD5ADA /* it */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = it; path = it.lproj/MainMenu.strings; sourceTree = "<group>"; };
+		8E7496971D41799B00FD5ADA /* es */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = es; path = es.lproj/MainMenu.strings; sourceTree = "<group>"; };
 		8E954FA81C4EE528006D0F34 /* it */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = it; path = it.lproj/Localizable.strings; sourceTree = "<group>"; };
-		8E954FAB1C4EE533006D0F34 /* it */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = it; path = it.lproj/MainMenu.xib; sourceTree = "<group>"; };
 		8EBEB4421C466091001DBE91 /* Apple Juice.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Apple Juice.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		8EBEB4451C466091001DBE91 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		8EBEB4471C466091001DBE91 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -94,15 +99,12 @@
 		8EBF29EB1C485493005BBAE0 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		8EBF29ED1C48552D005BBAE0 /* Base */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = Base; path = Base.lproj/Localizable.strings; sourceTree = "<group>"; };
 		8EBF29F31C485741005BBAE0 /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/Localizable.strings; sourceTree = "<group>"; };
-		8EBF29F71C485896005BBAE0 /* de */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = de; path = de.lproj/MainMenu.xib; sourceTree = "<group>"; };
-		8EBF29F81C48589F005BBAE0 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/MainMenu.xib; sourceTree = "<group>"; };
 		8EBF29FD1C486640005BBAE0 /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/Localizable.strings; sourceTree = "<group>"; };
-		8EBF29FF1C4866CF005BBAE0 /* fr */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = fr; path = fr.lproj/MainMenu.xib; sourceTree = "<group>"; };
 		8EE129691C4663F7000D404F /* ApplicationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ApplicationController.swift; sourceTree = "<group>"; };
 		8EE1296D1C469326000D404F /* StatusIcon.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StatusIcon.swift; sourceTree = "<group>"; };
 		8EE1296F1C4695B5000D404F /* Battery.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Battery.swift; sourceTree = "<group>"; };
 		8EE129711C46CA1B000D404F /* UserPreferences.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserPreferences.swift; sourceTree = "<group>"; };
-		8EE129731C46D3C7000D404F /* NotificationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NotificationController.swift; sourceTree = "<group>"; };
+		8EE129731C46D3C7000D404F /* StatusNotification.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StatusNotification.swift; sourceTree = "<group>"; };
 		8EE1297C1C46F891000D404F /* NotificationCenter.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = NotificationCenter.framework; path = System/Library/Frameworks/NotificationCenter.framework; sourceTree = SDKROOT; };
 		8EF30ED41D32B3980010BC49 /* ListRowViewControllerType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ListRowViewControllerType.swift; sourceTree = "<group>"; };
 		8EF30EE81D32D0ED0010BC49 /* TodayViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TodayViewController.xib; sourceTree = "<group>"; };
@@ -133,8 +135,8 @@
 		8E03E9DC1C4BCFBA00D12D11 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
-				8EBEB44C1C466091001DBE91 /* Info.plist */,
 				8EBF29E41C48489F005BBAE0 /* dsa_pub.pem */,
+				8EBEB44C1C466091001DBE91 /* Info.plist */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -154,8 +156,8 @@
 		8E0D33B21D3118CD002D3463 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
-				8EF30EF01D32D1C70010BC49 /* Info.plist */,
 				8E0D33B31D3118CD002D3463 /* Apple_Juice_Widget.entitlements */,
+				8EF30EF01D32D1C70010BC49 /* Info.plist */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -193,8 +195,9 @@
 			children = (
 				8EBEB4451C466091001DBE91 /* AppDelegate.swift */,
 				8EE129691C4663F7000D404F /* ApplicationController.swift */,
-				8EE129731C46D3C7000D404F /* NotificationController.swift */,
 				8EE1296D1C469326000D404F /* StatusIcon.swift */,
+				8E31BF9E1D42651F00055A5B /* BatteryImageCache.swift */,
+				8EE129731C46D3C7000D404F /* StatusNotification.swift */,
 				8EE1296F1C4695B5000D404F /* Battery.swift */,
 				8EE129711C46CA1B000D404F /* UserPreferences.swift */,
 				8EE129681C4661BA000D404F /* UI */,
@@ -207,8 +210,8 @@
 		8EE129671C4661AC000D404F /* Resources */ = {
 			isa = PBXGroup;
 			children = (
-				8EBF29EC1C485493005BBAE0 /* Localizable.strings */,
 				8EBEB4471C466091001DBE91 /* Assets.xcassets */,
+				8EBF29EC1C485493005BBAE0 /* Localizable.strings */,
 			);
 			name = Resources;
 			sourceTree = "<group>";
@@ -377,9 +380,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				8EE129741C46D3C7000D404F /* NotificationController.swift in Sources */,
+				8EE129741C46D3C7000D404F /* StatusNotification.swift in Sources */,
 				8EE129721C46CA1B000D404F /* UserPreferences.swift in Sources */,
 				8EE1296A1C4663F7000D404F /* ApplicationController.swift in Sources */,
+				8E31BF9F1D42651F00055A5B /* BatteryImageCache.swift in Sources */,
 				8EE1296E1C469326000D404F /* StatusIcon.swift in Sources */,
 				8EBEB4461C466091001DBE91 /* AppDelegate.swift in Sources */,
 				8EE129701C4695B5000D404F /* Battery.swift in Sources */,
@@ -401,11 +405,11 @@
 			isa = PBXVariantGroup;
 			children = (
 				8EBEB44A1C466091001DBE91 /* Base */,
-				8EBF29F71C485896005BBAE0 /* de */,
-				8EBF29F81C48589F005BBAE0 /* en */,
-				8EBF29FF1C4866CF005BBAE0 /* fr */,
-				8E954FAB1C4EE533006D0F34 /* it */,
-				8E5BC0231C50D13D0077228F /* es */,
+				8E7496931D41798800FD5ADA /* de */,
+				8E7496941D41798E00FD5ADA /* en */,
+				8E7496951D41799200FD5ADA /* fr */,
+				8E7496961D41799600FD5ADA /* it */,
+				8E7496971D41799B00FD5ADA /* es */,
 			);
 			name = MainMenu.xib;
 			sourceTree = "<group>";

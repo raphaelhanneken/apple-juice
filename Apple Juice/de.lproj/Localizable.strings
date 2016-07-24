@@ -17,7 +17,7 @@
 
 "Charged Notification Title"       = "Geladen";
 "Charged Notification Message"     = "Ihre Batterie ist jetzt vollständig geladen.";
-"Low Battery Notification Title"   = "Batterie fast leer";
+"Low Battery Notification Title"   = "%i%% verbleibend";
 "Low Battery Notification Message" = "Schießen Sie Ihren Mac sobald wie möglich an ein Netzteil an.";
 
 
@@ -29,9 +29,7 @@
 "Charge"             = "Kapazität:";
 "Cycle Count"        = "Ladezyklen:";
 "Temperature"        = "Temperatur:";
-"Power Source"       = "Quelle:";
-"Design Cycle Count" = "Design Ladezyklen:";
-"Design Capacity"    = "Design Kapazität:";
+"Power Source"       = "Energieversorgung:";
 
 
 //  Units

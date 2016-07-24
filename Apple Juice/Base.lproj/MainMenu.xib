@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="11163.2" systemVersion="16A238m" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="11163.2" systemVersion="16A254g" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
     <dependencies>
         <deployment identifier="macosx"/>
         <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="11163.2"/>
@@ -17,7 +17,7 @@
         <customObject id="Avc-Ie-Abt" customClass="SUUpdater"/>
         <customObject id="FRD-GK-LcV" customClass="ApplicationController" customModule="Apple_Juice" customModuleProvider="target">
             <connections>
-                <outlet property="appMenu" destination="tlM-TC-O58" id="mvw-5v-nFn"/>
+                <outlet property="applicationMenu" destination="tlM-TC-O58" id="Cfu-rX-6U8"/>
                 <outlet property="currentCharge" destination="Jwd-Td-BfA" id="wKz-yB-mmp"/>
                 <outlet property="currentSource" destination="P8z-Da-8Sb" id="eGL-1q-yuj"/>
             </connections>
@@ -670,7 +670,7 @@
                     </menu>
                 </menuItem>
             </items>
-            <point key="canvasLocation" x="87" y="39"/>
+            <point key="canvasLocation" x="-38" y="-19"/>
         </menu>
         <menu id="tlM-TC-O58">
             <items>
@@ -681,26 +681,10 @@
                     <modifierMask key="keyEquivalentModifierMask"/>
                 </menuItem>
                 <menuItem isSeparatorItem="YES" id="OYt-Th-ZmC"/>
-                <menuItem title="Show Percentage" id="kMe-ps-Frc">
-                    <modifierMask key="keyEquivalentModifierMask"/>
-                    <connections>
-                        <binding destination="OgL-rZ-xAG" name="hidden" keyPath="values.ShowTimePref" id="I7A-KT-ub3">
-                            <dictionary key="options">
-                                <string key="NSValueTransformerName">NSNegateBoolean</string>
-                            </dictionary>
-                        </binding>
-                        <binding destination="OgL-rZ-xAG" name="value" keyPath="values.ShowTimePref" id="r0A-Ly-vCA">
-                            <dictionary key="options">
-                                <string key="NSValueTransformerName">NSNegateBoolean</string>
-                            </dictionary>
-                        </binding>
-                    </connections>
-                </menuItem>
                 <menuItem title="Show Time" id="pCY-Rb-LY6">
                     <modifierMask key="keyEquivalentModifierMask"/>
                     <connections>
                         <binding destination="OgL-rZ-xAG" name="value" keyPath="values.ShowTimePref" id="0TQ-V1-vMt"/>
-                        <binding destination="OgL-rZ-xAG" name="hidden" keyPath="values.ShowTimePref" id="Hkb-Y2-L4K"/>
                     </connections>
                 </menuItem>
                 <menuItem title="Notifications" id="uGl-yK-qDZ">
@@ -762,7 +746,7 @@
                     </connections>
                 </menuItem>
             </items>
-            <point key="canvasLocation" x="-23" y="191"/>
+            <point key="canvasLocation" x="-148" y="142"/>
         </menu>
         <userDefaultsController representsSharedInstance="YES" id="OgL-rZ-xAG"/>
     </objects>
