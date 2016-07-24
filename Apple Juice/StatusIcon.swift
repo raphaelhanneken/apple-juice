@@ -28,7 +28,7 @@
 import Cocoa
 
 ///  Draws the status bar image.
-struct StatusIcon {
+final class StatusIcon {
   ///  Add a little offset to draw the capacity bar in the correct position.
   private let capacityOffsetX: CGFloat = 2.0
   ///  Caches the last drawn battery image.
@@ -41,7 +41,7 @@ struct StatusIcon {
   ///
   ///  - parameter status: The BatteryStatusType, which to draw the image for.
   ///  - returns:          The battery image for the provided battery status.
-  mutating func drawBatteryImage(forStatus status: BatteryStatusType) -> NSImage? {
+  func drawBatteryImage(forStatus status: BatteryStatusType) -> NSImage? {
     // Check if the required image is cached.
     if let cache = self.cache where cache.batteryStatus == status {
       return cache.image
@@ -50,11 +50,11 @@ struct StatusIcon {
     // Cache a new battery image.
     switch status {
     case .charging:
-      self.cache = BatteryImageCache(forStatus: status, withImage: batteryImage(named: .charging))
-
+      self.cache = BatteryImageCache(forStatus: status,
+                                     withImage: batteryImage(named: .charging))
     case .pluggedAndCharged:
-      self.cache = BatteryImageCache(forStatus: status, withImage: batteryImage(named: .charged))
-
+      self.cache = BatteryImageCache(forStatus: status,
+                                     withImage: batteryImage(named: .charged))
     case .discharging(let percentage):
       self.cache = BatteryImageCache(forStatus: status,
                                      withImage: dischargingBatteryImage(forPercentage: percentage))
@@ -81,7 +81,7 @@ struct StatusIcon {
   }
 
 
-  // MARK: - Private Methods
+  // MARK: - Private
 
   ///  Draws a battery icon based on the battery's current percentage.
   ///
@@ -100,7 +100,7 @@ struct StatusIcon {
     // Calculate the offset to achieve that little gap between the capacity bar and the outline.
     let capacityOffsetY = batteryEmpty.size.height - (capacityHeight + capacityOffsetX)
     // Calculate the capacity bar's width.
-    var capacityWidth = CGFloat(round(Double(percentage / 12))) * capacityFill.size.width
+    var capacityWidth = CGFloat(ceil(Double(percentage) / 12.5)) * capacityFill.size.width
     // Don't draw the capacity bar smaller than two single battery
     // images, to prevent visual errors.
     if (2 * capacityFill.size.width) >= capacityWidth {
