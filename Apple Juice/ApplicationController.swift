@@ -38,7 +38,7 @@ final class ApplicationController: NSObject {
   /// Holds the applications status bar item.
   private var statusItem: NSStatusItem!
   /// Manages the user preferences.
-  private var userPrefs = UserPreferences()
+  private var userPrefs  = UserPreferences()
   /// Generates the status bar item icons.
   private var statusIcon = StatusIcon()
   /// Access the battery's IOService.
@@ -51,17 +51,16 @@ final class ApplicationController: NSObject {
   override init() {
     // Initialize the parent class.
     super.init()
-    // Configure the status bar item.
-    statusItem = configureStatusItem()
 
     do {
       // Access the battery's IOService.
       try battery = Battery()
       // Initialize the user preferences.
-      userPrefs  = UserPreferences()
-      // Update the status bar item.
-      updateStatusItem()
-
+      userPrefs   = UserPreferences()
+      // Configure and update the status bar item.
+      configureStatusItem({
+        self.updateStatusItem()
+      })
       // Listen for powerSourceChangedNotification's.
       NotificationCenter.default.addObserver(self,
                                              selector: #selector(ApplicationController.powerSourceChanged(_:)),
@@ -124,19 +123,21 @@ final class ApplicationController: NSObject {
   }
 
 
-  // MARK: - Private Methods
+  // MARK: - Private
 
-  ///  Creates and configures the application's status bar item.
+  /// Creates and configures the application's status bar item.
   ///
-  ///  - returns: The application's status bar item.
-  private func configureStatusItem() -> NSStatusItem {
+  /// - parameter completionHandler: A callback function, that gets calles as
+  ///                                soon as the status bar item is initialized.
+  private func configureStatusItem(_ completionHandler: () -> Void) {
     // Find a place to life.
-    let statusItem = NSStatusBar.system().statusItem(withLength: NSVariableStatusItemLength)
+    let item = NSStatusBar.system().statusItem(withLength: NSVariableStatusItemLength)
     // Set the status bar item properties.
-    statusItem.target = self
-    statusItem.action = #selector(ApplicationController.displayAppMenu(_:))
+    item.target = self
+    item.action = #selector(ApplicationController.displayAppMenu(_:))
 
-    return statusItem
+    self.statusItem = item
+    completionHandler()
   }
 
   ///  Updates the application's status bar item.
@@ -175,10 +176,10 @@ final class ApplicationController: NSObject {
     if userPrefs.showTime {
       currentCharge.title = "\(percentage) % (\(charge) / \(capacity) mAh)"
     } else {
-      currentCharge.title = battery.timeRemainingFormatted + " (\(charge) / \(capacity) mAh)"
+      currentCharge.title = "\(battery.timeRemainingFormatted) (\(charge) / \(capacity) mAh)"
     }
     // Set the menu item title for the current power source.
-    currentSource.title = NSLocalizedString("Power Source", comment: "Translte Source") + " \(battery.powerSource)"
+    currentSource.title = "\(NSLocalizedString("Power Source", comment: "Translte Source")) \(battery.powerSource)"
 
     // Run the provided completion handler.
     completionHandler()
