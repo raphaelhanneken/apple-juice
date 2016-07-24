@@ -39,7 +39,7 @@ private let powerSourceCallback: IOPowerSourceCallbackType = { _ in
 }
 
 ///  Accesses the battery's IO service.
-struct Battery {
+final class Battery {
 
   ///  The battery's IO service name.
   private let batteryIOServiceName = "AppleSmartBattery"
@@ -52,18 +52,20 @@ struct Battery {
   var timeRemainingFormatted: String {
     // Unwrap required information.
     guard let
-      time    = timeRemaining,
       charged = isCharged,
       plugged = isPlugged else {
-        return NSLocalizedString("Calculating", comment: "Translate Calculating")
+        return NSLocalizedString("Unknown", comment: "Translate Unknown")
     }
 
-    // If the battery is charged and plugged into an unlimited power supply return "Charged".
-    // Otherwise display the remaining time.
+    // Check if the battery is charged and plugged into an unlimited power supply.
     if charged && plugged {
       return NSLocalizedString("Charged", comment: "Translate Charged")
-    } else {
+    }
+    // The battery is (dis)charging, display the remaining time.
+    if let time = timeRemaining {
       return String(format: "%d:%02d", arguments: [time / 60, time % 60])
+    } else {
+      return NSLocalizedString("Calculating", comment: "Translate Calculating")
     }
   }
 
@@ -73,13 +75,18 @@ struct Battery {
     let time = IOPSGetTimeRemainingEstimate()
 
     switch time {
+    // kIOPSTimeRemainingUnknown
     case -1.0:
       // The remaining time is currently unknown.
       return nil
+    // kIOPSTimeRemainingUnlimited
     case -2.0:
-      // Get the remaining time from the IO Registry, in case IOPSGetTimeRemainingEstimate
-      // returned kIOPSTimeRemainingUnlimited.
-      return getRegistryPropertyForKey(.timeRemaining) as? Int
+      // The battery is connected to a power outlet, get the remaining time
+      // until the battery is fully charged directly from the IOService.
+      if let prop = getRegistryPropertyForKey(.timeRemaining) as? Int where prop < 600 {
+        return prop
+      }
+      return nil
     default:
       // Return the estimated time divided by 60 (seconds to minutes).
       return Int(time / 60)
