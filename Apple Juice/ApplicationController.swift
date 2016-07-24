@@ -186,30 +186,27 @@ final class ApplicationController: NSObject {
 
   ///  Checks if the user wants to get notified about the current charging status.
   private func postUserNotification() {
+    // Get the current battery status.
     guard let batteryState = battery.status else {
       return
     }
-    // Create a new NotificationKey.
+    // Define a new NotificationKey.
     let notificationKey: NotificationKey?
-    // Check in which state the battery currently is.
+    // Check in which state the battery currently is and set the
+    // notificationKey accordingly.
     switch batteryState {
-    case .pluggedAndCharged:
-      notificationKey = .hundredPercent
-    case .charging:
-      notificationKey = .invalid
     case .discharging(let percentage):
       notificationKey = NotificationKey(rawValue: percentage)
+    case .pluggedAndCharged:
+      notificationKey = .hundredPercent
+    default:
+      if userPrefs.lastNotified != .invalid { userPrefs.lastNotified = .invalid }
+      return
     }
-
-    // Unwrap the notification key, check if it's a valid percentage and assure
-    // the user wasn't already informed about the current charging status.
-    if let key = notificationKey where key != .invalid && key != userPrefs.lastNotified {
-      // Check whether the user is interested in the current percentage.
-      if userPrefs.notifications.contains(key) {
-        // Post a notification and save the current key, so the user won't get notified again.
-        NotificationController.postUserNotification(forPercentage: key)
-        userPrefs.lastNotified = key
-      }
+    // Assure the user didn't already receive a notification about the current percentage and that
+    // the user is actually interested in the current charging status.
+    if let key = notificationKey where key != userPrefs.lastNotified && userPrefs.notifications.contains(key) {
+      userPrefs.lastNotified = StatusNotification(forNotificationKey: key)?.post()
     }
   }
 
