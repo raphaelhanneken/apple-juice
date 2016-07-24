@@ -10,14 +10,14 @@
 "Unknown"       = "Inconnu";
 "Battery"       = "Batterie";
 "Power Adapter" = "Adaptateur Secteur";
-"Calculating"   = "Calculateur…";
+"Calculating"   = "Calcul…";
 
 
 //  Notifications
 
 "Charged Notification Title"       = "Chargé";
-"Charged Notification Message"     = "Complètement Chargée.";
-"Low Battery Notification Title"   = "Batterie Faible";
+"Charged Notification Message"     = "Votre batterie est maintenant complètement chargée..";
+"Low Battery Notification Title"   = "%i%% restants";
 "Low Battery Notification Message" = "Votre Mac sera bientôt dormir moins branché dans une prise de courant.";
 
 
@@ -27,11 +27,9 @@
 "Percentage"         = "Pourcentage:";
 "Power Usage"        = "Consommation:";
 "Charge"             = "Charger:";
-"Cycle Count"        = "Nombre de Cycles:";
+"Cycle Count"        = "Cycles de Charge:";
 "Temperature"        = "Température:";
-"Power Source"       = "Source:";
-"Design Cycle Count" = "Conception comptage de Cycle:";
-"Design Capacity"    = "Capacité de conception:";
+"Power Source"       = "Source d'alimentation:";
 
 
 //  Units

@@ -17,7 +17,7 @@
 
 "Charged Notification Title"       = "Charged";
 "Charged Notification Message"     = "Your Battery is now fully charged.";
-"Low Battery Notification Title"   = "Low Battery";
+"Low Battery Notification Title"   = "%i%% remaining";
 "Low Battery Notification Message" = "Your Mac will sleep soon unless plugged into a power outlet.";
 
 
@@ -29,9 +29,7 @@
 "Charge"             = "Charge:";
 "Cycle Count"        = "Cycle Count:";
 "Temperature"        = "Temperature:";
-"Power Source"       = "Source:";
-"Design Cycle Count" = "Design Cycle Count:";
-"Design Capacity"    = "Design Capacity:";
+"Power Source"       = "Power Source:";
 
 
 //  Units
