@@ -163,6 +163,7 @@ final class TodayViewController: NSViewController,
       ListRowViewControllerType(.powerUsage),
       ListRowViewControllerType(.capacity),
       ListRowViewControllerType(.cycleCount),
+      ListRowViewControllerType(.temperature),
       ListRowViewControllerType(.source)
     ]
   }

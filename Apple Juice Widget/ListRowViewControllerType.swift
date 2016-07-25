@@ -82,13 +82,17 @@ final class ListRowViewControllerType: NSObject {
         }
       case .source:
         return battery.powerSource
+      case .temperature:
+        if let temp = battery.temperature {
+          return "\(temp) °C"
+        }
       }
     } catch BatteryError.serviceNotFound(let message) {
       NSLog(message)
     } catch BatteryError.connectionAlreadyOpen(let message) {
       NSLog(message)
     } catch {
-      NSLog("Here be Dragons!")
+      NSLog("Here, there be Dragons!")
     }
 
     return nil
@@ -118,4 +122,5 @@ enum ListRowViewControllerTypeDef: String {
   case capacity         = "Charge"
   case cycleCount       = "Cycle Count"
   case source           = "Power Source"
+  case temperature      = "Temperature"
 }

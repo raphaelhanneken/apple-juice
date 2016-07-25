@@ -158,6 +158,14 @@ final class Battery {
     return getRegistryPropertyForKey(.cycleCount) as? Int
   }
 
+  /// The battery's current temperature.
+  var temperature: Double? {
+    guard let temp = getRegistryPropertyForKey(.temperature) as? Double else {
+      return nil
+    }
+    return (temp / 100)
+  }
+
   ///  The current status of the battery, e.g. charging.
   var status: BatteryStatusType? {
     guard let
