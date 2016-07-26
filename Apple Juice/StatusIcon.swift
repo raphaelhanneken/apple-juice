@@ -27,6 +27,9 @@
 
 import Cocoa
 
+///  Define the BatteryUIKit path
+private let batteryIconPath = "/System/Library/PrivateFrameworks/BatteryUIKit.framework/Versions/A/Resources/"
+
 ///  Draws the status bar image.
 final class StatusIcon {
   ///  Add a little offset to draw the capacity bar in the correct position.
@@ -100,15 +103,16 @@ final class StatusIcon {
     // Calculate the offset to achieve that little gap between the capacity bar and the outline.
     let capacityOffsetY = batteryEmpty.size.height - (capacityHeight + capacityOffsetX)
     // Calculate the capacity bar's width.
-    var capacityWidth = CGFloat(ceil(Double(percentage) / 12.5)) * capacityFill.size.width
-    // Don't draw the capacity bar smaller than two single battery
-    // images, to prevent visual errors.
-    if (2 * capacityFill.size.width) >= capacityWidth {
-      capacityWidth = (2 * capacityFill.size.width) + 0.1
-    }
+    let capacityWidth = CGFloat(round(Double(percentage) / 12.5)) * capacityFill.size.width
     // Define the drawing rect in which to draw the capacity bar in.
     let drawingRect = NSRect(x: capacityOffsetX, y: capacityOffsetY,
                              width: capacityWidth, height: capacityHeight)
+    // Draw a special battery icon for low percentages, otherwise
+    // drawThreePartImage glitches.
+    if drawingRect.width < (2 * capacityFill.size.width) {
+      print("Low Battery image for \(percentage)%")
+      return NSImage(named: "LowBattery")
+    }
 
     // Draw the actual menu bar image.
     drawThreePartImage(withFrame: drawingRect, canvas: batteryEmpty, startCap: capacityCapLeft,
@@ -122,15 +126,8 @@ final class StatusIcon {
   ///  - parameter name: The name of the requested image.
   ///  - returns:        The requested image.
   private func batteryImage(named name: BatteryImage) -> NSImage? {
-    // Define the path to apple's battery icons.
-    let path = "/System/Library/PrivateFrameworks/BatteryUIKit.framework/Versions/A/Resources/"
-    // Open the supplied file as NSImage.
-    if let img = NSImage(contentsOfFile: "\(path)\(name.rawValue)") {
-      return img
-    } else {
-      NSLog("Could not read contents of file \"\(name.rawValue)\"!")
-      return nil
-    }
+    // Get the battery image for the supplied BatteryImage name.
+    return NSImage(contentsOfFile: batteryIconPath + name.rawValue)
   }
 
   ///  Draws a three-part image onto a specified canvas image.
