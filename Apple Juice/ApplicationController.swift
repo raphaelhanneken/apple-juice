@@ -185,6 +185,22 @@ final class ApplicationController: NSObject {
     completionHandler()
   }
 
+  ///  Creates an attributed string for the status bar item's title.
+  ///
+  ///  - parameter percent: The battery's current charging state.
+  ///  - parameter time:    The estimated remaining time in a human readable format.
+  ///  - returns:           The attributed title with percentage or time information, respectively.
+  private func statusBarItemTitle(withPercentage percent: Int, andTime time: String) -> AttributedString {
+    // Define some attributes to make the status bar item look more like Apple's battery gauge.
+    let attrs = [NSFontAttributeName : NSFont.menuBarFont(ofSize: 12.0)]
+    // Check whether the user wants to see the remaining time or not.
+    if userPrefs.showTime {
+      return AttributedString(string: "\(time) ", attributes: attrs)
+    } else {
+      return AttributedString(string: "\(percent) % ", attributes: attrs)
+    }
+  }
+
   ///  Checks if the user wants to get notified about the current charging status.
   private func postUserNotification() {
     // Get the current battery status.
@@ -208,22 +224,6 @@ final class ApplicationController: NSObject {
     // the user is actually interested in the current charging status.
     if let key = notificationKey where key != userPrefs.lastNotified && userPrefs.notifications.contains(key) {
       userPrefs.lastNotified = StatusNotification(forNotificationKey: key)?.post()
-    }
-  }
-
-  ///  Creates an attributed string for the status bar item's title.
-  ///
-  ///  - parameter percent: The battery's current charging state.
-  ///  - parameter time:    The estimated remaining time in a human readable format.
-  ///  - returns:           The attributed title with percentage or time information, respectively.
-  private func statusBarItemTitle(withPercentage percent: Int, andTime time: String) -> AttributedString {
-    // Define some attributes to make the status bar item look more like Apple's battery gauge.
-    let attrs = [NSFontAttributeName : NSFont.menuBarFont(ofSize: 12.0)]
-    // Check whether the user wants to see the remaining time or not.
-    if userPrefs.showTime {
-      return AttributedString(string: "\(time) ", attributes: attrs)
-    } else {
-      return AttributedString(string: "\(percent) % ", attributes: attrs)
     }
   }
 
