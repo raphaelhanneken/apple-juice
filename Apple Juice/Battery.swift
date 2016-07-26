@@ -303,7 +303,9 @@ func == (lhs: BatteryStatusType, rhs: BatteryStatusType) -> Bool {
   case (.charging, .charging), (.pluggedAndCharged, .pluggedAndCharged):
     return true
   case (.discharging(let lhsPercentage), .discharging(let rhsPercentage)):
-    return (lhsPercentage == rhsPercentage)
+    // Divide the percentages by 12.5; So that the battery image only gets redrawn, when it
+    // actually changes.
+    return (round(Double(lhsPercentage) / 12.5) == round(Double(rhsPercentage) / 12.5))
   default:
     return false
   }
