@@ -110,7 +110,6 @@ final class StatusIcon {
     // Draw a special battery icon for low percentages, otherwise
     // drawThreePartImage glitches.
     if drawingRect.width < (2 * capacityFill.size.width) {
-      print("Low Battery image for \(percentage)%")
       return NSImage(named: "LowBattery")
     }
 
