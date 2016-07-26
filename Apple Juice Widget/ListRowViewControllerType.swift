@@ -87,14 +87,9 @@ final class ListRowViewControllerType: NSObject {
           return "\(temp) °C"
         }
       }
-    } catch BatteryError.serviceNotFound(let message) {
-      NSLog(message)
-    } catch BatteryError.connectionAlreadyOpen(let message) {
-      NSLog(message)
     } catch {
-      NSLog("Here, there be Dragons!")
+      print("Getting battery information for \(type) failed.")
     }
-
     return nil
   }
 
