@@ -77,8 +77,6 @@ final class ApplicationController: NSObject {
       }
       // Draw a status item for the catched battery error.
       button.image = statusIcon.drawBatteryImage(forError: error as? BatteryError)
-      // Define the status bar item image as template.
-      button.image?.isTemplate = true
     }
   }
 
@@ -154,8 +152,6 @@ final class ApplicationController: NSObject {
 
     // Draw the corresponding status bar image.
     button.image = statusIcon.drawBatteryImage(forStatus: status)
-    // Define the image as black and white template.
-    button.image?.isTemplate = true
     // Set the image position relative to it's title.
     button.imagePosition = .imageRight
   }

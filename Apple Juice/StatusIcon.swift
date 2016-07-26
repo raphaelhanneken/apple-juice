@@ -110,7 +110,10 @@ final class StatusIcon {
     // Draw a special battery icon for low percentages, otherwise
     // drawThreePartImage glitches.
     if drawingRect.width < (2 * capacityFill.size.width) {
-      return NSImage(named: "LowBattery")
+      if let img = NSImage(named: "LowBattery") {
+        img.isTemplate = true
+        return img
+      }
     }
 
     // Draw the actual menu bar image.
@@ -126,7 +129,13 @@ final class StatusIcon {
   ///  - returns:        The requested image.
   private func batteryImage(named name: BatteryImage) -> NSImage? {
     // Get the battery image for the supplied BatteryImage name.
-    return NSImage(contentsOfFile: batteryIconPath + name.rawValue)
+    guard let img = NSImage(contentsOfFile: batteryIconPath + name.rawValue) else {
+      return nil
+    }
+    // Define the image as template.
+    img.isTemplate = true
+
+    return img
   }
 
   ///  Draws a three-part image onto a specified canvas image.
