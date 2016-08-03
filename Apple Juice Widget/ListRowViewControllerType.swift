@@ -84,7 +84,7 @@ final class ListRowViewControllerType: NSObject {
         return battery.powerSource
       case .temperature:
         if let temp = battery.temperature {
-          return "\(temp) °C / \(temp * 1.8 + 32) °F"
+          return String(format: "%.1f °C / %.1f °F", temp, (temp * 1.8 + 32))
         }
       }
     } catch {
@@ -92,7 +92,6 @@ final class ListRowViewControllerType: NSObject {
     }
     return nil
   }
-
 }
 
 // MARK: ListRowViewControllerTypeDef
