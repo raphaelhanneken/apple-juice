@@ -33,9 +33,9 @@ private let batteryIconPath = "/System/Library/PrivateFrameworks/BatteryUIKit.fr
 ///  Draws the status bar image.
 final class StatusIcon {
   ///  Add a little offset to draw the capacity bar in the correct position.
-  private let capacityOffsetX: CGFloat = 2.0
+  fileprivate let capacityOffsetX: CGFloat = 2.0
   ///  Caches the last drawn battery image.
-  private var cache: BatteryImageCache?
+  fileprivate var cache: BatteryImageCache?
 
 
   // MARK: - Methods
@@ -46,7 +46,7 @@ final class StatusIcon {
   ///  - returns:          The battery image for the provided battery status.
   func drawBatteryImage(forStatus status: BatteryStatusType) -> NSImage? {
     // Check if the required image is cached.
-    if let cache = self.cache where cache.batteryStatus == status {
+    if let cache = self.cache, cache.batteryStatus == status {
       return cache.image
     }
 
@@ -90,12 +90,12 @@ final class StatusIcon {
   ///
   ///  - parameter percentage: The current percentage of the battery.
   ///  - returns:              A battery image for the supplied percentage.
-  private func dischargingBatteryImage(forPercentage percentage: Int) -> NSImage? {
+  fileprivate func dischargingBatteryImage(forPercentage percentage: Int) -> NSImage? {
     // Get the required images to draw the battery icon.
     guard let batteryEmpty     = batteryImage(named: .empty),
-              capacityCapLeft  = batteryImage(named: .left),
-              capacityCapRight = batteryImage(named: .right),
-              capacityFill     = batteryImage(named: .middle) else {
+              let capacityCapLeft  = batteryImage(named: .left),
+              let capacityCapRight = batteryImage(named: .right),
+              let capacityFill     = batteryImage(named: .middle) else {
         return nil
     }
     // Get the capacity bar's height.
@@ -127,7 +127,7 @@ final class StatusIcon {
   ///
   ///  - parameter name: The name of the requested image.
   ///  - returns:        The requested image.
-  private func batteryImage(named name: BatteryImage) -> NSImage? {
+  fileprivate func batteryImage(named name: BatteryImage) -> NSImage? {
     // Get the battery image for the supplied BatteryImage name.
     guard let img = NSImage(contentsOfFile: batteryIconPath + name.rawValue) else {
       return nil
@@ -145,7 +145,7 @@ final class StatusIcon {
   ///  - parameter start: The image located on the left end of the frame.
   ///  - parameter fill:  The image used to fill the gap between the start and the end images.
   ///  - parameter end:   The image located on the right end of the frame.
-  private func drawThreePartImage(withFrame rect: NSRect, canvas img: NSImage,
+  fileprivate func drawThreePartImage(withFrame rect: NSRect, canvas img: NSImage,
                                   startCap start: NSImage, fill: NSImage, endCap end: NSImage) {
     img.lockFocus()
     NSDrawThreePartImage(rect, start, fill, end, false, .copy, 1, false)

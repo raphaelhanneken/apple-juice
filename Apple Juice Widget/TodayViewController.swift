@@ -60,7 +60,7 @@ final class TodayViewController: NSViewController,
 
   // MARK: - NCWidgetProviding
 
-  func widgetPerformUpdate(completionHandler: ((NCUpdateResult) -> Void)) {
+  func widgetPerformUpdate(_ completionHandler: ((NCUpdateResult) -> Void)) {
     // Refresh the widget's contents in preparation for a snapshot.
     // Call the completion handler block after the widget's contents have been
     // refreshed. Pass NCUpdateResultNoData to indicate that nothing has changed
@@ -149,14 +149,14 @@ final class TodayViewController: NSViewController,
     searchController.searchResults = nil
   }
 
-  func widgetSearch(_ searchController: NCWidgetSearchViewController, resultSelected object: AnyObject) {
+  func widgetSearch(_ searchController: NCWidgetSearchViewController, resultSelected object: Any) {
     // The user has selected a search result from the list.
   }
 
   /// Initializes the ListRowViewControllerTypes.
   ///
   /// - returns: An array of ListRowViewControllerType.
-  private func setRowViewContents() -> [ListRowViewControllerType] {
+  fileprivate func setRowViewContents() -> [ListRowViewControllerType] {
     return [
       ListRowViewControllerType(.timeRemaining),
       ListRowViewControllerType(.percentage),

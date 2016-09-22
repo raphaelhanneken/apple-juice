@@ -51,9 +51,8 @@ final class Battery {
   ///  in a human readable format, e.g. hh:mm.
   var timeRemainingFormatted: String {
     // Unwrap required information.
-    guard let
-      charged = isCharged,
-      plugged = isPlugged else {
+    guard let charged = isCharged,
+      let plugged = isPlugged else {
         return NSLocalizedString("Unknown", comment: "Translate Unknown")
     }
 
@@ -83,7 +82,7 @@ final class Battery {
     case -2.0:
       // The battery is connected to a power outlet, get the remaining time
       // until the battery is fully charged directly from the IOService.
-      if let prop = getRegistryPropertyForKey(.timeRemaining) as? Int where prop < 600 {
+      if let prop = getRegistryPropertyForKey(.timeRemaining) as? Int, prop < 600 {
         return prop
       }
       return nil
@@ -98,7 +97,7 @@ final class Battery {
     // Unwrap the required information.
     guard let
       capacity = capacity,
-      charge   = charge else {
+      let charge   = charge else {
         return nil
     }
     // Calculate the current percentage.
@@ -147,7 +146,7 @@ final class Battery {
   var powerUsage: Double? {
     guard let
       voltage  = getRegistryPropertyForKey(.voltage) as? Double,
-      amperage = getRegistryPropertyForKey(.amperage) as? Double else {
+      let amperage = getRegistryPropertyForKey(.amperage) as? Double else {
         return nil
     }
     return round(((voltage * amperage) / 1000000) * 10) / 10
@@ -170,9 +169,9 @@ final class Battery {
   var status: BatteryStatusType? {
     guard let
       charging   = isCharging,
-      plugged    = isPlugged,
-      charged    = isCharged,
-      percentage = percentage else {
+      let plugged    = isPlugged,
+      let charged    = isCharged,
+      let percentage = percentage else {
         return nil
     }
     if charged && plugged {
@@ -237,7 +236,7 @@ final class Battery {
   ///  - parameter key: A SmartBatteryKey to get the corresponding registry entry's property.
   ///  - returns:       The registry entry for the provided SmartBatteryKey.
   private func getRegistryPropertyForKey(_ key: SmartBatteryKey) -> AnyObject? {
-    return IORegistryEntryCreateCFProperty(service, key.rawValue, nil, 0).takeRetainedValue()
+    return IORegistryEntryCreateCFProperty(service, key.rawValue as CFString!, nil, 0).takeRetainedValue()
   }
 }
 
@@ -250,7 +249,7 @@ final class Battery {
 ///                           is already open. Accepts an error description of type String.
 ///  - ServiceNotFound:       Get's thrown in case the supplied IOService wasn't found.
 ///                           Accepts an error description of type String.
-enum BatteryError: ErrorProtocol {
+enum BatteryError: Error {
   case connectionAlreadyOpen(String)
   case serviceNotFound(String)
 }
@@ -268,7 +267,7 @@ enum BatteryError: ErrorProtocol {
 ///  - voltage:       The current voltage.
 ///  - amperage:      Information about the current power consumption.
 ///  - timeRemaining: The remaining time until the battery is empty or fully charged, respectively.
-private enum SmartBatteryKey: String {
+fileprivate enum SmartBatteryKey: String {
   case isPlugged     = "ExternalConnected"
   case isCharging    = "IsCharging"
   case currentCharge = "CurrentCapacity"

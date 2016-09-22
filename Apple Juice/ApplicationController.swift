@@ -36,13 +36,13 @@ final class ApplicationController: NSObject {
   @IBOutlet weak var currentSource: NSMenuItem!
 
   /// Holds the applications status bar item.
-  private var statusItem: NSStatusItem!
+  fileprivate var statusItem: NSStatusItem!
   /// Manages the user preferences.
-  private var userPrefs  = UserPreferences()
+  fileprivate var userPrefs  = UserPreferences()
   /// Generates the status bar item icons.
-  private var statusIcon = StatusIcon()
+  fileprivate var statusIcon = StatusIcon()
   /// Access the battery's IOService.
-  private var battery: Battery!
+  fileprivate var battery: Battery!
 
 
   // MARK: - Methods
@@ -102,8 +102,8 @@ final class ApplicationController: NSObject {
   ///                       Entries are described in Change Dictionary Keys.
   ///  - parameter context: The value that was provided when the receiver was registered to receive key-value
   ///                       observation notifications.
-  override func observeValue(forKeyPath keyPath: String?, of object: AnyObject?,
-                             change: [NSKeyValueChangeKey : AnyObject]?, context: UnsafeMutablePointer<Void>?) {
+  override func observeValue(forKeyPath keyPath: String?, of object: Any?,
+                             change: [NSKeyValueChangeKey : Any]?, context: UnsafeMutableRawPointer?) {
     // Update the status item to reflect updated user preferences.
     updateStatusItem()
   }
@@ -140,10 +140,9 @@ final class ApplicationController: NSObject {
 
   ///  Updates the application's status bar item.
   private func updateStatusItem() {
-    guard let
-      button     = statusItem.button,
-      status     = battery.status,
-      percentage = battery.percentage else {
+    guard let button     = statusItem.button,
+      let status     = battery.status,
+      let percentage = battery.percentage else {
         return
     }
     // Set the attributed status bar item title.
@@ -161,10 +160,9 @@ final class ApplicationController: NSObject {
   ///  - parameter completionHandler: A callback function, that gets called
   ///                                 as soon as the menu items are updated.
   private func updateMenuItems(_ completionHandler: () -> Void) {
-    guard let
-      capacity   = battery.capacity,
-      charge     = battery.charge,
-      percentage = battery.percentage else {
+    guard let capacity   = battery.capacity,
+      let charge     = battery.charge,
+      let percentage = battery.percentage else {
         return
     }
     // Set the menu item title for the current charge level, depending on the user preferences
@@ -186,14 +184,14 @@ final class ApplicationController: NSObject {
   ///  - parameter percent: The battery's current charging state.
   ///  - parameter time:    The estimated remaining time in a human readable format.
   ///  - returns:           The attributed title with percentage or time information, respectively.
-  private func statusBarItemTitle(withPercentage percent: Int, andTime time: String) -> AttributedString {
+  private func statusBarItemTitle(withPercentage percent: Int, andTime time: String) -> NSAttributedString {
     // Define some attributes to make the status bar item look more like Apple's battery gauge.
     let attrs = [NSFontAttributeName : NSFont.menuBarFont(ofSize: 12.0)]
     // Check whether the user wants to see the remaining time or not.
     if userPrefs.showTime {
-      return AttributedString(string: "\(time) ", attributes: attrs)
+      return NSAttributedString(string: "\(time) ", attributes: attrs)
     } else {
-      return AttributedString(string: "\(percent) % ", attributes: attrs)
+      return NSAttributedString(string: "\(percent) % ", attributes: attrs)
     }
   }
 
@@ -218,7 +216,7 @@ final class ApplicationController: NSObject {
     }
     // Assure the user didn't already receive a notification about the current percentage and that
     // the user is actually interested in the current charging status.
-    if let key = notificationKey where key != userPrefs.lastNotified && userPrefs.notifications.contains(key) {
+    if let key = notificationKey, key != userPrefs.lastNotified && userPrefs.notifications.contains(key) {
       userPrefs.lastNotified = StatusNotification(forNotificationKey: key)?.post()
     }
   }

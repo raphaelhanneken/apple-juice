@@ -31,7 +31,7 @@ import Foundation
 final class UserPreferences: NSObject {
 
   ///  Holds a reference to the standard user defaults.
-  private let userDefaults = UserDefaults.standard
+  fileprivate let userDefaults = UserDefaults.standard
 
   ///  True if the user wants the remaining time to be displayed within the menu bar.
   var showTime: Bool {
@@ -109,16 +109,16 @@ final class UserPreferences: NSObject {
   }
 
   ///  Register user defaults.
-  private func registerUserDefaults() {
-    let defaults = [PreferenceKey.showTime.rawValue : false,
-                    PreferenceKey.fivePercentNotification.rawValue : false,
-                    PreferenceKey.tenPercentNotification.rawValue : false,
-                    PreferenceKey.fifeteenPercentNotification.rawValue : true,
-                    PreferenceKey.twentyPercentNotification.rawValue : false,
-                    PreferenceKey.hundredPercentNotification.rawValue : true,
-                    PreferenceKey.lastNotification.rawValue : 0]
+  fileprivate func registerUserDefaults() {
+    let defaultPreferences = [PreferenceKey.showTime.rawValue : false,
+                              PreferenceKey.fivePercentNotification.rawValue : false,
+                              PreferenceKey.tenPercentNotification.rawValue : false,
+                              PreferenceKey.fifeteenPercentNotification.rawValue : true,
+                              PreferenceKey.twentyPercentNotification.rawValue : false,
+                              PreferenceKey.hundredPercentNotification.rawValue : true,
+                              PreferenceKey.lastNotification.rawValue : 0] as [String : Any]
 
-    userDefaults.register(defaults)
+    userDefaults.register(defaults: defaultPreferences)
   }
 }
 

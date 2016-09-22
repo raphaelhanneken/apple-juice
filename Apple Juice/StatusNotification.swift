@@ -30,11 +30,11 @@ import Foundation
 /// Posts user notifications about the current charging status.
 struct StatusNotification {
   /// The current notification's key.
-  private let notificationKey: NotificationKey
+  fileprivate let notificationKey: NotificationKey
   /// The notification title.
-  private var title: String?
+  fileprivate var title: String?
   /// The notification text.
-  private var text: String?
+  fileprivate var text: String?
 
 
   // MARK: - Methods

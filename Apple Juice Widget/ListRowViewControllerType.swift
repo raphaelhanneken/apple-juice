@@ -55,7 +55,7 @@ final class ListRowViewControllerType: NSObject {
   ///
   /// - parameter type: The row type to get information for.
   /// - returns: A String containing the battery information for the supplied row type definition.
-  private func getBatteryInformation(forRowType type: ListRowViewControllerTypeDef) -> String? {
+  fileprivate func getBatteryInformation(forRowType type: ListRowViewControllerTypeDef) -> String? {
     do {
       // Try opening the battery service IO.
       let battery = try Battery()
@@ -73,7 +73,7 @@ final class ListRowViewControllerType: NSObject {
           return "\(powerUsage) \(NSLocalizedString("Watts", comment: "Translate Watts"))"
         }
       case .capacity:
-        if let charge = battery.charge, capacity = battery.capacity {
+        if let charge = battery.charge, let capacity = battery.capacity {
           return "\(charge) / \(capacity) mAh"
         }
       case .cycleCount:
