@@ -1,5 +1,5 @@
 # Apple Juice #
-An advanced battery gauge for OS X. *Apple Juice* can show you the estimated time remaining, right within the status bar and notify you about certain percentages, if you want.
+An advanced battery gauge for macOS. *Apple Juice* can show you the estimated _battery time remaining_ (even with macOS 10.12.2), right within the status bar and notify you about certain percentages, if you want.
 
 ![Apple Juice Appmenu](screenshot_appmenu.png)
 ![Apple Juice Notifications](screenshot_notifications.png)
@@ -12,7 +12,7 @@ Get even more information about your current battery status, without cluttering 
 ![Apple Juice Today Widget Expanded](screenshot_today_all.png)
 
 ### Ok, but how accurate is it? ###
-Probably as accurate as it gets. The information come directly from OS X’s IO registry and are updated constantly. Although the estimated remaining time differs from time to time in comparison to Apple’s battery gauge (for about +/- 15mins.). I guess Apple uses another algorithm for calculating the remaining time, but I can’t tell which is more accurate. At least it’s still an *estimated* time.
+Probably as accurate as it gets. The information come directly from macOS’s IO registry and are updated constantly.
 
 ## How do I install it? ##
 You have two options:
@@ -25,10 +25,10 @@ You have two options:
  ```System Preferences: Security & Privacy: Allow apps downloaded from: Anywhere```.
 
 ## Why does this project exist? ##
-There are plenty of other solutions out there, so why make another one? I wanted an app that looks like it’s part of the system. As if it were built directly into OS X. Which can show me a lot of information, but only when I need them. And, most importantly, it should display notifications for several percentages. Since I haven’t found such an app, I've made one myself.
+There are plenty of other solutions out there, so why make another one? I wanted an app that looks like it’s part of the system. As if it were built directly into macOS. Which can show me a lot of information, but only when I need them. And, most importantly, it should display notifications for several percentages. Since I haven’t found such an app, I made one myself.
 
 ## How do I contribute? ##
-You can fork this project, make your changes and send me a pull request. Just make sure you fork the latest development version and that [SwiftLint](https://github.com/realm/SwiftLint) succeeds. Or, since the whole source code is licensed under the MIT License, fork *Apple Juice* and make your own thing.
+You can fork this project, make your changes and send me a pull request. Just make sure you fork the latest development version and that [SwiftLint](https://github.com/realm/SwiftLint) succeeds. Or, since the whole source code is licensed under the MIT License, fork *Apple Juice* and make your own thing. :-)
 
 __________
 
