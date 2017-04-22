@@ -1,11 +1,11 @@
 //
-// BatteryImageCache.swift
+// BatteryError.swift
 // Apple Juice
 // https://github.com/raphaelhanneken/apple-juice
 //
 // The MIT License (MIT)
 //
-// Copyright (c) 2015 Raphael Hanneken
+// Copyright (c) 2015 - 2017 Raphael Hanneken
 //
 // Permission is hereby granted, free of charge, to any person obtaining a copy
 // of this software and associated documentation files (the "Software"), to deal
@@ -25,22 +25,13 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 // THE SOFTWARE.
 
-import Cocoa
-
-///  Caches a drawn battery image for a certain battery status.
-struct BatteryImageCache {
-    ///  Holds the drawn battery image.
-    let image: NSImage?
-    ///  Holds the corresponding battery status for the image.
-    let batteryStatus: BatteryState
-
-    /// Initializes a new BatteryImageCache.
-    ///
-    /// - parameter status: The BatteryStatusType corresponding to the battery image.
-    /// - parameter img:    The drawn battery image.
-    /// - returns:          A new BatteryImageCache.
-    init(forStatus status: BatteryState, withImage img: NSImage?) {
-        batteryStatus = status
-        image = img
-    }
+///  Exceptions for the Battery class.
+///
+///  - connectionAlreadyOpen: Get's thrown in case the connection to the battery's IOService
+///                           is already open. Accepts an error description of type String.
+///  - serviceNotFound:       Get's thrown in case the supplied IOService wasn't found.
+///                           Accepts an error description of type String.
+enum BatteryError: Error {
+    case connectionAlreadyOpen(String)
+    case serviceNotFound(String)
 }

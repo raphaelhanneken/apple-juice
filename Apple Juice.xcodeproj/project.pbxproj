@@ -15,13 +15,22 @@
 		8E58CBA21D339BC200920567 /* TodayViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8EF30EE81D32D0ED0010BC49 /* TodayViewController.xib */; };
 		8E58CBA31D339BC900920567 /* ListRowViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8EF30EEA1D32D0FA0010BC49 /* ListRowViewController.xib */; };
 		8E58CBA41D339BD000920567 /* Apple_Juice_Widget.entitlements in Resources */ = {isa = PBXBuildFile; fileRef = 8E0D33B31D3118CD002D3463 /* Apple_Juice_Widget.entitlements */; };
+		8E995BAF1EABD8C800CE8364 /* BatteryError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E995BA91EABD8C800CE8364 /* BatteryError.swift */; };
+		8E995BB01EABD8C800CE8364 /* BatteryState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E995BAA1EABD8C800CE8364 /* BatteryState.swift */; };
+		8E995BB11EABD8C800CE8364 /* NotificationKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E995BAB1EABD8C800CE8364 /* NotificationKey.swift */; };
+		8E995BB21EABD8C800CE8364 /* PreferenceKeys.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E995BAC1EABD8C800CE8364 /* PreferenceKeys.swift */; };
+		8E995BB31EABD8C800CE8364 /* SmartBatteryKeys.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E995BAD1EABD8C800CE8364 /* SmartBatteryKeys.swift */; };
+		8E995BB41EABD8C800CE8364 /* StatusItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E995BAE1EABD8C800CE8364 /* StatusItem.swift */; };
+		8E995BB51EABDA6800CE8364 /* BatteryState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E995BAA1EABD8C800CE8364 /* BatteryState.swift */; };
+		8E995BB61EABDA6C00CE8364 /* BatteryError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E995BA91EABD8C800CE8364 /* BatteryError.swift */; };
+		8E995BB71EABDA7100CE8364 /* SmartBatteryKeys.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E995BAD1EABD8C800CE8364 /* SmartBatteryKeys.swift */; };
+		8E995BBB1EABDB2F00CE8364 /* dsa_pub.pem in Resources */ = {isa = PBXBuildFile; fileRef = 8E995BBA1EABDB2F00CE8364 /* dsa_pub.pem */; };
 		8EA14D281D3D4728004D36C6 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 8EBF29EC1C485493005BBAE0 /* Localizable.strings */; };
 		8EBEB4461C466091001DBE91 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EBEB4451C466091001DBE91 /* AppDelegate.swift */; };
 		8EBEB4481C466091001DBE91 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8EBEB4471C466091001DBE91 /* Assets.xcassets */; };
 		8EBEB44B1C466091001DBE91 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8EBEB4491C466091001DBE91 /* MainMenu.xib */; };
 		8EBF29DE1C4845F6005BBAE0 /* Sparkle.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8EBF29DD1C4845F6005BBAE0 /* Sparkle.framework */; };
 		8EBF29DF1C4845F6005BBAE0 /* Sparkle.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 8EBF29DD1C4845F6005BBAE0 /* Sparkle.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		8EBF29E51C48489F005BBAE0 /* dsa_pub.pem in Resources */ = {isa = PBXBuildFile; fileRef = 8EBF29E41C48489F005BBAE0 /* dsa_pub.pem */; };
 		8EBF29E91C485493005BBAE0 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 8EBF29EC1C485493005BBAE0 /* Localizable.strings */; };
 		8EE1296A1C4663F7000D404F /* ApplicationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EE129691C4663F7000D404F /* ApplicationController.swift */; };
 		8EE1296E1C469326000D404F /* StatusIcon.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EE1296D1C469326000D404F /* StatusIcon.swift */; };
@@ -89,13 +98,19 @@
 		8E7496961D41799600FD5ADA /* it */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = it; path = it.lproj/MainMenu.strings; sourceTree = "<group>"; };
 		8E7496971D41799B00FD5ADA /* es */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = es; path = es.lproj/MainMenu.strings; sourceTree = "<group>"; };
 		8E954FA81C4EE528006D0F34 /* it */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = it; path = it.lproj/Localizable.strings; sourceTree = "<group>"; };
+		8E995BA91EABD8C800CE8364 /* BatteryError.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BatteryError.swift; sourceTree = "<group>"; };
+		8E995BAA1EABD8C800CE8364 /* BatteryState.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BatteryState.swift; sourceTree = "<group>"; };
+		8E995BAB1EABD8C800CE8364 /* NotificationKey.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NotificationKey.swift; sourceTree = "<group>"; };
+		8E995BAC1EABD8C800CE8364 /* PreferenceKeys.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PreferenceKeys.swift; sourceTree = "<group>"; };
+		8E995BAD1EABD8C800CE8364 /* SmartBatteryKeys.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SmartBatteryKeys.swift; sourceTree = "<group>"; };
+		8E995BAE1EABD8C800CE8364 /* StatusItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StatusItem.swift; sourceTree = "<group>"; };
+		8E995BBA1EABDB2F00CE8364 /* dsa_pub.pem */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = dsa_pub.pem; sourceTree = "<group>"; };
 		8EBEB4421C466091001DBE91 /* Apple Juice.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Apple Juice.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		8EBEB4451C466091001DBE91 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		8EBEB4471C466091001DBE91 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		8EBEB44A1C466091001DBE91 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/MainMenu.xib; sourceTree = "<group>"; };
 		8EBEB44C1C466091001DBE91 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		8EBF29DD1C4845F6005BBAE0 /* Sparkle.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Sparkle.framework; path = Carthage/Build/Mac/Sparkle.framework; sourceTree = "<group>"; };
-		8EBF29E41C48489F005BBAE0 /* dsa_pub.pem */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = dsa_pub.pem; sourceTree = "<group>"; };
 		8EBF29EB1C485493005BBAE0 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		8EBF29ED1C48552D005BBAE0 /* Base */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = Base; path = Base.lproj/Localizable.strings; sourceTree = "<group>"; };
 		8EBF29F31C485741005BBAE0 /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/Localizable.strings; sourceTree = "<group>"; };
@@ -135,8 +150,8 @@
 		8E03E9DC1C4BCFBA00D12D11 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
-				8EBF29E41C48489F005BBAE0 /* dsa_pub.pem */,
 				8EBEB44C1C466091001DBE91 /* Info.plist */,
+				8E995BBA1EABDB2F00CE8364 /* dsa_pub.pem */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -156,8 +171,8 @@
 		8E0D33B21D3118CD002D3463 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
-				8E0D33B31D3118CD002D3463 /* Apple_Juice_Widget.entitlements */,
 				8EF30EF01D32D1C70010BC49 /* Info.plist */,
+				8E0D33B31D3118CD002D3463 /* Apple_Juice_Widget.entitlements */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -193,6 +208,12 @@
 		8EBEB4441C466091001DBE91 /* Apple Juice */ = {
 			isa = PBXGroup;
 			children = (
+				8E995BA91EABD8C800CE8364 /* BatteryError.swift */,
+				8E995BAA1EABD8C800CE8364 /* BatteryState.swift */,
+				8E995BAB1EABD8C800CE8364 /* NotificationKey.swift */,
+				8E995BAC1EABD8C800CE8364 /* PreferenceKeys.swift */,
+				8E995BAD1EABD8C800CE8364 /* SmartBatteryKeys.swift */,
+				8E995BAE1EABD8C800CE8364 /* StatusItem.swift */,
 				8EBEB4451C466091001DBE91 /* AppDelegate.swift */,
 				8EE129691C4663F7000D404F /* ApplicationController.swift */,
 				8EE1296D1C469326000D404F /* StatusIcon.swift */,
@@ -210,8 +231,8 @@
 		8EE129671C4661AC000D404F /* Resources */ = {
 			isa = PBXGroup;
 			children = (
-				8EBEB4471C466091001DBE91 /* Assets.xcassets */,
 				8EBF29EC1C485493005BBAE0 /* Localizable.strings */,
+				8EBEB4471C466091001DBE91 /* Assets.xcassets */,
 			);
 			name = Resources;
 			sourceTree = "<group>";
@@ -341,8 +362,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				8EBEB4481C466091001DBE91 /* Assets.xcassets in Resources */,
+				8E995BBB1EABDB2F00CE8364 /* dsa_pub.pem in Resources */,
 				8EBF29E91C485493005BBAE0 /* Localizable.strings in Resources */,
-				8EBF29E51C48489F005BBAE0 /* dsa_pub.pem in Resources */,
 				8EBEB44B1C466091001DBE91 /* MainMenu.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -370,10 +391,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8E995BB61EABDA6C00CE8364 /* BatteryError.swift in Sources */,
 				8EF30ED31D32B3170010BC49 /* Battery.swift in Sources */,
 				8E0D33B51D3118CD002D3463 /* TodayViewController.swift in Sources */,
 				8E0D33B71D3118CD002D3463 /* ListRowViewController.swift in Sources */,
 				8EF30ED51D32B3980010BC49 /* ListRowViewControllerType.swift in Sources */,
+				8E995BB71EABDA7100CE8364 /* SmartBatteryKeys.swift in Sources */,
+				8E995BB51EABDA6800CE8364 /* BatteryState.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -381,9 +405,15 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8E995BB21EABD8C800CE8364 /* PreferenceKeys.swift in Sources */,
+				8E995BB01EABD8C800CE8364 /* BatteryState.swift in Sources */,
 				8EE129741C46D3C7000D404F /* StatusNotification.swift in Sources */,
+				8E995BB11EABD8C800CE8364 /* NotificationKey.swift in Sources */,
 				8EE129721C46CA1B000D404F /* UserPreferences.swift in Sources */,
+				8E995BB41EABD8C800CE8364 /* StatusItem.swift in Sources */,
+				8E995BAF1EABD8C800CE8364 /* BatteryError.swift in Sources */,
 				8EE1296A1C4663F7000D404F /* ApplicationController.swift in Sources */,
+				8E995BB31EABD8C800CE8364 /* SmartBatteryKeys.swift in Sources */,
 				8E31BF9F1D42651F00055A5B /* BatteryImageCache.swift in Sources */,
 				8EE1296E1C469326000D404F /* StatusIcon.swift in Sources */,
 				8EBEB4461C466091001DBE91 /* AppDelegate.swift in Sources */,

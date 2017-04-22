@@ -5,7 +5,7 @@
 //
 // The MIT License (MIT)
 //
-// Copyright (c) 2015 Raphael Hanneken
+// Copyright (c) 2015 - 2017 Raphael Hanneken
 //
 // Permission is hereby granted, free of charge, to any person obtaining a copy
 // of this software and associated documentation files (the "Software"), to deal
@@ -29,85 +29,74 @@ import Foundation
 
 /// Posts user notifications about the current charging status.
 struct StatusNotification {
-  /// The current notification's key.
-  fileprivate let notificationKey: NotificationKey
-  /// The notification title.
-  fileprivate var title: String?
-  /// The notification text.
-  fileprivate var text: String?
+    /// The current notification's key.
+    private let notificationKey: NotificationKey
+    /// The notification title.
+    private var title: String?
+    /// The notification text.
+    private var text: String?
 
+    // MARK: - Methods
 
-  // MARK: - Methods
-
-  /// Initializes a new StatusNotification.
-  ///
-  /// - parameter key: The notification key which to display a user notification for.
-  /// - returns:       An optional StatusNotification; Return nil when the notificationKey
-  ///                  is invalid or nil.
-  init?(forNotificationKey key: NotificationKey?) {
-    // Unwrap the provided notification key and bail out if it isn't a valid key.
-    guard let key = key else {
-      return nil
+    /// Initializes a new StatusNotification.
+    ///
+    /// - parameter key: The notification key which to display a user notification for.
+    /// - returns:       An optional StatusNotification; Return nil when the notificationKey
+    ///                  is invalid or nil.
+    init?(forState state: BatteryState?) {
+        guard
+            let state = state,
+            let key = NotificationKey(rawValue: state.percentage),
+                !(state == BatteryState.charging(percentage: 0)) else {
+            // print("Not a valid percentage: \(state.percentage)")
+            return nil
+        }
+        notificationKey = key
+        setNotificationTitleAndText()
     }
-    // Set the StatusNotification's properties.
-    notificationKey = key
-    setNotificationProperties()
-  }
 
-  /// Delivers a NSUserNotification to the user.
-  ///
-  /// - returns: The NotificationKey for the delivered notification.
-  func post() -> NotificationKey {
-    // Create a new user notification object.
-    let notification = NSUserNotification()
-    // Configure the new user notification.
-    notification.title           = title
-    notification.informativeText = text
-    // Deliver the notification.
-    NSUserNotificationCenter.default.deliver(notification)
-
-    return notificationKey
-  }
-
-
-  // MARK: - Private
-
-  /// Sets the user notifications informative text and title.
-  private mutating func setNotificationProperties() {
-    switch notificationKey {
-    case .invalid:
-      return
-    case .hundredPercent:
-      title = NSLocalizedString("Charged Notification Title",
-                                comment: "Translate the banner title for the charged / 100 % notification.")
-      text  = NSLocalizedString("Charged Notification Message",
-                                comment: "Translate the informative text for the charged / 100% notification.")
-    default:
-      title = String.localizedStringWithFormat(NSLocalizedString("Low Battery Notification Title",
-                                                   comment: "The banner title for the low battery notification."),
-                     notificationKey.rawValue)
-      text  = NSLocalizedString("Low Battery Notification Message",
-                                comment: "Translate the informative text for the low battery notification.")
+    ///  Checks if the user wants to get notified about the current charging status.
+    func notifyUser() {
+        // Assure the user didn't already receive a notification about the current percentage and that
+        // the user is actually interested in the current charging status.
+        if notificationKey != UserPreferences.lastNotified && UserPreferences.notifications.contains(notificationKey) {
+            post()
+        }
     }
-  }
-}
 
+    /// Delivers a NSUserNotification to the user.
+    ///
+    /// - returns: The NotificationKey for the delivered notification.
+    private func post() {
+        // Create a new user notification object.
+        let notification = NSUserNotification()
+        // Configure the new user notification.
+        notification.title = title
+        notification.informativeText = text
+        // Deliver the notification.
+        NSUserNotificationCenter.default.deliver(notification)
+        // Update the last notified preference.
+        UserPreferences.lastNotified = notificationKey
+    }
 
-// MARK: - NotificationKeys
+    // MARK: - Private
 
-///  Defines a notification at a given percentage.
-///
-///  - Invalid:         Not a valid notification percentage.
-///  - FivePercent:     Five percent notification.
-///  - TenPercent:      Ten percent notification.
-///  - FifeteenPercent: Fifeteen percent notification.
-///  - TwentyPercent:   Twenty percent notification.
-///  - HundredPercent:  Hundred percent notification.
-enum NotificationKey: Int {
-  case invalid         = 0
-  case fivePercent     = 5
-  case tenPercent      = 10
-  case fifeteenPercent = 15
-  case twentyPercent   = 20
-  case hundredPercent  = 100
+    /// Sets the user notifications informative text and title.
+    private mutating func setNotificationTitleAndText() {
+        switch notificationKey {
+        case .invalid:
+            return
+        case .hundredPercent:
+            title = NSLocalizedString("Charged Notification Title",
+                                      comment: "Translate the banner title for the charged / 100 % notification.")
+            text  = NSLocalizedString("Charged Notification Message",
+                                      comment: "Translate the informative text for the charged / 100% notification.")
+        default:
+            title = String.localizedStringWithFormat(NSLocalizedString("Low Battery Notification Title",
+                                                     comment: "Notification title: Low Battery."),
+                                                     notificationKey.rawValue)
+            text  = NSLocalizedString("Low Battery Notification Message",
+                                      comment: "Translate the informative text for the low battery notification.")
+        }
+    }
 }

@@ -1,5 +1,15 @@
-line_length: 115
-cyclomatic_complexity: 12
-
+# Exclude Dependencies
 excluded:
   - Carthage
+
+# Rules
+line_length: 120
+
+cyclomatic_complexity:
+  warning: 6
+  error: 15
+  ignores_case_statements: true
+
+vertical_whitespace:
+  max_empty_lines: 3
+

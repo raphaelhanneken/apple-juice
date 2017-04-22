@@ -1,5 +1,5 @@
 //
-// BatteryImageCache.swift
+// NotificationKey.swift
 // Apple Juice
 // https://github.com/raphaelhanneken/apple-juice
 //
@@ -25,22 +25,19 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 // THE SOFTWARE.
 
-import Cocoa
-
-///  Caches a drawn battery image for a certain battery status.
-struct BatteryImageCache {
-    ///  Holds the drawn battery image.
-    let image: NSImage?
-    ///  Holds the corresponding battery status for the image.
-    let batteryStatus: BatteryState
-
-    /// Initializes a new BatteryImageCache.
-    ///
-    /// - parameter status: The BatteryStatusType corresponding to the battery image.
-    /// - parameter img:    The drawn battery image.
-    /// - returns:          A new BatteryImageCache.
-    init(forStatus status: BatteryState, withImage img: NSImage?) {
-        batteryStatus = status
-        image = img
-    }
+///  Defines a notification at a given percentage.
+///
+///  - invalid:         Not a valid notification percentage.
+///  - fivePercent:     Notify the user at five percent remaining charge.
+///  - tenPercent:      Notify the user at ten percent remaining charge.
+///  - fifeteenPercent: Notify the user at fifetenn percent remaining charge.
+///  - twentyPercent:   Notify the user at twenty percent remaining charge.
+///  - hundredPercent:  Notify the user when the battery is fully charged.
+enum NotificationKey: Int {
+    case invalid         = 0
+    case fivePercent     = 5
+    case tenPercent      = 10
+    case fifeteenPercent = 15
+    case twentyPercent   = 20
+    case hundredPercent  = 100
 }
