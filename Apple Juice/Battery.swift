@@ -190,7 +190,7 @@ final class Battery {
     ///
     /// - Returns: An instantiated battery object.
     class func instance() throws -> Battery? {
-        if (battery == nil) {
+        if battery == nil {
             battery = try Battery()
         }
         return battery
