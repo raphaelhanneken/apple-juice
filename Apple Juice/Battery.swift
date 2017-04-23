@@ -48,7 +48,7 @@ final class Battery {
     private var service: io_object_t = 0
 
     /// Holds the battery instance.
-    private class var battery: Battery?
+    private static var battery: Battery?
 
 
     ///  The current status of the battery, e.g. charging.
