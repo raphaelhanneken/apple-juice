@@ -47,6 +47,10 @@ final class Battery {
     ///  An IOService object that matches battery's IO service dictionary.
     private var service: io_object_t = 0
 
+    /// Holds the battery instance.
+    private class var battery: Battery?
+
+
     ///  The current status of the battery, e.g. charging.
     var state: BatteryState? {
         guard
@@ -181,6 +185,16 @@ final class Battery {
     }
 
     // MARK: - Methods
+
+    /// Create an new battery instance.
+    ///
+    /// - Returns: An instantiated battery object.
+    class func instance() throws -> Battery? {
+        if (battery == nil) {
+            battery = try Battery()
+        }
+        return battery
+    }
 
     ///  Initializes a new Battery object.
     private init() throws {
