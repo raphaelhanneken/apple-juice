@@ -30,68 +30,70 @@ import Foundation
 /// Represents a single row.
 final class ListRowViewControllerType: NSObject {
 
-  /// Holds the battery property, e.g. time remaining.
-  var title: String = ""
+    /// Holds the battery property, e.g. time remaining.
+    var title: String = ""
 
-  /// Holds the value for the given type, e.g. 2:28
-  var value: String = ""
+    /// Holds the value for the given type, e.g. 2:28
+    var value: String = ""
 
-  /// Initializes the RowViewControllerType
-  ///
-  /// - parameter definition: The RowViewControllerTypeDef.
-  init(_ type: ListRowViewControllerTypeDef) {
-    // Initialize the parent class.
-    super.init()
+    /// Initializes the RowViewControllerType
+    ///
+    /// - parameter definition: The RowViewControllerTypeDef.
+    init(_ type: ListRowViewControllerTypeDef) {
+        // Initialize the parent class.
+        super.init()
 
-    // Set the row title for the supplied ListRowViewControllerTypeDef.
-    title = NSLocalizedString(type.rawValue, comment: "Translate and set the row description")
-    // Set the value for the supplied ListRowViewControllerTypeDef.
-    if let data = getBatteryInformation(forRowType: type) {
-      value = data
+        // Set the row title for the supplied ListRowViewControllerTypeDef.
+        title = NSLocalizedString(type.rawValue, comment: "Translate and set the row description")
+        // Set the value for the supplied ListRowViewControllerTypeDef.
+        if let data = getBatteryInformation(forRowType: type) {
+            value = data
+        }
     }
-  }
 
-  /// Returns the battery information for the supplied row type.
-  ///
-  /// - parameter type: The row type to get information for.
-  /// - returns: A String containing the battery information for the supplied row type definition.
-  fileprivate func getBatteryInformation(forRowType type: ListRowViewControllerTypeDef) -> String? {
-    do {
-      // Try opening the battery service IO.
-      let battery = try Battery()
+    /// Returns the battery information for the supplied row type.
+    ///
+    /// - parameter type: The row type to get information for.
+    /// - returns: A String containing the battery information for the supplied row type definition.
+    fileprivate func getBatteryInformation(forRowType type: ListRowViewControllerTypeDef) -> String? {
+        do {
+            // Try opening the battery service IO.
+            guard let battery = try Battery.instance() else {
+                return nil
+            }
 
-      // Get the battery information according to the given row type definition.
-      switch type {
-      case .timeRemaining:
-        return battery.timeRemainingFormatted
-      case .percentage:
-        if let percentage = battery.percentage {
-          return "\(percentage) %"
+            // Get the battery information according to the given row type definition.
+            switch type {
+            case .timeRemaining:
+                return battery.timeRemainingFormatted
+            case .percentage:
+                if let percentage = battery.percentage {
+                    return "\(percentage) %"
+                }
+            case .powerUsage:
+                if let powerUsage = battery.powerUsage {
+                    return "\(powerUsage) \(NSLocalizedString("Watts", comment: "Translate Watts"))"
+                }
+            case .capacity:
+                if let charge = battery.charge, let capacity = battery.capacity {
+                    return "\(charge) / \(capacity) mAh"
+                }
+            case .cycleCount:
+                if let cycleCount = battery.cycleCount {
+                    return "\(cycleCount)"
+                }
+            case .source:
+                return battery.powerSource
+            case .temperature:
+                if let temp = battery.temperature {
+                    return String(format: "%.1f °C / %.1f °F", arguments: [temp, (temp * 1.8 + 32)])
+                }
+            }
+        } catch {
+            print("Getting battery information for \(type) failed.")
         }
-      case .powerUsage:
-        if let powerUsage = battery.powerUsage {
-          return "\(powerUsage) \(NSLocalizedString("Watts", comment: "Translate Watts"))"
-        }
-      case .capacity:
-        if let charge = battery.charge, let capacity = battery.capacity {
-          return "\(charge) / \(capacity) mAh"
-        }
-      case .cycleCount:
-        if let cycleCount = battery.cycleCount {
-          return "\(cycleCount)"
-        }
-      case .source:
-        return battery.powerSource
-      case .temperature:
-        if let temp = battery.temperature {
-          return String(format: "%.1f °C / %.1f °F", arguments: [temp, (temp * 1.8 + 32)])
-        }
-      }
-    } catch {
-      print("Getting battery information for \(type) failed.")
+        return nil
     }
-    return nil
-  }
 }
 
 // MARK: ListRowViewControllerTypeDef
@@ -110,11 +112,11 @@ final class ListRowViewControllerType: NSObject {
 ///  - DesignCycleCount: The design cycle count.
 ///  - DesignCapacity:   The design capacity in mAh.
 enum ListRowViewControllerTypeDef: String {
-  case timeRemaining    = "Time Remaining"
-  case percentage       = "Percentage"
-  case powerUsage       = "Power Usage"
-  case capacity         = "Charge"
-  case cycleCount       = "Cycle Count"
-  case source           = "Power Source"
-  case temperature      = "Temperature"
+    case timeRemaining    = "Time Remaining"
+    case percentage       = "Percentage"
+    case powerUsage       = "Power Usage"
+    case capacity         = "Charge"
+    case cycleCount       = "Cycle Count"
+    case source           = "Power Source"
+    case temperature      = "Temperature"
 }

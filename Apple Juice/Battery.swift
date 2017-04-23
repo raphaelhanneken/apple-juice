@@ -47,6 +47,10 @@ final class Battery {
     ///  An IOService object that matches battery's IO service dictionary.
     private var service: io_object_t = 0
 
+    /// Holds the battery instance.
+    private static var battery: Battery?
+
+
     ///  The current status of the battery, e.g. charging.
     var state: BatteryState? {
         guard
@@ -182,8 +186,18 @@ final class Battery {
 
     // MARK: - Methods
 
+    /// Create an new battery instance.
+    ///
+    /// - Returns: An instantiated battery object.
+    class func instance() throws -> Battery? {
+        if battery == nil {
+            battery = try Battery()
+        }
+        return battery
+    }
+
     ///  Initializes a new Battery object.
-    init() throws {
+    private init() throws {
         // Try opening a connection to the battery's IOService.
         try openServiceConnection()
         // Create a RunLoopSource to post a notification, whenever the power source chages.

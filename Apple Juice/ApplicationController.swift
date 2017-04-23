@@ -54,7 +54,7 @@ final class ApplicationController: NSObject {
 
         do {
             // Access the battery's IOService.
-            try battery = Battery()
+            try battery = Battery.instance()
 
             // Create the status bar item.
             statusItem = BatteryStatusBarItem(withTarget: self,
