@@ -183,7 +183,7 @@ final class Battery {
     // MARK: - Methods
 
     ///  Initializes a new Battery object.
-    init() throws {
+    private init() throws {
         // Try opening a connection to the battery's IOService.
         try openServiceConnection()
         // Create a RunLoopSource to post a notification, whenever the power source chages.
