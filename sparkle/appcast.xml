@@ -7,6 +7,27 @@
     <language>en</language>
 
     <item>
+      <title>Apple Juice v1.2.2</title>
+        <description>
+          <![CDATA[
+            <p>
+              Minor improvements.<br>
+              Build with Xcode version 8.3.2 (8E2002).
+            </p>
+          ]]>
+        </description>
+        <pubDate>Sun, 30 Apr 2017 22:00:00 +0100</pubDate>
+        <sparkle:minimumSystemVersion>10.12</sparkle:minimumSystemVersion>
+        <enclosure
+          url="https://github.com/raphaelhanneken/apple-juice/releases/download/1.2.2/Apple.Juice.dmg"
+          sparkle:version="281"
+          sparkle:shortVersionString="1.2.2"
+          sparkle:dsaSignature="MCwCFGLzlN8N0sViVirtCFH/RhDIIndqAhR9ukQ+48tkrK/jyj86k7Er7nmXhg=="
+          length="6831720"
+          type="application/octet-stream" />
+    </item>
+
+    <item>
       <title>Apple Juice v1.2.1</title>
         <description>
           <![CDATA[
