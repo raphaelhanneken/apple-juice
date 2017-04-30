@@ -1,5 +1,5 @@
 //
-// ListRowViewController.swift
+// ChargeInfoType.swift
 // Apple Juice Widget
 // https://github.com/raphaelhanneken/apple-juice
 //
@@ -25,6 +25,18 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 // THE SOFTWARE.
 
-import Cocoa
+import Foundation
 
-final class ListRowViewController: NSViewController { }
+class ChargeInfoType: NSObject, BatteryInfoTypeProtocol {
+    var title: String
+    var value: String
+
+    init(_ battery: Battery?) {
+        title = NSLocalizedString("Charge", comment: "")
+        if let charge = battery?.charge, let capacity = battery?.capacity {
+            value = "\(charge) / \(capacity) mAh"
+        } else {
+            value = "--"
+        }
+    }
+}

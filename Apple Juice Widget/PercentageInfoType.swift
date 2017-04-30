@@ -1,5 +1,5 @@
 //
-// ListRowViewController.swift
+// PercentageInfoType.swift
 // Apple Juice Widget
 // https://github.com/raphaelhanneken/apple-juice
 //
@@ -25,6 +25,18 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 // THE SOFTWARE.
 
-import Cocoa
+import Foundation
 
-final class ListRowViewController: NSViewController { }
+class PercentageInfoType: NSObject, BatteryInfoTypeProtocol {
+    var title: String
+    var value: String
+
+    init(_ battery: Battery?) {
+        title = NSLocalizedString("Percentage", comment: "")
+        if let percentage = battery?.state?.percentage {
+            value = "\(percentage) %"
+        } else {
+            value = "--"
+        }
+    }
+}

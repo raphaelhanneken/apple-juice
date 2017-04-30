@@ -1,5 +1,5 @@
 //
-// ListRowViewController.swift
+// BatteryInfoTypeProtocol.swift
 // Apple Juice Widget
 // https://github.com/raphaelhanneken/apple-juice
 //
@@ -25,6 +25,9 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 // THE SOFTWARE.
 
-import Cocoa
+import Foundation
 
-final class ListRowViewController: NSViewController { }
+protocol BatteryInfoTypeProtocol {
+    var title: String { get }
+    var value: String { get }
+}

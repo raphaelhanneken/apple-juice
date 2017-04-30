@@ -1,5 +1,5 @@
 //
-// ListRowViewController.swift
+// PowerUsageInfoType.swift
 // Apple Juice Widget
 // https://github.com/raphaelhanneken/apple-juice
 //
@@ -25,6 +25,18 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 // THE SOFTWARE.
 
-import Cocoa
+import Foundation
 
-final class ListRowViewController: NSViewController { }
+class PowerUsageInfoType: NSObject, BatteryInfoTypeProtocol {
+    var title: String
+    var value: String
+
+    init(_ battery: Battery?) {
+        title = NSLocalizedString("Power Usage", comment: "")
+        if let powerUsage = battery?.powerUsage {
+            value = "\(powerUsage) \(NSLocalizedString("Watts", comment: ""))"
+        } else {
+            value = "--"
+        }
+    }
+}

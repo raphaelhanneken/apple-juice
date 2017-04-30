@@ -1,5 +1,5 @@
 //
-// ListRowViewController.swift
+// TimeRemainingInfoType.swift
 // Apple Juice Widget
 // https://github.com/raphaelhanneken/apple-juice
 //
@@ -25,6 +25,18 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 // THE SOFTWARE.
 
-import Cocoa
+import Foundation
 
-final class ListRowViewController: NSViewController { }
+class TimeRemainingInfoType: NSObject, BatteryInfoTypeProtocol {
+    var title: String
+    var value: String
+
+    init(_ battery: Battery?) {
+        self.title = NSLocalizedString("Time Remaining", comment: "")
+        if let value = battery?.timeRemainingFormatted {
+            self.value = value
+        } else {
+            self.value = "--"
+        }
+    }
+}
