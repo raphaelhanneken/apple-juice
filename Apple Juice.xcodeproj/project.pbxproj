@@ -46,7 +46,6 @@
 		8EE129721C46CA1B000D404F /* UserPreferences.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EE129711C46CA1B000D404F /* UserPreferences.swift */; };
 		8EE129741C46D3C7000D404F /* StatusNotification.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EE129731C46D3C7000D404F /* StatusNotification.swift */; };
 		8EF30ED31D32B3170010BC49 /* Battery.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EE1296F1C4695B5000D404F /* Battery.swift */; };
-		8EF30ED51D32B3980010BC49 /* ListRowViewControllerType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EF30ED41D32B3980010BC49 /* ListRowViewControllerType.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -137,7 +136,6 @@
 		8EE129711C46CA1B000D404F /* UserPreferences.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserPreferences.swift; sourceTree = "<group>"; };
 		8EE129731C46D3C7000D404F /* StatusNotification.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StatusNotification.swift; sourceTree = "<group>"; };
 		8EE1297C1C46F891000D404F /* NotificationCenter.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = NotificationCenter.framework; path = System/Library/Frameworks/NotificationCenter.framework; sourceTree = SDKROOT; };
-		8EF30ED41D32B3980010BC49 /* ListRowViewControllerType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ListRowViewControllerType.swift; sourceTree = "<group>"; };
 		8EF30EE81D32D0ED0010BC49 /* TodayViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TodayViewController.xib; sourceTree = "<group>"; };
 		8EF30EEA1D32D0FA0010BC49 /* ListRowViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ListRowViewController.xib; sourceTree = "<group>"; };
 		8EF30EF01D32D1C70010BC49 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -176,7 +174,6 @@
 			isa = PBXGroup;
 			children = (
 				8E0D33B41D3118CD002D3463 /* TodayViewController.swift */,
-				8EF30ED41D32B3980010BC49 /* ListRowViewControllerType.swift */,
 				8E0D33B61D3118CD002D3463 /* ListRowViewController.swift */,
 				8E7373D81EACB58E00F10AD7 /* BatteryInfoTypeProtocol.swift */,
 				8E7373DA1EACB78500F10AD7 /* TimeRemainingInfoType.swift */,
@@ -420,7 +417,6 @@
 				8EF30ED31D32B3170010BC49 /* Battery.swift in Sources */,
 				8E0D33B51D3118CD002D3463 /* TodayViewController.swift in Sources */,
 				8E0D33B71D3118CD002D3463 /* ListRowViewController.swift in Sources */,
-				8EF30ED51D32B3980010BC49 /* ListRowViewControllerType.swift in Sources */,
 				8E7373E31EACBC5D00F10AD7 /* CycleCountInfoType.swift in Sources */,
 				8E995BB71EABDA7100CE8364 /* SmartBatteryKeys.swift in Sources */,
 				8E995BB51EABDA6800CE8364 /* BatteryState.swift in Sources */,

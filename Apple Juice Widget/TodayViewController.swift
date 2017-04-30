@@ -5,7 +5,7 @@
 //
 // The MIT License (MIT)
 //
-// Copyright (c) 2015 Raphael Hanneken
+// Copyright (c) 2015 - 2017 Raphael Hanneken
 //
 // Permission is hereby granted, free of charge, to any person obtaining a copy
 // of this software and associated documentation files (the "Software"), to deal
@@ -29,142 +29,151 @@ import Cocoa
 import NotificationCenter
 
 final class TodayViewController: NSViewController,
-                           NCWidgetProviding, NCWidgetListViewDelegate, NCWidgetSearchViewDelegate {
+                                 NCWidgetProviding,
+                                 NCWidgetListViewDelegate,
+                                 NCWidgetSearchViewDelegate {
 
-  @IBOutlet var listViewController: NCWidgetListViewController!
+    @IBOutlet var listViewController: NCWidgetListViewController!
 
-  var searchController: NCWidgetSearchViewController?
+    var searchController: NCWidgetSearchViewController?
 
-  // MARK: - NSViewController
+    // MARK: - NSViewController
 
-  override var nibName: String? {
-    return "TodayViewController"
-  }
-
-  override func viewDidLoad() {
-    super.viewDidLoad()
-
-    // Set up the widget list view controller.
-    // The contents property should contain an object for each row in the list.
-    self.listViewController.contents = setRowViewContents()
-  }
-
-  override func dismissViewController(_ viewController: NSViewController) {
-    super.dismissViewController(viewController)
-
-    // The search controller has been dismissed and is no longer needed.
-    if viewController == self.searchController {
-      self.searchController = nil
+    override var nibName: String? {
+        return "TodayViewController"
     }
-  }
 
-  // MARK: - NCWidgetProviding
+    override func viewDidLoad() {
+        super.viewDidLoad()
 
-  func widgetPerformUpdate(_ completionHandler: ((NCUpdateResult) -> Void)) {
-    // Refresh the widget's contents in preparation for a snapshot.
-    // Call the completion handler block after the widget's contents have been
-    // refreshed. Pass NCUpdateResultNoData to indicate that nothing has changed
-    // or NCUpdateResultNewData to indicate that there is new data since the
-    // last invocation of this method.
-    completionHandler(.noData)
-  }
+        // Set up the widget list view controller.
+        // The contents property should contain an object for each row in the list.
+        self.listViewController.contents = contents()
+    }
 
-  func widgetMarginInsets(forProposedMarginInsets defaultMarginInset: EdgeInsets) -> EdgeInsets {
-    // Override the left margin so that the list view is flush with the edge.
-    var newInsets = defaultMarginInset
-    newInsets.left = 0
-    return newInsets
-  }
+    override func dismissViewController(_ viewController: NSViewController) {
+        super.dismissViewController(viewController)
 
-  var widgetAllowsEditing: Bool {
-    // Return true to indicate that the widget supports editing of content and
-    // that the list view should be allowed to enter an edit mode.
-    return false
-  }
+        // The search controller has been dismissed and is no longer needed.
+        if viewController == self.searchController {
+            self.searchController = nil
+        }
+    }
 
-  func widgetDidBeginEditing() {
-    // The user has clicked the edit button.
-    // Put the list view into editing mode.
-    self.listViewController.editing = true
-  }
+    // MARK: - NCWidgetProviding
 
-  func widgetDidEndEditing() {
-    // The user has clicked the Done button, begun editing another widget,
-    // or the Notification Center has been closed.
-    // Take the list view out of editing mode.
-    self.listViewController.editing = false
-  }
+    func widgetPerformUpdate(_ completionHandler: ((NCUpdateResult) -> Void)) {
+        // Refresh the widget's contents in preparation for a snapshot.
+        // Call the completion handler block after the widget's contents have been
+        // refreshed. Pass NCUpdateResultNoData to indicate that nothing has changed
+        // or NCUpdateResultNewData to indicate that there is new data since the
+        // last invocation of this method.
+        completionHandler(.noData)
+    }
 
-  // MARK: - NCWidgetListViewDelegate
+    func widgetMarginInsets(forProposedMarginInsets defaultMarginInset: EdgeInsets) -> EdgeInsets {
+        // Override the left margin so that the list view is flush with the edge.
+        var newInsets = defaultMarginInset
+        newInsets.left = 0
+        return newInsets
+    }
 
-  func widgetList(_ list: NCWidgetListViewController, viewControllerForRow row: Int) -> NSViewController {
-    // Return a new view controller subclass for displaying an item of widget
-    // content. The NCWidgetListViewController will set the representedObject
-    // of this view controller to one of the objects in its contents array.
-    return ListRowViewController()
-  }
+    var widgetAllowsEditing: Bool {
+        // Return true to indicate that the widget supports editing of content and
+        // that the list view should be allowed to enter an edit mode.
+        return false
+    }
 
-  func widgetListPerformAddAction(_ list: NCWidgetListViewController) {
-    // The user has clicked the add button in the list view.
-    // Display a search controller for adding new content to the widget.
-    let searchController = NCWidgetSearchViewController()
-    self.searchController = searchController
-    searchController.delegate = self
+    func widgetDidBeginEditing() {
+        // The user has clicked the edit button.
+        // Put the list view into editing mode.
+        self.listViewController.editing = true
+    }
 
-    // Present the search view controller with an animation.
-    // Implement dismissViewController to observe when the view controller
-    // has been dismissed and is no longer needed.
-    self.present(inWidget: searchController)
-  }
+    func widgetDidEndEditing() {
+        // The user has clicked the Done button, begun editing another widget,
+        // or the Notification Center has been closed.
+        // Take the list view out of editing mode.
+        self.listViewController.editing = false
+    }
 
-  func widgetList(_ list: NCWidgetListViewController, shouldReorderRow row: Int) -> Bool {
-    // Return true to allow the item to be reordered in the list by the user.
-    return true
-  }
+    // MARK: - NCWidgetListViewDelegate
 
-  func widgetList(_ list: NCWidgetListViewController, didReorderRow row: Int, toRow newIndex: Int) {
-    // The user has reordered an item in the list.
-  }
+    func widgetList(_ list: NCWidgetListViewController, viewControllerForRow row: Int) -> NSViewController {
+        // Return a new view controller subclass for displaying an item of widget
+        // content. The NCWidgetListViewController will set the representedObject
+        // of this view controller to one of the objects in its contents array.
+        return ListRowViewController()
+    }
 
-  func widgetList(_ list: NCWidgetListViewController, shouldRemoveRow row: Int) -> Bool {
-    // Return true to allow the item to be removed from the list by the user.
-    return true
-  }
+    func widgetListPerformAddAction(_ list: NCWidgetListViewController) {
+        // The user has clicked the add button in the list view.
+        // Display a search controller for adding new content to the widget.
+        let searchController = NCWidgetSearchViewController()
+        self.searchController = searchController
+        searchController.delegate = self
 
-  func widgetList(_ list: NCWidgetListViewController, didRemoveRow row: Int) {
-    // The user has removed an item from the list.
-  }
+        // Present the search view controller with an animation.
+        // Implement dismissViewController to observe when the view controller
+        // has been dismissed and is no longer needed.
+        self.present(inWidget: searchController)
+    }
 
-  // MARK: - NCWidgetSearchViewDelegate
+    func widgetList(_ list: NCWidgetListViewController, shouldReorderRow row: Int) -> Bool {
+        // Return true to allow the item to be reordered in the list by the user.
+        return true
+    }
 
-  func widgetSearch(_ searchController: NCWidgetSearchViewController,
-                    searchForTerm searchTerm: String, maxResults max: Int) {
-    // The user has entered a search term.
-    // Set the controller's searchResults property to the matching items.
-    searchController.searchResults = []
-  }
+    func widgetList(_ list: NCWidgetListViewController, didReorderRow row: Int, toRow newIndex: Int) {
+        // The user has reordered an item in the list.
+    }
 
-  func widgetSearchTermCleared(_ searchController: NCWidgetSearchViewController) {
-    // The user has cleared the search field. Remove the search results.
-    searchController.searchResults = nil
-  }
+    func widgetList(_ list: NCWidgetListViewController, shouldRemoveRow row: Int) -> Bool {
+        // Return true to allow the item to be removed from the list by the user.
+        return true
+    }
 
-  func widgetSearch(_ searchController: NCWidgetSearchViewController, resultSelected object: Any) {
-    // The user has selected a search result from the list.
-  }
+    func widgetList(_ list: NCWidgetListViewController, didRemoveRow row: Int) {
+        // The user has removed an item from the list.
+    }
 
-  /// Initializes the ListRowViewControllerTypes.
-  ///
-  /// - returns: An array of ListRowViewControllerType.
-  fileprivate func setRowViewContents() -> [ListRowViewControllerType] {
-    return [
-      ListRowViewControllerType(.timeRemaining),
-      ListRowViewControllerType(.percentage),
-      ListRowViewControllerType(.powerUsage),
-      ListRowViewControllerType(.capacity),
-      ListRowViewControllerType(.cycleCount),
-      ListRowViewControllerType(.temperature),
-      ListRowViewControllerType(.source)
-    ]
-  }
+    // MARK: - NCWidgetSearchViewDelegate
+
+    func widgetSearch(_ searchController: NCWidgetSearchViewController,
+                      searchForTerm searchTerm: String, maxResults max: Int) {
+        // The user has entered a search term.
+        // Set the controller's searchResults property to the matching items.
+        searchController.searchResults = []
+    }
+
+    func widgetSearchTermCleared(_ searchController: NCWidgetSearchViewController) {
+        // The user has cleared the search field. Remove the search results.
+        searchController.searchResults = nil
+    }
+
+    func widgetSearch(_ searchController: NCWidgetSearchViewController, resultSelected object: Any) {
+        // The user has selected a search result from the list.
+    }
+
+    /// Initializes the ListRowViewControllerTypes.
+    ///
+    /// - returns: An array of ListRowViewControllerType.
+    private func contents() -> [BatteryInfoTypeProtocol] {
+        do {
+            let battery = try Battery.instance()
+            return [
+                TimeRemainingInfoType(battery),
+                PercentageInfoType(battery),
+                PowerUsageInfoType(battery),
+                ChargeInfoType(battery),
+                CycleCountInfoType(battery),
+                SourceInfoType(battery),
+                TemperatureInfoType(battery)
+            ]
+        } catch {
+            print("Failure instantiating the battery IO service")
+        }
+
+        return []
+    }
 }

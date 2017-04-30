@@ -5,7 +5,7 @@
 //
 // The MIT License (MIT)
 //
-// Copyright (c) 2015 Raphael Hanneken
+// Copyright (c) 2015 - 2017 Raphael Hanneken
 //
 // Permission is hereby granted, free of charge, to any person obtaining a copy
 // of this software and associated documentation files (the "Software"), to deal
@@ -27,15 +27,4 @@
 
 import Cocoa
 
-final class ListRowViewController: NSViewController {
-
-  override var nibName: String? {
-    return "ListRowViewController"
-  }
-
-  override func loadView() {
-    super.loadView()
-
-    // Insert code here to customize the view
-  }
-}
+final class ListRowViewController: NSViewController { }
