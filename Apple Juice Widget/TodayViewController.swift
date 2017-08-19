@@ -39,8 +39,8 @@ final class TodayViewController: NSViewController,
 
     // MARK: - NSViewController
 
-    override var nibName: String? {
-        return "TodayViewController"
+    override var nibName: NSNib.Name? {
+        return NSNib.Name("TodayViewController")
     }
 
     override func viewDidLoad() {
