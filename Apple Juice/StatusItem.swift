@@ -51,7 +51,7 @@ final class BatteryStatusBarItem: NSObject {
     ///             user clicks the status bar item.
     init(withTarget target: AnyObject?, andAction action: Selector?) {
         // Find a place to live.
-        item = NSStatusBar.system().statusItem(withLength: NSVariableStatusItemLength)
+        item = NSStatusBar.system.statusItem(withLength: NSStatusItem.variableLength)
         // Set Properties.
         item.target = target
         item.action = action
@@ -117,7 +117,7 @@ final class BatteryStatusBarItem: NSObject {
     ///  - returns:           The attributed title with percentage or time information, respectively.
     private func title(withPercentage percent: Int, andTime time: String) -> NSAttributedString {
         // Define some attributes to make the status bar item look more like Apple's battery gauge.
-        let attrs = [NSFontAttributeName: NSFont.menuBarFont(ofSize: 12.0)]
+        let attrs = [NSAttributedStringKey.font: NSFont.menuBarFont(ofSize: 12.0)]
         // Check whether the user wants to see the remaining time or not.
         if UserPreferences.showTime {
             return NSAttributedString(string: "\(time) ", attributes: attrs)

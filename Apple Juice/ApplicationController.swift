@@ -101,7 +101,7 @@ final class ApplicationController: NSObject {
     ///  must be registered as an observer for powerSourceChangedNotification's.
     ///
     ///  - parameter sender: The source object of the posted powerSourceChanged message.
-    func powerSourceChanged(_: AnyObject) {
+    @objc func powerSourceChanged(_: AnyObject) {
         // Update status bar item to reflect changes.
         statusItem?.update(batteryInfo: battery)
         // Notify the user about the current percentage.
@@ -114,7 +114,7 @@ final class ApplicationController: NSObject {
     ///  user clicks the item.
     ///
     ///  - parameter sender: The source object that sent the message.
-    func displayAppMenu(_: AnyObject) {
+    @objc func displayAppMenu(_: AnyObject) {
         // Before showing the app menu, update the information displayed
         // within it.
         updateMenuItems({
@@ -155,6 +155,6 @@ final class ApplicationController: NSObject {
     ///
     ///  - parameter sender: The menu item object that sent the message.
     @IBAction func energySaverPreferences(_: NSMenuItem) {
-        NSWorkspace.shared().openFile("/System/Library/PreferencePanes/EnergySaver.prefPane")
+        NSWorkspace.shared.openFile("/System/Library/PreferencePanes/EnergySaver.prefPane")
     }
 }

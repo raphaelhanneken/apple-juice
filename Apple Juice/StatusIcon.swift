@@ -131,7 +131,7 @@ struct StatusIcon {
         // Draw a special battery icon for low percentages, otherwise
         // drawThreePartImage glitches.
         if drawingRect.width < (2 * capacityFill.size.width) {
-            if let img = NSImage(named: "LowBattery") {
+            if let img = NSImage(named: NSImage.Name(rawValue: "LowBattery")) {
                 img.isTemplate = true
                 return img
             }

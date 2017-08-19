@@ -71,7 +71,7 @@ final class TodayViewController: NSViewController,
         completionHandler(.noData)
     }
 
-    func widgetMarginInsets(forProposedMarginInsets defaultMarginInset: EdgeInsets) -> EdgeInsets {
+    func widgetMarginInsets(forProposedMarginInsets defaultMarginInset: NSEdgeInsets) -> NSEdgeInsets {
         // Override the left margin so that the list view is flush with the edge.
         var newInsets = defaultMarginInset
         newInsets.left = 0
