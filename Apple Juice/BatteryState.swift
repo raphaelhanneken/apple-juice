@@ -27,6 +27,9 @@
 
 import Foundation
 
+/// Define the precision, with wich the icon can display the current charging level
+public let drawingPrecision = 12.5
+
 ///  Defines the state the battery is currently in.
 ///
 ///  - pluggedAndCharged: The battery is plugged into a power supply and charged.
@@ -62,9 +65,9 @@ func == (lhs: BatteryState, rhs: BatteryState) -> Bool {
     case (.charging, .charging), (.pluggedAndCharged, .pluggedAndCharged):
         return true
     case let (.discharging(lhsPercentage), .discharging(rhsPercentage)):
-        // Divide the percentages by 12.5; So that the battery image only gets redrawn, when it
-        // actually changes.
-        return (round(Double(lhsPercentage) / 12.5) == round(Double(rhsPercentage) / 12.5))
+        // Divide the percentages by the defined drawing precision; So that the battery image
+        // only gets redrawn, when it actually differs.
+        return (round(Double(lhsPercentage) / drawingPrecision) == round(Double(rhsPercentage) / drawingPrecision))
     default:
         return false
     }

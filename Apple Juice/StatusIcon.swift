@@ -124,7 +124,7 @@ struct StatusIcon {
         // Calculate the offset to achieve that little gap between the capacity bar and the outline.
         let capacityOffsetY = batteryEmpty.size.height - (capacityHeight + capacityOffsetX)
         // Calculate the capacity bar's width.
-        let capacityWidth = CGFloat(round(Double(percentage) / 12.5)) * capacityFill.size.width
+        let capacityWidth = CGFloat(round(Double(percentage) / drawingPrecision)) * capacityFill.size.width
         // Define the drawing rect in which to draw the capacity bar in.
         let drawingRect = NSRect(x: capacityOffsetX, y: capacityOffsetY,
                                  width: capacityWidth, height: capacityHeight)
