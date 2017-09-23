@@ -7,6 +7,27 @@
     <language>en</language>
 
     <item>
+      <title>Apple Juice v1.2.3</title>
+        <description>
+          <![CDATA[
+            <p>
+              Compatibility Update for macOS High Sierra.<br>
+              Build with Xcode version 9.0 and Swift 4.
+            </p>
+          ]]>
+        </description>
+        <pubDate>Sat, 23 Sep 2017 12:00:00 +0100</pubDate>
+        <sparkle:minimumSystemVersion>10.12</sparkle:minimumSystemVersion>
+        <enclosure
+          url="https://github.com/raphaelhanneken/apple-juice/releases/download/1.2.3/Apple.Juice.dmg"
+          sparkle:version="286"
+          sparkle:shortVersionString="1.2.3"
+          sparkle:dsaSignature="MCwCFEEZaproczmc/LDVCPKt8thE3MXrAhQ1V7IIr8rHBfez9vyo30usbHsjEQ=="
+          length="7764482"
+          type="application/octet-stream" />
+    </item>
+
+    <item>
       <title>Apple Juice v1.2.2</title>
         <description>
           <![CDATA[
