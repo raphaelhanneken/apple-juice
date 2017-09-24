@@ -24,10 +24,22 @@ final class TodayViewController: NSViewController,
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Set up the widget list view controller.
-        // The contents property should contain an object for each row in the list.
-        self.listViewController.contents = contents()
+        do {
+            let battery = try Battery.instance()
+            // Set up the widget list view controller.
+            // The contents property should contain an object for each row in the list.
+            listViewController.contents = [
+                TimeRemainingInfoType(battery),
+                PercentageInfoType(battery),
+                PowerUsageInfoType(battery),
+                ChargeInfoType(battery),
+                CycleCountInfoType(battery),
+                SourceInfoType(battery),
+                TemperatureInfoType(battery)
+            ]
+        } catch {
+            NSLog("Failed initializing the battery instance.")
+        }
     }
 
     override func dismissViewController(_ viewController: NSViewController) {
@@ -132,27 +144,5 @@ final class TodayViewController: NSViewController,
 
     func widgetSearch(_ searchController: NCWidgetSearchViewController, resultSelected object: Any) {
         // The user has selected a search result from the list.
-    }
-
-    /// Initializes the ListRowViewControllerTypes.
-    ///
-    /// - returns: An array of ListRowViewControllerType.
-    private func contents() -> [BatteryInfoTypeProtocol] {
-        do {
-            let battery = try Battery.instance()
-            return [
-                TimeRemainingInfoType(battery),
-                PercentageInfoType(battery),
-                PowerUsageInfoType(battery),
-                ChargeInfoType(battery),
-                CycleCountInfoType(battery),
-                SourceInfoType(battery),
-                TemperatureInfoType(battery)
-            ]
-        } catch {
-            print("Failure instantiating the battery IO service")
-        }
-
-        return []
     }
 }
