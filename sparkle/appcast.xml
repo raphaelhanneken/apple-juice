@@ -7,6 +7,30 @@
     <language>en</language>
 
     <item>
+      <title>Apple Juice v1.2.3.1</title>
+        <description>
+          <![CDATA[
+            <p>
+              Fixes a bug where the Today widget won't load.<br>
+              Build with Xcode 9.0 and Swift 4.
+            </p>
+            <p>
+              Thanks for using <i>Apple Juice</i>
+            </p>
+          ]]>
+        </description>
+        <pubDate>Sun, 24 Sep 2017 11:00:00 +0100</pubDate>
+        <sparkle:minimumSystemVersion>10.12</sparkle:minimumSystemVersion>
+        <enclosure
+          url="https://github.com/raphaelhanneken/apple-juice/releases/download/1.2.3.1/Apple.Juice.dmg"
+          sparkle:version="291"
+          sparkle:shortVersionString="1.2.3.1"
+          sparkle:dsaSignature="MCwCFCprNDJ+yP6t+kxLBdT8Sw9fx0vOAhRxEaV1gJu7rYY+PIlSDEH1Z/R77A=="
+          length="7760098"
+          type="application/octet-stream" />
+    </item>
+
+    <item>
       <title>Apple Juice v1.2.3</title>
         <description>
           <![CDATA[
