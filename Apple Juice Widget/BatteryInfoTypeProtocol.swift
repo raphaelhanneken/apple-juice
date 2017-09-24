@@ -6,7 +6,7 @@
 
 import Foundation
 
-protocol BatteryInfoTypeProtocol {
+@objc protocol BatteryInfoTypeProtocol {
     var title: String { get }
     var value: String { get }
 }
