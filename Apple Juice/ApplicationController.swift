@@ -72,7 +72,6 @@ final class ApplicationController: NSObject {
     ///                       observation notifications.
     override func observeValue(forKeyPath _: String?, of _: Any?,
                                change _: [NSKeyValueChangeKey: Any]?, context _: UnsafeMutableRawPointer?) {
-        // Update the status item to reflect updated user preferences.
         statusItem?.update(batteryInfo: battery)
     }
 
@@ -81,11 +80,9 @@ final class ApplicationController: NSObject {
     ///
     ///  - parameter sender: The source object of the posted powerSourceChanged message.
     @objc func powerSourceChanged(_: AnyObject) {
-        // Update status bar item to reflect changes.
         statusItem?.update(batteryInfo: battery)
-        // Notify the user about the current percentage.
         if let notification = StatusNotification(forState: battery.state) {
-            notification.notifyUser()
+            notification.postNotification()
         }
     }
 

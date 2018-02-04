@@ -7,7 +7,7 @@
 import Cocoa
 
 ///  Define the BatteryUIKit path
-fileprivate let batteryIconPath = "/System/Library/PrivateFrameworks/BatteryUIKit.framework/Versions/A/Resources/"
+private let batteryIconPath = "/System/Library/PrivateFrameworks/BatteryUIKit.framework/Versions/A/Resources/"
 
 ///  Defines the filenames for Apple's battery images.
 ///
@@ -19,7 +19,7 @@ fileprivate let batteryIconPath = "/System/Library/PrivateFrameworks/BatteryUIKi
 ///  - charging: Charging battery filename.
 ///  - dead:     IOService already open filename.
 ///  - none:     Battery IOService not found filename.
-fileprivate enum BatteryImage: String {
+private enum BatteryImage: String {
     case left     = "BatteryLevelCapB-L.pdf"
     case right    = "BatteryLevelCapB-R.pdf"
     case middle   = "BatteryLevelCapB-M.pdf"
@@ -46,12 +46,10 @@ struct StatusIcon {
     ///  - parameter status: The BatteryStatusType, which to draw the image for.
     ///  - returns:          The battery image for the provided battery status.
     mutating func drawBatteryImage(forStatus status: BatteryState) -> NSImage? {
-        // Check if the required image is cached.
         if let cache = self.cache, cache.batteryStatus == status {
             return cache.image
         }
 
-        // Cache a new battery image.
         switch status {
         case .charging:
             cache = BatteryImageCache(forStatus: status,
@@ -63,7 +61,6 @@ struct StatusIcon {
             cache = BatteryImageCache(forStatus: status,
                                       withImage: dischargingBatteryImage(forPercentage: percentage))
         }
-        // Return the new image.
         return cache?.image
     }
 
@@ -75,7 +72,6 @@ struct StatusIcon {
         guard let error = err else {
             return nil
         }
-        // Get the corresponding image for the supplied error.
         switch error {
         case .connectionAlreadyOpen:
             return batteryImage(named: .dead)
@@ -91,36 +87,37 @@ struct StatusIcon {
     ///  - parameter percentage: The current percentage of the battery.
     ///  - returns:              A battery image for the supplied percentage.
     private func dischargingBatteryImage(forPercentage percentage: Int) -> NSImage? {
-        // Get the required images to draw the battery icon.
         guard let batteryEmpty   = batteryImage(named: .empty),
             let capacityCapLeft  = batteryImage(named: .left),
             let capacityCapRight = batteryImage(named: .right),
             let capacityFill     = batteryImage(named: .middle) else {
                 return nil
         }
-        // Get the capacity bar's height.
         let capacityHeight = capacityFill.size.height
-        // Calculate the offset to achieve that little gap between the capacity bar and the outline.
         let capacityOffsetY = batteryEmpty.size.height - (capacityHeight + capacityOffsetX)
-        // Calculate the capacity bar's width.
         let capacityWidth = CGFloat(round(Double(percentage) / drawingPrecision)) * capacityFill.size.width
-        // Define the drawing rect in which to draw the capacity bar in.
         let drawingRect = NSRect(x: capacityOffsetX, y: capacityOffsetY,
                                  width: capacityWidth, height: capacityHeight)
         // Draw a special battery icon for low percentages, otherwise
         // drawThreePartImage glitches.
         if drawingRect.width < (2 * capacityFill.size.width) {
-            if let img = NSImage(named: NSImage.Name(rawValue: "LowBattery")) {
-                img.isTemplate = true
-                return img
-            }
+            return drawLowPercentageBattryImage()
         }
-
-        // Draw the actual menu bar image.
         drawThreePartImage(withFrame: drawingRect, canvas: batteryEmpty, startCap: capacityCapLeft,
                            fill: capacityFill, endCap: capacityCapRight)
 
         return batteryEmpty
+    }
+
+    /// Draw a special 'low percentage' battery image, since for percentages
+    /// this small, the drawThreePartImage method glitches.
+    ///
+    /// - Returns: A battery image for low percentages.
+    private func drawLowPercentageBattryImage() -> NSImage? {
+        let img = NSImage(named: NSImage.Name(rawValue: "LowBattery"))
+        img?.isTemplate = true
+
+        return img
     }
 
     ///  Opens an image file for the supplied image name.
@@ -128,11 +125,9 @@ struct StatusIcon {
     ///  - parameter name: The name of the requested image.
     ///  - returns:        The requested image.
     private func batteryImage(named name: BatteryImage) -> NSImage? {
-        // Get the battery image for the supplied BatteryImage name.
         guard let img = NSImage(contentsOfFile: batteryIconPath + name.rawValue) else {
             return nil
         }
-        // Define the image as template.
         img.isTemplate = true
 
         return img

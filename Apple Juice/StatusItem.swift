@@ -29,13 +29,10 @@ final class BatteryStatusBarItem: NSObject {
     ///   - action: The action to be triggered, when the
     ///             user clicks the status bar item.
     init(withTarget target: AnyObject?, andAction action: Selector?) {
-        // Find a place to live.
         item = NSStatusBar.system.statusItem(withLength: NSStatusItem.variableLength)
-        // Set Properties.
         item.target = target
         item.action = action
 
-        // Initialize super class
         super.init()
     }
 
@@ -55,11 +52,6 @@ final class BatteryStatusBarItem: NSObject {
         btn.image = icon.drawBatteryImage(forError: error)
     }
 
-    /// Initialize a battery status bar item.
-    override convenience init() {
-        self.init(withTarget: nil, andAction: nil)
-    }
-
     /// Update the status bar item.
     ///
     /// - Parameter battery: The battery object, with new information.
@@ -70,12 +62,10 @@ final class BatteryStatusBarItem: NSObject {
             let timeRemaining = battery?.timeRemainingFormatted else {
                 return
         }
-        // Set the attributed status bar item title.
         button.attributedTitle = title(withPercentage: batteryState.percentage,
                                        andTime: timeRemaining)
-        // Draw the corresponding status bar image.
+
         button.image = icon.drawBatteryImage(forStatus: batteryState)
-        // Set the image position relative to it's title.
         button.imagePosition = .imageRight
     }
 
@@ -95,14 +85,14 @@ final class BatteryStatusBarItem: NSObject {
     ///  - parameter time:    The estimated remaining time in a human readable format.
     ///  - returns:           The attributed title with percentage or time information, respectively.
     private func title(withPercentage percent: Int, andTime time: String) -> NSAttributedString {
-        // Define some attributes to make the status bar item look more like Apple's battery gauge.
-        let attrs = [NSAttributedStringKey.font: NSFont.menuBarFont(ofSize: 12.0)]
-        // Check whether the user wants to see the remaining time or not.
+        let attrs = [
+            NSAttributedStringKey.font: NSFont.menuBarFont(ofSize: 12.0)
+        ]
+
         if UserPreferences.showTime {
             return NSAttributedString(string: "\(time) ", attributes: attrs)
         } else {
             return NSAttributedString(string: "\(percent) % ", attributes: attrs)
         }
     }
-
 }
