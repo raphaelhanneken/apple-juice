@@ -82,7 +82,7 @@ final class UserPreferences: NSObject {
     // MARK: - Methods
 
     ///  Register user defaults.
-    static func registerUserDefaults() {
+    static func registerDefaults() {
         let defaultPreferences = [
             PreferenceKey.showTime.rawValue: false,
             PreferenceKey.fivePercentNotification.rawValue: false,

@@ -5,11 +5,14 @@ excluded:
 # Rules
 line_length: 120
 
+disabled_rules:
+  - block_based_kvo
+
 cyclomatic_complexity:
-  warning: 6
-  error: 15
+  warning: 3
+  error: 5
   ignores_case_statements: true
 
 vertical_whitespace:
-  max_empty_lines: 3
+  max_empty_lines: 2
 

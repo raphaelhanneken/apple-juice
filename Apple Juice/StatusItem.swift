@@ -7,7 +7,7 @@
 import Cocoa
 
 /// A battery status bar item.
-final class BatteryStatusBarItem: NSObject {
+final class StatusItem: NSObject {
 
     /// The applications status bar item.
     private let item: NSStatusItem!
@@ -28,7 +28,7 @@ final class BatteryStatusBarItem: NSObject {
     ///   - target: The target that implements the supplied action.
     ///   - action: The action to be triggered, when the
     ///             user clicks the status bar item.
-    init(withTarget target: AnyObject?, andAction action: Selector?) {
+    init(forBattery battery: Battery?, withTarget target: AnyObject?, andAction action: Selector?) {
         item = NSStatusBar.system.statusItem(withLength: NSStatusItem.variableLength)
         item.target = target
         item.action = action
@@ -44,7 +44,7 @@ final class BatteryStatusBarItem: NSObject {
     ///   - action: The action to be triggered, when the 
     ///             user clicks the status bar item.
     convenience init(forError error: BatteryError?, withTarget target: AnyObject?, andAction action: Selector?) {
-        self.init(withTarget: target, andAction: action)
+        self.init(forBattery: nil, withTarget: target, andAction: action)
 
         guard let btn = item.button else {
             return
@@ -91,8 +91,7 @@ final class BatteryStatusBarItem: NSObject {
 
         if UserPreferences.showTime {
             return NSAttributedString(string: "\(time) ", attributes: attrs)
-        } else {
-            return NSAttributedString(string: "\(percent) % ", attributes: attrs)
         }
+        return NSAttributedString(string: "\(percent) % ", attributes: attrs)
     }
 }

@@ -16,46 +16,25 @@ final class ApplicationController: NSObject {
     @IBOutlet weak var currentSource: NSMenuItem!
 
     /// The status bar item.
-    private var statusItem: BatteryStatusBarItem?
+    private var statusItem: StatusItem?
 
-    /// Access the battery's IOService.
+    /// An abstraction to the battery IO service
     private var battery: Battery!
 
-    // MARK: - Methods
-
-    ///  Initialize the ApplicationController.
     override init() {
-        // Initialize the parent class.
         super.init()
-
-        // Register user defaults.
-        UserPreferences.registerUserDefaults()
-
         do {
-            // Access the battery's IOService.
-            try battery = Battery.instance()
+            self.battery    = try Battery.instance()
+            self.statusItem = StatusItem(forBattery: self.battery,
+                                         withTarget: self,
+                                         andAction: #selector(ApplicationController.displayAppMenu(_:)))
 
-            // Create the status bar item.
-            statusItem = BatteryStatusBarItem(withTarget: self,
-                                              andAction: #selector(ApplicationController.displayAppMenu(_:)))
-            // Update the status bar item.
-            statusItem?.update(batteryInfo: battery)
-
-            // Listen for powerSourceChangedNotification's.
-            NotificationCenter.default
-                .addObserver(self,
-                             selector: #selector(ApplicationController.powerSourceChanged(_:)),
-                             name: NSNotification.Name(rawValue: powerSourceChangedNotification),
-                             object: nil)
-
-            // Get notified, when the user toggles between displaying time and percentage.
-            UserDefaults.standard.addObserver(self, forKeyPath: PreferenceKey.showTime.rawValue,
-                                              options: .new, context: nil)
-
+            self.statusItem?.update(batteryInfo: try Battery.instance())
+            self.registerAsObserver()
         } catch {
-            statusItem = BatteryStatusBarItem(forError: error as? BatteryError,
-                                              withTarget: self,
-                                              andAction: #selector(ApplicationController.displayAppMenu(_:)))
+            self.statusItem = StatusItem(forError: error as? BatteryError,
+                                         withTarget: self,
+                                         andAction: #selector(ApplicationController.displayAppMenu(_:)))
         }
     }
 
@@ -91,14 +70,10 @@ final class ApplicationController: NSObject {
     ///
     ///  - parameter sender: The source object that sent the message.
     @objc func displayAppMenu(_: AnyObject) {
-        // Before showing the app menu, update the information displayed
-        // within it.
         updateMenuItems({
             self.statusItem?.popUpMenu(self.applicationMenu)
         })
     }
-
-    // MARK: - Private
 
     ///  Updates the information within the application menu.
     ///
@@ -111,21 +86,30 @@ final class ApplicationController: NSObject {
             let percentage = battery.percentage else {
                 return
         }
-        // Set the menu item title for the current charge level, depending on the user preferences
-        // with the current percentage or remaining time, respectively.
+
+        currentSource.title = "\(NSLocalizedString("Power Source", comment: "")) \(battery.powerSource)"
+        currentCharge.title = "\(battery.timeRemainingFormatted) (\(charge) / \(capacity) mAh)"
+
         if UserPreferences.showTime {
             currentCharge.title = "\(percentage) % (\(charge) / \(capacity) mAh)"
-        } else {
-            currentCharge.title = "\(battery.timeRemainingFormatted) (\(charge) / \(capacity) mAh)"
         }
-        // Set the menu item title for the current power source.
-        currentSource.title = "\(NSLocalizedString("Power Source", comment: "")) \(battery.powerSource)"
-
-        // Run the provided completion handler.
         completionHandler()
     }
 
-    // MARK: - IBAction's
+    /// Register the ApplicationController as observer for changes in the power source and the user preferences
+    private func registerAsObserver() {
+        NotificationCenter
+            .default
+            .addObserver(self,
+                         selector: #selector(ApplicationController.powerSourceChanged(_:)),
+                         name: NSNotification.Name(rawValue: powerSourceChangedNotification),
+                         object: nil)
+
+        UserDefaults.standard.addObserver(self,
+                                          forKeyPath: PreferenceKey.showTime.rawValue,
+                                          options: .new,
+                                          context: nil)
+    }
 
     ///  Open the energy saver preference pane.
     ///

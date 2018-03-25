@@ -20,11 +20,14 @@ private let powerSourceCallback: IOPowerSourceCallbackType = { _ in
 ///  Accesses the battery's IO service.
 final class Battery {
 
-    ///  The battery's IO service name.
+    /// Closed state value for the service connection object.
+    private static let serviceConnectionClosed: UInt32 = 0
+
+    /// The battery's IO service name.
     private let batteryIOServiceName = "AppleSmartBattery"
 
-    ///  An IOService object that matches battery's IO service dictionary.
-    private var service: io_object_t = 0
+    /// An IOService object that matches battery's IO service dictionary.
+    private var service: io_object_t = Battery.serviceConnectionClosed
 
     /// Holds the battery instance.
     private static var battery: Battery?
@@ -74,14 +77,11 @@ final class Battery {
         let time = IOPSGetTimeRemainingEstimate()
 
         switch time {
-            // kIOPSTimeRemainingUnknown
-        case -1.0:
-            // The remaining time is currently unknown.
+        case kIOPSTimeRemainingUnknown:
             return nil
-            // kIOPSTimeRemainingUnlimited
-        case -2.0:
+        case kIOPSTimeRemainingUnlimited:
             // The battery is connected to a power outlet, get the remaining time
-            // until the battery is fully charged directly from the IOService.
+            // until the battery is fully charged.
             if let prop = getRegistryPropertyForKey(.timeRemaining) as? Int, prop < 600 {
                 return prop
             }
@@ -191,18 +191,14 @@ final class Battery {
     ///
     ///  - throws: A BatteryError if something went wrong.
     private func openServiceConnection() throws {
-        // Check if the IOService connection is still open.
-        if service != 0 {
-            if !closeServiceConnection() {
-                // Throw a connectionAlreadyOpen Exception if the
-                // IOService connection won't close.
-                throw BatteryError.connectionAlreadyOpen("Closing the IOService connection failed.")
-            }
+        if service != Battery.serviceConnectionClosed && !closeServiceConnection() {
+            // For some reason we have an open IO Service connection which we cannot close.
+            throw BatteryError.connectionAlreadyOpen("Closing the IOService connection failed.")
         }
-        // Get an IOService object for the defined battery service name.
-        service = IOServiceGetMatchingService(kIOMasterPortDefault, IOServiceNameMatching(batteryIOServiceName))
-        if service == 0 {
-            // Throw a serviceNotFound exception if the supplied IOService couldn't be opened.
+        service = IOServiceGetMatchingService(kIOMasterPortDefault,
+                                              IOServiceNameMatching(batteryIOServiceName))
+
+        if service == Battery.serviceConnectionClosed {
             throw BatteryError.serviceNotFound("Opening the provided IOService (\(batteryIOServiceName)) failed.")
         }
     }
@@ -211,11 +207,11 @@ final class Battery {
     ///
     ///  - returns: True, whether the IOService connection was successfully closed.
     private func closeServiceConnection() -> Bool {
-        // Release the IOService object and reset the service property.
         if kIOReturnSuccess == IOObjectRelease(service) {
-            service = 0
+            service = Battery.serviceConnectionClosed
         }
-        return (service == 0)
+
+        return (service == Battery.serviceConnectionClosed)
     }
 
     ///  Get the registry entry's property for the supplied SmartBatteryKey.
