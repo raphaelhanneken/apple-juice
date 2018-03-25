@@ -26,5 +26,4 @@ build/
 *.dep
 
 # Carthage
-Cartfile.resolved
 Carthage/
