@@ -26,10 +26,10 @@ enum BatteryState: Equatable {
         switch self {
         case .pluggedAndCharged:
             return 100
-        case .charging(let p):
-            return p
-        case .discharging(let p):
-            return p
+        case .charging(let percentage):
+            return percentage
+        case .discharging(let percentage):
+            return percentage
         }
     }
 }

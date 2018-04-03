@@ -177,12 +177,10 @@ final class Battery {
 
     ///  Initializes a new Battery object.
     private init() throws {
-        // Try opening a connection to the battery's IOService.
         try openServiceConnection()
-        // Create a RunLoopSource to post a notification, whenever the power source chages.
-        let loop = IOPSNotificationCreateRunLoopSource(powerSourceCallback, nil).takeRetainedValue()
-        // Add the notification loop to the current run loop.
-        CFRunLoopAddSource(CFRunLoopGetCurrent(), loop, CFRunLoopMode.defaultMode)
+        CFRunLoopAddSource(CFRunLoopGetCurrent(),
+                           IOPSNotificationCreateRunLoopSource(powerSourceCallback, nil).takeRetainedValue(),
+                           .defaultMode)
     }
 
     // MARK: - Private
@@ -219,6 +217,6 @@ final class Battery {
     ///  - parameter key: A SmartBatteryKey to get the corresponding registry entry's property.
     ///  - returns:       The registry entry for the provided SmartBatteryKey.
     private func getRegistryPropertyForKey(_ key: SmartBatteryKeys) -> AnyObject? {
-        return IORegistryEntryCreateCFProperty(service, key.rawValue as CFString!, nil, 0).takeRetainedValue()
+        return IORegistryEntryCreateCFProperty(service, key.rawValue as CFString?, nil, 0).takeRetainedValue()
     }
 }
