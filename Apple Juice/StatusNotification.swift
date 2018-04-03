@@ -18,9 +18,10 @@ struct StatusNotification {
     /// - returns:       An optional StatusNotification; Return nil when the notificationKey
     ///                  is invalid or nil.
     init?(forState state: BatteryState?) {
-        guard
-            let state = state,
-            let key = NotificationKey(rawValue: state.percentage), key != .invalid else {
+        guard let state = state, state != .charging(percentage: 0) else {
+            return nil
+        }
+        guard let key = NotificationKey(rawValue: state.percentage), key != .invalid else {
             return nil
         }
         self.notificationKey = key
@@ -30,6 +31,7 @@ struct StatusNotification {
     func postNotification() {
         if self.shouldPresentNotification() {
             NSUserNotificationCenter.default.deliver(self.createUserNotification())
+            UserPreferences.lastNotified = self.notificationKey
         }
     }
 
@@ -63,7 +65,8 @@ struct StatusNotification {
         if self.notificationKey == .hundredPercent {
             return NSLocalizedString("Charged Notification Title", comment: "")
         }
-        return NSLocalizedString("Low Battery Notification Title", comment: "")
+        return String.localizedStringWithFormat(NSLocalizedString("Low Battery Notification Title", comment: ""),
+                                                self.notificationKey.rawValue)
     }
 
     /// Get the corresponding notification text for the current battery state
