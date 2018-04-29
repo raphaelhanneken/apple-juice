@@ -18,19 +18,13 @@ private let powerSourceCallback: IOPowerSourceCallbackType = { _ in
 }
 
 ///  Accesses the battery's IO service.
-final class Battery {
+final class BatteryService {
 
     /// Closed state value for the service connection object.
-    private static let serviceConnectionClosed: UInt32 = 0
-
-    /// The battery's IO service name.
-    private let batteryIOServiceName = "AppleSmartBattery"
+    private static let connectionClosed: UInt32 = 0
 
     /// An IOService object that matches battery's IO service dictionary.
-    private var service: io_object_t = Battery.serviceConnectionClosed
-
-    /// Holds the battery instance.
-    private static var battery: Battery?
+    private var service: io_object_t = BatteryService.connectionClosed
 
 
     ///  The current status of the battery, e.g. charging.
@@ -163,60 +157,49 @@ final class Battery {
         return (temp / 100)
     }
 
-    // MARK: - Methods
-
-    /// Create an new battery instance.
-    ///
-    /// - Returns: An instantiated battery object.
-    class func instance() throws -> Battery? {
-        if battery == nil {
-            battery = try Battery()
-        }
-        return battery
-    }
 
     ///  Initializes a new Battery object.
-    private init() throws {
+    init() throws {
         try openServiceConnection()
         CFRunLoopAddSource(CFRunLoopGetCurrent(),
                            IOPSNotificationCreateRunLoopSource(powerSourceCallback, nil).takeRetainedValue(),
-                           .defaultMode)
+                           CFRunLoopMode.defaultMode)
     }
-
-    // MARK: - Private
 
     ///  Opens a connection to the battery's IOService object.
     ///
     ///  - throws: A BatteryError if something went wrong.
     private func openServiceConnection() throws {
-        if service != Battery.serviceConnectionClosed && !closeServiceConnection() {
+        if service != BatteryService.connectionClosed && !closeServiceConnection() {
             // For some reason we have an open IO Service connection which we cannot close.
             throw BatteryError.connectionAlreadyOpen("Closing the IOService connection failed.")
         }
         service = IOServiceGetMatchingService(kIOMasterPortDefault,
-                                              IOServiceNameMatching(batteryIOServiceName))
+                                              IOServiceNameMatching(RegistryKey.service.rawValue))
 
-        if service == Battery.serviceConnectionClosed {
-            throw BatteryError.serviceNotFound("Opening the provided IOService (\(batteryIOServiceName)) failed.")
+        if service == BatteryService.connectionClosed {
+            throw BatteryError
+                .serviceNotFound("Opening the provided IOService (\(RegistryKey.service.rawValue)) failed.")
         }
     }
 
     ///  Closes the connection the the battery's IOService object.
     ///
-    ///  - returns: True, whether the IOService connection was successfully closed.
+    ///  - returns: True, when the IOService connection was successfully closed.
     private func closeServiceConnection() -> Bool {
         if kIOReturnSuccess == IOObjectRelease(service) {
-            service = Battery.serviceConnectionClosed
+            service = BatteryService.connectionClosed
         }
 
-        return (service == Battery.serviceConnectionClosed)
+        return (service == BatteryService.connectionClosed)
     }
 
     ///  Get the registry entry's property for the supplied SmartBatteryKey.
     ///
     ///  - parameter key: A SmartBatteryKey to get the corresponding registry entry's property.
     ///  - returns:       The registry entry for the provided SmartBatteryKey.
-    private func getRegistryPropertyForKey(_ key: SmartBatteryKeys) -> AnyObject? {
-        return IORegistryEntryCreateCFProperty(service, key.rawValue as CFString?, nil, 0).takeRetainedValue()
+    private func getRegistryPropertyForKey(_ key: RegistryKey) -> AnyObject? {
+        return IORegistryEntryCreateCFProperty(service, key.rawValue as CFString?, nil, 0)
+            .takeRetainedValue()
     }
 }

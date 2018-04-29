@@ -10,7 +10,7 @@ class PowerUsageInfoType: NSObject, BatteryInfoTypeProtocol {
     var title: String
     var value: String
 
-    init(_ battery: Battery?) {
+    init(_ battery: BatteryService?) {
         title = NSLocalizedString("Power Usage", comment: "")
         if let powerUsage = battery?.powerUsage {
             value = "\(powerUsage) \(NSLocalizedString("Watts", comment: ""))"

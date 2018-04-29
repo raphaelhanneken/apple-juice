@@ -7,7 +7,7 @@
 import Cocoa
 
 ///  Define the BatteryUIKit path
-private let batteryIconPath = "/System/Library/PrivateFrameworks/BatteryUIKit.framework/Versions/A/Resources/"
+fileprivate let batteryIconPath = "/System/Library/PrivateFrameworks/BatteryUIKit.framework/Versions/A/Resources/"
 
 ///  Defines the filenames for Apple's battery images.
 ///
@@ -31,7 +31,7 @@ private enum BatteryImage: String {
 }
 
 ///  Draws the status bar image.
-struct StatusIcon {
+struct StatusBarIcon {
 
     ///  Add a little offset to draw the capacity bar in the correct position.
     private let capacityOffsetX: CGFloat = 2.0
@@ -95,7 +95,8 @@ struct StatusIcon {
         }
         let capacityHeight = capacityFill.size.height
         let capacityOffsetY = batteryEmpty.size.height - (capacityHeight + capacityOffsetX)
-        let capacityWidth = CGFloat(round(Double(percentage) / drawingPrecision)) * capacityFill.size.width
+        let capacityWidth =
+            CGFloat(round(Double(percentage) / batteryStatusBarIconDrawingPrecision)) * capacityFill.size.width
         let drawingRect = NSRect(x: capacityOffsetX, y: capacityOffsetY,
                                  width: capacityWidth, height: capacityHeight)
         // Draw a special battery icon for low percentages, otherwise

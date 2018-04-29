@@ -10,7 +10,7 @@ class ChargeInfoType: NSObject, BatteryInfoTypeProtocol {
     var title: String
     var value: String
 
-    init(_ battery: Battery?) {
+    init(_ battery: BatteryService?) {
         title = NSLocalizedString("Charge", comment: "")
         if let charge = battery?.charge, let capacity = battery?.capacity {
             value = "\(charge) / \(capacity) mAh"

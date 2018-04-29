@@ -7,13 +7,13 @@
 import Cocoa
 
 /// A battery status bar item.
-final class StatusItem: NSObject {
+final class StatusBarItem: NSObject {
 
     /// The applications status bar item.
     private let item: NSStatusItem!
 
     /// The icon to display in the battery status bar item.
-    private var icon = StatusIcon()
+    private var icon = StatusBarIcon()
 
     /// The status bar items button.
     var button: NSButton? {
@@ -28,7 +28,7 @@ final class StatusItem: NSObject {
     ///   - target: The target that implements the supplied action.
     ///   - action: The action to be triggered, when the
     ///             user clicks the status bar item.
-    init(forBattery battery: Battery?, withTarget target: AnyObject?, andAction action: Selector?) {
+    init(forBattery battery: BatteryService?, withTarget target: AnyObject?, andAction action: Selector?) {
         item = NSStatusBar.system.statusItem(withLength: NSStatusItem.variableLength)
         item.target = target
         item.action = action
@@ -55,7 +55,7 @@ final class StatusItem: NSObject {
     /// Update the status bar item.
     ///
     /// - Parameter battery: The battery object, with new information.
-    func update(batteryInfo battery: Battery?) {
+    func update(batteryInfo battery: BatteryService?) {
         guard
             let button        = item.button,
             let batteryState  = battery?.state,

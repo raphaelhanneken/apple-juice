@@ -16,23 +16,23 @@ final class ApplicationController: NSObject {
     @IBOutlet weak var currentSource: NSMenuItem!
 
     /// The status bar item.
-    private var statusItem: StatusItem?
+    private var statusItem: StatusBarItem?
 
     /// An abstraction to the battery IO service
-    private var battery: Battery!
+    private var battery: BatteryService!
 
     override init() {
         super.init()
         do {
-            self.battery    = try Battery.instance()
-            self.statusItem = StatusItem(forBattery: self.battery,
+            self.battery = try BatteryService()
+            self.statusItem = StatusBarItem(forBattery: self.battery,
                                          withTarget: self,
                                          andAction: #selector(ApplicationController.displayAppMenu(_:)))
 
-            self.statusItem?.update(batteryInfo: try Battery.instance())
+            self.statusItem?.update(batteryInfo: self.battery)
             self.registerAsObserver()
         } catch {
-            self.statusItem = StatusItem(forError: error as? BatteryError,
+            self.statusItem = StatusBarItem(forError: error as? BatteryError,
                                          withTarget: self,
                                          andAction: #selector(ApplicationController.displayAppMenu(_:)))
         }

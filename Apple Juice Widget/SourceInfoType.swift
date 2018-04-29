@@ -10,7 +10,7 @@ class SourceInfoType: NSObject, BatteryInfoTypeProtocol {
     var title: String
     var value: String
 
-    init(_ battery: Battery?) {
+    init(_ battery: BatteryService?) {
         title = NSLocalizedString("Power Source", comment: "")
         if let src = battery?.powerSource {
             value = "\(src)"

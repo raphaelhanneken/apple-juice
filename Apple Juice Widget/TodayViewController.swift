@@ -25,7 +25,7 @@ final class TodayViewController: NSViewController,
     override func viewDidLoad() {
         super.viewDidLoad()
         do {
-            let battery = try Battery.instance()
+            let battery = try BatteryService()
             // Set up the widget list view controller.
             // The contents property should contain an object for each row in the list.
             listViewController.contents = [

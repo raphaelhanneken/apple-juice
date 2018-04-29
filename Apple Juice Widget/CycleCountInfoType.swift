@@ -10,7 +10,7 @@ class CycleCountInfoType: NSObject, BatteryInfoTypeProtocol {
     var title: String
     var value: String
 
-    init(_ battery: Battery?) {
+    init(_ battery: BatteryService?) {
         title = NSLocalizedString("Cycle Count", comment: "")
         if let cycleCount = battery?.cycleCount {
             value = "\(cycleCount)"

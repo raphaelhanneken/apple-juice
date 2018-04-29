@@ -10,7 +10,7 @@ class TimeRemainingInfoType: NSObject, BatteryInfoTypeProtocol {
     var title: String
     var value: String
 
-    init(_ battery: Battery?) {
+    init(_ battery: BatteryService?) {
         self.title = NSLocalizedString("Time Remaining", comment: "")
         if let value = battery?.timeRemainingFormatted {
             self.value = value
