@@ -30,6 +30,7 @@
 "Cycle Count"        = "Ladezyklen:";
 "Temperature"        = "Temperatur:";
 "Power Source"       = "Energieversorgung:";
+"Health"             = "Zustand:";
 
 
 //  Units
