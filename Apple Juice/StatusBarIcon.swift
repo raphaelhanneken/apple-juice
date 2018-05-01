@@ -7,7 +7,7 @@
 import Cocoa
 
 ///  Define the BatteryUIKit path
-fileprivate let batteryIconPath = "/System/Library/PrivateFrameworks/BatteryUIKit.framework/Versions/A/Resources/"
+private let batteryIconPath = "/System/Library/PrivateFrameworks/BatteryUIKit.framework/Versions/A/Resources/"
 
 ///  Defines the filenames for Apple's battery images.
 ///
