@@ -1,5 +1,5 @@
 //
-// TemperatureInfoType.swift
+// BatteryHealthType.swift
 // Apple Juice Widget
 // https://github.com/raphaelhanneken/apple-juice
 //
