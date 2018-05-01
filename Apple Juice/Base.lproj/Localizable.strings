@@ -30,6 +30,7 @@
 "Cycle Count"        = "Cycle Count:";
 "Temperature"        = "Temperature:";
 "Power Source"       = "Power Source:";
+"Health"             = "Condition:";
 
 
 //  Units

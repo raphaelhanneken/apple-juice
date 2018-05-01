@@ -6,7 +6,6 @@
 
 import Foundation
 import IOKit.ps
-import IOKit.pwr_mgt
 
 ///  Notification name for the power source changed callback.
 let powerSourceChangedNotification = "com.raphaelhanneken.apple-juice.powersourcechanged"
@@ -76,7 +75,7 @@ final class BatteryService {
         case kIOPSTimeRemainingUnlimited:
             // The battery is connected to a power outlet, get the remaining time
             // until the battery is fully charged.
-            if let prop = getRegistryPropertyForKey(.timeRemaining) as? Int, prop < 600 {
+            if let prop = getRegistryProperty(forKey: .timeRemaining) as? Int, prop < 600 {
                 return prop
             }
             return nil
@@ -98,12 +97,12 @@ final class BatteryService {
 
     ///  The current charge in mAh.
     var charge: Int? {
-        return getRegistryPropertyForKey(.currentCharge) as? Int
+        return getRegistryProperty(forKey: .currentCharge) as? Int
     }
 
     ///  The maximum capacity in mAh.
     var capacity: Int? {
-        return getRegistryPropertyForKey(.maxCapacity) as? Int
+        return getRegistryProperty(forKey: .maxCapacity) as? Int
     }
 
     ///  The source from which the Mac currently draws its power.
@@ -121,24 +120,24 @@ final class BatteryService {
 
     ///  Checks whether the battery is charging and connected to a power outlet.
     var isCharging: Bool? {
-        return getRegistryPropertyForKey(.isCharging) as? Bool
+        return getRegistryProperty(forKey: .isCharging) as? Bool
     }
 
     ///  Checks whether the battery is fully charged.
     var isCharged: Bool? {
-        return getRegistryPropertyForKey(.fullyCharged) as? Bool
+        return getRegistryProperty(forKey: .fullyCharged) as? Bool
     }
 
     ///  Checks whether the battery is plugged into an unlimited power supply.
     var isPlugged: Bool? {
-        return getRegistryPropertyForKey(.isPlugged) as? Bool
+        return getRegistryProperty(forKey: .isPlugged) as? Bool
     }
 
     ///  Calculates the current power usage in Watts.
     var powerUsage: Double? {
         guard
-            let voltage  = getRegistryPropertyForKey(.voltage) as? Double,
-            let amperage = getRegistryPropertyForKey(.amperage) as? Double else {
+            let voltage  = getRegistryProperty(forKey: .voltage) as? Double,
+            let amperage = getRegistryProperty(forKey: .amperage) as? Double else {
             return nil
         }
         return round(((voltage * amperage) / 1_000_000) * 10) / 10
@@ -146,15 +145,20 @@ final class BatteryService {
 
     /// The number of charging cycles.
     var cycleCount: Int? {
-        return getRegistryPropertyForKey(.cycleCount) as? Int
+        return getRegistryProperty(forKey: .cycleCount) as? Int
     }
 
     /// The battery's current temperature.
     var temperature: Double? {
-        guard let temp = getRegistryPropertyForKey(.temperature) as? Double else {
+        guard let temp = getRegistryProperty(forKey: .temperature) as? Double else {
             return nil
         }
         return (temp / 100)
+    }
+
+    /// The batteries' health status
+    var health: String? {
+        return getPowerSourceProperty(forKey: .health) as? String
     }
 
 
@@ -198,8 +202,20 @@ final class BatteryService {
     ///
     ///  - parameter key: A SmartBatteryKey to get the corresponding registry entry's property.
     ///  - returns:       The registry entry for the provided SmartBatteryKey.
-    private func getRegistryPropertyForKey(_ key: RegistryKey) -> AnyObject? {
+    private func getRegistryProperty(forKey key: RegistryKey) -> AnyObject? {
         return IORegistryEntryCreateCFProperty(service, key.rawValue as CFString?, nil, 0)
             .takeRetainedValue()
+    }
+
+    private func getPowerSourceProperty(forKey key: RegistryKey) -> Any? {
+        let psInfo = IOPSCopyPowerSourcesInfo().takeRetainedValue()
+        let psList = IOPSCopyPowerSourcesList(psInfo).takeRetainedValue() as? [CFDictionary]
+
+        guard let powerSources = psList else {
+            return nil
+        }
+        let powerSource = powerSources[0] as NSDictionary
+
+        return powerSource[key.rawValue]
     }
 }
