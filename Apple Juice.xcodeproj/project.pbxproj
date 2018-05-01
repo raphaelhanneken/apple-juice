@@ -45,6 +45,7 @@
 		8EE129721C46CA1B000D404F /* UserPreferences.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EE129711C46CA1B000D404F /* UserPreferences.swift */; };
 		8EE129741C46D3C7000D404F /* StatusNotification.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EE129731C46D3C7000D404F /* StatusNotification.swift */; };
 		8EF30ED31D32B3170010BC49 /* BatteryService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EE1296F1C4695B5000D404F /* BatteryService.swift */; };
+		C5D7EB48209891D500012A81 /* BatteryHealthType.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5D7EB47209891D500012A81 /* BatteryHealthType.swift */; };
 		C5EEDA6920276240004DE64C /* PreferenceKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5EEDA6820276240004DE64C /* PreferenceKey.swift */; };
 /* End PBXBuildFile section */
 
@@ -138,6 +139,7 @@
 		8EF30EE81D32D0ED0010BC49 /* TodayViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TodayViewController.xib; sourceTree = "<group>"; };
 		8EF30EEA1D32D0FA0010BC49 /* ListRowViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ListRowViewController.xib; sourceTree = "<group>"; };
 		8EF30EF01D32D1C70010BC49 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		C5D7EB47209891D500012A81 /* BatteryHealthType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BatteryHealthType.swift; sourceTree = "<group>"; };
 		C5EEDA6820276240004DE64C /* PreferenceKey.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PreferenceKey.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -183,6 +185,7 @@
 				8E7373E21EACBC5D00F10AD7 /* CycleCountInfoType.swift */,
 				8EAE0D201EB4EFBF00E3D594 /* SourceInfoType.swift */,
 				8EAE0D221EB4EFD000E3D594 /* TemperatureInfoType.swift */,
+				C5D7EB47209891D500012A81 /* BatteryHealthType.swift */,
 				8E0D33C81D311906002D3463 /* UI */,
 				8E0D33B21D3118CD002D3463 /* Supporting Files */,
 			);
@@ -422,6 +425,7 @@
 				8E995BB51EABDA6800CE8364 /* BatteryState.swift in Sources */,
 				8E7373DB1EACB78500F10AD7 /* TimeRemainingInfoType.swift in Sources */,
 				8EAE0D211EB4EFBF00E3D594 /* SourceInfoType.swift in Sources */,
+				C5D7EB48209891D500012A81 /* BatteryHealthType.swift in Sources */,
 				8EAE0D231EB4EFD000E3D594 /* TemperatureInfoType.swift in Sources */,
 				8E7373DF1EACBB3300F10AD7 /* PowerUsageInfoType.swift in Sources */,
 				8E7373DD1EACB8D400F10AD7 /* PercentageInfoType.swift in Sources */,
