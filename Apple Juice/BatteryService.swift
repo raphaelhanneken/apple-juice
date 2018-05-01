@@ -87,12 +87,7 @@ final class BatteryService {
 
     ///  The current percentage, based on the current charge and the maximum capacity.
     var percentage: Int? {
-        // Unwrap the required information.
-        guard let capacity = capacity, let charge = charge else {
-            return nil
-        }
-        // Calculate the current percentage.
-        return Int(round(Double(charge) / Double(capacity) * 100.0))
+        return getPowerSourceProperty(forKey: .percentage) as? Int
     }
 
     ///  The current charge in mAh.

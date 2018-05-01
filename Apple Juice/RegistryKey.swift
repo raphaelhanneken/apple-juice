@@ -30,4 +30,5 @@ enum RegistryKey: String {
     case timeRemaining = "TimeRemaining"
     case service       = "AppleSmartBattery"
     case health        = "BatteryHealth"
+    case percentage    = "Current Capacity"
 }
