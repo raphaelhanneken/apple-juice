@@ -7,6 +7,27 @@
     <language>en</language>
 
     <item>
+      <title>Apple Juice v1.3.0</title>
+        <description>
+          <![CDATA[
+            <ul>
+              <li>Add the battery condition status to the Today widget</li>
+              <li>Use a different source for percentage to get closer to the percentage displayed by macOS.</li>
+            </ul>
+          ]]>
+        </description>
+        <pubDate>Tue, 1 May 2018 15:00:00 +0100</pubDate>
+        <sparkle:minimumSystemVersion>10.12</sparkle:minimumSystemVersion>
+        <enclosure
+          url="https://github.com/raphaelhanneken/apple-juice/releases/download/1.3.0/Apple.Juice.dmg"
+          sparkle:version="307"
+          sparkle:shortVersionString="1.3.0"
+          sparkle:dsaSignature="MCwCFGQMCdalnv24Q4BO9fKKc8p4DygVAhRQCmDGJ7cDkDzW9NhIaER3K2c+Yw=="
+          length="8723061"
+          type="application/octet-stream" />
+    </item>
+
+    <item>
       <title>Apple Juice v1.2.3.1</title>
         <description>
           <![CDATA[
