@@ -10,7 +10,7 @@
 "Unknown"       = "Desconocido";
 "Battery"       = "Batería";
 "Power Adapter" = "Adaptador de Corriente";
-"Calculating"   = "Calculador…";
+"Calculating"   = "Calculando…";
 
 
 //  Notifications
@@ -26,7 +26,7 @@
 "Time Remaining"     = "Tiempo Restante:";
 "Percentage"         = "Porcentaje:";
 "Power Usage"        = "Consumo de Energía:";
-"Charge"             = "Cargar:";
+"Charge"             = "Carga:";
 "Cycle Count"        = "Ciclos de Carga:";
 "Temperature"        = "Temperatura:";
 "Power Source"       = "Fuente de alimentación:";
