@@ -19,7 +19,7 @@ final class TodayViewController: NSViewController,
     // MARK: - NSViewController
 
     override var nibName: NSNib.Name? {
-        return NSNib.Name("TodayViewController")
+        return "TodayViewController"
     }
 
     override func viewDidLoad() {
@@ -43,8 +43,8 @@ final class TodayViewController: NSViewController,
         }
     }
 
-    override func dismissViewController(_ viewController: NSViewController) {
-        super.dismissViewController(viewController)
+    override func dismiss(_ viewController: NSViewController) {
+        super.dismiss(viewController)
 
         // The search controller has been dismissed and is no longer needed.
         if viewController == self.searchController {

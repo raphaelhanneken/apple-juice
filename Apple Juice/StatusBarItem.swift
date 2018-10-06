@@ -86,7 +86,7 @@ final class StatusBarItem: NSObject {
     ///  - returns:           The attributed title with percentage or time information, respectively.
     private func title(withPercentage percent: Int, andTime time: String) -> NSAttributedString {
         let attrs = [
-            NSAttributedStringKey.font: NSFont.menuBarFont(ofSize: 12.0)
+            NSAttributedString.Key.font: NSFont.menuBarFont(ofSize: 12.0)
         ]
 
         if UserPreferences.showTime {

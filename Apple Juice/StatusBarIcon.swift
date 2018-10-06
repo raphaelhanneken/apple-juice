@@ -115,7 +115,7 @@ struct StatusBarIcon {
     ///
     /// - Returns: A battery image for low percentages.
     private func drawLowPercentageBattryImage() -> NSImage? {
-        let img = NSImage(named: NSImage.Name(rawValue: "LowBattery"))
+        let img = NSImage(named: "LowBattery")
         img?.isTemplate = true
 
         return img
