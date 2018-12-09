@@ -83,12 +83,13 @@ final class ApplicationController: NSObject {
         guard
             let capacity   = battery.capacity,
             let charge     = battery.charge,
+            let amperage   = battery.amperage,
             let percentage = battery.percentage else {
                 return
         }
 
         currentSource.title = "\(NSLocalizedString("Power Source", comment: "")) \(battery.powerSource)"
-        currentCharge.title = "\(battery.timeRemainingFormatted) (\(charge) / \(capacity) mAh)"
+        currentCharge.title = "\(battery.timeRemainingFormatted) (\(charge) / \(capacity) mAh / \(amperage) mA)"
 
         if UserPreferences.showTime {
             currentCharge.title = "\(percentage) % (\(charge) / \(capacity) mAh)"
