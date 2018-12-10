@@ -12,8 +12,10 @@ class PowerUsageInfoType: NSObject, BatteryInfoTypeProtocol {
 
     init(_ battery: BatteryService?) {
         title = NSLocalizedString("Power Usage", comment: "")
-        if let powerUsage = battery?.powerUsage {
-            value = "\(powerUsage) \(NSLocalizedString("Watts", comment: ""))"
+
+        if let powerUsage = battery?.powerUsage,
+           let amperage = battery?.amperage {
+            value = "\(powerUsage) \(NSLocalizedString("Watts", comment: "")) (\(amperage) mA)"
         } else {
             value = "--"
         }
