@@ -138,6 +138,15 @@ final class BatteryService {
         return round(((voltage * amperage) / 1_000_000) * 10) / 10
     }
 
+    ///  Current flowing into or out of the battery.
+    var amperage: Int? {
+        guard
+            let amperage = getRegistryProperty(forKey: .amperage) as? Int else {
+                return nil
+        }
+        return amperage
+    }
+
     /// The number of charging cycles.
     var cycleCount: Int? {
         return getRegistryProperty(forKey: .cycleCount) as? Int
