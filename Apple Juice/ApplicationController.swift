@@ -89,10 +89,10 @@ final class ApplicationController: NSObject {
         }
 
         currentSource.title = "\(NSLocalizedString("Power Source", comment: "")) \(battery.powerSource)"
-        currentCharge.title = "\(battery.timeRemainingFormatted) (\(charge) / \(capacity) mAh  \(amperage) mA)"
+        currentCharge.title = "\(battery.timeRemainingFormatted) \(charge) / \(capacity) mAh (\(amperage) mA)"
 
         if UserPreferences.showTime {
-            currentCharge.title = "\(percentage) % (\(charge) / \(capacity) mAh  \(amperage) mA)"
+            currentCharge.title = "\(percentage) % \(charge) / \(capacity) mAh (\(amperage) mA)"
         }
         completionHandler()
     }
