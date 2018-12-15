@@ -7,6 +7,29 @@
     <language>en</language>
 
     <item>
+      <title>Apple Juice v1.5.1</title>
+        <description>
+          <![CDATA[
+            <ul>
+              <li>Rearrange the power usage menu item.</li>
+            </ul>
+            <p>
+              Build with Xcode 10.1 (10B61)
+            </p>
+          ]]>
+        </description>
+        <pubDate>Sat, 15 Dec 2018 13:00:00 +0100</pubDate>
+        <sparkle:minimumSystemVersion>10.12</sparkle:minimumSystemVersion>
+        <enclosure
+          url="https://github.com/raphaelhanneken/apple-juice/releases/download/1.5.1/Apple.Juice.dmg"
+          sparkle:version="321"
+          sparkle:shortVersionString="1.5.1"
+          sparkle:dsaSignature="MC0CFEkLAfJZ6DFACZSqUqm9FOvIJX8uAhUAhU/GSLo4CoRKWozh8QXTH/mWO7c="
+          length="9257033"
+          type="application/octet-stream" />
+    </item>
+
+    <item>
       <title>Apple Juice v1.5.0</title>
         <description>
           <![CDATA[
@@ -19,7 +42,7 @@
             </p>
           ]]>
         </description>
-        <pubDate>Sat, 13 12 2018 22:00:00 +0100</pubDate>
+        <pubDate>Sat, 13 Dec 2018 22:00:00 +0100</pubDate>
         <sparkle:minimumSystemVersion>10.12</sparkle:minimumSystemVersion>
         <enclosure
           url="https://github.com/raphaelhanneken/apple-juice/releases/download/1.5.0/Apple.Juice.dmg"
