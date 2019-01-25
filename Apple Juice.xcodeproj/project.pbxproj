@@ -94,6 +94,8 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		5EF9F80521FB7A3300748374 /* pt-BR */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "pt-BR"; path = "pt-BR.lproj/MainMenu.strings"; sourceTree = "<group>"; };
+		5EF9F80621FB7A3300748374 /* pt-BR */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "pt-BR"; path = "pt-BR.lproj/Localizable.strings"; sourceTree = "<group>"; };
 		8E0D33AF1D3118CD002D3463 /* Apple Juice Widget.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = "Apple Juice Widget.appex"; sourceTree = BUILT_PRODUCTS_DIR; };
 		8E0D33B31D3118CD002D3463 /* Apple_Juice_Widget.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = Apple_Juice_Widget.entitlements; sourceTree = "<group>"; };
 		8E0D33B41D3118CD002D3463 /* TodayViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodayViewController.swift; sourceTree = "<group>"; };
@@ -357,6 +359,7 @@
 				fr,
 				it,
 				es,
+				"pt-BR",
 			);
 			mainGroup = 8EBEB4391C466091001DBE91;
 			productRefGroup = 8EBEB4431C466091001DBE91 /* Products */;
@@ -473,6 +476,7 @@
 				8E7496951D41799200FD5ADA /* fr */,
 				8E7496961D41799600FD5ADA /* it */,
 				8E7496971D41799B00FD5ADA /* es */,
+				5EF9F80521FB7A3300748374 /* pt-BR */,
 			);
 			name = MainMenu.xib;
 			sourceTree = "<group>";
@@ -486,6 +490,7 @@
 				8EBF29FD1C486640005BBAE0 /* fr */,
 				8E954FA81C4EE528006D0F34 /* it */,
 				8E5BC0241C50D13D0077228F /* es */,
+				5EF9F80621FB7A3300748374 /* pt-BR */,
 			);
 			name = Localizable.strings;
 			sourceTree = "<group>";
