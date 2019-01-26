@@ -7,6 +7,29 @@
     <language>en</language>
 
     <item>
+      <title>Apple Juice v1.6.0</title>
+        <description>
+          <![CDATA[
+            <ul>
+              <li>Add Brazilian Portuguese translation (Thanks a lot to <a href="https://github.com/ailtonvivaz">@ailtonvivaz</a>).</li>
+            </ul>
+            <p>
+              Build with Xcode 10.1 (10B61)
+            </p>
+          ]]>
+        </description>
+        <pubDate>Sat, 26 Jan 2018 19:00:00 +0100</pubDate>
+        <sparkle:minimumSystemVersion>10.12</sparkle:minimumSystemVersion>
+        <enclosure
+          url="https://github.com/raphaelhanneken/apple-juice/releases/download/1.6.0/Apple.Juice.dmg"
+          sparkle:version="324"
+          sparkle:shortVersionString="1.6.0"
+          sparkle:dsaSignature="MCwCFBIzAI23DK7/vAOF0s6NFSm0H3Y2AhQFes1IN+O7OYwxoIsT8G4L0GEKrQ=="
+          length="9280851"
+          type="application/octet-stream" />
+    </item>
+
+    <item>
       <title>Apple Juice v1.5.1</title>
         <description>
           <![CDATA[
