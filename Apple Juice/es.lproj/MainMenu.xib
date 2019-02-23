@@ -31,13 +31,13 @@
                     <modifierMask key="keyEquivalentModifierMask"/>
                 </menuItem>
                 <menuItem isSeparatorItem="YES" id="OYt-Th-ZmC"/>
-                <menuItem title="Hide Menu Bar Info" id="fae-AW-2e3">
+                <menuItem title="Ocultar Información en la Barra de Menú" id="fae-AW-2e3">
                     <modifierMask key="keyEquivalentModifierMask"/>
                     <connections>
                         <binding destination="OgL-rZ-xAG" name="value" keyPath="values.HideMenubarInfoPref" id="TxO-M2-Ypd"/>
                     </connections>
                 </menuItem>
-                <menuItem title="Show Time" id="pCY-Rb-LY6">
+                <menuItem title="Mostrar Hora" id="pCY-Rb-LY6">
                     <modifierMask key="keyEquivalentModifierMask"/>
                     <connections>
                         <binding destination="OgL-rZ-xAG" name="enabled" keyPath="values.HideMenubarInfoPref" id="uAU-mK-9ds">
@@ -48,9 +48,9 @@
                         <binding destination="OgL-rZ-xAG" name="value" keyPath="values.ShowTimePref" id="0TQ-V1-vMt"/>
                     </connections>
                 </menuItem>
-                <menuItem title="Notifications" id="uGl-yK-qDZ">
+                <menuItem title="Notificaciones" id="uGl-yK-qDZ">
                     <modifierMask key="keyEquivalentModifierMask"/>
-                    <menu key="submenu" title="Notifications" id="s9C-tt-TOv">
+                    <menu key="submenu" title="Notificaciones" id="s9C-tt-TOv">
                         <items>
                             <menuItem title="5 %" id="BqN-sm-Uru">
                                 <modifierMask key="keyEquivalentModifierMask"/>
@@ -87,26 +87,26 @@
                     </menu>
                 </menuItem>
                 <menuItem isSeparatorItem="YES" id="HoG-Jh-UIk"/>
-                <menuItem title="Check for Updates…" id="OFJ-1T-Wc5">
+                <menuItem title="Buscar actualizaciones…" id="OFJ-1T-Wc5">
                     <modifierMask key="keyEquivalentModifierMask"/>
                     <connections>
                         <action selector="checkForUpdates:" target="Avc-Ie-Abt" id="Aqj-nm-y4m"/>
                     </connections>
                 </menuItem>
-                <menuItem title="Energy Saver Preferences…" id="nUK-pj-k8O">
+                <menuItem title="Preferencias de ahorro de energía…" id="nUK-pj-k8O">
                     <modifierMask key="keyEquivalentModifierMask"/>
                     <connections>
                         <action selector="energySaverPreferences:" target="FRD-GK-LcV" id="eSm-lB-1d2"/>
                     </connections>
                 </menuItem>
-                <menuItem title="About Apple Juice…" id="PUB-MR-Ddo">
+                <menuItem title="Acerca de Apple Juice…" id="PUB-MR-Ddo">
                     <modifierMask key="keyEquivalentModifierMask"/>
                     <connections>
                         <action selector="orderFrontStandardAboutPanel:" target="-1" id="vXr-y6-aUC"/>
                     </connections>
                 </menuItem>
                 <menuItem isSeparatorItem="YES" id="bcW-nq-A9L"/>
-                <menuItem title="Quit" id="fXh-MN-Omu">
+                <menuItem title="Salir" id="fXh-MN-Omu">
                     <modifierMask key="keyEquivalentModifierMask"/>
                     <connections>
                         <action selector="terminate:" target="-1" id="f0e-26-aRM"/>

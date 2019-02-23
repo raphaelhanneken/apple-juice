@@ -94,7 +94,6 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		5EF9F80521FB7A3300748374 /* pt-BR */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "pt-BR"; path = "pt-BR.lproj/MainMenu.strings"; sourceTree = "<group>"; };
 		5EF9F80621FB7A3300748374 /* pt-BR */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "pt-BR"; path = "pt-BR.lproj/Localizable.strings"; sourceTree = "<group>"; };
 		8E0D33AF1D3118CD002D3463 /* Apple Juice Widget.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = "Apple Juice Widget.appex"; sourceTree = BUILT_PRODUCTS_DIR; };
 		8E0D33B31D3118CD002D3463 /* Apple_Juice_Widget.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = Apple_Juice_Widget.entitlements; sourceTree = "<group>"; };
@@ -108,11 +107,6 @@
 		8E7373DE1EACBB3300F10AD7 /* PowerUsageInfoType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PowerUsageInfoType.swift; sourceTree = "<group>"; };
 		8E7373E01EACBBDB00F10AD7 /* ChargeInfoType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChargeInfoType.swift; sourceTree = "<group>"; };
 		8E7373E21EACBC5D00F10AD7 /* CycleCountInfoType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CycleCountInfoType.swift; sourceTree = "<group>"; };
-		8E7496931D41798800FD5ADA /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/MainMenu.strings; sourceTree = "<group>"; };
-		8E7496941D41798E00FD5ADA /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/MainMenu.strings; sourceTree = "<group>"; };
-		8E7496951D41799200FD5ADA /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/MainMenu.strings; sourceTree = "<group>"; };
-		8E7496961D41799600FD5ADA /* it */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = it; path = it.lproj/MainMenu.strings; sourceTree = "<group>"; };
-		8E7496971D41799B00FD5ADA /* es */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = es; path = es.lproj/MainMenu.strings; sourceTree = "<group>"; };
 		8E954FA81C4EE528006D0F34 /* it */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = it; path = it.lproj/Localizable.strings; sourceTree = "<group>"; };
 		8E995BA91EABD8C800CE8364 /* BatteryError.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BatteryError.swift; sourceTree = "<group>"; };
 		8E995BAA1EABD8C800CE8364 /* BatteryState.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BatteryState.swift; sourceTree = "<group>"; };
@@ -141,6 +135,12 @@
 		8EF30EE81D32D0ED0010BC49 /* TodayViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TodayViewController.xib; sourceTree = "<group>"; };
 		8EF30EEA1D32D0FA0010BC49 /* ListRowViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ListRowViewController.xib; sourceTree = "<group>"; };
 		8EF30EF01D32D1C70010BC49 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		C58CD0B6222179A300D286C0 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/MainMenu.xib; sourceTree = "<group>"; };
+		C58CD0B7222179D200D286C0 /* de */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = de; path = de.lproj/MainMenu.xib; sourceTree = "<group>"; };
+		C58CD0B822217BAB00D286C0 /* fr */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = fr; path = fr.lproj/MainMenu.xib; sourceTree = "<group>"; };
+		C58CD0B92221D9A800D286C0 /* it */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = it; path = it.lproj/MainMenu.xib; sourceTree = "<group>"; };
+		C58CD0BA2221DBB500D286C0 /* es */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = es; path = es.lproj/MainMenu.xib; sourceTree = "<group>"; };
+		C58CD0BB2221E6B900D286C0 /* pt-BR */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = "pt-BR"; path = "pt-BR.lproj/MainMenu.xib"; sourceTree = "<group>"; };
 		C5D7EB47209891D500012A81 /* BatteryHealthType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BatteryHealthType.swift; sourceTree = "<group>"; };
 		C5EEDA6820276240004DE64C /* PreferenceKey.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PreferenceKey.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -471,12 +471,12 @@
 			isa = PBXVariantGroup;
 			children = (
 				8EBEB44A1C466091001DBE91 /* Base */,
-				8E7496931D41798800FD5ADA /* de */,
-				8E7496941D41798E00FD5ADA /* en */,
-				8E7496951D41799200FD5ADA /* fr */,
-				8E7496961D41799600FD5ADA /* it */,
-				8E7496971D41799B00FD5ADA /* es */,
-				5EF9F80521FB7A3300748374 /* pt-BR */,
+				C58CD0B6222179A300D286C0 /* en */,
+				C58CD0B7222179D200D286C0 /* de */,
+				C58CD0B822217BAB00D286C0 /* fr */,
+				C58CD0B92221D9A800D286C0 /* it */,
+				C58CD0BA2221DBB500D286C0 /* es */,
+				C58CD0BB2221E6B900D286C0 /* pt-BR */,
 			);
 			name = MainMenu.xib;
 			sourceTree = "<group>";
