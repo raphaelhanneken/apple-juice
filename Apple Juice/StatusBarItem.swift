@@ -85,10 +85,13 @@ final class StatusBarItem: NSObject {
     ///  - parameter time:    The estimated remaining time in a human readable format.
     ///  - returns:           The attributed title with percentage or time information, respectively.
     private func title(withPercentage percent: Int, andTime time: String) -> NSAttributedString {
+        if UserPreferences.hideMenubarInfo {
+            return NSAttributedString(string: "")
+        }
+
         let attrs = [
             NSAttributedString.Key.font: NSFont.menuBarFont(ofSize: 12.0)
         ]
-
         if UserPreferences.showTime {
             return NSAttributedString(string: "\(time) ", attributes: attrs)
         }

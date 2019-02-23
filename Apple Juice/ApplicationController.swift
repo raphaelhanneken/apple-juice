@@ -99,17 +99,19 @@ final class ApplicationController: NSObject {
 
     /// Register the ApplicationController as observer for changes in the power source and the user preferences
     private func registerAsObserver() {
-        NotificationCenter
-            .default
+        UserDefaults
+            .standard
+            .addObserver(self, forKeyPath: PreferenceKey.showTime.rawValue, options: .new, context: nil)
+
+        UserDefaults
+            .standard
+            .addObserver(self, forKeyPath: PreferenceKey.hideMenubarInfo.rawValue, options: .new, context: nil)
+
+        NotificationCenter.default
             .addObserver(self,
                          selector: #selector(ApplicationController.powerSourceChanged(_:)),
                          name: NSNotification.Name(rawValue: powerSourceChangedNotification),
                          object: nil)
-
-        UserDefaults.standard.addObserver(self,
-                                          forKeyPath: PreferenceKey.showTime.rawValue,
-                                          options: .new,
-                                          context: nil)
     }
 
     ///  Open the energy saver preference pane.

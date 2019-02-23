@@ -17,6 +17,11 @@ final class UserPreferences: NSObject {
         return userDefaults.bool(forKey: PreferenceKey.showTime.rawValue)
     }
 
+    ///  Hide all menu bar information
+    static var hideMenubarInfo: Bool {
+        return userDefaults.bool(forKey: PreferenceKey.hideMenubarInfo.rawValue)
+    }
+
     ///  True if the user wants a notification at five percent.
     static var fivePercentNotification: Bool {
         return userDefaults.bool(forKey: PreferenceKey.fivePercentNotification.rawValue)
@@ -84,13 +89,14 @@ final class UserPreferences: NSObject {
     ///  Register user defaults.
     static func registerDefaults() {
         let defaultPreferences = [
-            PreferenceKey.showTime.rawValue: false,
+            PreferenceKey.showTime.rawValue: true,
             PreferenceKey.fivePercentNotification.rawValue: false,
             PreferenceKey.tenPercentNotification.rawValue: false,
             PreferenceKey.fifeteenPercentNotification.rawValue: true,
             PreferenceKey.twentyPercentNotification.rawValue: false,
             PreferenceKey.hundredPercentNotification.rawValue: true,
-            PreferenceKey.lastNotification.rawValue: 0
+            PreferenceKey.lastNotification.rawValue: 0,
+            PreferenceKey.hideMenubarInfo.rawValue: false,
         ] as [String: Any]
 
         userDefaults.register(defaults: defaultPreferences)
