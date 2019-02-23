@@ -7,6 +7,31 @@
     <language>en</language>
 
     <item>
+      <title>Apple Juice v1.7.0</title>
+        <description>
+          <![CDATA[
+            <ul>
+              <li>Option to completely hide the menu bar information (time remaining/percentage)</li>
+              <li>App Sandboxing</li>
+              <li>Refactoring</li>
+            </ul>
+            <p>
+              Build with Xcode 10.1 (10B61)
+            </p>
+          ]]>
+        </description>
+        <pubDate>Sun, 23 Feb 2019 13:00:00 +0100</pubDate>
+        <sparkle:minimumSystemVersion>10.12</sparkle:minimumSystemVersion>
+        <enclosure
+          url="https://github.com/raphaelhanneken/apple-juice/releases/download/1.7.0/Apple.Juice.dmg"
+          sparkle:version="333"
+          sparkle:shortVersionString="1.7.0"
+          sparkle:dsaSignature="MCwCFBEZTq8Vdp4Kn8lWg36LtlZffckPAhRslj8hsSDlUfk+zH8A2IwtZKBzXg=="
+          length="9276996"
+          type="application/octet-stream" />
+    </item>
+
+    <item>
       <title>Apple Juice v1.6.0</title>
         <description>
           <![CDATA[
@@ -18,7 +43,7 @@
             </p>
           ]]>
         </description>
-        <pubDate>Sat, 26 Jan 2018 19:00:00 +0100</pubDate>
+        <pubDate>Sat, 26 Jan 2019 19:00:00 +0100</pubDate>
         <sparkle:minimumSystemVersion>10.12</sparkle:minimumSystemVersion>
         <enclosure
           url="https://github.com/raphaelhanneken/apple-juice/releases/download/1.6.0/Apple.Juice.dmg"
