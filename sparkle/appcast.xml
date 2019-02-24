@@ -24,7 +24,7 @@
         <sparkle:minimumSystemVersion>10.12</sparkle:minimumSystemVersion>
         <enclosure
           url="https://github.com/raphaelhanneken/apple-juice/releases/download/1.7.0/Apple.Juice.dmg"
-          sparkle:version="333"
+          sparkle:version="330"
           sparkle:shortVersionString="1.7.0"
           sparkle:dsaSignature="MCwCFBEZTq8Vdp4Kn8lWg36LtlZffckPAhRslj8hsSDlUfk+zH8A2IwtZKBzXg=="
           length="9276996"
