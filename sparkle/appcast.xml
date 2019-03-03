@@ -7,6 +7,29 @@
     <language>en</language>
 
     <item>
+      <title>Apple Juice v1.7.1</title>
+        <description>
+          <![CDATA[
+            <p>
+              Fix rendering of the Today Widget in Dark Mode on macOS Mojave. Thanks a lot <a href="https://github.com/oddharsh">@oddharsh</a> for reporting the issue.
+            </p>
+            <p>
+              Build with Xcode 10.1 (10B61)
+            </p>
+          ]]>
+        </description>
+        <pubDate>Sun, 03 Mar 2019 12:00:00 +0100</pubDate>
+        <sparkle:minimumSystemVersion>10.10</sparkle:minimumSystemVersion>
+        <enclosure
+          url="https://github.com/raphaelhanneken/apple-juice/releases/download/1.7.1/Apple.Juice.dmg"
+          sparkle:version="334"
+          sparkle:shortVersionString="1.7.1"
+          sparkle:dsaSignature="MCwCFGVjgcTfnnH0FLRMMgmhW0mbYRA7AhRW79PPJ8NsmPoVln5kqS559YgaBg=="
+          length="9391937"
+          type="application/octet-stream" />
+    </item>
+
+    <item>
       <title>Apple Juice v1.7.0</title>
         <description>
           <![CDATA[
