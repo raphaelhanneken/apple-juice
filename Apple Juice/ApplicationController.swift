@@ -26,15 +26,15 @@ final class ApplicationController: NSObject {
         do {
             self.battery = try BatteryService()
             self.statusItem = StatusBarItem(forBattery: self.battery,
-                                         withTarget: self,
-                                         andAction: #selector(ApplicationController.displayAppMenu(_:)))
+                                            withTarget: self,
+                                            andAction: #selector(ApplicationController.displayAppMenu(_:)))
 
             self.statusItem?.update(batteryInfo: self.battery)
             self.registerAsObserver()
         } catch {
             self.statusItem = StatusBarItem(forError: error as? BatteryError,
-                                         withTarget: self,
-                                         andAction: #selector(ApplicationController.displayAppMenu(_:)))
+                                            withTarget: self,
+                                            andAction: #selector(ApplicationController.displayAppMenu(_:)))
         }
     }
 

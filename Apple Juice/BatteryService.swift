@@ -40,9 +40,9 @@ final class BatteryService {
         }
         if charging {
             return .charging(percentage: percentage)
-        } else {
-            return .discharging(percentage: percentage)
         }
+
+        return .discharging(percentage: percentage)
     }
 
     ///  The remaining time until the battery is empty or fully charged
@@ -50,18 +50,18 @@ final class BatteryService {
     var timeRemainingFormatted: String {
         // Unwrap required information.
         guard let charged = isCharged, let plugged = isPlugged else {
-            return NSLocalizedString("Unknown", comment: "Translate Unknown")
+            return NSLocalizedString("Unknown", comment: "")
         }
         // Check if the battery is charged and plugged into an unlimited power supply.
         if charged && plugged {
-            return NSLocalizedString("Charged", comment: "Translate Charged")
+            return NSLocalizedString("Charged", comment: "")
         }
         // The battery is (dis)charging, display the remaining time.
         if let time = timeRemaining {
             return String(format: "%d:%02d", arguments: [time / 60, time % 60])
-        } else {
-            return NSLocalizedString("Calculating", comment: "Translate Calculating")
         }
+
+        return NSLocalizedString("Calculating", comment: "")
     }
 
     ///  The remaining time in _minutes_ until the battery is empty or fully charged.
@@ -80,7 +80,7 @@ final class BatteryService {
             }
             return nil
         default:
-            // Return the estimated time divided by 60 (seconds to minutes).
+            // The estimated time in minutes
             return Int(time / 60)
         }
     }
@@ -103,14 +103,14 @@ final class BatteryService {
     ///  The source from which the Mac currently draws its power.
     var powerSource: String {
         guard let plugged = isPlugged else {
-            return NSLocalizedString("Unknown", comment: "Translate Unknown")
+            return NSLocalizedString("Unknown", comment: "")
         }
         // Check whether the MacBook currently is plugged into a power adapter.
         if plugged {
-            return NSLocalizedString("Power Adapter", comment: "Translate Power Adapter")
-        } else {
-            return NSLocalizedString("Battery", comment: "Translate Battery")
+            return NSLocalizedString("Power Adapter", comment: "")
         }
+
+        return NSLocalizedString("Battery", comment: "")
     }
 
     ///  Checks whether the battery is charging and connected to a power outlet.
@@ -135,7 +135,7 @@ final class BatteryService {
             let amperage = getRegistryProperty(forKey: .amperage) as? Double else {
             return nil
         }
-        return round(((voltage * amperage) / 1_000_000) * 10) / 10
+        return round((voltage * amperage) / 1_000_000)
     }
 
     ///  Current flowing into or out of the battery.
