@@ -7,6 +7,30 @@
     <language>en</language>
 
     <item>
+      <title>Apple Juice v1.8.0</title>
+        <description>
+          <![CDATA[
+            <ul>
+              <li>Add option to hide the menu bar icon</li>
+              <li>Update to Swift 5</li>
+            </ul>
+            <p>
+              Build with Xcode 10.2 (10E125)
+            </p>
+          ]]>
+        </description>
+        <pubDate>Mon, 01 Apr 2019 00:00:00 +0100</pubDate>
+        <sparkle:minimumSystemVersion>10.10</sparkle:minimumSystemVersion>
+        <enclosure
+          url="https://github.com/raphaelhanneken/apple-juice/releases/download/1.8.0/Apple.Juice.dmg"
+          sparkle:version="339"
+          sparkle:shortVersionString="1.8.0"
+          sparkle:dsaSignature="MC0CFQCELAc0ZUZPL4cnGgbOAc0LqsqydgIUKjfDG3cypxUvuHqbgA0y6KwC3fw="
+          length="9318375"
+          type="application/octet-stream" />
+    </item>
+
+    <item>
       <title>Apple Juice v1.7.1</title>
         <description>
           <![CDATA[
