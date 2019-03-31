@@ -22,6 +22,11 @@ final class UserPreferences: NSObject {
         return userDefaults.bool(forKey: PreferenceKey.hideMenubarInfo.rawValue)
     }
 
+    ///  Hide all menu bar information
+    static var hideBatteryIcon: Bool {
+        return userDefaults.bool(forKey: PreferenceKey.hideBatteryIcon.rawValue)
+    }
+
     ///  True if the user wants a notification at five percent.
     static var fivePercentNotification: Bool {
         return userDefaults.bool(forKey: PreferenceKey.fivePercentNotification.rawValue)
