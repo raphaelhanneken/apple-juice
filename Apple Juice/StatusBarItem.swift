@@ -13,7 +13,7 @@ final class StatusBarItem: NSObject {
     private let item: NSStatusItem!
 
     /// The icon to display in the battery status bar item.
-    private var icon = StatusBarIcon()
+    private var icon: StatusBarIcon?
 
     /// The status bar items button.
     var button: NSButton? {
@@ -33,6 +33,7 @@ final class StatusBarItem: NSObject {
         item.target = target
         item.action = action
 
+        self.icon = StatusBarIcon()
         super.init()
     }
 
@@ -49,7 +50,7 @@ final class StatusBarItem: NSObject {
         guard let btn = item.button else {
             return
         }
-        btn.image = icon.drawBatteryImage(forError: error)
+        btn.image = icon?.drawBatteryImage(forError: error)
     }
 
     /// Update the status bar item.
@@ -65,8 +66,12 @@ final class StatusBarItem: NSObject {
         button.attributedTitle = title(withPercentage: batteryState.percentage,
                                        andTime: timeRemaining)
 
-        button.image = icon.drawBatteryImage(forStatus: batteryState)
+        button.image = icon?.drawBatteryImage(forStatus: batteryState)
         button.imagePosition = .imageRight
+
+        if UserPreferences.hideBatteryIcon {
+            button.image = nil
+        }
     }
 
     /// Display the supplied menu when the user clicks on

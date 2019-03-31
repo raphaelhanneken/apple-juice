@@ -107,6 +107,10 @@ final class ApplicationController: NSObject {
             .standard
             .addObserver(self, forKeyPath: PreferenceKey.hideMenubarInfo.rawValue, options: .new, context: nil)
 
+        UserDefaults
+            .standard
+            .addObserver(self, forKeyPath: PreferenceKey.hideBatteryIcon.rawValue, options: .new, context: nil)
+
         NotificationCenter.default
             .addObserver(self,
                          selector: #selector(ApplicationController.powerSourceChanged(_:)),
