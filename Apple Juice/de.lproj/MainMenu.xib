@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
     <dependencies>
         <deployment identifier="macosx"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="14460.31"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="14490.70"/>
     </dependencies>
     <objects>
         <customObject id="-2" userLabel="File's Owner" customClass="NSApplication">
@@ -31,13 +31,29 @@
                     <modifierMask key="keyEquivalentModifierMask"/>
                 </menuItem>
                 <menuItem isSeparatorItem="YES" id="OYt-Th-ZmC"/>
+                <menuItem title="Batteriesymbol ausblenden" id="2dc-yi-zyC">
+                    <modifierMask key="keyEquivalentModifierMask"/>
+                    <connections>
+                        <binding destination="OgL-rZ-xAG" name="enabled" keyPath="values.HideMenubarInfoPref" id="Vn9-5O-Ku4">
+                            <dictionary key="options">
+                                <string key="NSValueTransformerName">NSNegateBoolean</string>
+                            </dictionary>
+                        </binding>
+                        <binding destination="OgL-rZ-xAG" name="value" keyPath="values.HideBatteryIconPref" id="tgU-Ug-IC9"/>
+                    </connections>
+                </menuItem>
                 <menuItem title="Menüleisteninfo ausblenden" id="fae-AW-2e3">
                     <modifierMask key="keyEquivalentModifierMask"/>
                     <connections>
+                        <binding destination="OgL-rZ-xAG" name="enabled" keyPath="values.HideBatteryInfoPref" id="I6v-zU-CDb">
+                            <dictionary key="options">
+                                <string key="NSValueTransformerName">NSNegateBoolean</string>
+                            </dictionary>
+                        </binding>
                         <binding destination="OgL-rZ-xAG" name="value" keyPath="values.HideMenubarInfoPref" id="TxO-M2-Ypd"/>
                     </connections>
                 </menuItem>
-                <menuItem title="Zeit anzeigen" id="pCY-Rb-LY6">
+                <menuItem title="Restzeit anzeigen" id="pCY-Rb-LY6">
                     <modifierMask key="keyEquivalentModifierMask"/>
                     <connections>
                         <binding destination="OgL-rZ-xAG" name="enabled" keyPath="values.HideMenubarInfoPref" id="uAU-mK-9ds">
