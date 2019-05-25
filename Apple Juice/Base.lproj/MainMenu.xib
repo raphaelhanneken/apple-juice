@@ -31,39 +31,6 @@
                     <modifierMask key="keyEquivalentModifierMask"/>
                 </menuItem>
                 <menuItem isSeparatorItem="YES" id="OYt-Th-ZmC"/>
-                <menuItem title="Hide Battery Icon" id="m7I-VP-LeA">
-                    <modifierMask key="keyEquivalentModifierMask"/>
-                    <connections>
-                        <binding destination="OgL-rZ-xAG" name="enabled" keyPath="values.HideMenubarInfoPref" id="UV7-Gc-lAl">
-                            <dictionary key="options">
-                                <string key="NSValueTransformerName">NSNegateBoolean</string>
-                            </dictionary>
-                        </binding>
-                        <binding destination="OgL-rZ-xAG" name="value" keyPath="values.HideBatteryIconPref" id="g7w-k8-n6e"/>
-                    </connections>
-                </menuItem>
-                <menuItem title="Hide Menu Bar Info" id="fae-AW-2e3">
-                    <modifierMask key="keyEquivalentModifierMask"/>
-                    <connections>
-                        <binding destination="OgL-rZ-xAG" name="enabled" keyPath="values.HideMenubarInfoPref" id="5I8-32-rbD">
-                            <dictionary key="options">
-                                <string key="NSValueTransformerName">NSNegateBoolean</string>
-                            </dictionary>
-                        </binding>
-                        <binding destination="OgL-rZ-xAG" name="value" keyPath="values.HideMenubarInfoPref" id="TxO-M2-Ypd"/>
-                    </connections>
-                </menuItem>
-                <menuItem title="Show Time Remaining" id="pCY-Rb-LY6">
-                    <modifierMask key="keyEquivalentModifierMask"/>
-                    <connections>
-                        <binding destination="OgL-rZ-xAG" name="enabled" keyPath="values.HideMenubarInfoPref" id="uAU-mK-9ds">
-                            <dictionary key="options">
-                                <string key="NSValueTransformerName">NSNegateBoolean</string>
-                            </dictionary>
-                        </binding>
-                        <binding destination="OgL-rZ-xAG" name="value" keyPath="values.ShowTimePref" id="0TQ-V1-vMt"/>
-                    </connections>
-                </menuItem>
                 <menuItem title="Notifications" id="uGl-yK-qDZ">
                     <modifierMask key="keyEquivalentModifierMask"/>
                     <menu key="submenu" title="Notifications" id="s9C-tt-TOv">
@@ -97,6 +64,46 @@
                                 <modifierMask key="keyEquivalentModifierMask"/>
                                 <connections>
                                     <binding destination="OgL-rZ-xAG" name="value" keyPath="values.HundredPercentNotificationPref" id="Vuz-F7-ftw"/>
+                                </connections>
+                            </menuItem>
+                        </items>
+                    </menu>
+                </menuItem>
+                <menuItem title="Settings" id="tiY-Hf-wFt">
+                    <modifierMask key="keyEquivalentModifierMask"/>
+                    <menu key="submenu" title="Settings" id="kuh-P6-ZjK">
+                        <items>
+                            <menuItem title="Show Time Remaining" id="Kin-Z7-Y0F">
+                                <modifierMask key="keyEquivalentModifierMask"/>
+                                <connections>
+                                    <binding destination="OgL-rZ-xAG" name="enabled" keyPath="values.HideMenubarInfoPref" id="GIu-Tw-mBC">
+                                        <dictionary key="options">
+                                            <string key="NSValueTransformerName">NSNegateBoolean</string>
+                                        </dictionary>
+                                    </binding>
+                                    <binding destination="OgL-rZ-xAG" name="value" keyPath="values.ShowTimePref" id="5Mm-fA-cBY"/>
+                                </connections>
+                            </menuItem>
+                            <menuItem title="Hide Menu Bar Info" id="Wmn-z6-g7g">
+                                <modifierMask key="keyEquivalentModifierMask"/>
+                                <connections>
+                                    <binding destination="OgL-rZ-xAG" name="enabled" keyPath="values.HideMenubarInfoPref" id="DXf-Q2-iE8">
+                                        <dictionary key="options">
+                                            <string key="NSValueTransformerName">NSNegateBoolean</string>
+                                        </dictionary>
+                                    </binding>
+                                    <binding destination="OgL-rZ-xAG" name="value" keyPath="values.HideMenubarInfoPref" id="HHe-we-D6E"/>
+                                </connections>
+                            </menuItem>
+                            <menuItem title="Hide Battery Icon" id="sbN-Mr-efU">
+                                <modifierMask key="keyEquivalentModifierMask"/>
+                                <connections>
+                                    <binding destination="OgL-rZ-xAG" name="enabled" keyPath="values.HideMenubarInfoPref" id="avg-d2-Fsg">
+                                        <dictionary key="options">
+                                            <string key="NSValueTransformerName">NSNegateBoolean</string>
+                                        </dictionary>
+                                    </binding>
+                                    <binding destination="OgL-rZ-xAG" name="value" keyPath="values.HideBatteryIconPref" id="6p3-vG-TYg"/>
                                 </connections>
                             </menuItem>
                         </items>
