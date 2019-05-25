@@ -106,6 +106,13 @@
                                     <binding destination="OgL-rZ-xAG" name="value" keyPath="values.HideBatteryIconPref" id="gND-DS-P9i"/>
                                 </connections>
                             </menuItem>
+                            <menuItem title="Launch at Login" id="Gs8-f0-WtH">
+                                <modifierMask key="keyEquivalentModifierMask"/>
+                                <connections>
+                                    <action selector="toggleLaunchAtLogin:" target="FRD-GK-LcV" id="vCS-YW-neb"/>
+                                    <binding destination="OgL-rZ-xAG" name="value" keyPath="values.Launch at Login" id="lC7-RS-spe"/>
+                                </connections>
+                            </menuItem>
                         </items>
                     </menu>
                 </menuItem>
