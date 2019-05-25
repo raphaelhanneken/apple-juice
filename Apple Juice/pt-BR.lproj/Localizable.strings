@@ -9,7 +9,7 @@
 "Cycle Count" = "Contagem de Ciclo";
 "Health" = "Condição:";
 "Low Battery Notification Message" = "O Mac entrará em repouso se não for conectado a uma tomada";
-"Low Battery Notification Title" = "%i%% restante";
+"Low Battery Notification Title" = "%@ restante";
 "Percentage" = "Porcentagem:";
 "Power Adapter" = "Adaptador de Energia";
 "Power Source" = "Fonte de Energia:";

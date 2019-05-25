@@ -17,7 +17,7 @@
 
 "Charged Notification Title"       = "Charged";
 "Charged Notification Message"     = "Your Battery is now fully charged.";
-"Low Battery Notification Title"   = "%i%% remaining";
+"Low Battery Notification Title"   = "%@ remaining";
 "Low Battery Notification Message" = "Your Mac will sleep soon unless plugged into a power outlet.";
 
 

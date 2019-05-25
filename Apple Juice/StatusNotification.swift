@@ -66,7 +66,7 @@ struct StatusNotification {
             return NSLocalizedString("Charged Notification Title", comment: "")
         }
         return String.localizedStringWithFormat(NSLocalizedString("Low Battery Notification Title", comment: ""),
-                                                self.notificationKey.rawValue)
+                                                self.formattedPercentage())
     }
 
     /// Get the corresponding notification text for the current battery state
@@ -77,5 +77,22 @@ struct StatusNotification {
             return NSLocalizedString("Charged Notification Message", comment: "")
         }
         return NSLocalizedString("Low Battery Notification Message", comment: "")
+    }
+
+    /// The current percentage, formatted according to the selected client locale, e.g.
+    /// en_US: 42% fr_FR: 42 %
+    ///
+    /// - Returns: The localised percentage
+    private func formattedPercentage() -> String {
+        let percentageFormatter = NumberFormatter()
+        percentageFormatter.numberStyle = .percent
+        percentageFormatter.generatesDecimalNumbers = false
+        percentageFormatter.localizesFormat = true
+        percentageFormatter.multiplier = 1.0
+        percentageFormatter.minimumFractionDigits = 0
+        percentageFormatter.maximumFractionDigits = 0
+
+        return percentageFormatter.string(from: self.notificationKey.rawValue as NSNumber)
+            ?? "\(self.notificationKey.rawValue) %"
     }
 }
