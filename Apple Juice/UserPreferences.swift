@@ -65,6 +65,15 @@ final class UserPreferences: NSObject {
         }
     }
 
+    static var launchAtLogin: Bool {
+        get {
+            return userDefaults.bool(forKey: PreferenceKey.launchAtLogin.rawValue)
+        }
+        set {
+            userDefaults.set(newValue, forKey: PreferenceKey.launchAtLogin.rawValue)
+        }
+    }
+
     /// A set of all percentages where the user is interested.
     static var notifications: Set<NotificationKey> {
         // Create an empty set.
