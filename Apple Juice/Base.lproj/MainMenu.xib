@@ -69,9 +69,9 @@
                         </items>
                     </menu>
                 </menuItem>
-                <menuItem title="Settings" id="tiY-Hf-wFt">
+                <menuItem title="Preferences" id="tiY-Hf-wFt">
                     <modifierMask key="keyEquivalentModifierMask"/>
-                    <menu key="submenu" title="Settings" id="kuh-P6-ZjK">
+                    <menu key="submenu" title="Preferences" id="kuh-P6-ZjK">
                         <items>
                             <menuItem title="Show Time Remaining" id="Kin-Z7-Y0F">
                                 <modifierMask key="keyEquivalentModifierMask"/>
