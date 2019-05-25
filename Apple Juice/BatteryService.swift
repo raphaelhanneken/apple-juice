@@ -90,6 +90,24 @@ final class BatteryService {
         return getPowerSourceProperty(forKey: .percentage) as? Int
     }
 
+    /// The current percentage, formatted according to the selected client locale, e.g.
+    /// en_US: 42% fr_FR: 42 %
+    var percentageFormatted: String {
+        guard let percentage = self.percentage else {
+            return NSLocalizedString("Calculating", comment: "")
+        }
+
+        let percentageFormatter = NumberFormatter()
+        percentageFormatter.numberStyle = .percent
+        percentageFormatter.generatesDecimalNumbers = false
+        percentageFormatter.localizesFormat = true
+        percentageFormatter.multiplier = 1.0
+        percentageFormatter.minimumFractionDigits = 0
+        percentageFormatter.maximumFractionDigits = 0
+
+        return percentageFormatter.string(from: percentage as NSNumber) ?? "\(percentage) %"
+    }
+
     ///  The current charge in mAh.
     var charge: Int? {
         return getRegistryProperty(forKey: .currentCharge) as? Int

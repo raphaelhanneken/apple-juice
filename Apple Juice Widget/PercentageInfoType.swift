@@ -12,8 +12,8 @@ class PercentageInfoType: NSObject, BatteryInfoTypeProtocol {
 
     init(_ battery: BatteryService?) {
         title = NSLocalizedString("Percentage", comment: "")
-        if let percentage = battery?.state?.percentage {
-            value = "\(percentage) %"
+        if let percentage = battery?.percentageFormatted {
+            value = "\(percentage) "
         } else {
             value = "--"
         }

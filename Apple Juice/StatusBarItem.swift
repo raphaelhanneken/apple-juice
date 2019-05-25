@@ -60,11 +60,11 @@ final class StatusBarItem: NSObject {
         guard
             let button        = item.button,
             let batteryState  = battery?.state,
+            let percentage    = battery?.percentageFormatted,
             let timeRemaining = battery?.timeRemainingFormatted else {
                 return
         }
-        button.attributedTitle = title(withPercentage: batteryState.percentage,
-                                       andTime: timeRemaining)
+        button.attributedTitle = self.title(withPercentage: percentage, andTime: timeRemaining)
 
         button.image = icon?.drawBatteryImage(forStatus: batteryState)
         button.imagePosition = .imageRight
@@ -86,20 +86,19 @@ final class StatusBarItem: NSObject {
 
     ///  Creates an attributed string for the status bar item's title.
     ///
-    ///  - parameter percent: The battery's current charging state.
+    ///  - parameter percent: The battery's current charging percentage.
     ///  - parameter time:    The estimated remaining time in a human readable format.
     ///  - returns:           The attributed title with percentage or time information, respectively.
-    private func title(withPercentage percent: Int, andTime time: String) -> NSAttributedString {
+    private func title(withPercentage percentage: String, andTime time: String) -> NSAttributedString {
         if UserPreferences.hideMenubarInfo {
             return NSAttributedString(string: "")
         }
 
-        let attrs = [
-            NSAttributedString.Key.font: NSFont.menuBarFont(ofSize: 12.0)
-        ]
+        let attrs = [NSAttributedString.Key.font: NSFont.menuBarFont(ofSize: 12.0)]
         if UserPreferences.showTime {
             return NSAttributedString(string: "\(time) ", attributes: attrs)
         }
-        return NSAttributedString(string: "\(percent) % ", attributes: attrs)
+
+        return NSAttributedString(string: "\(percentage) ", attributes: attrs)
     }
 }

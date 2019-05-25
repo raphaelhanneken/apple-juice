@@ -81,10 +81,9 @@ final class ApplicationController: NSObject {
     ///                                 as soon as the menu items are updated.
     private func updateMenuItems(_ completionHandler: () -> Void) {
         guard
-            let capacity   = battery.capacity,
-            let charge     = battery.charge,
-            let amperage   = battery.amperage,
-            let percentage = battery.percentage else {
+            let capacity = battery.capacity,
+            let charge   = battery.charge,
+            let amperage = battery.amperage else {
                 return
         }
 
@@ -92,7 +91,7 @@ final class ApplicationController: NSObject {
         currentCharge.title = "\(battery.timeRemainingFormatted) \(charge) / \(capacity) mAh (\(amperage) mA)"
 
         if UserPreferences.showTime {
-            currentCharge.title = "\(percentage) % \(charge) / \(capacity) mAh (\(amperage) mA)"
+            currentCharge.title = "\(battery.percentageFormatted) \(charge) / \(capacity) mAh (\(amperage) mA)"
         }
         completionHandler()
     }
