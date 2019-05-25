@@ -7,6 +7,30 @@
     <language>en</language>
 
     <item>
+      <title>Apple Juice v1.9.0</title>
+        <description>
+          <![CDATA[
+            <ul>
+              <li>Localise the percentage format</li>
+              <li>Fix non-updating today widget</li>
+            </ul>
+            <p>
+              Build with Xcode Version 10.2.1 (10E1001)
+            </p>
+          ]]>
+        </description>
+        <pubDate>Sat, 25 May 2019 14:00:00 +0100</pubDate>
+        <sparkle:minimumSystemVersion>10.10</sparkle:minimumSystemVersion>
+        <enclosure
+          url="https://github.com/raphaelhanneken/apple-juice/releases/download/1.9.0/Apple.Juice.dmg"
+          sparkle:version="342"
+          sparkle:shortVersionString="1.9.0"
+          sparkle:dsaSignature="MCwCFAzKBJWXcc0XY8V2bb/AlRHeXu1lAhQl2Gqrn965CjmsWjlaMj1X94ZWLA=="
+          length="9313252"
+          type="application/octet-stream" />
+    </item>
+
+    <item>
       <title>Apple Juice v1.8.1</title>
         <description>
           <![CDATA[
