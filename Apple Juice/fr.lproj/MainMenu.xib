@@ -98,15 +98,15 @@
                             <menuItem title="Masquer l'icône de la batterie" id="sRV-KZ-e51">
                                 <modifierMask key="keyEquivalentModifierMask"/>
                                 <connections>
+                                    <binding destination="OgL-rZ-xAG" name="value" keyPath="values.HideBatteryIconPref" id="Rsk-8T-14O"/>
                                     <binding destination="OgL-rZ-xAG" name="enabled" keyPath="values.HideMenuInfoPref" id="RqX-cR-XOb">
                                         <dictionary key="options">
                                             <string key="NSValueTransformerName">NSNegateBoolean</string>
                                         </dictionary>
                                     </binding>
-                                    <binding destination="OgL-rZ-xAG" name="value" keyPath="values.HideBatteryIconPref" id="Rsk-8T-14O"/>
                                 </connections>
                             </menuItem>
-                            <menuItem title="Launch at Login" id="Fbz-gm-2EO">
+                            <menuItem title="Lancer à la Connexion" id="Fbz-gm-2EO">
                                 <modifierMask key="keyEquivalentModifierMask"/>
                                 <connections>
                                     <action selector="toggleLaunchAtLogin:" target="FRD-GK-LcV" id="CBq-1k-3cI"/>

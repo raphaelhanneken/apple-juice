@@ -98,15 +98,15 @@
                             <menuItem title="Batteriesymbol ausblenden" id="N1H-sy-ZSY">
                                 <modifierMask key="keyEquivalentModifierMask"/>
                                 <connections>
+                                    <binding destination="OgL-rZ-xAG" name="value" keyPath="values.HideBatteryIconPref" id="wIi-qx-jvf"/>
                                     <binding destination="OgL-rZ-xAG" name="enabled" keyPath="values.HideMenubarInfoPref" id="Yev-6R-bsr">
                                         <dictionary key="options">
                                             <string key="NSValueTransformerName">NSNegateBoolean</string>
                                         </dictionary>
                                     </binding>
-                                    <binding destination="OgL-rZ-xAG" name="value" keyPath="values.HideBatteryIconPref" id="wIi-qx-jvf"/>
                                 </connections>
                             </menuItem>
-                            <menuItem title="Launch at Login" id="gfp-rs-nIS">
+                            <menuItem title="Beim Login starten" id="gfp-rs-nIS">
                                 <modifierMask key="keyEquivalentModifierMask"/>
                                 <connections>
                                     <action selector="toggleLaunchAtLogin:" target="FRD-GK-LcV" id="SLm-aj-sQs"/>

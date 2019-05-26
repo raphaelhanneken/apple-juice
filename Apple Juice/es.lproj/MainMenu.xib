@@ -98,15 +98,15 @@
                             <menuItem title="Ocultar icono de batería" id="2ud-eW-ev3">
                                 <modifierMask key="keyEquivalentModifierMask"/>
                                 <connections>
+                                    <binding destination="OgL-rZ-xAG" name="value" keyPath="values.HideBatteryIconPref" id="cRk-6Q-jfe"/>
                                     <binding destination="OgL-rZ-xAG" name="enabled" keyPath="values.HideMenubarInfoPref" id="FTq-yz-CSD">
                                         <dictionary key="options">
                                             <string key="NSValueTransformerName">NSNegateBoolean</string>
                                         </dictionary>
                                     </binding>
-                                    <binding destination="OgL-rZ-xAG" name="value" keyPath="values.HideBatteryIconPref" id="cRk-6Q-jfe"/>
                                 </connections>
                             </menuItem>
-                            <menuItem title="Launch at Login" id="DUP-hM-qXj">
+                            <menuItem title="Lanzar al Inicio de Sesión" id="DUP-hM-qXj">
                                 <modifierMask key="keyEquivalentModifierMask"/>
                                 <connections>
                                     <action selector="toggleLaunchAtLogin:" target="FRD-GK-LcV" id="hVN-6p-fEj"/>

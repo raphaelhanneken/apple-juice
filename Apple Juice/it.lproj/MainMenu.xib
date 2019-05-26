@@ -98,15 +98,15 @@
                             <menuItem title="Nascondi l'icona della batteria" id="YlY-nY-JAv">
                                 <modifierMask key="keyEquivalentModifierMask"/>
                                 <connections>
+                                    <binding destination="OgL-rZ-xAG" name="value" keyPath="values.HideBatteryIconPref" id="K8n-xj-5Dt"/>
                                     <binding destination="OgL-rZ-xAG" name="enabled" keyPath="values.HideMenubarInfoPref" id="Sxt-fH-WRt">
                                         <dictionary key="options">
                                             <string key="NSValueTransformerName">NSNegateBoolean</string>
                                         </dictionary>
                                     </binding>
-                                    <binding destination="OgL-rZ-xAG" name="value" keyPath="values.HideBatteryIconPref" id="K8n-xj-5Dt"/>
                                 </connections>
                             </menuItem>
-                            <menuItem title="Launch at Login" id="9wK-Rc-dg8">
+                            <menuItem title="Avvio al Login" id="9wK-Rc-dg8">
                                 <modifierMask key="keyEquivalentModifierMask"/>
                                 <connections>
                                     <action selector="toggleLaunchAtLogin:" target="FRD-GK-LcV" id="kiM-XM-rLz"/>
