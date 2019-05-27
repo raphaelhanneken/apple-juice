@@ -26,7 +26,7 @@
           url="https://github.com/raphaelhanneken/apple-juice/releases/download/1.10.0/Apple.Juice.dmg"
           sparkle:version="351"
           sparkle:shortVersionString="1.10.0"
-          sparkle:dsaSignature="MCwCFD57QaV8PEUzBilY7Gp31jCLxu2EAhQQi95LCrKq26WCmM/CJYG6fqsQSQ=="
+          sparkle:dsaSignature="MC0CFQCIDQjjOLEvO0Cp8GYI+B3iPHP5VwIUU8TlBgLyYpfrdIInEpKzi1M607U="
           length="12978349"
           type="application/octet-stream" />
     </item>
