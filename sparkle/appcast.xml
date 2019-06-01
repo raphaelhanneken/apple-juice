@@ -7,6 +7,27 @@
     <language>en</language>
 
     <item>
+      <title>Apple Juice v1.10.1</title>
+        <description>
+          <![CDATA[
+            <p>Nothing really changed. Just trying to fix an issue with updating Apple Juice.</p>
+            <p>
+              Build with Xcode Version 10.2.1 (10E1001)
+            </p>
+          ]]>
+        </description>
+        <pubDate>Sat, 01 Jun 2019 13:00:00 +0100</pubDate>
+        <sparkle:minimumSystemVersion>10.12</sparkle:minimumSystemVersion>
+        <enclosure
+          url="https://github.com/raphaelhanneken/apple-juice/releases/download/1.10.1/Apple.Juice.dmg"
+          sparkle:version="352"
+          sparkle:shortVersionString="1.10.1"
+          sparkle:dsaSignature="MCwCFHL4jGcoS5CJ4GCOAOK8tKwvroe2AhRkLxAPV7pTgFJdX+pLQ8Z9YyxNnQ=="
+          length="12978343"
+          type="application/octet-stream" />
+    </item>
+
+    <item>
       <title>Apple Juice v1.10.0</title>
         <description>
           <![CDATA[
