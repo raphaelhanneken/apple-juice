@@ -10,7 +10,10 @@
       <title>Apple Juice v1.10.1</title>
         <description>
           <![CDATA[
-            <p>Nothing really changed. Just trying to fix an issue with updating Apple Juice.</p>
+            <b>Update Issues!</b><br>
+            <p>
+              I've made a mistake configuring the App Sandbox, which prevents Apple Juice from being updated. If you're experiencing issues when trying to update Apple Juice please download the <a href="https://github.com/raphaelhanneken/apple-juice/releases/latest">latest version</a> manually.
+            </p>
             <p>
               Build with Xcode Version 10.2.1 (10E1001)
             </p>
@@ -20,10 +23,10 @@
         <sparkle:minimumSystemVersion>10.12</sparkle:minimumSystemVersion>
         <enclosure
           url="https://github.com/raphaelhanneken/apple-juice/releases/download/1.10.1/Apple.Juice.dmg"
-          sparkle:version="352"
+          sparkle:version="353"
           sparkle:shortVersionString="1.10.1"
-          sparkle:dsaSignature="MCwCFHL4jGcoS5CJ4GCOAOK8tKwvroe2AhRkLxAPV7pTgFJdX+pLQ8Z9YyxNnQ=="
-          length="12978343"
+          sparkle:dsaSignature="MCwCFBXvQIk6R8vUP5FC4ETZiZpxzQ3yAhRGEtRgt1nlioN9yTcvBvziLYDWpg=="
+          length="12965848"
           type="application/octet-stream" />
     </item>
 
