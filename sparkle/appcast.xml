@@ -19,11 +19,11 @@
         <pubDate>Sat, 01 Jun 2019 13:00:00 +0100</pubDate>
         <sparkle:minimumSystemVersion>10.12</sparkle:minimumSystemVersion>
         <enclosure
-          url="https://github.com/raphaelhanneken/apple-juice/releases/download/1.10.1/Apple.Juice.dmg"
+          url="https://github.com/raphaelhanneken/apple-juice/releases/download/1.10.1/Apple.Juice.zip"
           sparkle:version="352"
           sparkle:shortVersionString="1.10.1"
-          sparkle:dsaSignature="MCwCFHL4jGcoS5CJ4GCOAOK8tKwvroe2AhRkLxAPV7pTgFJdX+pLQ8Z9YyxNnQ=="
-          length="12978343"
+          sparkle:dsaSignature="MCwCFGEK63c+Dyu8Oi7Tj2gplWxDyVBsAhRdsqGGAm00H2jxat42KP8MqGqMbw=="
+          length="10724406"
           type="application/octet-stream" />
     </item>
 
