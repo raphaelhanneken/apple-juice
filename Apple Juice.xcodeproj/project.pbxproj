@@ -141,13 +141,13 @@
 		8EF30EF01D32D1C70010BC49 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		C50D516422996CE500E985D1 /* Apple Juice Widget.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "Apple Juice Widget.entitlements"; sourceTree = "<group>"; };
 		C50D516E22997A1800E985D1 /* LaunchAtLogin.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = LaunchAtLogin.framework; path = Carthage/Build/Mac/LaunchAtLogin.framework; sourceTree = "<group>"; };
+		C526408E22A29A5E00D46AE0 /* Apple Juice.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "Apple Juice.entitlements"; sourceTree = "<group>"; };
 		C58CD0B6222179A300D286C0 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/MainMenu.xib; sourceTree = "<group>"; };
 		C58CD0B7222179D200D286C0 /* de */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = de; path = de.lproj/MainMenu.xib; sourceTree = "<group>"; };
 		C58CD0B822217BAB00D286C0 /* fr */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = fr; path = fr.lproj/MainMenu.xib; sourceTree = "<group>"; };
 		C58CD0B92221D9A800D286C0 /* it */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = it; path = it.lproj/MainMenu.xib; sourceTree = "<group>"; };
 		C58CD0BA2221DBB500D286C0 /* es */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = es; path = es.lproj/MainMenu.xib; sourceTree = "<group>"; };
 		C58CD0BB2221E6B900D286C0 /* pt-BR */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = "pt-BR"; path = "pt-BR.lproj/MainMenu.xib"; sourceTree = "<group>"; };
-		C58CD0BC2221EACF00D286C0 /* Apple Juice.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "Apple Juice.entitlements"; sourceTree = "<group>"; };
 		C5D7EB47209891D500012A81 /* BatteryHealthType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BatteryHealthType.swift; sourceTree = "<group>"; };
 		C5EEDA6820276240004DE64C /* PreferenceKey.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PreferenceKey.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -268,7 +268,7 @@
 			isa = PBXGroup;
 			children = (
 				8EBF29EC1C485493005BBAE0 /* Localizable.strings */,
-				C58CD0BC2221EACF00D286C0 /* Apple Juice.entitlements */,
+				C526408E22A29A5E00D46AE0 /* Apple Juice.entitlements */,
 				8EBEB4471C466091001DBE91 /* Assets.xcassets */,
 			);
 			name = Resources;
@@ -363,7 +363,7 @@
 								enabled = 0;
 							};
 							com.apple.Sandbox = {
-								enabled = 1;
+								enabled = 0;
 							};
 						};
 					};
@@ -690,7 +690,6 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_ENTITLEMENTS = "Apple Juice/Apple Juice.entitlements";
 				COMBINE_HIDPI_IMAGES = YES;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -714,7 +713,6 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_ENTITLEMENTS = "Apple Juice/Apple Juice.entitlements";
 				COMBINE_HIDPI_IMAGES = YES;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
