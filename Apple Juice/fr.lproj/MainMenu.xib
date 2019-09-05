@@ -106,13 +106,6 @@
                                     </binding>
                                 </connections>
                             </menuItem>
-                            <menuItem title="Lancer à la Connexion" id="Fbz-gm-2EO">
-                                <modifierMask key="keyEquivalentModifierMask"/>
-                                <connections>
-                                    <action selector="toggleLaunchAtLogin:" target="FRD-GK-LcV" id="CBq-1k-3cI"/>
-                                    <binding destination="OgL-rZ-xAG" name="value" keyPath="values.LaunchAtLogin" id="Of4-XI-cpa"/>
-                                </connections>
-                            </menuItem>
                         </items>
                     </menu>
                 </menuItem>

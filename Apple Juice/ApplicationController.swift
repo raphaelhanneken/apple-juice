@@ -5,7 +5,6 @@
 //
 
 import Cocoa
-import LaunchAtLogin
 
 final class ApplicationController: NSObject {
 
@@ -124,14 +123,5 @@ final class ApplicationController: NSObject {
     ///  - parameter sender: The menu item object that sent the message.
     @IBAction func energySaverPreferences(_: NSMenuItem) {
         NSWorkspace.shared.openFile("/System/Library/PreferencePanes/EnergySaver.prefPane")
-    }
-
-    /// Toggle whether Apple Juice will launch at login or not
-    ///
-    /// - Parameter sender: The menu item that sent the toggleLaunchAtLogin(_:) message
-    @IBAction func toggleLaunchAtLogin(_: NSMenuItem) {
-        LaunchAtLogin.isEnabled = !LaunchAtLogin.isEnabled
-        UserPreferences.launchAtLogin = LaunchAtLogin.isEnabled
-        print(UserPreferences.launchAtLogin)
     }
 }

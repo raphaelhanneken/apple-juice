@@ -106,13 +106,6 @@
                                     </binding>
                                 </connections>
                             </menuItem>
-                            <menuItem title="Avvio al Login" id="9wK-Rc-dg8">
-                                <modifierMask key="keyEquivalentModifierMask"/>
-                                <connections>
-                                    <action selector="toggleLaunchAtLogin:" target="FRD-GK-LcV" id="kiM-XM-rLz"/>
-                                    <binding destination="OgL-rZ-xAG" name="value" keyPath="values.LaunchAtLogin" id="2BH-lv-sgF"/>
-                                </connections>
-                            </menuItem>
                         </items>
                     </menu>
                 </menuItem>

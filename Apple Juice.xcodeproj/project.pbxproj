@@ -45,9 +45,6 @@
 		8EE129721C46CA1B000D404F /* UserPreferences.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EE129711C46CA1B000D404F /* UserPreferences.swift */; };
 		8EE129741C46D3C7000D404F /* StatusNotification.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EE129731C46D3C7000D404F /* StatusNotification.swift */; };
 		8EF30ED31D32B3170010BC49 /* BatteryService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EE1296F1C4695B5000D404F /* BatteryService.swift */; };
-		C50D516F22997A1800E985D1 /* LaunchAtLogin.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C50D516E22997A1800E985D1 /* LaunchAtLogin.framework */; };
-		C50D517022997A4100E985D1 /* LaunchAtLogin.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C50D516E22997A1800E985D1 /* LaunchAtLogin.framework */; };
-		C50D517122997A4100E985D1 /* LaunchAtLogin.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = C50D516E22997A1800E985D1 /* LaunchAtLogin.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		C5D7EB48209891D500012A81 /* BatteryHealthType.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5D7EB47209891D500012A81 /* BatteryHealthType.swift */; };
 		C5EEDA6920276240004DE64C /* PreferenceKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5EEDA6820276240004DE64C /* PreferenceKey.swift */; };
 /* End PBXBuildFile section */
@@ -69,7 +66,6 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				C50D517122997A4100E985D1 /* LaunchAtLogin.framework in Embed Frameworks */,
 				8EBF29DF1C4845F6005BBAE0 /* Sparkle.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
@@ -140,7 +136,6 @@
 		8EF30EEA1D32D0FA0010BC49 /* ListRowViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ListRowViewController.xib; sourceTree = "<group>"; };
 		8EF30EF01D32D1C70010BC49 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		C50D516422996CE500E985D1 /* Apple Juice Widget.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "Apple Juice Widget.entitlements"; sourceTree = "<group>"; };
-		C50D516E22997A1800E985D1 /* LaunchAtLogin.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = LaunchAtLogin.framework; path = Carthage/Build/Mac/LaunchAtLogin.framework; sourceTree = "<group>"; };
 		C526408E22A29A5E00D46AE0 /* Apple Juice.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "Apple Juice.entitlements"; sourceTree = "<group>"; };
 		C58CD0B6222179A300D286C0 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/MainMenu.xib; sourceTree = "<group>"; };
 		C58CD0B7222179D200D286C0 /* de */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = de; path = de.lproj/MainMenu.xib; sourceTree = "<group>"; };
@@ -165,9 +160,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C50D516F22997A1800E985D1 /* LaunchAtLogin.framework in Frameworks */,
 				8EBF29DE1C4845F6005BBAE0 /* Sparkle.framework in Frameworks */,
-				C50D517022997A4100E985D1 /* LaunchAtLogin.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -285,7 +278,6 @@
 		8EE1297B1C46F891000D404F /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				C50D516E22997A1800E985D1 /* LaunchAtLogin.framework */,
 				8EBF29DD1C4845F6005BBAE0 /* Sparkle.framework */,
 				8EE1297C1C46F891000D404F /* NotificationCenter.framework */,
 			);
@@ -322,7 +314,6 @@
 				8EE129751C46E993000D404F /* ShellScript */,
 				8EE129951C46F891000D404F /* Embed App Extensions */,
 				8EBF29E01C4845F6005BBAE0 /* Embed Frameworks */,
-				C50D51682299762D00E985D1 /* ShellScript */,
 				8EBF29E11C48461A005BBAE0 /* CopyFiles */,
 			);
 			buildRules = (
@@ -431,23 +422,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "if which swiftlint >/dev/null; then\n    swiftlint\nelse\n    echo \"SwiftLint not found! Please install SwiftLint from https://github.com/realm/SwiftLint\"\nfi\n";
-		};
-		C50D51682299762D00E985D1 /* ShellScript */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-			);
-			inputPaths = (
-			);
-			outputFileListPaths = (
-			);
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${PROJECT_DIR}/Carthage/Build/Mac/LaunchAtLogin.framework/Resources/copy-helper.sh\"\n";
 		};
 /* End PBXShellScriptBuildPhase section */
 

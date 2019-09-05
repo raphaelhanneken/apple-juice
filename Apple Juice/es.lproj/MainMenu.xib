@@ -106,13 +106,6 @@
                                     </binding>
                                 </connections>
                             </menuItem>
-                            <menuItem title="Lanzar al Inicio de Sesión" id="DUP-hM-qXj">
-                                <modifierMask key="keyEquivalentModifierMask"/>
-                                <connections>
-                                    <action selector="toggleLaunchAtLogin:" target="FRD-GK-LcV" id="hVN-6p-fEj"/>
-                                    <binding destination="OgL-rZ-xAG" name="value" keyPath="values.LaunchAtLogin" id="0n1-lw-tU7"/>
-                                </connections>
-                            </menuItem>
                         </items>
                     </menu>
                 </menuItem>
