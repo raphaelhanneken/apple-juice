@@ -1,5 +1,5 @@
 # Apple Juice #
-An advanced battery gauge for macOS. *Apple Juice* can show you the estimated _battery time remaining_ (even with macOS 10.12.2), right within the status bar and notify you about certain percentages, if you want.
+An advanced battery gauge for macOS. *Apple Juice* can show you the estimated _battery time remaining_ right within the status bar and notify you about certain percentages, if you want.
 
 ![Apple Juice Appmenu](screenshot_appmenu.png)
 ![Apple Juice Notifications](screenshot_notifications.png)
@@ -18,20 +18,14 @@ Probably as accurate as it gets. The information come directly from macOS’s IO
 
 You have three options:
 
-1. Install using [brew](https://brew.sh/):
+1. Install using [brew](https://brew.sh/): `brew cask install apple-juice`
 
-`brew cask install apple-juice`
+1. Install from published binary :Download the [latest binary](https://github.com/raphaelhanneken/apple-juice/releases/latest) and drop it into your `Applications folder`*.
 
-2. Install from published binary:
+1. Download the source code and build it yourself. You'll need to have [Carthage](https://github.com/Carthage/Carthage) instsalled, and run `carthage update` to pull in the [Sparkle Framework](https://github.com/sparkle-project/Sparkle), as I haven’t put it under version control.
 
-Download the [latest binary](https://github.com/raphaelhanneken/apple-juice/releases/latest) and drop it into your `Applications folder`*.
-
-3. Build binary locally from source code:
-
-Download the source code and build it yourself, with Xcode. You'll also need to install [Carthage](https://github.com/Carthage/Carthage), if you haven’t done so already, and run `carthage update` from your Terminal. Otherwise Xcode won't find the [Sparkle Framework](https://github.com/sparkle-project/Sparkle), since I haven’t put it under version control. 
-
-*Since I don’t have an Apple Developer account, you have to allow third party apps within the system preferences.
- ```System Preferences: Security & Privacy: Allow apps downloaded from: Anywhere```.
+*Since I don’t have an Apple Developer account, you have to allow unsigned third party apps within the system preferences.
+ ```System Preferences: Security & Privacy: Allow apps downloaded from: Anywhere```. If you don't have the option to select `Anywhere` you'll have to loosen the Gate Keeper restrictions by running `sudo spctl --master-disable` in the Terminal. [OSXDaily](http://osxdaily.com/2016/09/27/allow-apps-from-anywhere-macos-gatekeeper/) have a great step by step guide. Afterwards you should be able to select Anywhere.
 
 ## Why does this project exist? ##
 There are plenty of other solutions out there, so why make another one? I wanted an app that looks like it’s part of the system. As if it were built directly into macOS. Which can show me a lot of information, but only when I need them. And, most importantly, it should display notifications for several percentages. Since I haven’t found such an app, I made one myself.
