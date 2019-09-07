@@ -7,6 +7,30 @@
     <language>en</language>
 
     <item>
+      <title>Apple Juice v1.10.2</title>
+        <description>
+          <![CDATA[
+            <b>Update Issues!</b><br>
+            <p>
+              The Launch at Login feature was causing problems with Gate Keeper so it was removed with this release. See issue #18.
+            </p>
+            <p>
+              Build with Xcode Version 10.3 (10G8)
+            </p>
+          ]]>
+        </description>
+        <pubDate>Sat, 07 Sep 2019 10:00:00 +0100</pubDate>
+        <sparkle:minimumSystemVersion>10.12</sparkle:minimumSystemVersion>
+        <enclosure
+          url="https://github.com/raphaelhanneken/apple-juice/releases/download/1.10.2/Apple.Juice.dmg"
+          sparkle:version="354"
+          sparkle:shortVersionString="1.10.2"
+          sparkle:dsaSignature="MCwCFEvJTEMlDS6O+PVDM8E6F2iZYrzDAhR0+Wfjx8fUVPIfvV/y66aweJs4xw=="
+          length="9294877"
+          type="application/octet-stream" />
+    </item>
+
+    <item>
       <title>Apple Juice v1.10.1</title>
         <description>
           <![CDATA[
