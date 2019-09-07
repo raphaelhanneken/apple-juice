@@ -9,7 +9,6 @@ __Today Widget__
 Get even more information about your current battery status, without cluttering your screen, with the *Apple Juice Today Widget*. Just take a quick glance at your battery’s stats, whenever you want.
 
 ![Apple Juice Today Widget](screenshot_today.png)
-![Apple Juice Today Widget Expanded](screenshot_today_all.png)
 
 ### Ok, but how accurate is it? ###
 Probably as accurate as it gets. The information come directly from macOS’s IO registry and are updated constantly.
@@ -28,7 +27,7 @@ Download the [latest binary](https://github.com/raphaelhanneken/apple-juice/rele
 
 3. Build binary locally from source code:
 
-Download the source code and build it yourself, with Xcode. You'll also need to install [Carthage](https://github.com/Carthage/Carthage), if you haven’t done so already, and run `carthage update` from your Terminal. Otherwise Xcode won't find the [Sparkle Framework](https://github.com/sparkle-project/Sparkle), since I haven’t put it under version control. 
+Download the source code and build it yourself, with Xcode. You'll also need to install [Carthage](https://github.com/Carthage/Carthage), if you haven’t done so already, and run `carthage update` from your Terminal. Otherwise Xcode won't find the [Sparkle Framework](https://github.com/sparkle-project/Sparkle), since I haven’t put it under version control.
 
 *Since I don’t have an Apple Developer account, you have to allow third party apps within the system preferences.
  ```System Preferences: Security & Privacy: Allow apps downloaded from: Anywhere```.
