@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="16097.2" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
     <dependencies>
         <deployment identifier="macosx"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="14490.70"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="16097.2"/>
     </dependencies>
     <objects>
         <customObject id="-2" userLabel="File's Owner" customClass="NSApplication">
@@ -59,7 +59,19 @@
                                     <binding destination="OgL-rZ-xAG" name="value" keyPath="values.TwentyPercentNotificationPref" id="GGC-Ot-acB"/>
                                 </connections>
                             </menuItem>
+                            <menuItem title="40 %" id="7jV-Nd-5mb">
+                                <modifierMask key="keyEquivalentModifierMask"/>
+                                <connections>
+                                    <binding destination="OgL-rZ-xAG" name="value" keyPath="values.fortyPercentNotificationPref" id="HYV-iV-A1D"/>
+                                </connections>
+                            </menuItem>
                             <menuItem isSeparatorItem="YES" id="fZI-EN-bOn"/>
+                            <menuItem title="80 %" id="Kqy-7X-Ajg">
+                                <modifierMask key="keyEquivalentModifierMask"/>
+                                <connections>
+                                    <binding destination="OgL-rZ-xAG" name="value" keyPath="values.eightyPercentNotificationPref" id="MnM-iF-Pgg"/>
+                                </connections>
+                            </menuItem>
                             <menuItem title="100 %" id="bgK-RS-y5X">
                                 <modifierMask key="keyEquivalentModifierMask"/>
                                 <connections>
@@ -136,7 +148,7 @@
                     </connections>
                 </menuItem>
             </items>
-            <point key="canvasLocation" x="-148" y="142"/>
+            <point key="canvasLocation" x="120" y="83"/>
         </menu>
         <userDefaultsController representsSharedInstance="YES" id="OgL-rZ-xAG"/>
     </objects>

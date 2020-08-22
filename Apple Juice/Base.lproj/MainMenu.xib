@@ -148,7 +148,7 @@
                     </connections>
                 </menuItem>
             </items>
-            <point key="canvasLocation" x="-148" y="142"/>
+            <point key="canvasLocation" x="-298" y="85"/>
         </menu>
         <userDefaultsController representsSharedInstance="YES" id="OgL-rZ-xAG"/>
     </objects>

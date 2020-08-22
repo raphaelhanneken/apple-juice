@@ -46,6 +46,14 @@ final class UserPreferences: NSObject {
     static var twentyPercentNotification: Bool {
         return userDefaults.bool(forKey: PreferenceKey.twentyPercentNotification.rawValue)
     }
+    ///  True if the user wants a notification at forty percent.
+    static var fortyPercentNotification: Bool {
+        return userDefaults.bool(forKey: PreferenceKey.fortyPercentNotification.rawValue)
+    }
+    ///  True if the user wants a notification at eighty percent.
+    static var eightyPercentNotification: Bool {
+        return userDefaults.bool(forKey: PreferenceKey.eightyPercentNotification.rawValue)
+    }
 
     ///  True if the user wants a notification at hundred percent.
     static var hundredPercentNotification: Bool {
@@ -83,6 +91,12 @@ final class UserPreferences: NSObject {
         if twentyPercentNotification {
             result.insert(.twentyPercent)
         }
+        if fortyPercentNotification {
+            result.insert(.fortyPercent)
+        }
+        if eightyPercentNotification {
+            result.insert(.eightyPercent)
+        }
         if hundredPercentNotification {
             result.insert(.hundredPercent)
         }
@@ -99,6 +113,8 @@ final class UserPreferences: NSObject {
             PreferenceKey.tenPercentNotification.rawValue: false,
             PreferenceKey.fifeteenPercentNotification.rawValue: true,
             PreferenceKey.twentyPercentNotification.rawValue: false,
+            PreferenceKey.fortyPercentNotification.rawValue: false,
+            PreferenceKey.eightyPercentNotification.rawValue: false,
             PreferenceKey.hundredPercentNotification.rawValue: true,
             PreferenceKey.lastNotification.rawValue: 0,
             PreferenceKey.hideMenubarInfo.rawValue: false,
