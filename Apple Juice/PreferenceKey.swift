@@ -19,6 +19,8 @@ enum PreferenceKey: String {
     case tenPercentNotification      = "TenPercentNotificationPref"
     case fifeteenPercentNotification = "FifeteenPercentNotificationPref"
     case twentyPercentNotification   = "TwentyPercentNotificationPref"
+    case fortyPercentNotification   = "fortyPercentNotificationPref"
+    case eightyPercentNotification   = "eightyPercentNotificationPref"
     case hundredPercentNotification  = "HundredPercentNotificationPref"
     case lastNotification            = "LastNotifiedPref"
     case hideMenubarInfo             = "HideMenubarInfoPref"

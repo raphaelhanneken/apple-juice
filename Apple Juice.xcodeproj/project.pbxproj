@@ -10,7 +10,6 @@
 		8E0D33B01D3118CD002D3463 /* NotificationCenter.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8EE1297C1C46F891000D404F /* NotificationCenter.framework */; };
 		8E0D33B51D3118CD002D3463 /* TodayViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E0D33B41D3118CD002D3463 /* TodayViewController.swift */; };
 		8E0D33B71D3118CD002D3463 /* ListRowViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E0D33B61D3118CD002D3463 /* ListRowViewController.swift */; };
-		8E0D33C41D3118CD002D3463 /* Apple Juice Widget.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 8E0D33AF1D3118CD002D3463 /* Apple Juice Widget.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		8E31BF9F1D42651F00055A5B /* BatteryImageCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E31BF9E1D42651F00055A5B /* BatteryImageCache.swift */; };
 		8E58CBA21D339BC200920567 /* TodayViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8EF30EE81D32D0ED0010BC49 /* TodayViewController.xib */; };
 		8E58CBA31D339BC900920567 /* ListRowViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8EF30EEA1D32D0FA0010BC49 /* ListRowViewController.xib */; };
@@ -86,7 +85,6 @@
 			dstPath = "";
 			dstSubfolderSpec = 13;
 			files = (
-				8E0D33C41D3118CD002D3463 /* Apple Juice Widget.appex in Embed App Extensions */,
 			);
 			name = "Embed App Extensions";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -95,7 +93,7 @@
 
 /* Begin PBXFileReference section */
 		5EF9F80621FB7A3300748374 /* pt-BR */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "pt-BR"; path = "pt-BR.lproj/Localizable.strings"; sourceTree = "<group>"; };
-		8E0D33AF1D3118CD002D3463 /* Apple Juice Widget.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = "Apple Juice Widget.appex"; sourceTree = BUILT_PRODUCTS_DIR; };
+		8E0D33AF1D3118CD002D3463 /* Apple Juice Widget.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; name = "Apple Juice Widget.appex"; path = "/Users/shorya/Documents/code/apple_juice/apple-juice/build/Debug/Apple Juice Widget.appex"; sourceTree = "<absolute>"; };
 		8E0D33B31D3118CD002D3463 /* Apple_Juice_Widget.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = Apple_Juice_Widget.entitlements; sourceTree = "<group>"; };
 		8E0D33B41D3118CD002D3463 /* TodayViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodayViewController.swift; sourceTree = "<group>"; };
 		8E0D33B61D3118CD002D3463 /* ListRowViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListRowViewController.swift; sourceTree = "<group>"; };
@@ -116,7 +114,7 @@
 		8E995BBA1EABDB2F00CE8364 /* dsa_pub.pem */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = dsa_pub.pem; sourceTree = "<group>"; };
 		8EAE0D201EB4EFBF00E3D594 /* SourceInfoType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SourceInfoType.swift; sourceTree = "<group>"; };
 		8EAE0D221EB4EFD000E3D594 /* TemperatureInfoType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TemperatureInfoType.swift; sourceTree = "<group>"; };
-		8EBEB4421C466091001DBE91 /* Apple Juice.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Apple Juice.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		8EBEB4421C466091001DBE91 /* Apple Juice.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; name = "Apple Juice.app"; path = "/Users/shorya/Documents/code/apple_juice/apple-juice/build/Debug/Apple Juice.app"; sourceTree = "<absolute>"; };
 		8EBEB4451C466091001DBE91 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		8EBEB4471C466091001DBE91 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		8EBEB44A1C466091001DBE91 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/MainMenu.xib; sourceTree = "<group>"; };
@@ -221,17 +219,7 @@
 				8EBEB4441C466091001DBE91 /* Apple Juice */,
 				8E0D33B11D3118CD002D3463 /* Apple Juice Widget */,
 				8EE1297B1C46F891000D404F /* Frameworks */,
-				8EBEB4431C466091001DBE91 /* Products */,
 			);
-			sourceTree = "<group>";
-		};
-		8EBEB4431C466091001DBE91 /* Products */ = {
-			isa = PBXGroup;
-			children = (
-				8EBEB4421C466091001DBE91 /* Apple Juice.app */,
-				8E0D33AF1D3118CD002D3463 /* Apple Juice Widget.appex */,
-			);
-			name = Products;
 			sourceTree = "<group>";
 		};
 		8EBEB4441C466091001DBE91 /* Apple Juice */ = {
@@ -374,7 +362,7 @@
 				"pt-BR",
 			);
 			mainGroup = 8EBEB4391C466091001DBE91;
-			productRefGroup = 8EBEB4431C466091001DBE91 /* Products */;
+			productRefGroup = 8EBEB4391C466091001DBE91;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
