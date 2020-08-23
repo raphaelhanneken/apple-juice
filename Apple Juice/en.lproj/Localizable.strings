@@ -19,6 +19,8 @@
 "Charged Notification Message"     = "Your Battery is now fully charged.";
 "Low Battery Notification Title"   = "%@ remaining";
 "Low Battery Notification Message" = "Your Mac will sleep soon unless plugged into a power outlet.";
+"Enough Battery For Battery Health" = "80% is enough for battery health, you can unplug now.";
+"Low Battery For Battery Health" = "40% is low for battery health, you can plug in now.";
 
 
 //  Properties

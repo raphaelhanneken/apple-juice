@@ -65,6 +65,12 @@ struct StatusNotification {
         if self.notificationKey == .hundredPercent {
             return NSLocalizedString("Charged Notification Title", comment: "")
         }
+        else if self.notificationKey == .eightyPercent{
+            return NSLocalizedString("Enough Battery For Battery Health", comment: "")
+        }
+        else if self.notificationKey == .fortyPercent{
+            return NSLocalizedString("Low Battery For Battery Health", comment: "")
+        }
         return String.localizedStringWithFormat(NSLocalizedString("Low Battery Notification Title", comment: ""),
                                                 self.formattedPercentage())
     }
@@ -75,6 +81,12 @@ struct StatusNotification {
     private func getNotificationText() -> String {
         if self.notificationKey == .hundredPercent {
             return NSLocalizedString("Charged Notification Message", comment: "")
+        }
+        else if self.notificationKey == .eightyPercent{
+            return NSLocalizedString("Enough Battery For Battery Health", comment: "")
+        }
+        else if self.notificationKey == .fortyPercent{
+            return NSLocalizedString("Low Battery For Battery Health", comment: "")
         }
         return NSLocalizedString("Low Battery Notification Message", comment: "")
     }
