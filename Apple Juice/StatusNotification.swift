@@ -35,8 +35,6 @@ struct StatusNotification {
         }
     }
 
-    // MARK: - Private
-
     /// Check whether to present a notification to the user or not. Depending on the
     /// users preferences and whether the user already got notified about the current
     /// percentage.

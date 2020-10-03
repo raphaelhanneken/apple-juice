@@ -7,7 +7,7 @@
 import Foundation
 
 /// Define the precision, with wich the icon can display the current charging level
-public let batteryStatusBarIconDrawingPrecision = 12.5
+public let batteryStatusBarIconDrawingPrecision = 10.5
 
 ///  Defines the state the battery is currently in.
 ///

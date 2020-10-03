@@ -89,8 +89,6 @@ final class UserPreferences: NSObject {
         return result
     }
 
-    // MARK: - Methods
-
     ///  Register user defaults.
     static func registerDefaults() {
         let defaultPreferences = [

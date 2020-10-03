@@ -20,8 +20,6 @@ final class StatusBarItem: NSObject {
         return item.button
     }
 
-    // MARK: - Methods
-
     /// Instantiate a new battery status bar item.
     ///
     /// - Parameters:
@@ -81,8 +79,6 @@ final class StatusBarItem: NSObject {
     func popUpMenu(_ menu: NSMenu) {
         item.popUpMenu(menu)
     }
-
-    // MARK: - Private
 
     ///  Creates an attributed string for the status bar item's title.
     ///

@@ -20,21 +20,22 @@ private let batteryIconPath = "/System/Library/PrivateFrameworks/BatteryUIKit.fr
 ///  - dead:     IOService already open filename.
 ///  - none:     Battery IOService not found filename.
 private enum BatteryImage: String {
-    case left     = "BatteryLevelCapB-L.pdf"
-    case right    = "BatteryLevelCapB-R.pdf"
-    case middle   = "BatteryLevelCapB-M.pdf"
-    case empty    = "BatteryEmpty.pdf"
-    case charged  = "BatteryChargedAndPlugged.pdf"
-    case charging = "BatteryCharging.pdf"
-    case dead     = "BatteryDeadCropped.pdf"
-    case none     = "BatteryNone.pdf"
+    case left     = "BatteryLevelCapB-L"
+    case right    = "BatteryLevelCapB-R"
+    case middle   = "BatteryLevelCapB-M"
+    case empty    = "BatteryEmpty"
+    case charged  = "BatteryChargedAndPlugged"
+    case charging = "BatteryCharging"
+    case dead     = "BatteryDeadCropped"
+    case none     = "BatteryNone"
 }
 
 ///  Draws the status bar image.
 struct StatusBarIcon {
 
     ///  Add a little offset to draw the capacity bar in the correct position.
-    private let capacityOffsetX: CGFloat = 2.0
+    private let capacityOffsetX: CGFloat = 1.9
+    private let capacityOffsetY: CGFloat = 3.0
 
     ///  Caches the last drawn battery image.
     private var cache: BatteryImageCache?
@@ -94,7 +95,6 @@ struct StatusBarIcon {
                 return nil
         }
         let capacityHeight = capacityFill.size.height
-        let capacityOffsetY = batteryEmpty.size.height - (capacityHeight + capacityOffsetX)
         let capacityWidth =
             CGFloat(round(Double(percentage) / batteryStatusBarIconDrawingPrecision)) * capacityFill.size.width
         let drawingRect = NSRect(x: capacityOffsetX, y: capacityOffsetY,
@@ -126,7 +126,7 @@ struct StatusBarIcon {
     ///  - parameter name: The name of the requested image.
     ///  - returns:        The requested image.
     private func batteryImage(named name: BatteryImage) -> NSImage? {
-        guard let img = NSImage(contentsOfFile: batteryIconPath + name.rawValue) else {
+        guard let img = NSImage(named: name.rawValue) else {
             return nil
         }
         img.isTemplate = true
