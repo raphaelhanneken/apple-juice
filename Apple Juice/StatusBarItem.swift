@@ -63,7 +63,6 @@ final class StatusBarItem: NSObject {
                 return
         }
         button.attributedTitle = self.title(withPercentage: percentage, andTime: timeRemaining)
-
         button.image = icon?.drawBatteryImage(forStatus: batteryState)
         button.imagePosition = .imageRight
 
@@ -90,7 +89,7 @@ final class StatusBarItem: NSObject {
             return NSAttributedString(string: "")
         }
 
-        let attrs = [NSAttributedString.Key.font: NSFont.menuBarFont(ofSize: 12.0)]
+        let attrs = [NSAttributedString.Key.font: NSFont.menuBarFont(ofSize: 11.0)]
         if UserPreferences.showTime {
             return NSAttributedString(string: "\(time) ", attributes: attrs)
         }

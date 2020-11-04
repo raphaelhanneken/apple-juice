@@ -23,7 +23,7 @@ private enum BatteryImage: String {
     case left     = "BatteryLevelCapB-L"
     case right    = "BatteryLevelCapB-R"
     case middle   = "BatteryLevelCapB-M"
-    case empty    = "BatteryEmpty"
+    case empty    = "BatteryOutline"
     case charged  = "BatteryChargedAndPlugged"
     case charging = "BatteryCharging"
     case dead     = "BatteryDeadCropped"
@@ -60,7 +60,7 @@ struct StatusBarIcon {
                                       withImage: batteryImage(named: .charged))
         case let .discharging(percentage):
             cache = BatteryImageCache(forStatus: status,
-                                      withImage: dischargingBatteryImage(forPercentage: percentage))
+                                      withImage: dischargingBatteryImage(forPercentage: Double(percentage)))
         }
         return cache?.image
     }
@@ -81,29 +81,28 @@ struct StatusBarIcon {
         }
     }
 
-    // MARK: - Private
-
     ///  Draws a battery icon based on the battery's current percentage.
     ///
     ///  - parameter percentage: The current percentage of the battery.
     ///  - returns:              A battery image for the supplied percentage.
-    private func dischargingBatteryImage(forPercentage percentage: Int) -> NSImage? {
-        guard let batteryEmpty   = batteryImage(named: .empty),
-            let capacityCapLeft  = batteryImage(named: .left),
+    private func dischargingBatteryImage(forPercentage percentage: Double) -> NSImage? {
+        guard let batteryEmpty = batteryImage(named: .empty),
+            let capacityCapLeft = batteryImage(named: .left),
             let capacityCapRight = batteryImage(named: .right),
-            let capacityFill     = batteryImage(named: .middle) else {
-                return nil
+            let capacityFill = batteryImage(named: .middle)
+        else {
+            return nil
         }
-        let capacityHeight = capacityFill.size.height
-        let capacityWidth =
-            CGFloat(round(Double(percentage) / batteryStatusBarIconDrawingPrecision)) * capacityFill.size.width
+
         let drawingRect = NSRect(x: capacityOffsetX, y: capacityOffsetY,
-                                 width: capacityWidth, height: capacityHeight)
-        // Draw a special battery icon for low percentages, otherwise
-        // drawThreePartImage glitches.
+                                 width: CGFloat(round(percentage / drawingPrecision)) * capacityFill.size.width,
+                                 height: capacityFill.size.height)
+
+        // Draw a special battery icon for low percentages, otherwise drawThreePartImage glitches.
         if drawingRect.width < (2 * capacityFill.size.width) {
             return drawLowPercentageBattryImage()
         }
+
         drawThreePartImage(withFrame: drawingRect, canvas: batteryEmpty, startCap: capacityCapLeft,
                            fill: capacityFill, endCap: capacityCapRight)
 
@@ -146,5 +145,6 @@ struct StatusBarIcon {
         img.lockFocus()
         NSDrawThreePartImage(rect, start, fill, end, false, .copy, 1, false)
         img.unlockFocus()
+        img.isTemplate = true
     }
 }
