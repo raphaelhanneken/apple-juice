@@ -6,9 +6,6 @@
 
 import Cocoa
 
-///  Define the BatteryUIKit path
-private let batteryIconPath = "/System/Library/PrivateFrameworks/BatteryUIKit.framework/Versions/A/Resources/"
-
 ///  Defines the filenames for Apple's battery images.
 ///
 ///  - left: Left-hand side capacity bar cap.
