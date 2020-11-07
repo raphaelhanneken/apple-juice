@@ -31,8 +31,8 @@ private enum BatteryImage: String {
 struct StatusBarIcon {
 
     ///  Add a little offset to draw the capacity bar in the correct position.
-    private let capacityOffsetX: CGFloat = 1.9
-    private let capacityOffsetY: CGFloat = 3.0
+    private let capacityOffsetX: CGFloat = 2.0
+    private let capacityOffsetY: CGFloat = 2.0
 
     ///  Caches the last drawn battery image.
     private var cache: BatteryImageCache?
