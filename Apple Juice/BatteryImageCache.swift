@@ -6,20 +6,20 @@
 
 import Cocoa
 
-///  Caches a drawn battery image for a certain battery status.
 struct BatteryImageCache {
-    ///  Holds the drawn battery image.
+
+    ///  The cached battery icon.
     let image: NSImage?
-    ///  Holds the corresponding battery status for the image.
+    ///  The BatteryState associated with the cached battery icon.
     let batteryStatus: BatteryState
 
-    /// Initializes a new BatteryImageCache.
+    ///  Cache a battery icon alongside it's corresponding BatteryState.
     ///
-    /// - parameter status: The BatteryStatusType corresponding to the battery image.
-    /// - parameter img:    The drawn battery image.
-    /// - returns:          A new BatteryImageCache.
+    /// - parameter status: The BatteryState to cache the battery icon for.
+    /// - parameter img: The battery icon to cache.
     init(forStatus status: BatteryState, withImage img: NSImage?) {
         batteryStatus = status
         image = img
     }
+
 }

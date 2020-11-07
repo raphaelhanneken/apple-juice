@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 51;
+	objectVersion = 52;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -44,6 +44,7 @@
 		8EE129741C46D3C7000D404F /* StatusNotification.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EE129731C46D3C7000D404F /* StatusNotification.swift */; };
 		8EF30ED31D32B3170010BC49 /* BatteryService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EE1296F1C4695B5000D404F /* BatteryService.swift */; };
 		A6266F41AC2C995FF91E3D58 /* Pods_Apple_Juice.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 689A19A6DBBD17330E617737 /* Pods_Apple_Juice.framework */; };
+		C52233AF25575A0A00526725 /* NSImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = C52233AE25575A0A00526725 /* NSImage.swift */; };
 		C5D7EB48209891D500012A81 /* BatteryHealthType.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5D7EB47209891D500012A81 /* BatteryHealthType.swift */; };
 		C5EEDA6920276240004DE64C /* PreferenceKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5EEDA6820276240004DE64C /* PreferenceKey.swift */; };
 /* End PBXBuildFile section */
@@ -125,6 +126,7 @@
 		8EF30EEA1D32D0FA0010BC49 /* ListRowViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ListRowViewController.xib; sourceTree = "<group>"; };
 		8EF30EF01D32D1C70010BC49 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		C50D516422996CE500E985D1 /* Apple Juice Widget.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "Apple Juice Widget.entitlements"; sourceTree = "<group>"; };
+		C52233AE25575A0A00526725 /* NSImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NSImage.swift; sourceTree = "<group>"; };
 		C526408E22A29A5E00D46AE0 /* Apple Juice.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "Apple Juice.entitlements"; sourceTree = "<group>"; };
 		C58CD0B6222179A300D286C0 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/MainMenu.xib; sourceTree = "<group>"; };
 		C58CD0B7222179D200D286C0 /* de */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = de; path = de.lproj/MainMenu.xib; sourceTree = "<group>"; };
@@ -241,6 +243,7 @@
 				8E995BA91EABD8C800CE8364 /* BatteryError.swift */,
 				8EE129711C46CA1B000D404F /* UserPreferences.swift */,
 				C5EEDA6820276240004DE64C /* PreferenceKey.swift */,
+				C52233AE25575A0A00526725 /* NSImage.swift */,
 				8EE129681C4661BA000D404F /* UI */,
 				8EE129671C4661AC000D404F /* Resources */,
 				8E03E9DC1C4BCFBA00D12D11 /* Supporting Files */,
@@ -362,7 +365,7 @@
 				};
 			};
 			buildConfigurationList = 8EBEB43D1C466091001DBE91 /* Build configuration list for PBXProject "Apple Juice" */;
-			compatibilityVersion = "Xcode 9.3";
+			compatibilityVersion = "Xcode 11.0";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
 			knownRegions = (
@@ -496,6 +499,7 @@
 				8EE129741C46D3C7000D404F /* StatusNotification.swift in Sources */,
 				8E995BB11EABD8C800CE8364 /* NotificationKey.swift in Sources */,
 				8EE129721C46CA1B000D404F /* UserPreferences.swift in Sources */,
+				C52233AF25575A0A00526725 /* NSImage.swift in Sources */,
 				8E995BB41EABD8C800CE8364 /* StatusBarItem.swift in Sources */,
 				8E995BAF1EABD8C800CE8364 /* BatteryError.swift in Sources */,
 				8EE1296A1C4663F7000D404F /* ApplicationController.swift in Sources */,
