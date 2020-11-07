@@ -11,23 +11,23 @@ private let batteryIconPath = "/System/Library/PrivateFrameworks/BatteryUIKit.fr
 
 ///  Defines the filenames for Apple's battery images.
 ///
-///  - left:     Left-hand side capacity bar cap.
-///  - right:    Right-hand side capacity bar cap.
-///  - middle:   Capacity bar filler filename.
-///  - empty:    Empty battery filename.
-///  - charged:  Charged and plugged battery filename.
+///  - left: Left-hand side capacity bar cap.
+///  - right: Right-hand side capacity bar cap.
+///  - middle: Capacity bar filler filename.
+///  - empty: Empty battery filename.
+///  - chargedAndPlugged: Charged and plugged battery filename.
 ///  - charging: Charging battery filename.
-///  - dead:     IOService already open filename.
-///  - none:     Battery IOService not found filename.
+///  - dead: IOService already open filename.
+///  - none: Battery IOService not found filename.
 private enum BatteryImage: String {
-    case left     = "BatteryLevelCapB-L"
-    case right    = "BatteryLevelCapB-R"
-    case middle   = "BatteryLevelCapB-M"
-    case empty    = "BatteryOutline"
-    case charged  = "BatteryChargedAndPlugged"
-    case charging = "BatteryCharging"
-    case dead     = "BatteryDeadCropped"
-    case none     = "BatteryNone"
+    case left = "BatteryFillCapLeft"
+    case right = "BatteryFillCapRight"
+    case middle = "BatteryFill"
+    case outline = "BatteryOutline"
+    case charging = "Charging"
+    case chargedAndPlugged = "ChargedAndPlugged"
+    case deadCropped = "DeadCropped"
+    case none = "None"
 }
 
 ///  Draws the status bar image.
@@ -55,9 +55,9 @@ struct StatusBarIcon {
         case .charging:
             cache = BatteryImageCache(forStatus: status,
                                       withImage: batteryImage(named: .charging))
-        case .pluggedAndCharged:
+        case .chargedAndPlugged:
             cache = BatteryImageCache(forStatus: status,
-                                      withImage: batteryImage(named: .charged))
+                                      withImage: batteryImage(named: .chargedAndPlugged))
         case let .discharging(percentage):
             cache = BatteryImageCache(forStatus: status,
                                       withImage: dischargingBatteryImage(forPercentage: Double(percentage)))
@@ -75,7 +75,7 @@ struct StatusBarIcon {
         }
         switch error {
         case .connectionAlreadyOpen:
-            return batteryImage(named: .dead)
+            return batteryImage(named: .deadCropped)
         case .serviceNotFound:
             return batteryImage(named: .none)
         }
@@ -86,7 +86,7 @@ struct StatusBarIcon {
     ///  - parameter percentage: The current percentage of the battery.
     ///  - returns:              A battery image for the supplied percentage.
     private func dischargingBatteryImage(forPercentage percentage: Double) -> NSImage? {
-        guard let batteryEmpty = batteryImage(named: .empty),
+        guard let batteryEmpty = batteryImage(named: .outline),
             let capacityCapLeft = batteryImage(named: .left),
             let capacityCapRight = batteryImage(named: .right),
             let capacityFill = batteryImage(named: .middle)

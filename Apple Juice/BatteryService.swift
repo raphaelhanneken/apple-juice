@@ -36,7 +36,7 @@ final class BatteryService {
                 return nil
         }
         if charged && plugged {
-            return .pluggedAndCharged
+            return .chargedAndPlugged
         }
         if charging {
             return .charging(percentage: percentage)
