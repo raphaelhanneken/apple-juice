@@ -12,12 +12,9 @@ final class ApplicationController: NSObject {
     @IBOutlet weak var applicationMenu: NSMenu!
     /// Holds a weak reference to the charging status menu item.
     @IBOutlet weak var currentCharge: NSMenuItem!
-    /// Holds a weak reference to the power source menu item.
-    @IBOutlet weak var currentSource: NSMenuItem!
 
     /// The status bar item.
     private var statusItem: StatusBarItem?
-
     /// An abstraction to the battery IO service
     private var battery: BatteryService!
 
@@ -26,78 +23,106 @@ final class ApplicationController: NSObject {
 
         do {
             self.battery = try BatteryService()
-            self.statusItem = StatusBarItem(forBattery: self.battery,
-                                            withTarget: self,
-                                            andAction: #selector(ApplicationController.displayAppMenu(_:)))
-
+            self.statusItem = StatusBarItem(
+                forBattery: self.battery,
+                withTarget: self,
+                andAction: #selector(ApplicationController.displayAppMenu(_:)))
             self.statusItem?.update(batteryInfo: self.battery)
             self.registerAsObserver()
         } catch {
-            self.statusItem = StatusBarItem(forError: error as? BatteryError,
-                                            withTarget: self,
-                                            andAction: #selector(ApplicationController.displayAppMenu(_:)))
+            self.statusItem = StatusBarItem(
+                forError: error as? BatteryError,
+                withTarget: self,
+                andAction: #selector(ApplicationController.displayAppMenu(_:)))
         }
     }
 
-    ///  This message is sent to the receiver when the value at the specified key
-    ///  path relative to the given object has changed. The receiver must be
-    ///  registered as an observer for the specified keyPath and object.
+    ///  This message is sent to the receiver when the value at the specified key path relative to the given object
+    ///  has changed. The receiver must be registered as an observer for the specified keyPath and object.
     ///
     ///  - parameter keyPath: The key path, relative to object, to the value that has changed.
-    ///  - parameter object:  The source object of the key path.
-    ///  - parameter change:  A dictionary that describes the changes that have been made to
-    ///                       the value of the property at the key path keyPath relative to object.
-    ///                       Entries are described in Change Dictionary Keys.
+    ///  - parameter object: The source object of the key path.
+    ///  - parameter change: A dictionary that describes the changes that have been made to
+    ///                      the value of the property at the key path keyPath relative to object.
+    ///                      Entries are described in Change Dictionary Keys.
     ///  - parameter context: The value that was provided when the receiver was registered to receive key-value
     ///                       observation notifications.
-    override func observeValue(forKeyPath _: String?, of _: Any?,
-                               change _: [NSKeyValueChangeKey: Any]?, context _: UnsafeMutableRawPointer?) {
+    override func observeValue(
+        forKeyPath _: String?,
+        of _: Any?,
+        change _: [NSKeyValueChangeKey: Any]?,
+        context _: UnsafeMutableRawPointer?
+    ) {
         statusItem?.update(batteryInfo: battery)
     }
 
     ///  This message is sent to the receiver, when a powerSourceChanged message was posted. The receiver
     ///  must be registered as an observer for powerSourceChangedNotification's.
     ///
-    ///  - parameter sender: The source object of the posted powerSourceChanged message.
-    @objc func powerSourceChanged(_: AnyObject) {
+    ///  - parameter sender: The object that posted powerSourceChanged message.
+    @objc public func powerSourceChanged(_: AnyObject) {
         statusItem?.update(batteryInfo: battery)
         if let notification = StatusNotification(forState: battery.state) {
             notification.postNotification()
         }
     }
 
-    ///  Displays the application menu under the status bar item when the
-    ///  user clicks the item.
+    ///  Displays the application menu when the user clicks the menu bar item.
     ///
-    ///  - parameter sender: The source object that sent the message.
-    @objc func displayAppMenu(_: AnyObject) {
+    ///  - parameter sender: The object that sent the message.
+    @objc public func displayAppMenu(_: AnyObject) {
         updateMenuItems({
             self.statusItem?.popUpMenu(self.applicationMenu)
         })
     }
 
-    ///  Updates the information within the application menu.
+    ///  Open the energy saver preference pane.
     ///
-    ///  - parameter completionHandler: A callback function, that gets called
-    ///                                 as soon as the menu items are updated.
+    ///  - parameter sender: The menu item object that sent the message.
+    @IBAction public func energySaverPreferences(_: NSMenuItem) {
+        NSWorkspace.shared.openFile("/System/Library/PreferencePanes/EnergySaver.prefPane")
+    }
+
+    ///  Updates informations within the application menu.
+    ///
+    ///  - parameter completionHandler: A callback function, to be called when a menu item was updated.
     private func updateMenuItems(_ completionHandler: () -> Void) {
-        guard
-            let capacity = battery.capacity,
-            let charge   = battery.charge,
-            let amperage = battery.amperage else {
-                return
+        guard let capacity = battery.capacity,
+              let charge   = battery.charge,
+              let amperage = battery.amperage
+        else {
+            return
         }
 
-        currentSource.title = "\(NSLocalizedString("Power Source", comment: "")) \(battery.powerSource)"
-        currentCharge.title = "\(battery.timeRemainingFormatted) \(charge) / \(capacity) mAh (\(amperage) mA)"
-
+        var timeRemaining = battery.timeRemainingFormatted
         if UserPreferences.showTime {
-            currentCharge.title = "\(battery.percentageFormatted) \(charge) / \(capacity) mAh (\(amperage) mA)"
+            timeRemaining = battery.percentageFormatted
         }
+
+        let paragraphStyle = NSMutableParagraphStyle()
+        paragraphStyle.paragraphSpacing = 4.0
+
+        let powerSource = NSMutableAttributedString(
+            string: "\(NSLocalizedString("Power Source", comment: "")) \(battery.powerSource)\n",
+            attributes: [
+                .font: NSFont.menuFont(ofSize: 13.0),
+                .paragraphStyle: paragraphStyle,
+                .foregroundColor: NSColor.white
+            ]
+        )
+
+        let details = NSAttributedString(
+            string: "\(timeRemaining) \(charge) / \(capacity) mAh (\(amperage) mA)",
+            attributes: [.font: NSFont.menuFont(ofSize: 11.0)]
+        )
+
+        powerSource.append(details)
+
+        currentCharge.attributedTitle = powerSource
         completionHandler()
     }
 
-    /// Register the ApplicationController as observer for changes in the power source and the user preferences
+    /// Registers the ApplicationController as observer for power source and user preference changes
     private func registerAsObserver() {
         UserDefaults
             .standard
@@ -118,10 +143,4 @@ final class ApplicationController: NSObject {
                          object: nil)
     }
 
-    ///  Open the energy saver preference pane.
-    ///
-    ///  - parameter sender: The menu item object that sent the message.
-    @IBAction func energySaverPreferences(_: NSMenuItem) {
-        NSWorkspace.shared.openFile("/System/Library/PreferencePanes/EnergySaver.prefPane")
-    }
 }

@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="17506" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
     <dependencies>
         <deployment identifier="macosx"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="14490.70"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="17506"/>
     </dependencies>
     <objects>
         <customObject id="-2" userLabel="File's Owner" customClass="NSApplication">
@@ -19,15 +19,11 @@
             <connections>
                 <outlet property="applicationMenu" destination="tlM-TC-O58" id="Cfu-rX-6U8"/>
                 <outlet property="currentCharge" destination="Jwd-Td-BfA" id="wKz-yB-mmp"/>
-                <outlet property="currentSource" destination="P8z-Da-8Sb" id="eGL-1q-yuj"/>
             </connections>
         </customObject>
         <menu id="tlM-TC-O58">
             <items>
                 <menuItem title="Unknown..." enabled="NO" id="Jwd-Td-BfA">
-                    <modifierMask key="keyEquivalentModifierMask"/>
-                </menuItem>
-                <menuItem title="Source: Unknown..." enabled="NO" id="P8z-Da-8Sb">
                     <modifierMask key="keyEquivalentModifierMask"/>
                 </menuItem>
                 <menuItem isSeparatorItem="YES" id="OYt-Th-ZmC"/>
