@@ -16,6 +16,7 @@ private enum BatteryImage: NSImage.Name {
     case chargedAndPlugged = "ChargedAndPlugged"
     case deadCropped = "DeadCropped"
     case none = "None"
+    case lowBattery = "LowBattery"
 }
 
 internal struct StatusBarIcon {
@@ -55,8 +56,8 @@ internal struct StatusBarIcon {
     ///
     ///  - parameter err: The BatteryError object for the corresponding error that happened.
     ///  - returns: A battery icon for the given BatteryError.
-    internal func drawBatteryImage(forError err: BatteryError?) -> NSImage? {
-        guard let error = err else { return nil }
+    internal func drawBatteryImage(forError error: BatteryError?) -> NSImage? {
+        guard let error = error else { return nil }
 
         switch error {
         case .connectionAlreadyOpen:
@@ -71,9 +72,10 @@ internal struct StatusBarIcon {
     ///  - parameter percentage: The current percentage of the battery.
     ///  - returns: A battery icon for the supplied percentage.
     private func dischargingBatteryImage(forPercentage percentage: Double) -> NSImage? {
-        guard let batteryOutline = batteryImage(named: .outline), let capacityCapLeft = batteryImage(named: .left),
-            let capacityCapRight = batteryImage(named: .right), let capacityFill = batteryImage(named: .middle)
-        else {
+        guard let batteryOutline = batteryImage(named: .outline),
+              let capacityCapLeft = batteryImage(named: .left),
+              let capacityCapRight = batteryImage(named: .right),
+              let capacityFill = batteryImage(named: .middle) else {
             return nil
         }
 
@@ -83,6 +85,12 @@ internal struct StatusBarIcon {
                                  y: capacityOffsetY,
                                  width: CGFloat(round(percentage / drawingPrecision)) * capacityFill.size.width,
                                  height: capacityFill.size.height)
+
+        // NSImage#drawThreePartImage glitchets when the width of the capacity bar drops
+        // below the combined width of startCap and endCap.
+        if drawingRect.width < (2 * capacityFill.size.width) {
+            return batteryImage(named: .lowBattery)
+        }
 
         return batteryOutline.drawThreePartImage(withStartCap: capacityCapLeft,
                                                  fill: capacityFill,
@@ -95,9 +103,7 @@ internal struct StatusBarIcon {
     ///  - parameter name: The name of an image in the app bundle.
     ///  - returns: An image object associated with the specified name as template.
     private func batteryImage(named name: BatteryImage) -> NSImage? {
-        guard let img = NSImage(named: name.rawValue) else {
-            return nil
-        }
+        guard let img = NSImage(named: name.rawValue) else { return nil }
         img.isTemplate = true
 
         return img
