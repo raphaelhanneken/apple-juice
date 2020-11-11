@@ -22,15 +22,14 @@ final class ApplicationController: NSObject {
         super.init()
 
         do {
-            self.battery = try BatteryService()
-            self.statusItem = StatusBarItem(
-                forBattery: self.battery,
-                withAction: #selector(ApplicationController.displayAppMenu(_:)),
-                forTarget: self)
-            self.statusItem?.update(batteryInfo: self.battery)
-            self.registerAsObserver()
+            battery = try BatteryService()
+            statusItem = StatusBarItem(forBattery: battery,
+                                       withAction: #selector(ApplicationController.displayAppMenu(_:)),
+                                       forTarget: self)
+            statusItem?.update(batteryInfo: battery)
+            registerAsObserver()
         } catch {
-            self.statusItem = StatusBarItem(
+            statusItem = StatusBarItem(
                 forError: error as? BatteryError,
                 withAction: #selector(ApplicationController.displayAppMenu(_:)),
                 forTarget: self)
@@ -60,6 +59,7 @@ final class ApplicationController: NSObject {
     ///  - parameter sender: The object that posted powerSourceChanged message.
     @objc public func powerSourceChanged(_: AnyObject) {
         statusItem?.update(batteryInfo: battery)
+
         if let notification = StatusNotification(forState: battery.state) {
             notification.postNotification()
         }
@@ -70,7 +70,7 @@ final class ApplicationController: NSObject {
     ///  - parameter sender: The object that sent the message.
     @objc public func displayAppMenu(_: AnyObject) {
         updateMenuItems({
-            self.statusItem?.popUpMenu(self.applicationMenu)
+            statusItem?.popUpMenu(applicationMenu)
         })
     }
 
