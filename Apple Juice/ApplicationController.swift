@@ -26,7 +26,7 @@ final class ApplicationController: NSObject {
             self.statusItem = StatusBarItem(
                 forBattery: self.battery,
                 withAction: #selector(ApplicationController.displayAppMenu(_:)),
-                forTarget: self )
+                forTarget: self)
             self.statusItem?.update(batteryInfo: self.battery)
             self.registerAsObserver()
         } catch {
@@ -47,12 +47,10 @@ final class ApplicationController: NSObject {
     ///                      Entries are described in Change Dictionary Keys.
     ///  - parameter context: The value that was provided when the receiver was registered to receive key-value
     ///                       observation notifications.
-    override func observeValue(
-        forKeyPath _: String?,
-        of _: Any?,
-        change _: [NSKeyValueChangeKey: Any]?,
-        context _: UnsafeMutableRawPointer?
-    ) {
+    override func observeValue(forKeyPath _: String?,
+                               of _: Any?,
+                               change _: [NSKeyValueChangeKey: Any]?,
+                               context _: UnsafeMutableRawPointer?) {
         statusItem?.update(batteryInfo: battery)
     }
 
@@ -100,21 +98,15 @@ final class ApplicationController: NSObject {
         }
 
         let paragraphStyle = NSMutableParagraphStyle()
-        paragraphStyle.paragraphSpacing = 4.0
+        paragraphStyle.paragraphSpacing = 3.0
 
         let powerSource = NSMutableAttributedString(
             string: "\(NSLocalizedString("Power Source", comment: "")) \(battery.powerSource)\n",
-            attributes: [
-                .font: NSFont.menuFont(ofSize: 13.0),
-                .paragraphStyle: paragraphStyle,
-                .foregroundColor: NSColor.white
-            ]
-        )
+            attributes: [.font: NSFont.menuFont(ofSize: 13.0), .paragraphStyle: paragraphStyle])
 
         let details = NSAttributedString(
             string: "\(timeRemaining) \(charge) / \(capacity) mAh (\(amperage) mA)",
-            attributes: [.font: NSFont.menuFont(ofSize: 11.0)]
-        )
+            attributes: [.font: NSFont.menuFont(ofSize: 12.0)])
 
         powerSource.append(details)
 

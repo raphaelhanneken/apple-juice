@@ -28,3 +28,6 @@ build/
 # Dependency management
 Carthage/
 Pods/
+
+# Debug Symbols
+*~.dSYM/
