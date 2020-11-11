@@ -43,7 +43,6 @@
 		8EE129721C46CA1B000D404F /* UserPreferences.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EE129711C46CA1B000D404F /* UserPreferences.swift */; };
 		8EE129741C46D3C7000D404F /* StatusNotification.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EE129731C46D3C7000D404F /* StatusNotification.swift */; };
 		8EF30ED31D32B3170010BC49 /* BatteryService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EE1296F1C4695B5000D404F /* BatteryService.swift */; };
-		A6266F41AC2C995FF91E3D58 /* Pods_Apple_Juice.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 689A19A6DBBD17330E617737 /* Pods_Apple_Juice.framework */; };
 		C52233AF25575A0A00526725 /* NSImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = C52233AE25575A0A00526725 /* NSImage.swift */; };
 		C5D7EB48209891D500012A81 /* BatteryHealthType.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5D7EB47209891D500012A81 /* BatteryHealthType.swift */; };
 		C5EEDA6920276240004DE64C /* PreferenceKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5EEDA6820276240004DE64C /* PreferenceKey.swift */; };
@@ -84,8 +83,6 @@
 
 /* Begin PBXFileReference section */
 		5EF9F80621FB7A3300748374 /* pt-BR */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "pt-BR"; path = "pt-BR.lproj/Localizable.strings"; sourceTree = "<group>"; };
-		689A19A6DBBD17330E617737 /* Pods_Apple_Juice.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Apple_Juice.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		86D26C318A3F063CBE3FFD70 /* Pods-Apple Juice.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Apple Juice.release.xcconfig"; path = "Target Support Files/Pods-Apple Juice/Pods-Apple Juice.release.xcconfig"; sourceTree = "<group>"; };
 		8E0D33AF1D3118CD002D3463 /* Apple Juice Widget.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = "Apple Juice Widget.appex"; sourceTree = BUILT_PRODUCTS_DIR; };
 		8E0D33B31D3118CD002D3463 /* Apple_Juice_Widget.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = Apple_Juice_Widget.entitlements; sourceTree = "<group>"; };
 		8E0D33B41D3118CD002D3463 /* TodayViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodayViewController.swift; sourceTree = "<group>"; };
@@ -136,7 +133,6 @@
 		C58CD0BB2221E6B900D286C0 /* pt-BR */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = "pt-BR"; path = "pt-BR.lproj/MainMenu.xib"; sourceTree = "<group>"; };
 		C5D7EB47209891D500012A81 /* BatteryHealthType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BatteryHealthType.swift; sourceTree = "<group>"; };
 		C5EEDA6820276240004DE64C /* PreferenceKey.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PreferenceKey.swift; sourceTree = "<group>"; };
-		C80BFB038EEA0089AC8776B8 /* Pods-Apple Juice.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Apple Juice.debug.xcconfig"; path = "Target Support Files/Pods-Apple Juice/Pods-Apple Juice.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -152,7 +148,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A6266F41AC2C995FF91E3D58 /* Pods_Apple_Juice.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -214,7 +209,6 @@
 				8E0D33B11D3118CD002D3463 /* Apple Juice Widget */,
 				8EE1297B1C46F891000D404F /* Frameworks */,
 				8EBEB4431C466091001DBE91 /* Products */,
-				C12DE2ED2ABECDFD8CBAB06D /* Pods */,
 			);
 			sourceTree = "<group>";
 		};
@@ -273,18 +267,8 @@
 			isa = PBXGroup;
 			children = (
 				8EE1297C1C46F891000D404F /* NotificationCenter.framework */,
-				689A19A6DBBD17330E617737 /* Pods_Apple_Juice.framework */,
 			);
 			name = Frameworks;
-			sourceTree = "<group>";
-		};
-		C12DE2ED2ABECDFD8CBAB06D /* Pods */ = {
-			isa = PBXGroup;
-			children = (
-				C80BFB038EEA0089AC8776B8 /* Pods-Apple Juice.debug.xcconfig */,
-				86D26C318A3F063CBE3FFD70 /* Pods-Apple Juice.release.xcconfig */,
-			);
-			path = Pods;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -311,14 +295,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 8EBEB44F1C466091001DBE91 /* Build configuration list for PBXNativeTarget "Apple Juice" */;
 			buildPhases = (
-				9A5BE12B823455F31515FB73 /* [CP] Check Pods Manifest.lock */,
 				8EBEB43E1C466091001DBE91 /* Sources */,
 				8EBEB43F1C466091001DBE91 /* Frameworks */,
 				8EBEB4401C466091001DBE91 /* Resources */,
 				8EE129751C46E993000D404F /* ShellScript */,
 				8EE129951C46F891000D404F /* Embed App Extensions */,
 				8EBF29E11C48461A005BBAE0 /* CopyFiles */,
-				B7F7D845D34AC42CA6F3A3CE /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -426,45 +408,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "if which swiftlint >/dev/null; then\n    swiftlint\nelse\n    echo \"SwiftLint not found! Please install SwiftLint from https://github.com/realm/SwiftLint\"\nfi\n";
-		};
-		9A5BE12B823455F31515FB73 /* [CP] Check Pods Manifest.lock */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-			);
-			inputPaths = (
-				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
-				"${PODS_ROOT}/Manifest.lock",
-			);
-			name = "[CP] Check Pods Manifest.lock";
-			outputFileListPaths = (
-			);
-			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-Apple Juice-checkManifestLockResult.txt",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
-			showEnvVarsInLog = 0;
-		};
-		B7F7D845D34AC42CA6F3A3CE /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-Apple Juice/Pods-Apple Juice-frameworks-${CONFIGURATION}-input-files.xcfilelist",
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-Apple Juice/Pods-Apple Juice-frameworks-${CONFIGURATION}-output-files.xcfilelist",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Apple Juice/Pods-Apple Juice-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
 
@@ -713,7 +656,6 @@
 		};
 		8EBEB4501C466091001DBE91 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = C80BFB038EEA0089AC8776B8 /* Pods-Apple Juice.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
@@ -739,7 +681,6 @@
 		};
 		8EBEB4511C466091001DBE91 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 86D26C318A3F063CBE3FFD70 /* Pods-Apple Juice.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
