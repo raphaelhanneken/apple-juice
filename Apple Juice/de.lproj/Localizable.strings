@@ -6,7 +6,7 @@
 
 //  Menu Items
 
-"Charged"       = "Vollständig geladen";
+"Charged"       = "Geladen";
 "Unknown"       = "Unbekannt";
 "Battery"       = "Batterie";
 "Power Adapter" = "Netzteil";
@@ -16,9 +16,9 @@
 //  Notifications
 
 "Charged Notification Title"       = "Vollständig geladen";
-"Charged Notification Message"     = "Ihre Batterie ist jetzt vollständig geladen.";
+"Charged Notification Message"     = "Dein Mac ist jetzt vollständig geladen.";
 "Low Battery Notification Title"   = "%@ verbleibend";
-"Low Battery Notification Message" = "Schießen Sie Ihren Mac sobald wie möglich an ein Netzteil an.";
+"Low Battery Notification Message" = "Ohne Stromzufuhr aktiviert dein Mac bald den Ruhezustand.";
 
 
 //  Properties

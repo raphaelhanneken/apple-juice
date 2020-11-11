@@ -54,7 +54,7 @@ final class BatteryService {
         }
         // Check if the battery is charged and plugged into an unlimited power supply.
         if charged && plugged {
-            return NSLocalizedString("Charged", comment: "")
+            return NSLocalizedString("Charged Notification Title", comment: "")
         }
         // The battery is (dis)charging, display the remaining time.
         if let time = timeRemaining {

@@ -82,19 +82,18 @@ final class StatusBarItem: NSObject {
     private func setTitle(_ battery: BatteryService?) {
         guard let button = item.button,
               let percentage = battery?.percentageFormatted,
-              let timeRemaining = battery?.timeRemainingFormatted,
-              let batteryState = battery?.state
+              let timeRemaining = battery?.timeRemainingFormatted
         else {
             return
         }
 
         let titleAttributes = [NSAttributedString.Key.font: NSFont.menuBarFont(ofSize: 11.0)]
 
-        button.attributedTitle = NSAttributedString(string: percentage, attributes: titleAttributes)
-        if UserPreferences.hideMenubarInfo || batteryState == .chargedAndPlugged {
-            button.attributedTitle = NSAttributedString(string: "")
-        } else if UserPreferences.showTime {
+        button.attributedTitle = NSAttributedString(string: "")
+        if UserPreferences.showTime {
             button.attributedTitle = NSAttributedString(string: timeRemaining, attributes: titleAttributes)
+        } else {
+            button.attributedTitle = NSAttributedString(string: percentage, attributes: titleAttributes)
         }
     }
 
