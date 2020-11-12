@@ -7,6 +7,29 @@
     <language>en</language>
 
     <item>
+      <title>Apple Juice v2020.11</title>
+        <description>
+          <![CDATA[
+            <p>
+                Adds macOS Big Sur compatibility
+            </p>
+            <p>
+              Build with Xcode Version 12.2 using Swift 5
+            </p>
+          ]]>
+        </description>
+        <pubDate>Sat, 07 Sep 2019 10:00:00 +0100</pubDate>
+        <sparkle:minimumSystemVersion>10.12</sparkle:minimumSystemVersion>
+        <enclosure
+          url="https://github.com/raphaelhanneken/apple-juice/releases/download/2020.11/Apple.Juice.dmg"
+          sparkle:version="381"
+          sparkle:shortVersionString="2020.11"
+          sparkle:dsaSignature="MCwCFAQ89AS8L9Liprf26qtY2dUdyTN2AhQyUT5rkoiaLQN179x5Ooqw4rfTJQ=="
+          length="12058483"
+          type="application/octet-stream" />
+    </item>
+
+    <item>
       <title>Apple Juice v1.10.2</title>
         <description>
           <![CDATA[
