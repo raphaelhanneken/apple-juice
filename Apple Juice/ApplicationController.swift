@@ -86,7 +86,7 @@ final class ApplicationController: NSObject {
     ///  - parameter completionHandler: A callback function, to be called when a menu item was updated.
     private func updateMenuItems(_ completionHandler: () -> Void) {
         guard let capacity = battery.capacity,
-              let charge   = battery.charge,
+              let charge = battery.charge,
               let amperage = battery.amperage
         else {
             return

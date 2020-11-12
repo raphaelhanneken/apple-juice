@@ -44,9 +44,10 @@
 		8EE129741C46D3C7000D404F /* StatusNotification.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EE129731C46D3C7000D404F /* StatusNotification.swift */; };
 		8EF30ED31D32B3170010BC49 /* BatteryService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EE1296F1C4695B5000D404F /* BatteryService.swift */; };
 		C52233AF25575A0A00526725 /* NSImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = C52233AE25575A0A00526725 /* NSImage.swift */; };
-		C57FE246255C897300E4E2B4 /* Sparkle.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C57FE242255C88D800E4E2B4 /* Sparkle.framework */; };
-		C57FE247255C897300E4E2B4 /* Sparkle.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = C57FE242255C88D800E4E2B4 /* Sparkle.framework */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
-		C57FE25D255C8EDE00E4E2B4 /* Sparkle.framework.dSYM in Resources */ = {isa = PBXBuildFile; fileRef = C57FE25C255C8EDE00E4E2B4 /* Sparkle.framework.dSYM */; };
+		C57FE28B255CA29000E4E2B4 /* Sparkle.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C57FE287255CA25F00E4E2B4 /* Sparkle.framework */; };
+		C57FE28C255CA29000E4E2B4 /* Sparkle.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = C57FE287255CA25F00E4E2B4 /* Sparkle.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		C57FE291255CA2EB00E4E2B4 /* Sparkle.framework.dSYM in Resources */ = {isa = PBXBuildFile; fileRef = C57FE290255CA2EB00E4E2B4 /* Sparkle.framework.dSYM */; };
+		C57FE293255CA2F600E4E2B4 /* Sparkle.framework.dSYM in CopyFiles */ = {isa = PBXBuildFile; fileRef = C57FE290255CA2EB00E4E2B4 /* Sparkle.framework.dSYM */; };
 		C5D7EB48209891D500012A81 /* BatteryHealthType.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5D7EB47209891D500012A81 /* BatteryHealthType.swift */; };
 		C5EEDA6920276240004DE64C /* PreferenceKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5EEDA6820276240004DE64C /* PreferenceKey.swift */; };
 /* End PBXBuildFile section */
@@ -73,23 +74,24 @@
 			name = "Embed App Extensions";
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		C57FE248255C897300E4E2B4 /* Embed Frameworks */ = {
+		C57FE28D255CA29100E4E2B4 /* Embed Frameworks */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
 			dstPath = "";
-			dstSubfolderSpec = 16;
+			dstSubfolderSpec = 10;
 			files = (
-				C57FE247255C897300E4E2B4 /* Sparkle.framework in Embed Frameworks */,
+				C57FE28C255CA29000E4E2B4 /* Sparkle.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		C57FE24A255C8AD700E4E2B4 /* CopyFiles */ = {
+		C57FE28F255CA2CB00E4E2B4 /* CopyFiles */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
 			dstPath = "";
 			dstSubfolderSpec = 16;
 			files = (
+				C57FE293255CA2F600E4E2B4 /* Sparkle.framework.dSYM in CopyFiles */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -139,8 +141,8 @@
 		C50D516422996CE500E985D1 /* Apple Juice Widget.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "Apple Juice Widget.entitlements"; sourceTree = "<group>"; };
 		C52233AE25575A0A00526725 /* NSImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NSImage.swift; sourceTree = "<group>"; };
 		C526408E22A29A5E00D46AE0 /* Apple Juice.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "Apple Juice.entitlements"; sourceTree = "<group>"; };
-		C57FE242255C88D800E4E2B4 /* Sparkle.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Sparkle.framework; path = Carthage/Build/Mac/Sparkle.framework; sourceTree = "<group>"; };
-		C57FE25C255C8EDE00E4E2B4 /* Sparkle.framework.dSYM */ = {isa = PBXFileReference; lastKnownFileType = wrapper.dsym; name = Sparkle.framework.dSYM; path = Carthage/Build/Sparkle.framework.dSYM; sourceTree = "<group>"; };
+		C57FE287255CA25F00E4E2B4 /* Sparkle.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Sparkle.framework; path = Carthage/Build/Mac/Sparkle.framework; sourceTree = "<group>"; };
+		C57FE290255CA2EB00E4E2B4 /* Sparkle.framework.dSYM */ = {isa = PBXFileReference; lastKnownFileType = wrapper.dsym; name = Sparkle.framework.dSYM; path = Carthage/Build/Mac/Sparkle.framework.dSYM; sourceTree = "<group>"; };
 		C58CD0B6222179A300D286C0 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/MainMenu.xib; sourceTree = "<group>"; };
 		C58CD0B7222179D200D286C0 /* de */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = de; path = de.lproj/MainMenu.xib; sourceTree = "<group>"; };
 		C58CD0B822217BAB00D286C0 /* fr */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = fr; path = fr.lproj/MainMenu.xib; sourceTree = "<group>"; };
@@ -160,11 +162,11 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		8EBEB43F1C466091001DBE91 /* Frameworks */ = {
+		C57FE26D255C9DDE00E4E2B4 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C57FE246255C897300E4E2B4 /* Sparkle.framework in Frameworks */,
+				C57FE28B255CA29000E4E2B4 /* Sparkle.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -283,8 +285,8 @@
 		8EE1297B1C46F891000D404F /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				C57FE25C255C8EDE00E4E2B4 /* Sparkle.framework.dSYM */,
-				C57FE242255C88D800E4E2B4 /* Sparkle.framework */,
+				C57FE290255CA2EB00E4E2B4 /* Sparkle.framework.dSYM */,
+				C57FE287255CA25F00E4E2B4 /* Sparkle.framework */,
 				8EE1297C1C46F891000D404F /* NotificationCenter.framework */,
 			);
 			name = Frameworks;
@@ -315,14 +317,13 @@
 			buildConfigurationList = 8EBEB44F1C466091001DBE91 /* Build configuration list for PBXNativeTarget "Apple Juice" */;
 			buildPhases = (
 				8EBEB43E1C466091001DBE91 /* Sources */,
-				8EBEB43F1C466091001DBE91 /* Frameworks */,
 				8EBEB4401C466091001DBE91 /* Resources */,
-				8EE129751C46E993000D404F /* ShellScript */,
 				8EE129951C46F891000D404F /* Embed App Extensions */,
-				C57FE245255C892B00E4E2B4 /* ShellScript */,
-				C57FE248255C897300E4E2B4 /* Embed Frameworks */,
-				C57FE24A255C8AD700E4E2B4 /* CopyFiles */,
+				C57FE26D255C9DDE00E4E2B4 /* Frameworks */,
+				C57FE28D255CA29100E4E2B4 /* Embed Frameworks */,
 				C57FE24E255C8B4100E4E2B4 /* ShellScript */,
+				8EE129751C46E993000D404F /* ShellScript */,
+				C57FE28F255CA2CB00E4E2B4 /* CopyFiles */,
 			);
 			buildRules = (
 			);
@@ -411,7 +412,7 @@
 				8EBEB4481C466091001DBE91 /* Assets.xcassets in Resources */,
 				8E995BBB1EABDB2F00CE8364 /* dsa_pub.pem in Resources */,
 				8EBF29E91C485493005BBAE0 /* Localizable.strings in Resources */,
-				C57FE25D255C8EDE00E4E2B4 /* Sparkle.framework.dSYM in Resources */,
+				C57FE291255CA2EB00E4E2B4 /* Sparkle.framework.dSYM in Resources */,
 				8EBEB44B1C466091001DBE91 /* MainMenu.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -431,23 +432,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "if which swiftlint >/dev/null; then\n    swiftlint\nelse\n    echo \"SwiftLint not found! Please install SwiftLint from https://github.com/realm/SwiftLint\"\nfi\n";
-		};
-		C57FE245255C892B00E4E2B4 /* ShellScript */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-			);
-			inputPaths = (
-			);
-			outputFileListPaths = (
-			);
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "# Type a script or drag a script file from your workspace to insert its path.\n/usr/local/bin/carthage copy-frameworks\n";
 		};
 		C57FE24E255C8B4100E4E2B4 /* ShellScript */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -562,7 +546,7 @@
 				CODE_SIGN_ENTITLEMENTS = "Apple Juice Widget/Apple Juice Widget.entitlements";
 				CODE_SIGN_IDENTITY = "-";
 				COMBINE_HIDPI_IMAGES = YES;
-				CURRENT_PROJECT_VERSION = 373;
+				CURRENT_PROJECT_VERSION = 380;
 				INFOPLIST_FILE = "Apple Juice Widget/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -570,8 +554,8 @@
 					"@executable_path/../../../../Frameworks",
 				);
 				MACOSX_DEPLOYMENT_TARGET = 10.12;
-				MARKETING_VERSION = "2020.11-beta.1";
-				PRODUCT_BUNDLE_IDENTIFIER = "io.raphaelhanneken.applejuice.Apple-Juice-Widget";
+				MARKETING_VERSION = 2020.11;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.raphaelhanneken.applejuice.Apple-Juice-Widget";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
@@ -587,7 +571,7 @@
 				CODE_SIGN_ENTITLEMENTS = "Apple Juice Widget/Apple Juice Widget.entitlements";
 				CODE_SIGN_IDENTITY = "-";
 				COMBINE_HIDPI_IMAGES = YES;
-				CURRENT_PROJECT_VERSION = 373;
+				CURRENT_PROJECT_VERSION = 380;
 				INFOPLIST_FILE = "Apple Juice Widget/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -595,8 +579,8 @@
 					"@executable_path/../../../../Frameworks",
 				);
 				MACOSX_DEPLOYMENT_TARGET = 10.12;
-				MARKETING_VERSION = "2020.11-beta.1";
-				PRODUCT_BUNDLE_IDENTIFIER = "io.raphaelhanneken.applejuice.Apple-Juice-Widget";
+				MARKETING_VERSION = 2020.11;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.raphaelhanneken.applejuice.Apple-Juice-Widget";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
 				SWIFT_COMPILATION_MODE = wholemodule;
@@ -718,7 +702,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "-";
 				COMBINE_HIDPI_IMAGES = YES;
-				CURRENT_PROJECT_VERSION = 373;
+				CURRENT_PROJECT_VERSION = 381;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
@@ -730,8 +714,8 @@
 					"@executable_path/../Frameworks",
 				);
 				MACOSX_DEPLOYMENT_TARGET = 10.12;
-				MARKETING_VERSION = "2020.11-beta.1";
-				PRODUCT_BUNDLE_IDENTIFIER = io.raphaelhanneken.applejuice;
+				MARKETING_VERSION = 2020.11;
+				PRODUCT_BUNDLE_IDENTIFIER = com.raphaelhanneken.applejuice;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 			};
@@ -744,7 +728,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "-";
 				COMBINE_HIDPI_IMAGES = YES;
-				CURRENT_PROJECT_VERSION = 373;
+				CURRENT_PROJECT_VERSION = 381;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
@@ -756,8 +740,8 @@
 					"@executable_path/../Frameworks",
 				);
 				MACOSX_DEPLOYMENT_TARGET = 10.12;
-				MARKETING_VERSION = "2020.11-beta.1";
-				PRODUCT_BUNDLE_IDENTIFIER = io.raphaelhanneken.applejuice;
+				MARKETING_VERSION = 2020.11;
+				PRODUCT_BUNDLE_IDENTIFIER = com.raphaelhanneken.applejuice;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 			};

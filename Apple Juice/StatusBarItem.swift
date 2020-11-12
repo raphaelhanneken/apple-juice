@@ -24,7 +24,7 @@ final class StatusBarItem: NSObject {
         item.target = target
         item.action = action
 
-        self.icon = StatusBarIcon()
+        icon = StatusBarIcon()
         super.init()
     }
 
