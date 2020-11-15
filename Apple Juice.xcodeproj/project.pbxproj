@@ -580,7 +580,7 @@
 				CODE_SIGN_ENTITLEMENTS = "Apple Juice Widget/Apple Juice Widget.entitlements";
 				CODE_SIGN_IDENTITY = "-";
 				COMBINE_HIDPI_IMAGES = YES;
-				CURRENT_PROJECT_VERSION = 387;
+				CURRENT_PROJECT_VERSION = 389;
 				INFOPLIST_FILE = "Apple Juice Widget/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -605,7 +605,7 @@
 				CODE_SIGN_ENTITLEMENTS = "Apple Juice Widget/Apple Juice Widget.entitlements";
 				CODE_SIGN_IDENTITY = "-";
 				COMBINE_HIDPI_IMAGES = YES;
-				CURRENT_PROJECT_VERSION = 387;
+				CURRENT_PROJECT_VERSION = 389;
 				INFOPLIST_FILE = "Apple Juice Widget/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -736,7 +736,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "-";
 				COMBINE_HIDPI_IMAGES = YES;
-				CURRENT_PROJECT_VERSION = 387;
+				CURRENT_PROJECT_VERSION = 389;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
@@ -762,7 +762,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "-";
 				COMBINE_HIDPI_IMAGES = YES;
-				CURRENT_PROJECT_VERSION = 387;
+				CURRENT_PROJECT_VERSION = 389;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
