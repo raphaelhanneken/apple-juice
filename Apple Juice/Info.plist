@@ -63,7 +63,7 @@
 		</dict>
 	</dict>
 	<key>NSHumanReadableCopyright</key>
-	<string>Copyright © 2016 - 2019 Raphael Hanneken. All rights reserved.</string>
+	<string>Copyright © 2016 - 2020 Raphael Hanneken. All rights reserved.</string>
 	<key>NSMainNibFile</key>
 	<string>MainMenu</string>
 	<key>NSPrincipalClass</key>
