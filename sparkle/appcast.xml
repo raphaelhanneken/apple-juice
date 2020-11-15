@@ -7,25 +7,29 @@
     <language>en</language>
 
     <item>
-      <title>Apple Juice v2020.11</title>
+      <title>Apple Juice v2020.11.1</title>
         <description>
           <![CDATA[
+            <ul>
+                <li>New Launch at Login feature 🎉🎉🎉</li>
+                <li>Support for macOS Big Sur</li>
+                <li>Support for Macs with an Apple M1 chip</li>
+                <li>New application icon to match the new Big Sur icon style</li>
+                <li>New menu bar icon to match Big Sur's system battery icon</li>
+            </ul>
             <p>
-                Adds macOS Big Sur compatibility
-            </p>
-            <p>
-              Build with Xcode Version 12.2 using Swift 5
+              Build with Xcode Version 12.2 (12B45b) using Swift 5.3
             </p>
           ]]>
         </description>
-        <pubDate>Thu, 12 Nov 2020 23:00:00 +0100</pubDate>
+        <pubDate>Sun, 15 Nov 2020 13:00:00 +0100</pubDate>
         <sparkle:minimumSystemVersion>10.12</sparkle:minimumSystemVersion>
         <enclosure
-          url="https://github.com/raphaelhanneken/apple-juice/releases/download/2020.11/Apple.Juice.dmg"
-          sparkle:version="381"
-          sparkle:shortVersionString="2020.11"
-          sparkle:dsaSignature="MCwCFAQ89AS8L9Liprf26qtY2dUdyTN2AhQyUT5rkoiaLQN179x5Ooqw4rfTJQ=="
-          length="12058483"
+          url="https://github.com/raphaelhanneken/apple-juice/releases/download/2020.11.1/Apple.Juice.dmg"
+          sparkle:version="389"
+          sparkle:shortVersionString="2020.11.1"
+          sparkle:dsaSignature="MCwCFBvMaU+EI/RsiPf+9OEXSKN+dTotAhR+sKp587e53//8S2YDz9tq0Y2ctg=="
+          length="18220231"
           type="application/octet-stream" />
     </item>
 
