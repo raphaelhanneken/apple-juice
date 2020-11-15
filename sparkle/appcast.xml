@@ -1,528 +1,65 @@
 <?xml version="1.0" encoding="utf-8"?>
-<rss version="2.0" xmlns:sparkle="http://www.andymatuschak.org/xml-namespaces/sparkle" xmlns:dc="http://purl.org/dc/elements/1.1/">
-  <channel>
-    <title>Apple Juice Appcast</title>
-    <link>http://raphaelhanneken.github.io/apple-juice/sparkle/appcast.xml</link>
-    <description>Most recent changes with links to updates.</description>
-    <language>en</language>
+<rss xmlns:sparkle="http://www.andymatuschak.org/xml-namespaces/sparkle" xmlns:dc="http://purl.org/dc/elements/1.1/" version="2.0">
+    <channel>
+        <title>Apple Juice Appcast</title>
+        <link>http://raphaelhanneken.github.io/apple-juice/sparkle/appcast.xml</link>
+        <description>Most recent changes with links to updates.</description>
+        <language>en</language>
 
-    <item>
-      <title>Apple Juice v2020.11.1</title>
-        <description>
-          <![CDATA[
-            <ul>
-                <li>New Launch at Login feature 🎉🎉🎉</li>
-                <li>Support for macOS Big Sur</li>
-                <li>Support for Macs with an Apple M1 chip</li>
-                <li>New application icon to match the new Big Sur icon style</li>
-                <li>New menu bar icon to match Big Sur's system battery icon</li>
-            </ul>
-            <p>
-              Build with Xcode Version 12.2 (12B45b) using Swift 5.3
-            </p>
-          ]]>
-        </description>
-        <pubDate>Sun, 15 Nov 2020 13:00:00 +0100</pubDate>
-        <sparkle:minimumSystemVersion>10.12</sparkle:minimumSystemVersion>
-        <enclosure
-          url="https://github.com/raphaelhanneken/apple-juice/releases/download/2020.11.1/Apple.Juice.dmg"
-          sparkle:version="389"
-          sparkle:shortVersionString="2020.11.1"
-          sparkle:dsaSignature="MCwCFBvMaU+EI/RsiPf+9OEXSKN+dTotAhR+sKp587e53//8S2YDz9tq0Y2ctg=="
-          length="18220231"
-          type="application/octet-stream" />
-    </item>
+        <item>
+            <title>Apple Juice v2020.11</title>
+            <description><![CDATA[
+                <p><b>Apple Juice v2020.11.2</b></p>
+                <ul>
+                    <li>Improved french translations by <a href="https://github.com/nicopasla">@nicopasla</a></li>
+                </ul>
+                <p><b>Apple Juice v2020.11.1</b></p>
+                <ul>
+                    <li>New Launch at Login feature 🎉🎉🎉</li>
+                    <li>Support for macOS Big Sur</li>
+                    <li>Support for Macs with an Apple M1 chip</li>
+                    <li>New application icon to match the new Big Sur icon style</li>
+                    <li>New menu bar icon to match Big Sur's system battery icon</li>
+                </ul>
+                <p>
+                  Build with Xcode Version 12.2 (12B45b) using Swift 5.3
+                </p>
+            ]]></description>
+            <pubDate>Sun, 15 Nov 2020 16:00:00 +0100</pubDate>
+            <sparkle:minimumSystemVersion>10.12</sparkle:minimumSystemVersion>
+            <enclosure
+                url="https://github.com/raphaelhanneken/apple-juice/releases/download/2020.11.2/Apple.Juice.dmg"
+                sparkle:version="389"
+                sparkle:shortVersionString="2020.11.1"
+                sparkle:dsaSignature="MCwCFGF4VZLHcVKto/fiLbXtsWeawscDAhRJZJJSTjjadKFAwdoZHx5s/oyqNQ=="
+                length="18278988"
+                type="application/octet-stream"/>
+        </item>
 
-    <item>
-      <title>Apple Juice v1.10.2</title>
-        <description>
-          <![CDATA[
-            <b>Update Issues!</b><br>
-            <p>
-              The Launch at Login feature was causing problems with Gate Keeper so it was removed with this release. See issue #18.
-            </p>
-            <p>
-              Build with Xcode Version 10.3 (10G8)
-            </p>
-          ]]>
-        </description>
-        <pubDate>Sat, 07 Sep 2019 10:00:00 +0100</pubDate>
-        <sparkle:minimumSystemVersion>10.12</sparkle:minimumSystemVersion>
-        <enclosure
-          url="https://github.com/raphaelhanneken/apple-juice/releases/download/1.10.2/Apple.Juice.dmg"
-          sparkle:version="354"
-          sparkle:shortVersionString="1.10.2"
-          sparkle:dsaSignature="MCwCFEvJTEMlDS6O+PVDM8E6F2iZYrzDAhR0+Wfjx8fUVPIfvV/y66aweJs4xw=="
-          length="9294877"
-          type="application/octet-stream" />
-    </item>
-
-    <item>
-      <title>Apple Juice v1.10.1</title>
-        <description>
-          <![CDATA[
-            <b>Update Issues!</b><br>
-            <p>
-              I've made a mistake configuring the App Sandbox, which prevents Apple Juice from being updated. If you're experiencing issues when trying to update Apple Juice please download the <a href="https://github.com/raphaelhanneken/apple-juice/releases/latest">latest version</a> manually.
-            </p>
-            <p>
-              Build with Xcode Version 10.2.1 (10E1001)
-            </p>
-          ]]>
-        </description>
-        <pubDate>Sat, 01 Jun 2019 13:00:00 +0100</pubDate>
-        <sparkle:minimumSystemVersion>10.12</sparkle:minimumSystemVersion>
-        <enclosure
-          url="https://github.com/raphaelhanneken/apple-juice/releases/download/1.10.1/Apple.Juice.dmg"
-          sparkle:version="353"
-          sparkle:shortVersionString="1.10.1"
-          sparkle:dsaSignature="MCwCFBXvQIk6R8vUP5FC4ETZiZpxzQ3yAhRGEtRgt1nlioN9yTcvBvziLYDWpg=="
-          length="12965848"
-          type="application/octet-stream" />
-    </item>
-
-    <item>
-      <title>Apple Juice v1.10.0</title>
-        <description>
-          <![CDATA[
-            <ul>
-              <li>Add option to launch Apple Juice at login</li>
-              <li>Move settings into Preferences menu item to declutter the application menu</li>
-              <li>Localise percentage values</li>
-            </ul>
-            <p>
-              Build with Xcode Version 10.2.1 (10E1001)
-            </p>
-          ]]>
-        </description>
-        <pubDate>Sun, 26 May 2019 16:00:00 +0100</pubDate>
-        <sparkle:minimumSystemVersion>10.12</sparkle:minimumSystemVersion>
-        <enclosure
-          url="https://github.com/raphaelhanneken/apple-juice/releases/download/1.10.0/Apple.Juice.dmg"
-          sparkle:version="351"
-          sparkle:shortVersionString="1.10.0"
-          sparkle:dsaSignature="MC0CFQCIDQjjOLEvO0Cp8GYI+B3iPHP5VwIUU8TlBgLyYpfrdIInEpKzi1M607U="
-          length="12978349"
-          type="application/octet-stream" />
-    </item>
-
-    <item>
-      <title>Apple Juice v1.9.0</title>
-        <description>
-          <![CDATA[
-            <ul>
-              <li>Localise the percentage format</li>
-              <li>Fix non-updating today widget</li>
-            </ul>
-            <p>
-              Build with Xcode Version 10.2.1 (10E1001)
-            </p>
-          ]]>
-        </description>
-        <pubDate>Sat, 25 May 2019 14:00:00 +0100</pubDate>
-        <sparkle:minimumSystemVersion>10.10</sparkle:minimumSystemVersion>
-        <enclosure
-          url="https://github.com/raphaelhanneken/apple-juice/releases/download/1.9.0/Apple.Juice.dmg"
-          sparkle:version="342"
-          sparkle:shortVersionString="1.9.0"
-          sparkle:dsaSignature="MCwCFAzKBJWXcc0XY8V2bb/AlRHeXu1lAhQl2Gqrn965CjmsWjlaMj1X94ZWLA=="
-          length="9313252"
-          type="application/octet-stream" />
-    </item>
-
-    <item>
-      <title>Apple Juice v1.8.1</title>
-        <description>
-          <![CDATA[
-            <ul>
-              <li>Add option to hide the menu bar icon</li>
-              <li>Update to Swift 5</li>
-            </ul>
-            <p>
-              Build with Xcode 10.2 (10E125)
-            </p>
-          ]]>
-        </description>
-        <pubDate>Wed, 03 Apr 2019 18:00:00 +0100</pubDate>
-        <sparkle:minimumSystemVersion>10.10</sparkle:minimumSystemVersion>
-        <enclosure
-          url="https://github.com/raphaelhanneken/apple-juice/releases/download/1.8.1/Apple.Juice.dmg"
-          sparkle:version="340"
-          sparkle:shortVersionString="1.8.1"
-          sparkle:dsaSignature="MCwCFD82EmpjfFmYBZboLlYSPscrJzrmAhQ0AaVAawtGCu9zzPJqqPpzpT+0WA=="
-          length="9299607"
-          type="application/octet-stream" />
-    </item>
-
-    <item>
-      <title>Apple Juice v1.8.0</title>
-        <description>
-          <![CDATA[
-            <ul>
-              <li>Add option to hide the menu bar icon</li>
-              <li>Update to Swift 5</li>
-            </ul>
-            <p>
-              Build with Xcode 10.2 (10E125)
-            </p>
-          ]]>
-        </description>
-        <pubDate>Mon, 01 Apr 2019 00:00:00 +0100</pubDate>
-        <sparkle:minimumSystemVersion>10.10</sparkle:minimumSystemVersion>
-        <enclosure
-          url="https://github.com/raphaelhanneken/apple-juice/releases/download/1.8.0/Apple.Juice.dmg"
-          sparkle:version="339"
-          sparkle:shortVersionString="1.8.0"
-          sparkle:dsaSignature="MCwCFHq4oashnpkqmUKNKyF14L84O2CaAhRzV7114nEzYuaTFJp3Gn+HFqZ9DQ=="
-          length="9309839"
-          type="application/octet-stream" />
-    </item>
-
-    <item>
-      <title>Apple Juice v1.7.1</title>
-        <description>
-          <![CDATA[
-            <p>
-              Fix rendering of the Today Widget in Dark Mode on macOS Mojave. Thanks a lot <a href="https://github.com/oddharsh">@oddharsh</a> for reporting the issue.
-            </p>
-            <p>
-              Build with Xcode 10.1 (10B61)
-            </p>
-          ]]>
-        </description>
-        <pubDate>Sun, 03 Mar 2019 12:00:00 +0100</pubDate>
-        <sparkle:minimumSystemVersion>10.10</sparkle:minimumSystemVersion>
-        <enclosure
-          url="https://github.com/raphaelhanneken/apple-juice/releases/download/1.7.1/Apple.Juice.dmg"
-          sparkle:version="334"
-          sparkle:shortVersionString="1.7.1"
-          sparkle:dsaSignature="MCwCFGVjgcTfnnH0FLRMMgmhW0mbYRA7AhRW79PPJ8NsmPoVln5kqS559YgaBg=="
-          length="9391937"
-          type="application/octet-stream" />
-    </item>
-
-    <item>
-      <title>Apple Juice v1.7.0</title>
-        <description>
-          <![CDATA[
-            <ul>
-              <li>Option to completely hide the menu bar information (time remaining/percentage)</li>
-              <li>App Sandboxing</li>
-              <li>Refactoring</li>
-            </ul>
-            <p>
-              Build with Xcode 10.1 (10B61)
-            </p>
-          ]]>
-        </description>
-        <pubDate>Sun, 23 Feb 2019 13:00:00 +0100</pubDate>
-        <sparkle:minimumSystemVersion>10.12</sparkle:minimumSystemVersion>
-        <enclosure
-          url="https://github.com/raphaelhanneken/apple-juice/releases/download/1.7.0/Apple.Juice.dmg"
-          sparkle:version="330"
-          sparkle:shortVersionString="1.7.0"
-          sparkle:dsaSignature="MCwCFBEZTq8Vdp4Kn8lWg36LtlZffckPAhRslj8hsSDlUfk+zH8A2IwtZKBzXg=="
-          length="9276996"
-          type="application/octet-stream" />
-    </item>
-
-    <item>
-      <title>Apple Juice v1.6.0</title>
-        <description>
-          <![CDATA[
-            <ul>
-              <li>Add Brazilian Portuguese translation (Thanks a lot to <a href="https://github.com/ailtonvivaz">@ailtonvivaz</a>).</li>
-            </ul>
-            <p>
-              Build with Xcode 10.1 (10B61)
-            </p>
-          ]]>
-        </description>
-        <pubDate>Sat, 26 Jan 2019 19:00:00 +0100</pubDate>
-        <sparkle:minimumSystemVersion>10.12</sparkle:minimumSystemVersion>
-        <enclosure
-          url="https://github.com/raphaelhanneken/apple-juice/releases/download/1.6.0/Apple.Juice.dmg"
-          sparkle:version="324"
-          sparkle:shortVersionString="1.6.0"
-          sparkle:dsaSignature="MCwCFBIzAI23DK7/vAOF0s6NFSm0H3Y2AhQFes1IN+O7OYwxoIsT8G4L0GEKrQ=="
-          length="9280851"
-          type="application/octet-stream" />
-    </item>
-
-    <item>
-      <title>Apple Juice v1.5.1</title>
-        <description>
-          <![CDATA[
-            <ul>
-              <li>Rearrange the power usage menu item.</li>
-            </ul>
-            <p>
-              Build with Xcode 10.1 (10B61)
-            </p>
-          ]]>
-        </description>
-        <pubDate>Sat, 15 Dec 2018 13:00:00 +0100</pubDate>
-        <sparkle:minimumSystemVersion>10.12</sparkle:minimumSystemVersion>
-        <enclosure
-          url="https://github.com/raphaelhanneken/apple-juice/releases/download/1.5.1/Apple.Juice.dmg"
-          sparkle:version="321"
-          sparkle:shortVersionString="1.5.1"
-          sparkle:dsaSignature="MC0CFEkLAfJZ6DFACZSqUqm9FOvIJX8uAhUAhU/GSLo4CoRKWozh8QXTH/mWO7c="
-          length="9257033"
-          type="application/octet-stream" />
-    </item>
-
-    <item>
-      <title>Apple Juice v1.5.0</title>
-        <description>
-          <![CDATA[
-            <ul>
-              <li>Also display amperage in power usage, thanks <a href="github.com/stepheneb">@stepheneb</a></li>
-              <li>Updated Sparkle to v1.21</li>
-            </ul>
-            <p>
-              Build with Xcode 10.1 (10B61)
-            </p>
-          ]]>
-        </description>
-        <pubDate>Sat, 13 Dec 2018 22:00:00 +0100</pubDate>
-        <sparkle:minimumSystemVersion>10.12</sparkle:minimumSystemVersion>
-        <enclosure
-          url="https://github.com/raphaelhanneken/apple-juice/releases/download/1.5.0/Apple.Juice.dmg"
-          sparkle:version="319"
-          sparkle:shortVersionString="1.5.0"
-          sparkle:dsaSignature="MCwCFCrscphXp8PNKFwUXstOvpofJFG+AhRWY3QbtGANnZWM3tB6HsJwuVy7WQ=="
-          length="9262136"
-          type="application/octet-stream" />
-    </item>
-
-    <item>
-      <title>Apple Juice v1.4.0</title>
-        <description>
-          <![CDATA[
-            <ul>
-              <li>Updated Italian and Spanish translations, thanks to <a href="https://github.com/fabersky">@fabersky</a></li>
-              <li>Updated Sparkle to v1.20</li>
-              <li>Updated Swift syntax</li>
-            </ul>
-            <p>
-              Build with Xcode 10.0 (10A255)
-            </p>
-          ]]>
-        </description>
-        <pubDate>Sat, 6 Oct 2018 13:00:00 +0100</pubDate>
-        <sparkle:minimumSystemVersion>10.12</sparkle:minimumSystemVersion>
-        <enclosure
-          url="https://github.com/raphaelhanneken/apple-juice/releases/download/1.4.0/Apple.Juice.dmg"
-          sparkle:version="314"
-          sparkle:shortVersionString="1.4.0"
-          sparkle:dsaSignature="MCwCFG96E9X1B6+vZR+fEJ9UsnvdQT/fAhQkFtrJi4lORNfIX/h0Dcwu2Dbtfw=="
-          length="9130328"
-          type="application/octet-stream" />
-    </item>
-
-    <item>
-      <title>Apple Juice v1.3.0</title>
-        <description>
-          <![CDATA[
-            <ul>
-              <li>Add the battery condition status to the Today widget</li>
-              <li>Use a different source for percentage to get closer to the percentage displayed by macOS.</li>
-            </ul>
-          ]]>
-        </description>
-        <pubDate>Tue, 1 May 2018 15:00:00 +0100</pubDate>
-        <sparkle:minimumSystemVersion>10.12</sparkle:minimumSystemVersion>
-        <enclosure
-          url="https://github.com/raphaelhanneken/apple-juice/releases/download/1.3.0/Apple.Juice.dmg"
-          sparkle:version="307"
-          sparkle:shortVersionString="1.3.0"
-          sparkle:dsaSignature="MCwCFGQMCdalnv24Q4BO9fKKc8p4DygVAhRQCmDGJ7cDkDzW9NhIaER3K2c+Yw=="
-          length="8723061"
-          type="application/octet-stream" />
-    </item>
-
-    <item>
-      <title>Apple Juice v1.2.3.1</title>
-        <description>
-          <![CDATA[
-            <p>
-              Fixes a bug where the Today widget won't load.<br>
-              Build with Xcode 9.0 and Swift 4.
-            </p>
-            <p>
-              Thanks for using <i>Apple Juice</i>
-            </p>
-          ]]>
-        </description>
-        <pubDate>Sun, 24 Sep 2017 11:00:00 +0100</pubDate>
-        <sparkle:minimumSystemVersion>10.12</sparkle:minimumSystemVersion>
-        <enclosure
-          url="https://github.com/raphaelhanneken/apple-juice/releases/download/1.2.3.1/Apple.Juice.dmg"
-          sparkle:version="291"
-          sparkle:shortVersionString="1.2.3.1"
-          sparkle:dsaSignature="MCwCFCprNDJ+yP6t+kxLBdT8Sw9fx0vOAhRxEaV1gJu7rYY+PIlSDEH1Z/R77A=="
-          length="7760098"
-          type="application/octet-stream" />
-    </item>
-
-    <item>
-      <title>Apple Juice v1.2.3</title>
-        <description>
-          <![CDATA[
-            <p>
-              Compatibility Update for macOS High Sierra.<br>
-              Build with Xcode version 9.0 and Swift 4.
-            </p>
-          ]]>
-        </description>
-        <pubDate>Sat, 23 Sep 2017 12:00:00 +0100</pubDate>
-        <sparkle:minimumSystemVersion>10.12</sparkle:minimumSystemVersion>
-        <enclosure
-          url="https://github.com/raphaelhanneken/apple-juice/releases/download/1.2.3/Apple.Juice.dmg"
-          sparkle:version="286"
-          sparkle:shortVersionString="1.2.3"
-          sparkle:dsaSignature="MCwCFEEZaproczmc/LDVCPKt8thE3MXrAhQ1V7IIr8rHBfez9vyo30usbHsjEQ=="
-          length="7764482"
-          type="application/octet-stream" />
-    </item>
-
-    <item>
-      <title>Apple Juice v1.2.2</title>
-        <description>
-          <![CDATA[
-            <p>
-              Minor improvements.<br>
-              Build with Xcode version 8.3.2 (8E2002).
-            </p>
-          ]]>
-        </description>
-        <pubDate>Sun, 30 Apr 2017 22:00:00 +0100</pubDate>
-        <sparkle:minimumSystemVersion>10.12</sparkle:minimumSystemVersion>
-        <enclosure
-          url="https://github.com/raphaelhanneken/apple-juice/releases/download/1.2.2/Apple.Juice.dmg"
-          sparkle:version="281"
-          sparkle:shortVersionString="1.2.2"
-          sparkle:dsaSignature="MCwCFGLzlN8N0sViVirtCFH/RhDIIndqAhR9ukQ+48tkrK/jyj86k7Er7nmXhg=="
-          length="6831720"
-          type="application/octet-stream" />
-    </item>
-
-    <item>
-      <title>Apple Juice v1.2.1</title>
-        <description>
-          <![CDATA[
-            <p>Update for macOS Sierra</p>
-          ]]>
-        </description>
-        <pubDate>Thu, 22 Sep 2016 16:00:00 +0100</pubDate>
-        <sparkle:minimumSystemVersion>10.12</sparkle:minimumSystemVersion>
-        <enclosure
-          url="https://github.com/raphaelhanneken/apple-juice/releases/download/1.2.1/Apple.Juice.v1.2.1.dmg"
-          sparkle:version="266"
-          sparkle:shortVersionString="1.2.1"
-          sparkle:dsaSignature="MCwCFBJsvuCmMTQ0qNwN36pJcDyx52H0AhQ53YMx2Gi8qpZlN7gng3334I3xaQ=="
-          length="6529146"
-          type="application/octet-stream" />
-    </item>
-
-    <item>
-      <title>Apple Juice v1.2</title>
-        <description>
-          <![CDATA[
-            <p>Rebuild with Swift 3.0 and Xcode 8 beta (8S162m).</p>
-          ]]>
-        </description>
-        <pubDate>Tue, 12 Jul 2016 12:00:00 +0100</pubDate>
-        <sparkle:minimumSystemVersion>10.12</sparkle:minimumSystemVersion>
-        <enclosure
-          url="https://github.com/raphaelhanneken/apple-juice/releases/download/1.2.0/Apple.Juice.dmg"
-          sparkle:version="190"
-          sparkle:shortVersionString="1.2"
-          sparkle:dsaSignature="MC0CFHyTYXbIbM4IRSx1yZfZu+ROrINJAhUAg492R21un/NUN0AIWoKsQserQNM="
-          length="7163521"
-          type="application/octet-stream" />
-    </item>
-
-    <item>
-      <title>Apple Juice v1.1</title>
-        <description>
-          <![CDATA[
-          <p>Updated to Swift v2.2.</p>
-          ]]>
-        </description>
-        <pubDate>Tue, 22 Mar 2016 14:00:00 +0100</pubDate>
-        <sparkle:minimumSystemVersion>10.11</sparkle:minimumSystemVersion>
-        <enclosure
-          url="https://github.com/raphaelhanneken/apple-juice/releases/download/1.1.0/Apple.Juice.dmg"
-          sparkle:version="165"
-          sparkle:shortVersionString="1.1"
-          sparkle:dsaSignature="MCwCFBKwA3WO7IyJw86/TYFeO4KTmPj3AhQJhpoHbQy1ywc6OMz3XXGRpUSwKA=="
-          length="5927272"
-          type="application/octet-stream" />
-    </item>
-
-    <item>
-      <title>Apple Juice v1.0.2</title>
-        <description>
-          <![CDATA[
-          <ul>
-            <li>Better information on errors.</li>
-            <li>Italian translation.</li>
-            <li>Spanish translation.</li>
-            <li>Minor improvements and fixes.</li>
-          </ul>
-          ]]>
-        </description>
-        <pubDate>Wed, 20 Jan 2016 21:00:00 +0100</pubDate>
-        <sparkle:minimumSystemVersion>10.11</sparkle:minimumSystemVersion>
-        <enclosure
-          url="https://github.com/raphaelhanneken/apple-juice/releases/download/1.0.2/Apple.Juice.dmg"
-          sparkle:version="119"
-          sparkle:shortVersionString="1.0"
-          sparkle:dsaSignature="MCwCFAniZoISqfYh5lHMqw8QrSPgGzimAhQOJCzgA2B37Pc/a77tELFe3Qd4fw=="
-          length="6122596"
-          type="application/octet-stream" />
-    </item>
-
-    <item>
-      <title>Apple Juice v1.0.1</title>
-        <description>
-          <![CDATA[
-          <ul>
-            <li>Fixes a bug with the status icon at low percentages.</li>
-          </ul>
-          ]]>
-        </description>
-        <pubDate>Sun, 17 Jan 2016 14:00:00 +0100</pubDate>
-        <sparkle:minimumSystemVersion>10.11</sparkle:minimumSystemVersion>
-        <enclosure
-          url="https://github.com/raphaelhanneken/apple-juice/releases/download/1.0.1/Apple.Juice.dmg"
-          sparkle:version="102"
-          sparkle:shortVersionString="1.0"
-          sparkle:dsaSignature="MCwCFDQ9+GfwlEPf+yLJKvlB02UQHHLkAhQhWMMHRzqTX1FKObfPkI2aDFCEUQ=="
-          length="6229340"
-          type="application/octet-stream" />
-    </item>
-
-    <item>
-      <title>Apple Juice v1.0.0</title>
-        <description>
-          <![CDATA[
-          <p>
-            An advanced battery gauge for OS X.
-          </p>
-          ]]>
-        </description>
-        <pubDate>Fri, 15 Jan 2016 00:00:00 +0100</pubDate>
-        <sparkle:minimumSystemVersion>10.11</sparkle:minimumSystemVersion>
-        <enclosure
-          url="https://github.com/raphaelhanneken/apple-juice/releases/download/1.0.0/Apple.Juice.dmg"
-          sparkle:version="98"
-          sparkle:shortVersionString="1.0"
-          sparkle:dsaSignature="MCwCFFg9QDSpWe+8VkWsYIz5pjqZ4R4AAhQZ7Zc8a7gJdSTUmkfhwZKDYjV8UQ=="
-          length="5851919"
-          type="application/octet-stream" />
-    </item>
-  </channel>
+        <item>
+            <title>Apple Juice v2020.11</title>
+            <description><![CDATA[
+                <p><b>Apple Juice v2020.11.2</b></p>
+                <ul>
+                    <li>New Launch at Login feature 🎉🎉🎉</li>
+                    <li>Support for macOS Big Sur</li>
+                    <li>Support for Macs with an Apple M1 chip</li>
+                    <li>New application icon to match the new Big Sur icon style</li>
+                    <li>New menu bar icon to match Big Sur's system battery icon</li>
+                </ul>
+                <p>
+                  Build with Xcode Version 12.2 (12B45b) using Swift 5.3
+                </p>
+            ]]></description>
+            <pubDate>Sun, 15 Nov 2020 13:00:00 +0100</pubDate>
+            <sparkle:minimumSystemVersion>10.12</sparkle:minimumSystemVersion>
+            <enclosure
+                url="https://github.com/raphaelhanneken/apple-juice/releases/download/2020.11.1/Apple.Juice.dmg"
+                sparkle:version="389"
+                sparkle:shortVersionString="2020.11.1"
+                sparkle:dsaSignature="MCwCFBvMaU+EI/RsiPf+9OEXSKN+dTotAhR+sKp587e53//8S2YDz9tq0Y2ctg=="
+                length="18220231"
+                type="application/octet-stream"/>
+        </item>
+    </channel>
 </rss>
