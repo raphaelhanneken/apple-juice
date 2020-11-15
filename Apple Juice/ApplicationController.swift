@@ -5,6 +5,7 @@
 //
 
 import Cocoa
+import LaunchAtLogin
 
 final class ApplicationController: NSObject {
 
@@ -17,6 +18,8 @@ final class ApplicationController: NSObject {
     private var statusItem: StatusBarItem?
     /// An abstraction to the battery IO service
     private var battery: BatteryService!
+
+    @objc dynamic var launchAtLogin = LaunchAtLogin.kvo
 
     override init() {
         super.init()

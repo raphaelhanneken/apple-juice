@@ -102,6 +102,12 @@
                                     </binding>
                                 </connections>
                             </menuItem>
+                            <menuItem title="Lancer à la connexion" id="2kL-pN-XDp">
+                                <modifierMask key="keyEquivalentModifierMask"/>
+                                <connections>
+                                    <binding destination="FRD-GK-LcV" name="value" keyPath="launchAtLogin.isEnabled" id="mXh-FQ-G10"/>
+                                </connections>
+                            </menuItem>
                         </items>
                     </menu>
                 </menuItem>

@@ -102,6 +102,12 @@
                                     </binding>
                                 </connections>
                             </menuItem>
+                            <menuItem title="Launch at Login" id="gXB-33-x5J">
+                                <modifierMask key="keyEquivalentModifierMask"/>
+                                <connections>
+                                    <binding destination="FRD-GK-LcV" name="value" keyPath="launchAtLogin.isEnabled" id="Zx9-Yu-AB5"/>
+                                </connections>
+                            </menuItem>
                         </items>
                     </menu>
                 </menuItem>
