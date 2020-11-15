@@ -102,7 +102,7 @@
                                     </binding>
                                 </connections>
                             </menuItem>
-                            <menuItem title="Lancer à la connexion" id="2kL-pN-XDp">
+                            <menuItem title="Lancer au démarrage" id="2kL-pN-XDp">
                                 <modifierMask key="keyEquivalentModifierMask"/>
                                 <connections>
                                     <binding destination="FRD-GK-LcV" name="value" keyPath="launchAtLogin.isEnabled" id="mXh-FQ-G10"/>
@@ -112,7 +112,7 @@
                     </menu>
                 </menuItem>
                 <menuItem isSeparatorItem="YES" id="HoG-Jh-UIk"/>
-                <menuItem title="Les Mises à Jour…" id="OFJ-1T-Wc5">
+                <menuItem title="Vérifier les mises à jour" id="OFJ-1T-Wc5">
                     <modifierMask key="keyEquivalentModifierMask"/>
                     <connections>
                         <action selector="checkForUpdates:" target="Avc-Ie-Abt" id="Aqj-nm-y4m"/>
