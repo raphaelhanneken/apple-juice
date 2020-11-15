@@ -48,7 +48,10 @@
 		C57FE28C255CA29000E4E2B4 /* Sparkle.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = C57FE287255CA25F00E4E2B4 /* Sparkle.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		C57FE291255CA2EB00E4E2B4 /* Sparkle.framework.dSYM in Resources */ = {isa = PBXBuildFile; fileRef = C57FE290255CA2EB00E4E2B4 /* Sparkle.framework.dSYM */; };
 		C57FE293255CA2F600E4E2B4 /* Sparkle.framework.dSYM in CopyFiles */ = {isa = PBXBuildFile; fileRef = C57FE290255CA2EB00E4E2B4 /* Sparkle.framework.dSYM */; };
-		C5835F732561347D004CE87B /* LaunchAtLogin in Frameworks */ = {isa = PBXBuildFile; productRef = C5835F722561347D004CE87B /* LaunchAtLogin */; };
+		C59FD5E225614C3000D50FC1 /* LaunchAtLogin.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C59FD5E125614C3000D50FC1 /* LaunchAtLogin.framework */; };
+		C59FD5E325614C3000D50FC1 /* LaunchAtLogin.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = C59FD5E125614C3000D50FC1 /* LaunchAtLogin.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		C59FD5E525614C7000D50FC1 /* LaunchAtLogin.framework.dSYM in Resources */ = {isa = PBXBuildFile; fileRef = C59FD5E425614C7000D50FC1 /* LaunchAtLogin.framework.dSYM */; };
+		C59FD5E725614C8000D50FC1 /* LaunchAtLogin.framework.dSYM in CopyFiles */ = {isa = PBXBuildFile; fileRef = C59FD5E425614C7000D50FC1 /* LaunchAtLogin.framework.dSYM */; };
 		C5D7EB48209891D500012A81 /* BatteryHealthType.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5D7EB47209891D500012A81 /* BatteryHealthType.swift */; };
 		C5EEDA6920276240004DE64C /* PreferenceKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5EEDA6820276240004DE64C /* PreferenceKey.swift */; };
 /* End PBXBuildFile section */
@@ -81,6 +84,7 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
+				C59FD5E325614C3000D50FC1 /* LaunchAtLogin.framework in Embed Frameworks */,
 				C57FE28C255CA29000E4E2B4 /* Sparkle.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
@@ -92,6 +96,7 @@
 			dstPath = "";
 			dstSubfolderSpec = 16;
 			files = (
+				C59FD5E725614C8000D50FC1 /* LaunchAtLogin.framework.dSYM in CopyFiles */,
 				C57FE293255CA2F600E4E2B4 /* Sparkle.framework.dSYM in CopyFiles */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -150,6 +155,8 @@
 		C58CD0B92221D9A800D286C0 /* it */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = it; path = it.lproj/MainMenu.xib; sourceTree = "<group>"; };
 		C58CD0BA2221DBB500D286C0 /* es */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = es; path = es.lproj/MainMenu.xib; sourceTree = "<group>"; };
 		C58CD0BB2221E6B900D286C0 /* pt-BR */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = "pt-BR"; path = "pt-BR.lproj/MainMenu.xib"; sourceTree = "<group>"; };
+		C59FD5E125614C3000D50FC1 /* LaunchAtLogin.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = LaunchAtLogin.framework; path = Carthage/Build/Mac/LaunchAtLogin.framework; sourceTree = "<group>"; };
+		C59FD5E425614C7000D50FC1 /* LaunchAtLogin.framework.dSYM */ = {isa = PBXFileReference; lastKnownFileType = wrapper.dsym; name = LaunchAtLogin.framework.dSYM; path = Carthage/Build/Mac/LaunchAtLogin.framework.dSYM; sourceTree = "<group>"; };
 		C5D7EB47209891D500012A81 /* BatteryHealthType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BatteryHealthType.swift; sourceTree = "<group>"; };
 		C5EEDA6820276240004DE64C /* PreferenceKey.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PreferenceKey.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -167,8 +174,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C5835F732561347D004CE87B /* LaunchAtLogin in Frameworks */,
 				C57FE28B255CA29000E4E2B4 /* Sparkle.framework in Frameworks */,
+				C59FD5E225614C3000D50FC1 /* LaunchAtLogin.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -287,6 +294,8 @@
 		8EE1297B1C46F891000D404F /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				C59FD5E425614C7000D50FC1 /* LaunchAtLogin.framework.dSYM */,
+				C59FD5E125614C3000D50FC1 /* LaunchAtLogin.framework */,
 				C57FE290255CA2EB00E4E2B4 /* Sparkle.framework.dSYM */,
 				C57FE287255CA25F00E4E2B4 /* Sparkle.framework */,
 				8EE1297C1C46F891000D404F /* NotificationCenter.framework */,
@@ -323,10 +332,10 @@
 				8EE129951C46F891000D404F /* Embed App Extensions */,
 				C57FE26D255C9DDE00E4E2B4 /* Frameworks */,
 				C57FE28D255CA29100E4E2B4 /* Embed Frameworks */,
-				C5835F75256134C2004CE87B /* ShellScript */,
+				C59FD5DF25614B0200D50FC1 /* ShellScript */,
+				C57FE28F255CA2CB00E4E2B4 /* CopyFiles */,
 				C57FE24E255C8B4100E4E2B4 /* ShellScript */,
 				8EE129751C46E993000D404F /* ShellScript */,
-				C57FE28F255CA2CB00E4E2B4 /* CopyFiles */,
 			);
 			buildRules = (
 			);
@@ -335,7 +344,6 @@
 			);
 			name = "Apple Juice";
 			packageProductDependencies = (
-				C5835F722561347D004CE87B /* LaunchAtLogin */,
 			);
 			productName = "Apple Juice";
 			productReference = 8EBEB4421C466091001DBE91 /* Apple Juice.app */;
@@ -390,7 +398,6 @@
 			);
 			mainGroup = 8EBEB4391C466091001DBE91;
 			packageReferences = (
-				C5835F712561347C004CE87B /* XCRemoteSwiftPackageReference "LaunchAtLogin" */,
 			);
 			productRefGroup = 8EBEB4431C466091001DBE91 /* Products */;
 			projectDirPath = "";
@@ -420,6 +427,7 @@
 			files = (
 				8EBEB4481C466091001DBE91 /* Assets.xcassets in Resources */,
 				8E995BBB1EABDB2F00CE8364 /* dsa_pub.pem in Resources */,
+				C59FD5E525614C7000D50FC1 /* LaunchAtLogin.framework.dSYM in Resources */,
 				8EBF29E91C485493005BBAE0 /* Localizable.strings in Resources */,
 				C57FE291255CA2EB00E4E2B4 /* Sparkle.framework.dSYM in Resources */,
 				8EBEB44B1C466091001DBE91 /* MainMenu.xib in Resources */,
@@ -457,9 +465,9 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "# Type a script or drag a script file from your workspace to insert its path.\n/usr/local/bin/carthage outdated --xcode-warnings 2>/dev/null\n";
+			shellScript = "# Check for outdated dependencies\n/usr/local/bin/carthage outdated --xcode-warnings 2>/dev/null\n";
 		};
-		C5835F75256134C2004CE87B /* ShellScript */ = {
+		C59FD5DF25614B0200D50FC1 /* ShellScript */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -474,7 +482,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "# Type a script or drag a script file from your workspace to insert its path.\n\"${BUILT_PRODUCTS_DIR}/LaunchAtLogin_LaunchAtLogin.bundle/Contents/Resources/copy-helper-swiftpm.sh\"\n";
+			shellScript = "# Copy Launch at Login Helper script\n\"${PROJECT_DIR}/Carthage/Build/Mac/LaunchAtLogin.framework/Resources/copy-helper.sh\"\n";
 		};
 /* End PBXShellScriptBuildPhase section */
 
@@ -572,7 +580,7 @@
 				CODE_SIGN_ENTITLEMENTS = "Apple Juice Widget/Apple Juice Widget.entitlements";
 				CODE_SIGN_IDENTITY = "-";
 				COMBINE_HIDPI_IMAGES = YES;
-				CURRENT_PROJECT_VERSION = 381;
+				CURRENT_PROJECT_VERSION = 387;
 				INFOPLIST_FILE = "Apple Juice Widget/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -580,7 +588,7 @@
 					"@executable_path/../../../../Frameworks",
 				);
 				MACOSX_DEPLOYMENT_TARGET = 10.12;
-				MARKETING_VERSION = 2020.11;
+				MARKETING_VERSION = 2020.11.1;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.raphaelhanneken.applejuice.Apple-Juice-Widget";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
@@ -597,7 +605,7 @@
 				CODE_SIGN_ENTITLEMENTS = "Apple Juice Widget/Apple Juice Widget.entitlements";
 				CODE_SIGN_IDENTITY = "-";
 				COMBINE_HIDPI_IMAGES = YES;
-				CURRENT_PROJECT_VERSION = 381;
+				CURRENT_PROJECT_VERSION = 387;
 				INFOPLIST_FILE = "Apple Juice Widget/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -605,7 +613,7 @@
 					"@executable_path/../../../../Frameworks",
 				);
 				MACOSX_DEPLOYMENT_TARGET = 10.12;
-				MARKETING_VERSION = 2020.11;
+				MARKETING_VERSION = 2020.11.1;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.raphaelhanneken.applejuice.Apple-Juice-Widget";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
@@ -728,7 +736,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "-";
 				COMBINE_HIDPI_IMAGES = YES;
-				CURRENT_PROJECT_VERSION = 381;
+				CURRENT_PROJECT_VERSION = 387;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
@@ -740,7 +748,7 @@
 					"@executable_path/../Frameworks",
 				);
 				MACOSX_DEPLOYMENT_TARGET = 10.12;
-				MARKETING_VERSION = 2020.11;
+				MARKETING_VERSION = 2020.11.1;
 				PRODUCT_BUNDLE_IDENTIFIER = com.raphaelhanneken.applejuice;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
@@ -754,7 +762,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "-";
 				COMBINE_HIDPI_IMAGES = YES;
-				CURRENT_PROJECT_VERSION = 381;
+				CURRENT_PROJECT_VERSION = 387;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
@@ -766,7 +774,7 @@
 					"@executable_path/../Frameworks",
 				);
 				MACOSX_DEPLOYMENT_TARGET = 10.12;
-				MARKETING_VERSION = 2020.11;
+				MARKETING_VERSION = 2020.11.1;
 				PRODUCT_BUNDLE_IDENTIFIER = com.raphaelhanneken.applejuice;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
@@ -804,25 +812,6 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
-
-/* Begin XCRemoteSwiftPackageReference section */
-		C5835F712561347C004CE87B /* XCRemoteSwiftPackageReference "LaunchAtLogin" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "git@github.com:sindresorhus/LaunchAtLogin.git";
-			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 4.0.0;
-			};
-		};
-/* End XCRemoteSwiftPackageReference section */
-
-/* Begin XCSwiftPackageProductDependency section */
-		C5835F722561347D004CE87B /* LaunchAtLogin */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = C5835F712561347C004CE87B /* XCRemoteSwiftPackageReference "LaunchAtLogin" */;
-			productName = LaunchAtLogin;
-		};
-/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 8EBEB43A1C466091001DBE91 /* Project object */;
 }
