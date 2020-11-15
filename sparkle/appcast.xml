@@ -29,8 +29,8 @@
             <sparkle:minimumSystemVersion>10.12</sparkle:minimumSystemVersion>
             <enclosure
                 url="https://github.com/raphaelhanneken/apple-juice/releases/download/2020.11.2/Apple.Juice.dmg"
-                sparkle:version="389"
-                sparkle:shortVersionString="2020.11.1"
+                sparkle:version="393"
+                sparkle:shortVersionString="2020.11.2"
                 sparkle:dsaSignature="MCwCFGF4VZLHcVKto/fiLbXtsWeawscDAhRJZJJSTjjadKFAwdoZHx5s/oyqNQ=="
                 length="18278988"
                 type="application/octet-stream"/>
