@@ -294,11 +294,11 @@
 		8EE1297B1C46F891000D404F /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				8EE1297C1C46F891000D404F /* NotificationCenter.framework */,
 				C59FD5E425614C7000D50FC1 /* LaunchAtLogin.framework.dSYM */,
 				C59FD5E125614C3000D50FC1 /* LaunchAtLogin.framework */,
 				C57FE290255CA2EB00E4E2B4 /* Sparkle.framework.dSYM */,
 				C57FE287255CA25F00E4E2B4 /* Sparkle.framework */,
-				8EE1297C1C46F891000D404F /* NotificationCenter.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
