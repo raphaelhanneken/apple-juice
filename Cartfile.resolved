@@ -1,1 +1,2 @@
-github "sparkle-project/sparkle" "v1.23.0"
+github "sindresorhus/LaunchAtLogin" "v4.0.0"
+github "sparkle-project/sparkle" "1.24.0"

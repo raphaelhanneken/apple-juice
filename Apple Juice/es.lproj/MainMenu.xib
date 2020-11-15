@@ -102,6 +102,12 @@
                                     </binding>
                                 </connections>
                             </menuItem>
+                            <menuItem title="Iniciar al iniciar Sesión" id="ptd-2D-vLP">
+                                <modifierMask key="keyEquivalentModifierMask"/>
+                                <connections>
+                                    <binding destination="FRD-GK-LcV" name="value" keyPath="launchAtLogin.isEnabled" id="uJh-M3-A75"/>
+                                </connections>
+                            </menuItem>
                         </items>
                     </menu>
                 </menuItem>
@@ -135,5 +141,8 @@
             <point key="canvasLocation" x="-148" y="142"/>
         </menu>
         <userDefaultsController representsSharedInstance="YES" id="OgL-rZ-xAG"/>
+        <menuItem title="Item" id="5bs-Uc-md4">
+            <modifierMask key="keyEquivalentModifierMask"/>
+        </menuItem>
     </objects>
 </document>

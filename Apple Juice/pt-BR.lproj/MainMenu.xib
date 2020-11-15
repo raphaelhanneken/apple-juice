@@ -102,6 +102,12 @@
                                     </binding>
                                 </connections>
                             </menuItem>
+                            <menuItem title="Lançar no Login" id="OfX-Ly-QXO">
+                                <modifierMask key="keyEquivalentModifierMask"/>
+                                <connections>
+                                    <binding destination="FRD-GK-LcV" name="value" keyPath="launchAtLogin.isEnabled" id="LBC-bF-GdO"/>
+                                </connections>
+                            </menuItem>
                         </items>
                     </menu>
                 </menuItem>
