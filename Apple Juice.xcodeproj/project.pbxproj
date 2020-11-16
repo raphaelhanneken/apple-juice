@@ -233,7 +233,7 @@
 		8EBEB4391C466091001DBE91 = {
 			isa = PBXGroup;
 			children = (
-				8EBEB4441C466091001DBE91 /* Apple Juice */,
+				8EBEB4441C466091001DBE91 /* AppleJuice */,
 				8E0D33B11D3118CD002D3463 /* Apple Juice Widget */,
 				8EE1297B1C46F891000D404F /* Frameworks */,
 				8EBEB4431C466091001DBE91 /* Products */,
@@ -249,7 +249,7 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
-		8EBEB4441C466091001DBE91 /* Apple Juice */ = {
+		8EBEB4441C466091001DBE91 /* AppleJuice */ = {
 			isa = PBXGroup;
 			children = (
 				8EBEB4451C466091001DBE91 /* AppDelegate.swift */,
@@ -270,7 +270,7 @@
 				8EE129671C4661AC000D404F /* Resources */,
 				8E03E9DC1C4BCFBA00D12D11 /* Supporting Files */,
 			);
-			path = "Apple Juice";
+			path = AppleJuice;
 			sourceTree = "<group>";
 		};
 		8EE129671C4661AC000D404F /* Resources */ = {
@@ -742,7 +742,7 @@
 					"$(PROJECT_DIR)",
 					"$(PROJECT_DIR)/Carthage/Build/Mac",
 				);
-				INFOPLIST_FILE = "Apple Juice/Info.plist";
+				INFOPLIST_FILE = AppleJuice/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/../Frameworks",
@@ -768,7 +768,7 @@
 					"$(PROJECT_DIR)",
 					"$(PROJECT_DIR)/Carthage/Build/Mac",
 				);
-				INFOPLIST_FILE = "Apple Juice/Info.plist";
+				INFOPLIST_FILE = AppleJuice/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/../Frameworks",
