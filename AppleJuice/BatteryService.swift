@@ -25,7 +25,6 @@ final class BatteryService {
     /// An IOService object that matches battery's IO service dictionary.
     private var service: io_object_t = BatteryService.connectionClosed
 
-
     ///  The current status of the battery, e.g. charging.
     var state: BatteryState? {
         guard
@@ -182,7 +181,6 @@ final class BatteryService {
     var health: String? {
         return getPowerSourceProperty(forKey: .health) as? String
     }
-
 
     ///  Initializes a new Battery object.
     init() throws {

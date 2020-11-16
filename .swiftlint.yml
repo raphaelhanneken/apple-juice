@@ -15,5 +15,5 @@ cyclomatic_complexity:
   ignores_case_statements: true
 
 vertical_whitespace:
-  max_empty_lines: 2
+  max_empty_lines: 1
 

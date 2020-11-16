@@ -14,7 +14,6 @@
 		8E31BF9F1D42651F00055A5B /* BatteryImageCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E31BF9E1D42651F00055A5B /* BatteryImageCache.swift */; };
 		8E58CBA21D339BC200920567 /* TodayViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8EF30EE81D32D0ED0010BC49 /* TodayViewController.xib */; };
 		8E58CBA31D339BC900920567 /* ListRowViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8EF30EEA1D32D0FA0010BC49 /* ListRowViewController.xib */; };
-		8E58CBA41D339BD000920567 /* Apple_Juice_Widget.entitlements in Resources */ = {isa = PBXBuildFile; fileRef = 8E0D33B31D3118CD002D3463 /* Apple_Juice_Widget.entitlements */; };
 		8E7373D91EACB58E00F10AD7 /* BatteryInfoTypeProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E7373D81EACB58E00F10AD7 /* BatteryInfoTypeProtocol.swift */; };
 		8E7373DB1EACB78500F10AD7 /* TimeRemainingInfoType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E7373DA1EACB78500F10AD7 /* TimeRemainingInfoType.swift */; };
 		8E7373DD1EACB8D400F10AD7 /* PercentageInfoType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E7373DC1EACB8D400F10AD7 /* PercentageInfoType.swift */; };
@@ -106,7 +105,6 @@
 /* Begin PBXFileReference section */
 		5EF9F80621FB7A3300748374 /* pt-BR */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "pt-BR"; path = "pt-BR.lproj/Localizable.strings"; sourceTree = "<group>"; };
 		8E0D33AF1D3118CD002D3463 /* Apple Juice Widget.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = "Apple Juice Widget.appex"; sourceTree = BUILT_PRODUCTS_DIR; };
-		8E0D33B31D3118CD002D3463 /* Apple_Juice_Widget.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = Apple_Juice_Widget.entitlements; sourceTree = "<group>"; };
 		8E0D33B41D3118CD002D3463 /* TodayViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodayViewController.swift; sourceTree = "<group>"; };
 		8E0D33B61D3118CD002D3463 /* ListRowViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListRowViewController.swift; sourceTree = "<group>"; };
 		8E31BF9E1D42651F00055A5B /* BatteryImageCache.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BatteryImageCache.swift; sourceTree = "<group>"; };
@@ -144,9 +142,9 @@
 		8EF30EE81D32D0ED0010BC49 /* TodayViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TodayViewController.xib; sourceTree = "<group>"; };
 		8EF30EEA1D32D0FA0010BC49 /* ListRowViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ListRowViewController.xib; sourceTree = "<group>"; };
 		8EF30EF01D32D1C70010BC49 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		C50D516422996CE500E985D1 /* Apple Juice Widget.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "Apple Juice Widget.entitlements"; sourceTree = "<group>"; };
 		C52233AE25575A0A00526725 /* NSImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NSImage.swift; sourceTree = "<group>"; };
 		C526408E22A29A5E00D46AE0 /* Apple Juice.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "Apple Juice.entitlements"; sourceTree = "<group>"; };
+		C566887025630F9C005D745C /* Apple Juice Today.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "Apple Juice Today.entitlements"; sourceTree = "<group>"; };
 		C57FE287255CA25F00E4E2B4 /* Sparkle.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Sparkle.framework; path = Carthage/Build/Mac/Sparkle.framework; sourceTree = "<group>"; };
 		C57FE290255CA2EB00E4E2B4 /* Sparkle.framework.dSYM */ = {isa = PBXFileReference; lastKnownFileType = wrapper.dsym; name = Sparkle.framework.dSYM; path = Carthage/Build/Mac/Sparkle.framework.dSYM; sourceTree = "<group>"; };
 		C58CD0B6222179A300D286C0 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/MainMenu.xib; sourceTree = "<group>"; };
@@ -191,10 +189,9 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
-		8E0D33B11D3118CD002D3463 /* Apple Juice Widget */ = {
+		8E0D33B11D3118CD002D3463 /* AppleJuiceToday */ = {
 			isa = PBXGroup;
 			children = (
-				C50D516422996CE500E985D1 /* Apple Juice Widget.entitlements */,
 				8E0D33B41D3118CD002D3463 /* TodayViewController.swift */,
 				8E0D33B61D3118CD002D3463 /* ListRowViewController.swift */,
 				8E7373D81EACB58E00F10AD7 /* BatteryInfoTypeProtocol.swift */,
@@ -209,14 +206,14 @@
 				8E0D33C81D311906002D3463 /* UI */,
 				8E0D33B21D3118CD002D3463 /* Supporting Files */,
 			);
-			path = "Apple Juice Widget";
+			path = AppleJuiceToday;
 			sourceTree = "<group>";
 		};
 		8E0D33B21D3118CD002D3463 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				C566887025630F9C005D745C /* Apple Juice Today.entitlements */,
 				8EF30EF01D32D1C70010BC49 /* Info.plist */,
-				8E0D33B31D3118CD002D3463 /* Apple_Juice_Widget.entitlements */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -234,7 +231,7 @@
 			isa = PBXGroup;
 			children = (
 				8EBEB4441C466091001DBE91 /* AppleJuice */,
-				8E0D33B11D3118CD002D3463 /* Apple Juice Widget */,
+				8E0D33B11D3118CD002D3463 /* AppleJuiceToday */,
 				8EE1297B1C46F891000D404F /* Frameworks */,
 				8EBEB4431C466091001DBE91 /* Products */,
 			);
@@ -414,7 +411,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				8E58CBA41D339BD000920567 /* Apple_Juice_Widget.entitlements in Resources */,
 				8EA14D281D3D4728004D36C6 /* Localizable.strings in Resources */,
 				8E58CBA31D339BC900920567 /* ListRowViewController.xib in Resources */,
 				8E58CBA21D339BC200920567 /* TodayViewController.xib in Resources */,
@@ -577,11 +573,11 @@
 			buildSettings = {
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
-				CODE_SIGN_ENTITLEMENTS = "Apple Juice Widget/Apple Juice Widget.entitlements";
+				CODE_SIGN_ENTITLEMENTS = "AppleJuiceToday/Apple Juice Today.entitlements";
 				CODE_SIGN_IDENTITY = "-";
 				COMBINE_HIDPI_IMAGES = YES;
 				CURRENT_PROJECT_VERSION = 394;
-				INFOPLIST_FILE = "Apple Juice Widget/Info.plist";
+				INFOPLIST_FILE = AppleJuiceToday/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/../Frameworks",
@@ -589,7 +585,7 @@
 				);
 				MACOSX_DEPLOYMENT_TARGET = 10.12;
 				MARKETING_VERSION = 2020.11.2;
-				PRODUCT_BUNDLE_IDENTIFIER = "com.raphaelhanneken.applejuice.Apple-Juice-Widget";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.raphaelhanneken.applejuice.Apple-Juice-Today";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
@@ -602,11 +598,11 @@
 			buildSettings = {
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
-				CODE_SIGN_ENTITLEMENTS = "Apple Juice Widget/Apple Juice Widget.entitlements";
+				CODE_SIGN_ENTITLEMENTS = "AppleJuiceToday/Apple Juice Today.entitlements";
 				CODE_SIGN_IDENTITY = "-";
 				COMBINE_HIDPI_IMAGES = YES;
 				CURRENT_PROJECT_VERSION = 394;
-				INFOPLIST_FILE = "Apple Juice Widget/Info.plist";
+				INFOPLIST_FILE = AppleJuiceToday/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/../Frameworks",
@@ -614,7 +610,7 @@
 				);
 				MACOSX_DEPLOYMENT_TARGET = 10.12;
 				MARKETING_VERSION = 2020.11.2;
-				PRODUCT_BUNDLE_IDENTIFIER = "com.raphaelhanneken.applejuice.Apple-Juice-Widget";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.raphaelhanneken.applejuice.Apple-Juice-Today";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
 				SWIFT_COMPILATION_MODE = wholemodule;
