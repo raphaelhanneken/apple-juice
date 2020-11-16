@@ -10,7 +10,7 @@
 		8E0D33B01D3118CD002D3463 /* NotificationCenter.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8EE1297C1C46F891000D404F /* NotificationCenter.framework */; };
 		8E0D33B51D3118CD002D3463 /* TodayViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E0D33B41D3118CD002D3463 /* TodayViewController.swift */; };
 		8E0D33B71D3118CD002D3463 /* ListRowViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E0D33B61D3118CD002D3463 /* ListRowViewController.swift */; };
-		8E0D33C41D3118CD002D3463 /* Apple Juice Widget.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 8E0D33AF1D3118CD002D3463 /* Apple Juice Widget.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		8E0D33C41D3118CD002D3463 /* Apple Juice Today.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 8E0D33AF1D3118CD002D3463 /* Apple Juice Today.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		8E31BF9F1D42651F00055A5B /* BatteryImageCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E31BF9E1D42651F00055A5B /* BatteryImageCache.swift */; };
 		8E58CBA21D339BC200920567 /* TodayViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8EF30EE81D32D0ED0010BC49 /* TodayViewController.xib */; };
 		8E58CBA31D339BC900920567 /* ListRowViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8EF30EEA1D32D0FA0010BC49 /* ListRowViewController.xib */; };
@@ -72,7 +72,7 @@
 			dstPath = "";
 			dstSubfolderSpec = 13;
 			files = (
-				8E0D33C41D3118CD002D3463 /* Apple Juice Widget.appex in Embed App Extensions */,
+				8E0D33C41D3118CD002D3463 /* Apple Juice Today.appex in Embed App Extensions */,
 			);
 			name = "Embed App Extensions";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -104,7 +104,7 @@
 
 /* Begin PBXFileReference section */
 		5EF9F80621FB7A3300748374 /* pt-BR */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "pt-BR"; path = "pt-BR.lproj/Localizable.strings"; sourceTree = "<group>"; };
-		8E0D33AF1D3118CD002D3463 /* Apple Juice Widget.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = "Apple Juice Widget.appex"; sourceTree = BUILT_PRODUCTS_DIR; };
+		8E0D33AF1D3118CD002D3463 /* Apple Juice Today.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = "Apple Juice Today.appex"; sourceTree = BUILT_PRODUCTS_DIR; };
 		8E0D33B41D3118CD002D3463 /* TodayViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodayViewController.swift; sourceTree = "<group>"; };
 		8E0D33B61D3118CD002D3463 /* ListRowViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListRowViewController.swift; sourceTree = "<group>"; };
 		8E31BF9E1D42651F00055A5B /* BatteryImageCache.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BatteryImageCache.swift; sourceTree = "<group>"; };
@@ -241,7 +241,7 @@
 			isa = PBXGroup;
 			children = (
 				8EBEB4421C466091001DBE91 /* Apple Juice.app */,
-				8E0D33AF1D3118CD002D3463 /* Apple Juice Widget.appex */,
+				8E0D33AF1D3118CD002D3463 /* Apple Juice Today.appex */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -303,9 +303,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		8E0D33AE1D3118CD002D3463 /* Apple Juice Widget */ = {
+		8E0D33AE1D3118CD002D3463 /* Apple Juice Today */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 8E0D33C51D3118CD002D3463 /* Build configuration list for PBXNativeTarget "Apple Juice Widget" */;
+			buildConfigurationList = 8E0D33C51D3118CD002D3463 /* Build configuration list for PBXNativeTarget "Apple Juice Today" */;
 			buildPhases = (
 				8E0D33AB1D3118CD002D3463 /* Sources */,
 				8E0D33AC1D3118CD002D3463 /* Frameworks */,
@@ -315,9 +315,9 @@
 			);
 			dependencies = (
 			);
-			name = "Apple Juice Widget";
+			name = "Apple Juice Today";
 			productName = "Apple Juice Widget";
-			productReference = 8E0D33AF1D3118CD002D3463 /* Apple Juice Widget.appex */;
+			productReference = 8E0D33AF1D3118CD002D3463 /* Apple Juice Today.appex */;
 			productType = "com.apple.product-type.app-extension";
 		};
 		8EBEB4411C466091001DBE91 /* Apple Juice */ = {
@@ -401,7 +401,7 @@
 			projectRoot = "";
 			targets = (
 				8EBEB4411C466091001DBE91 /* Apple Juice */,
-				8E0D33AE1D3118CD002D3463 /* Apple Juice Widget */,
+				8E0D33AE1D3118CD002D3463 /* Apple Juice Today */,
 			);
 		};
 /* End PBXProject section */
@@ -531,7 +531,7 @@
 /* Begin PBXTargetDependency section */
 		8E0D33C31D3118CD002D3463 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 8E0D33AE1D3118CD002D3463 /* Apple Juice Widget */;
+			target = 8E0D33AE1D3118CD002D3463 /* Apple Juice Today */;
 			targetProxy = 8E0D33C21D3118CD002D3463 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
@@ -780,7 +780,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		8E0D33C51D3118CD002D3463 /* Build configuration list for PBXNativeTarget "Apple Juice Widget" */ = {
+		8E0D33C51D3118CD002D3463 /* Build configuration list for PBXNativeTarget "Apple Juice Today" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				8E0D33C61D3118CD002D3463 /* Debug */,
