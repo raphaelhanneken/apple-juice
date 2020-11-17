@@ -77,13 +77,6 @@ final class ApplicationController: NSObject {
         })
     }
 
-    ///  Open the energy saver preference pane.
-    ///
-    ///  - parameter sender: The menu item object that sent the message.
-    @IBAction public func energySaverPreferences(_: NSMenuItem) {
-        NSWorkspace.shared.openFile("/System/Library/PreferencePanes/EnergySaver.prefPane")
-    }
-
     ///  Updates informations within the application menu.
     ///
     ///  - parameter completionHandler: A callback function, to be called when a menu item was updated.
