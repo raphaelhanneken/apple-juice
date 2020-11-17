@@ -1,43 +1,42 @@
 # Apple Juice #
-An advanced battery gauge for macOS. *Apple Juice* can show you the estimated _battery time remaining_ right within the status bar and notify you about certain percentages, if you want.
+An advanced battery gauge for macOS. *Apple Juice* can show you the estimated __battery time remaining__ and notify you, when your battery charge hits certain percentages.
 
 ![Apple Juice Appmenu](screenshot_appmenu.png)
 ![Apple Juice Notifications](screenshot_notifications.png)
 
-__Today Widget__
+### Today Widget ###
 
-Get even more information about your current battery status, without cluttering your screen, with the *Apple Juice Today Widget*. Just take a quick glance at your battery’s stats, whenever you want.
+You can get even more information about your current battery status, without cluttering your screen, with the *Apple Juice Today Widget*. Just take a quick glance at your battery’s stats, whenever you want.
 
 ![Apple Juice Today Widget](screenshot_today.png)
 
-### Ok, but how accurate is it? ###
-Probably as accurate as it gets. The information come directly from macOS’s IO registry and are updated constantly.
+# How do I install it? #
 
-## How do I install it? ##
+* Install *Apple Juice* from the published binary, by downloading the [latest release](https://github.com/raphaelhanneken/apple-juice/releases/latest) and dropping it into your Applications folder.
 
-You have three options:
+* Install *Apple Juice* using [Homebrew](https://brew.sh/), using the command `brew cask install apple-juice`
 
-1. Install using [brew](https://brew.sh/): `brew cask install apple-juice`
+* You can also download the source code and build it yourself. You'll have to have [Carthage](https://github.com/Carthage/Carthage) installed, and run `carthage bootstrap`, inside the project folder, to pull in the required dependencies.
 
-1. Install from published binary :Download the [latest binary](https://github.com/raphaelhanneken/apple-juice/releases/latest) and drop it into your `Applications folder`*.
+## ATTENTION ##
+__Loosen Gate Keeper Restrictions__
+> As I'm not paying for an Apple Developer Account, you have to allow unsigned third party apps within the system preferences, to run *Apple Juice*. To allow unsigned apps choose `Anywhere` under `System Preferences: Security: Allow apps downloaded from`. If you don't have the option to select `Anywhere` you'll have to loosen the Gate Keeper restrictions by running `sudo spctl --master-disable` in the Terminal. [OSXDaily](http://osxdaily.com/2016/09/27/allow-apps-from-anywhere-macos-gatekeeper/) have a great step by step guide. Afterwards you should be able to select Anywhere.
 
-1. Download the source code and build it yourself. You'll need to have [Carthage](https://github.com/Carthage/Carthage) instsalled, and run `carthage update` to pull in the [Sparkle Framework](https://github.com/sparkle-project/Sparkle), as I haven’t put it under version control.
+__Remove Quarantine Attributes__
+> Alternatively you can remove the quarantine attribute from the downloaded application package, as suggested by [henrycodebreaker](https://github.com/henrycodebreaker) in [issue #18](https://github.com/raphaelhanneken/apple-juice/issues/18). By executing the following command inside your Terminal: `xattr -cr /path/to/Apple\ Juice.app`.
 
-*Since I don’t have an Apple Developer account, you have to allow unsigned third party apps within the system preferences.
- ```System Preferences: Security & Privacy: Allow apps downloaded from: Anywhere```. If you don't have the option to select `Anywhere` you'll have to loosen the Gate Keeper restrictions by running `sudo spctl --master-disable` in the Terminal. [OSXDaily](http://osxdaily.com/2016/09/27/allow-apps-from-anywhere-macos-gatekeeper/) have a great step by step guide. Afterwards you should be able to select Anywhere.
-
-## Why does this project exist? ##
+# Why does this project exist? #
 There are plenty of other solutions out there, so why make another one? I wanted an app that looks like it’s part of the system. As if it were built directly into macOS. Which can show me a lot of information, but only when I need them. And, most importantly, it should display notifications for several percentages. Since I haven’t found such an app, I made one myself.
 
-## How do I contribute? ##
-You can fork this project, make your changes and send me a pull request. Just make sure you fork the latest development version and that [SwiftLint](https://github.com/realm/SwiftLint) succeeds. Or, since the whole source code is licensed under the MIT License, fork *Apple Juice* and make your own thing. :-)
+# How do I contribute? #
+You can fork this project, make your changes and send me a pull request. Make sure [SwiftLint](https://github.com/realm/SwiftLint) succeeds and everything is translated before submitting your pull request. Or, since the whole source code is licensed under the MIT License, fork *Apple Juice* and make your own thing. :-)
 
 __________
 
-### License ###
+# License #
 The MIT License (MIT)
 
-Copyright (c) 2015 Raphael Hanneken
+Copyright (c) 2015 - 2020 Raphael Hanneken
 
 Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
 
