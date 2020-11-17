@@ -118,13 +118,7 @@
                         <action selector="checkForUpdates:" target="Avc-Ie-Abt" id="Aqj-nm-y4m"/>
                     </connections>
                 </menuItem>
-                <menuItem title="Energy Saver Preferences…" id="nUK-pj-k8O">
-                    <modifierMask key="keyEquivalentModifierMask"/>
-                    <connections>
-                        <action selector="energySaverPreferences:" target="FRD-GK-LcV" id="eSm-lB-1d2"/>
-                    </connections>
-                </menuItem>
-                <menuItem title="About Apple Juice" id="PUB-MR-Ddo">
+                <menuItem title="About Apple Juice..." id="PUB-MR-Ddo">
                     <modifierMask key="keyEquivalentModifierMask"/>
                     <connections>
                         <action selector="orderFrontStandardAboutPanel:" target="-1" id="vXr-y6-aUC"/>
