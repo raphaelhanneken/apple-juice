@@ -1,5 +1,5 @@
 <p align="center">
-    <img src="https://github.com/raphaelhanneken/apple-juice/blob/master/applejuice.png" alt="Apple Juice application icon">
+    <img src="https://github.com/raphaelhanneken/apple-juice/blob/master/applejuice.png" alt="Apple Juice application icon" width="200">
 </p>
 
 # Apple Juice #
