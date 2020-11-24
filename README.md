@@ -1,3 +1,7 @@
+<p align="center">
+    <img src="/raphaelhanneken/apple-juice/raw/master/applejuice.png" alt="Apple Juice application icon">
+</p>
+
 # Apple Juice #
 An advanced battery gauge for macOS. *Apple Juice* can show you the estimated __battery time remaining__ and notify you, when your battery charge hits certain percentages.
 
