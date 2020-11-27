@@ -6,56 +6,54 @@
 
 import Foundation
 
-///  Manages the user preferences.
+/// Manages the user preferences.
 final class UserPreferences: NSObject {
+    // MARK: Internal
 
-    ///  Holds a reference to the standard user defaults.
-    private static let userDefaults = UserDefaults.standard
-
-    ///  True if the user wants the remaining time to be displayed within the menu bar.
+    /// True if the user wants the remaining time to be displayed within the menu bar.
     static var showTime: Bool {
-        return userDefaults.bool(forKey: PreferenceKey.showTime.rawValue)
+        userDefaults.bool(forKey: PreferenceKey.showTime.rawValue)
     }
 
-    ///  Hide all menu bar information
+    /// Hide all menu bar information
     static var hideMenubarInfo: Bool {
-        return userDefaults.bool(forKey: PreferenceKey.hideMenubarInfo.rawValue)
+        userDefaults.bool(forKey: PreferenceKey.hideMenubarInfo.rawValue)
     }
 
-    ///  Hide all menu bar information
+    /// Hide all menu bar information
     static var hideBatteryIcon: Bool {
-        return userDefaults.bool(forKey: PreferenceKey.hideBatteryIcon.rawValue)
+        userDefaults.bool(forKey: PreferenceKey.hideBatteryIcon.rawValue)
     }
 
-    ///  True if the user wants a notification at five percent.
+    /// True if the user wants a notification at five percent.
     static var fivePercentNotification: Bool {
-        return userDefaults.bool(forKey: PreferenceKey.fivePercentNotification.rawValue)
+        userDefaults.bool(forKey: PreferenceKey.fivePercentNotification.rawValue)
     }
 
-    ///  True if the user wants a notification at ten percent.
+    /// True if the user wants a notification at ten percent.
     static var tenPercentNotification: Bool {
-        return userDefaults.bool(forKey: PreferenceKey.tenPercentNotification.rawValue)
+        userDefaults.bool(forKey: PreferenceKey.tenPercentNotification.rawValue)
     }
 
-    ///  True if the user wants a notification at fifeteen percent.
+    /// True if the user wants a notification at fifeteen percent.
     static var fifeteenPercentNotification: Bool {
-        return userDefaults.bool(forKey: PreferenceKey.fifeteenPercentNotification.rawValue)
+        userDefaults.bool(forKey: PreferenceKey.fifeteenPercentNotification.rawValue)
     }
 
-    ///  True if the user wants a notification at twenty percent.
+    /// True if the user wants a notification at twenty percent.
     static var twentyPercentNotification: Bool {
-        return userDefaults.bool(forKey: PreferenceKey.twentyPercentNotification.rawValue)
+        userDefaults.bool(forKey: PreferenceKey.twentyPercentNotification.rawValue)
     }
 
-    ///  True if the user wants a notification at hundred percent.
+    /// True if the user wants a notification at hundred percent.
     static var hundredPercentNotification: Bool {
-        return userDefaults.bool(forKey: PreferenceKey.hundredPercentNotification.rawValue)
+        userDefaults.bool(forKey: PreferenceKey.hundredPercentNotification.rawValue)
     }
 
-    ///  Keeps the percentage the user was last notified.
+    /// Keeps the percentage the user was last notified.
     static var lastNotified: NotificationKey? {
         get {
-            return NotificationKey(rawValue: userDefaults.integer(forKey: PreferenceKey.lastNotification.rawValue))
+            NotificationKey(rawValue: userDefaults.integer(forKey: PreferenceKey.lastNotification.rawValue))
         }
         set {
             guard let notificationKey = newValue else {
@@ -89,7 +87,7 @@ final class UserPreferences: NSObject {
         return result
     }
 
-    ///  Register user defaults.
+    /// Register user defaults.
     static func registerDefaults() {
         let defaultPreferences = [
             PreferenceKey.showTime.rawValue: true,
@@ -104,4 +102,9 @@ final class UserPreferences: NSObject {
 
         userDefaults.register(defaults: defaultPreferences)
     }
+
+    // MARK: Private
+
+    /// Holds a reference to the standard user defaults.
+    private static let userDefaults = UserDefaults.standard
 }

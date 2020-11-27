@@ -8,18 +8,7 @@ import Cocoa
 import LaunchAtLogin
 
 final class ApplicationController: NSObject {
-
-    /// Holds a weak reference to the application menu.
-    @IBOutlet weak var applicationMenu: NSMenu!
-    /// Holds a weak reference to the charging status menu item.
-    @IBOutlet weak var currentCharge: NSMenuItem!
-
-    /// The status bar item.
-    private var statusItem: StatusBarItem?
-    /// An abstraction to the battery IO service
-    private var battery: BatteryService!
-
-    @objc dynamic var launchAtLogin = LaunchAtLogin.kvo
+    // MARK: Lifecycle
 
     override init() {
         super.init()
@@ -39,27 +28,12 @@ final class ApplicationController: NSObject {
         }
     }
 
-    ///  This message is sent to the receiver when the value at the specified key path relative to the given object
-    ///  has changed. The receiver must be registered as an observer for the specified keyPath and object.
-    ///
-    ///  - parameter keyPath: The key path, relative to object, to the value that has changed.
-    ///  - parameter object: The source object of the key path.
-    ///  - parameter change: A dictionary that describes the changes that have been made to
-    ///                      the value of the property at the key path keyPath relative to object.
-    ///                      Entries are described in Change Dictionary Keys.
-    ///  - parameter context: The value that was provided when the receiver was registered to receive key-value
-    ///                       observation notifications.
-    override func observeValue(forKeyPath _: String?,
-                               of _: Any?,
-                               change _: [NSKeyValueChangeKey: Any]?,
-                               context _: UnsafeMutableRawPointer?) {
-        statusItem?.update(batteryInfo: battery)
-    }
+    // MARK: Public
 
-    ///  This message is sent to the receiver, when a powerSourceChanged message was posted. The receiver
-    ///  must be registered as an observer for powerSourceChangedNotification's.
+    /// This message is sent to the receiver, when a powerSourceChanged message was posted. The receiver
+    /// must be registered as an observer for powerSourceChangedNotification's.
     ///
-    ///  - parameter sender: The object that posted powerSourceChanged message.
+    /// - parameter sender: The object that posted powerSourceChanged message.
     @objc public func powerSourceChanged(_: AnyObject) {
         statusItem?.update(batteryInfo: battery)
 
@@ -68,18 +42,48 @@ final class ApplicationController: NSObject {
         }
     }
 
-    ///  Displays the application menu when the user clicks the menu bar item.
+    /// Displays the application menu when the user clicks the menu bar item.
     ///
-    ///  - parameter sender: The object that sent the message.
+    /// - parameter sender: The object that sent the message.
     @objc public func displayAppMenu(_: AnyObject) {
-        updateMenuItems({
+        updateMenuItems {
             statusItem?.popUpMenu(applicationMenu)
-        })
+        }
     }
 
-    ///  Updates informations within the application menu.
+    // MARK: Internal
+
+    @IBOutlet var applicationMenu: NSMenu!
+    @IBOutlet var currentCharge: NSMenuItem!
+
+    @objc dynamic var launchAtLogin = LaunchAtLogin.kvo
+
+    /// This message is sent to the receiver when the value at the specified key path relative to the given object
+    /// has changed. The receiver must be registered as an observer for the specified keyPath and object.
     ///
-    ///  - parameter completionHandler: A callback function, to be called when a menu item was updated.
+    /// - parameter keyPath: The key path, relative to object, to the value that has changed.
+    /// - parameter object: The source object of the key path.
+    /// - parameter change: A dictionary that describes the changes that have been made to
+    ///                     the value of the property at the key path keyPath relative to object.
+    ///                     Entries are described in Change Dictionary Keys.
+    /// - parameter context: The value that was provided when the receiver was registered to receive key-value
+    ///                      observation notifications.
+    override func observeValue(forKeyPath _: String?,
+                               of _: Any?,
+                               change _: [NSKeyValueChangeKey: Any]?,
+                               context _: UnsafeMutableRawPointer?)
+    {
+        statusItem?.update(batteryInfo: battery)
+    }
+
+    // MARK: Private
+
+    private var statusItem: StatusBarItem?
+    private var battery: BatteryService!
+
+    /// Updates informations within the application menu.
+    ///
+    /// - parameter completionHandler: A callback function, to be called when a menu item was updated.
     private func updateMenuItems(_ completionHandler: () -> Void) {
         guard let capacity = battery.capacity,
               let charge = battery.charge,
@@ -130,5 +134,4 @@ final class ApplicationController: NSObject {
                          name: NSNotification.Name(rawValue: powerSourceChangedNotification),
                          object: nil)
     }
-
 }

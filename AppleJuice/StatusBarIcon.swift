@@ -6,7 +6,7 @@
 
 import Cocoa
 
-///  Image names for the images used by the menu bar item icon.
+/// Image names for the images used by the menu bar item icon.
 private enum BatteryImage: NSImage.Name {
     case left = "BatteryFillCapLeft"
     case right = "BatteryFillCapRight"
@@ -20,19 +20,13 @@ private enum BatteryImage: NSImage.Name {
 }
 
 internal struct StatusBarIcon {
+    // MARK: Internal
 
-    ///  The little margins between the battery outline and the capcity bar.
-    private let capacityOffsetX: CGFloat = 2.0
-    private let capacityOffsetY: CGFloat = 2.0
-
-    ///  Cache the last drawn battery icon.
-    private var cache: BatteryImageCache?
-
-    ///  Draws a battery icon for the given BatteryState.
+    /// Draws a battery icon for the given BatteryState.
     ///
-    ///  - parameter status: The BatteryState for the status the battery is currently in, e.g. charging
-    ///  - returns: The battery image for the provided battery status.
-    mutating internal func drawBatteryImage(forStatus status: BatteryState) -> NSImage? {
+    /// - parameter status: The BatteryState for the status the battery is currently in, e.g. charging
+    /// - returns: The battery image for the provided battery status.
+    internal mutating func drawBatteryImage(forStatus status: BatteryState) -> NSImage? {
         if let cache = self.cache, cache.batteryStatus == status {
             return cache.image
         }
@@ -52,12 +46,14 @@ internal struct StatusBarIcon {
         return cache?.image
     }
 
-    ///  Draws a battery icon for the given BatteryError.
+    /// Draws a battery icon for the given BatteryError.
     ///
-    ///  - parameter err: The BatteryError object for the corresponding error that happened.
-    ///  - returns: A battery icon for the given BatteryError.
+    /// - parameter err: The BatteryError object for the corresponding error that happened.
+    /// - returns: A battery icon for the given BatteryError.
     internal func drawBatteryImage(forError error: BatteryError?) -> NSImage? {
-        guard let error = error else { return nil }
+        guard let error = error else {
+            return nil
+        }
 
         switch error {
         case .connectionAlreadyOpen:
@@ -67,15 +63,25 @@ internal struct StatusBarIcon {
         }
     }
 
-    ///  Draws a battery icon based on the battery's current percentage.
+    // MARK: Private
+
+    /// The little margins between the battery outline and the capcity bar.
+    private let capacityOffsetX: CGFloat = 2.0
+    private let capacityOffsetY: CGFloat = 2.0
+
+    /// Cache the last drawn battery icon.
+    private var cache: BatteryImageCache?
+
+    /// Draws a battery icon based on the battery's current percentage.
     ///
-    ///  - parameter percentage: The current percentage of the battery.
-    ///  - returns: A battery icon for the supplied percentage.
+    /// - parameter percentage: The current percentage of the battery.
+    /// - returns: A battery icon for the supplied percentage.
     private func dischargingBatteryImage(forPercentage percentage: Double) -> NSImage? {
         guard let batteryOutline = batteryImage(named: .outline),
               let capacityCapLeft = batteryImage(named: .left),
               let capacityCapRight = batteryImage(named: .right),
-              let capacityFill = batteryImage(named: .middle) else {
+              let capacityFill = batteryImage(named: .middle)
+        else {
             return nil
         }
 
@@ -98,15 +104,14 @@ internal struct StatusBarIcon {
                                                  inFrame: drawingRect)
     }
 
-    ///  Returns the image object associated with the specified name as template.
+    /// Returns the image object associated with the specified name as template.
     ///
-    ///  - parameter name: The name of an image in the app bundle.
-    ///  - returns: An image object associated with the specified name as template.
+    /// - parameter name: The name of an image in the app bundle.
+    /// - returns: An image object associated with the specified name as template.
     private func batteryImage(named name: BatteryImage) -> NSImage? {
         guard let img = NSImage(named: name.rawValue) else { return nil }
         img.isTemplate = true
 
         return img
     }
-
 }

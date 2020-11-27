@@ -8,7 +8,6 @@ import Cocoa
 
 @NSApplicationMain
 final class AppDelegate: NSObject, NSApplicationDelegate {
-
     func applicationDidFinishLaunching(_: Notification) {
         UserPreferences.registerDefaults()
     }
@@ -19,7 +18,8 @@ final class AppDelegate: NSObject, NSApplicationDelegate {
 
     // Post messages to the user notification center.
     func userNotificationCenter(_: NSUserNotificationCenter,
-                                shouldPresentNotification _: NSUserNotification) -> Bool {
-        return true
+                                shouldPresentNotification _: NSUserNotification) -> Bool
+    {
+        true
     }
 }

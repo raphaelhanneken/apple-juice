@@ -7,34 +7,40 @@
 import Foundation
 import IOKit.ps
 
-///  Notification name for the power source changed callback.
+/// Notification name for the power source changed callback.
 let powerSourceChangedNotification = "com.raphaelhanneken.apple-juice.powersourcechanged"
 
-///  Posts a notification every time the power source changes.
+/// Posts a notification every time the power source changes.
 private let powerSourceCallback: IOPowerSourceCallbackType = { _ in
     NotificationCenter.default.post(name: Notification.Name(rawValue: powerSourceChangedNotification),
                                     object: nil)
 }
 
-///  Accesses the battery's IO service.
+/// Accesses the battery's IO service.
 final class BatteryService {
+    // MARK: Lifecycle
 
-    /// Closed state value for the service connection object.
-    private static let connectionClosed: UInt32 = 0
+    /// Initializes a new Battery object.
+    init() throws {
+        try openServiceConnection()
+        CFRunLoopAddSource(CFRunLoopGetCurrent(),
+                           IOPSNotificationCreateRunLoopSource(powerSourceCallback, nil).takeRetainedValue(),
+                           CFRunLoopMode.defaultMode)
+    }
 
-    /// An IOService object that matches battery's IO service dictionary.
-    private var service: io_object_t = BatteryService.connectionClosed
+    // MARK: Internal
 
-    ///  The current status of the battery, e.g. charging.
+    /// The current status of the battery, e.g. charging.
     var state: BatteryState? {
         guard
-            let charging   = isCharging,
-            let plugged    = isPlugged,
-            let charged    = isCharged,
-            let percentage = percentage else {
-                return nil
+            let charging = isCharging,
+            let plugged = isPlugged,
+            let charged = isCharged,
+            let percentage = percentage
+        else {
+            return nil
         }
-        if charged && plugged {
+        if charged, plugged {
             return .chargedAndPlugged
         }
         if charging {
@@ -44,15 +50,15 @@ final class BatteryService {
         return .discharging(percentage: percentage)
     }
 
-    ///  The remaining time until the battery is empty or fully charged
-    ///  in a human readable format, e.g. hh:mm.
+    /// The remaining time until the battery is empty or fully charged
+    /// in a human readable format, e.g. hh:mm.
     var timeRemainingFormatted: String {
         // Unwrap required information.
         guard let charged = isCharged, let plugged = isPlugged else {
             return NSLocalizedString("Unknown", comment: "")
         }
         // Check if the battery is charged and plugged into an unlimited power supply.
-        if charged && plugged {
+        if charged, plugged {
             return NSLocalizedString("Charged Notification Title", comment: "")
         }
         // The battery is (dis)charging, display the remaining time.
@@ -63,7 +69,7 @@ final class BatteryService {
         return NSLocalizedString("Calculating", comment: "")
     }
 
-    ///  The remaining time in _minutes_ until the battery is empty or fully charged.
+    /// The remaining time in _minutes_ until the battery is empty or fully charged.
     var timeRemaining: Int? {
         // Get the estimated time remaining.
         let time = IOPSGetTimeRemainingEstimate()
@@ -84,9 +90,9 @@ final class BatteryService {
         }
     }
 
-    ///  The current percentage, based on the current charge and the maximum capacity.
+    /// The current percentage, based on the current charge and the maximum capacity.
     var percentage: Int? {
-        return getPowerSourceProperty(forKey: .percentage) as? Int
+        getPowerSourceProperty(forKey: .percentage) as? Int
     }
 
     /// The current percentage, formatted according to the selected client locale, e.g.
@@ -107,22 +113,22 @@ final class BatteryService {
         return percentageFormatter.string(from: percentage as NSNumber) ?? "\(percentage) %"
     }
 
-    ///  The current charge in mAh.
+    /// The current charge in mAh.
     var charge: Int? {
-        return getRegistryProperty(forKey: .currentCharge) as? Int
+        getRegistryProperty(forKey: .currentCharge) as? Int
     }
 
-    ///  The maximum capacity in mAh.
+    /// The maximum capacity in mAh.
     var capacity: Int? {
-        return getRegistryProperty(forKey: .maxCapacity) as? Int
+        getRegistryProperty(forKey: .maxCapacity) as? Int
     }
 
-    ///  The source from which the Mac currently draws its power.
+    /// The source from which the Mac currently draws its power.
     var powerSource: String {
         guard let plugged = isPlugged else {
             return NSLocalizedString("Unknown", comment: "")
         }
-        // Check whether the MacBook currently is plugged into a power adapter.
+
         if plugged {
             return NSLocalizedString("Power Adapter", comment: "")
         }
@@ -130,43 +136,39 @@ final class BatteryService {
         return NSLocalizedString("Battery", comment: "")
     }
 
-    ///  Checks whether the battery is charging and connected to a power outlet.
+    /// Checks whether the battery is charging and connected to a power outlet.
     var isCharging: Bool? {
-        return getRegistryProperty(forKey: .isCharging) as? Bool
+        getRegistryProperty(forKey: .isCharging) as? Bool
     }
 
-    ///  Checks whether the battery is fully charged.
+    /// Checks whether the battery is fully charged.
     var isCharged: Bool? {
-        return getRegistryProperty(forKey: .fullyCharged) as? Bool
+        getRegistryProperty(forKey: .fullyCharged) as? Bool
     }
 
-    ///  Checks whether the battery is plugged into an unlimited power supply.
+    /// Checks whether the battery is plugged into an unlimited power supply.
     var isPlugged: Bool? {
-        return getRegistryProperty(forKey: .isPlugged) as? Bool
+        getRegistryProperty(forKey: .isPlugged) as? Bool
     }
 
-    ///  Calculates the current power usage in Watts.
+    /// Calculates the current power usage in Watts.
     var powerUsage: Double? {
-        guard
-            let voltage  = getRegistryProperty(forKey: .voltage) as? Double,
-            let amperage = getRegistryProperty(forKey: .amperage) as? Double else {
+        guard let voltage = getRegistryProperty(forKey: .voltage) as? Double,
+              let amperage = getRegistryProperty(forKey: .amperage) as? Double
+        else {
             return nil
         }
         return round((voltage * amperage) / 1_000_000)
     }
 
-    ///  Current flowing into or out of the battery.
+    /// Current flowing into or out of the battery.
     var amperage: Int? {
-        guard
-            let amperage = getRegistryProperty(forKey: .amperage) as? Int else {
-                return nil
-        }
-        return amperage
+        return getRegistryProperty(forKey: .amperage) as? Int
     }
 
     /// The number of charging cycles.
     var cycleCount: Int? {
-        return getRegistryProperty(forKey: .cycleCount) as? Int
+        getRegistryProperty(forKey: .cycleCount) as? Int
     }
 
     /// The battery's current temperature.
@@ -179,25 +181,21 @@ final class BatteryService {
 
     /// The batteries' health status
     var health: String? {
-        return getPowerSourceProperty(forKey: .health) as? String
+        getPowerSourceProperty(forKey: .health) as? String
     }
 
-    ///  Initializes a new Battery object.
-    init() throws {
-        try openServiceConnection()
-        CFRunLoopAddSource(CFRunLoopGetCurrent(),
-                           IOPSNotificationCreateRunLoopSource(powerSourceCallback, nil).takeRetainedValue(),
-                           CFRunLoopMode.defaultMode)
-    }
+    // MARK: Private
 
-    ///  Opens a connection to the battery's IOService object.
+    /// Closed state value for the service connection object.
+    private static let connectionClosed: UInt32 = 0
+
+    /// An IOService object that matches battery's IO service dictionary.
+    private var service: io_object_t = BatteryService.connectionClosed
+
+    /// Opens a connection to the battery's IOService object.
     ///
-    ///  - throws: A BatteryError if something went wrong.
+    /// - throws: A BatteryError if something went wrong.
     private func openServiceConnection() throws {
-        if service != BatteryService.connectionClosed && !closeServiceConnection() {
-            // For some reason we have an open IO Service connection which we cannot close.
-            throw BatteryError.connectionAlreadyOpen("Closing the IOService connection failed.")
-        }
         service = IOServiceGetMatchingService(kIOMasterPortDefault,
                                               IOServiceNameMatching(RegistryKey.service.rawValue))
 
@@ -207,9 +205,9 @@ final class BatteryService {
         }
     }
 
-    ///  Closes the connection the the battery's IOService object.
+    /// Closes the connection the the battery's IOService object.
     ///
-    ///  - returns: True, when the IOService connection was successfully closed.
+    /// - returns: True, when the IOService connection was successfully closed.
     private func closeServiceConnection() -> Bool {
         if kIOReturnSuccess == IOObjectRelease(service) {
             service = BatteryService.connectionClosed
@@ -218,12 +216,12 @@ final class BatteryService {
         return (service == BatteryService.connectionClosed)
     }
 
-    ///  Get the registry entry's property for the supplied SmartBatteryKey.
+    /// Get the registry entry's property for the supplied SmartBatteryKey.
     ///
-    ///  - parameter key: A SmartBatteryKey to get the corresponding registry entry's property.
-    ///  - returns:       The registry entry for the provided SmartBatteryKey.
+    /// - parameter key: A SmartBatteryKey to get the corresponding registry entry's property.
+    /// - returns: The registry entry for the provided SmartBatteryKey.
     private func getRegistryProperty(forKey key: RegistryKey) -> AnyObject? {
-        return IORegistryEntryCreateCFProperty(service, key.rawValue as CFString?, nil, 0)
+        IORegistryEntryCreateCFProperty(service, key.rawValue as CFString?, nil, 0)
             .takeRetainedValue()
     }
 

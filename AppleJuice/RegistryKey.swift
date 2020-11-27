@@ -18,17 +18,17 @@
 /// - timeRemaining: An estimate about the remaining time until the battery is fully charged or depleted
 /// - service: The service name
 enum RegistryKey: String {
-    case isPlugged     = "ExternalConnected"
-    case isCharging    = "IsCharging"
+    case isPlugged = "ExternalConnected"
+    case isCharging = "IsCharging"
     case currentCharge = "CurrentCapacity"
-    case maxCapacity   = "MaxCapacity"
-    case fullyCharged  = "FullyCharged"
-    case cycleCount    = "CycleCount"
-    case temperature   = "Temperature"
-    case voltage       = "Voltage"
-    case amperage      = "Amperage"
+    case maxCapacity = "MaxCapacity"
+    case fullyCharged = "FullyCharged"
+    case cycleCount = "CycleCount"
+    case temperature = "Temperature"
+    case voltage = "Voltage"
+    case amperage = "Amperage"
     case timeRemaining = "TimeRemaining"
-    case service       = "AppleSmartBattery"
-    case health        = "BatteryHealth"
-    case percentage    = "Current Capacity"
+    case service = "AppleSmartBattery"
+    case health = "BatteryHealth"
+    case percentage = "Current Capacity"
 }
