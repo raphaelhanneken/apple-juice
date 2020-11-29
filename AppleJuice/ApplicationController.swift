@@ -101,12 +101,12 @@ final class ApplicationController: NSObject {
         paragraphStyle.paragraphSpacing = 3.0
 
         let powerSource = NSMutableAttributedString(
-            string: "\(NSLocalizedString("Power Source", comment: "")) \(battery.powerSource)\n",
+            string: "\(NSLocalizedString(battery.powerSource.rawValue, comment: ""))\n",
             attributes: [.font: NSFont.menuFont(ofSize: 13.0), .paragraphStyle: paragraphStyle])
 
         let details = NSAttributedString(
-            string: "\(timeRemaining) \(charge) / \(capacity) mAh (\(amperage) mA)",
-            attributes: [.font: NSFont.menuFont(ofSize: 12.0)])
+            string: "\(timeRemaining)  \(charge) / \(capacity) mAh (\(amperage) mA)",
+            attributes: [.font: NSFont.menuFont(ofSize: 13.0)])
 
         powerSource.append(details)
 

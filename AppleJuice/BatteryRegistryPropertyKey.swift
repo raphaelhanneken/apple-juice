@@ -17,7 +17,7 @@
 /// - amperage: The current amperage
 /// - timeRemaining: An estimate about the remaining time until the battery is fully charged or depleted
 /// - service: The service name
-enum RegistryKey: String {
+enum BatteryRegistryPropertyKey: String {
     case isPlugged = "ExternalConnected"
     case isCharging = "IsCharging"
     case currentCharge = "CurrentCapacity"

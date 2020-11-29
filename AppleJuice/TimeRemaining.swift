@@ -1,9 +1,7 @@
 //
-//  TimeRemaining.swift
-//  Apple Juice
-//
-//  Created by Raphael Hanneken on 29.11.20.
-//  Copyright © 2020 Raphael Hanneken. All rights reserved.
+// TimeRemaining.swift
+// Apple Juice
+// https://github.com/raphaelhanneken/apple-juice
 //
 
 import Foundation

@@ -23,11 +23,11 @@
 		8E995BAF1EABD8C800CE8364 /* BatteryError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E995BA91EABD8C800CE8364 /* BatteryError.swift */; };
 		8E995BB01EABD8C800CE8364 /* BatteryState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E995BAA1EABD8C800CE8364 /* BatteryState.swift */; };
 		8E995BB11EABD8C800CE8364 /* NotificationKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E995BAB1EABD8C800CE8364 /* NotificationKey.swift */; };
-		8E995BB31EABD8C800CE8364 /* RegistryKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E995BAD1EABD8C800CE8364 /* RegistryKey.swift */; };
+		8E995BB31EABD8C800CE8364 /* BatteryRegistryPropertyKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E995BAD1EABD8C800CE8364 /* BatteryRegistryPropertyKey.swift */; };
 		8E995BB41EABD8C800CE8364 /* StatusBarItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E995BAE1EABD8C800CE8364 /* StatusBarItem.swift */; };
 		8E995BB51EABDA6800CE8364 /* BatteryState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E995BAA1EABD8C800CE8364 /* BatteryState.swift */; };
 		8E995BB61EABDA6C00CE8364 /* BatteryError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E995BA91EABD8C800CE8364 /* BatteryError.swift */; };
-		8E995BB71EABDA7100CE8364 /* RegistryKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E995BAD1EABD8C800CE8364 /* RegistryKey.swift */; };
+		8E995BB71EABDA7100CE8364 /* BatteryRegistryPropertyKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E995BAD1EABD8C800CE8364 /* BatteryRegistryPropertyKey.swift */; };
 		8E995BBB1EABDB2F00CE8364 /* dsa_pub.pem in Resources */ = {isa = PBXBuildFile; fileRef = 8E995BBA1EABDB2F00CE8364 /* dsa_pub.pem */; };
 		8EA14D281D3D4728004D36C6 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 8EBF29EC1C485493005BBAE0 /* Localizable.strings */; };
 		8EAE0D211EB4EFBF00E3D594 /* SourceInfoType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EAE0D201EB4EFBF00E3D594 /* SourceInfoType.swift */; };
@@ -47,6 +47,8 @@
 		C5696AB62573C861001316FC /* Percentage.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5696AB32573C7A1001316FC /* Percentage.swift */; };
 		C5696ABA2573DAA1001316FC /* TimeRemaining.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5696AB92573DAA1001316FC /* TimeRemaining.swift */; };
 		C5696ABD2573DD27001316FC /* TimeRemaining.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5696AB92573DAA1001316FC /* TimeRemaining.swift */; };
+		C5696AC12573E0F9001316FC /* PowerSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5696AC02573E0F9001316FC /* PowerSource.swift */; };
+		C5696AC42573E180001316FC /* PowerSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5696AC02573E0F9001316FC /* PowerSource.swift */; };
 		C57FE28B255CA29000E4E2B4 /* Sparkle.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C57FE287255CA25F00E4E2B4 /* Sparkle.framework */; };
 		C57FE28C255CA29000E4E2B4 /* Sparkle.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = C57FE287255CA25F00E4E2B4 /* Sparkle.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		C57FE291255CA2EB00E4E2B4 /* Sparkle.framework.dSYM in Resources */ = {isa = PBXBuildFile; fileRef = C57FE290255CA2EB00E4E2B4 /* Sparkle.framework.dSYM */; };
@@ -123,7 +125,7 @@
 		8E995BA91EABD8C800CE8364 /* BatteryError.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BatteryError.swift; sourceTree = "<group>"; };
 		8E995BAA1EABD8C800CE8364 /* BatteryState.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BatteryState.swift; sourceTree = "<group>"; };
 		8E995BAB1EABD8C800CE8364 /* NotificationKey.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NotificationKey.swift; sourceTree = "<group>"; };
-		8E995BAD1EABD8C800CE8364 /* RegistryKey.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegistryKey.swift; sourceTree = "<group>"; };
+		8E995BAD1EABD8C800CE8364 /* BatteryRegistryPropertyKey.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BatteryRegistryPropertyKey.swift; sourceTree = "<group>"; };
 		8E995BAE1EABD8C800CE8364 /* StatusBarItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StatusBarItem.swift; sourceTree = "<group>"; };
 		8E995BBA1EABDB2F00CE8364 /* dsa_pub.pem */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = dsa_pub.pem; sourceTree = "<group>"; };
 		8EAE0D201EB4EFBF00E3D594 /* SourceInfoType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SourceInfoType.swift; sourceTree = "<group>"; };
@@ -157,6 +159,7 @@
 		C5696AA62573C132001316FC /* es */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = es; path = es.lproj/MainMenu.strings; sourceTree = "<group>"; };
 		C5696AB32573C7A1001316FC /* Percentage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Percentage.swift; sourceTree = "<group>"; };
 		C5696AB92573DAA1001316FC /* TimeRemaining.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeRemaining.swift; sourceTree = "<group>"; };
+		C5696AC02573E0F9001316FC /* PowerSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PowerSource.swift; sourceTree = "<group>"; };
 		C57FE287255CA25F00E4E2B4 /* Sparkle.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Sparkle.framework; path = Carthage/Build/Mac/Sparkle.framework; sourceTree = "<group>"; };
 		C57FE290255CA2EB00E4E2B4 /* Sparkle.framework.dSYM */ = {isa = PBXFileReference; lastKnownFileType = wrapper.dsym; name = Sparkle.framework.dSYM; path = Carthage/Build/Mac/Sparkle.framework.dSYM; sourceTree = "<group>"; };
 		C59FD5E125614C3000D50FC1 /* LaunchAtLogin.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = LaunchAtLogin.framework; path = Carthage/Build/Mac/LaunchAtLogin.framework; sourceTree = "<group>"; };
@@ -264,13 +267,14 @@
 				8E995BAB1EABD8C800CE8364 /* NotificationKey.swift */,
 				8EE1296F1C4695B5000D404F /* BatteryService.swift */,
 				8E995BAA1EABD8C800CE8364 /* BatteryState.swift */,
-				8E995BAD1EABD8C800CE8364 /* RegistryKey.swift */,
+				C5696AB32573C7A1001316FC /* Percentage.swift */,
+				C5696AB92573DAA1001316FC /* TimeRemaining.swift */,
+				C5696AC02573E0F9001316FC /* PowerSource.swift */,
+				8E995BAD1EABD8C800CE8364 /* BatteryRegistryPropertyKey.swift */,
 				8E995BA91EABD8C800CE8364 /* BatteryError.swift */,
 				8EE129711C46CA1B000D404F /* UserPreferences.swift */,
 				C5EEDA6820276240004DE64C /* PreferenceKey.swift */,
 				C52233AE25575A0A00526725 /* NSImageExtension.swift */,
-				C5696AB32573C7A1001316FC /* Percentage.swift */,
-				C5696AB92573DAA1001316FC /* TimeRemaining.swift */,
 				8EE129681C4661BA000D404F /* UI */,
 				8EE129671C4661AC000D404F /* Resources */,
 				8E03E9DC1C4BCFBA00D12D11 /* Supporting Files */,
@@ -502,11 +506,12 @@
 				8E0D33B51D3118CD002D3463 /* TodayViewController.swift in Sources */,
 				8E0D33B71D3118CD002D3463 /* ListRowViewController.swift in Sources */,
 				8E7373E31EACBC5D00F10AD7 /* CycleCountInfoType.swift in Sources */,
-				8E995BB71EABDA7100CE8364 /* RegistryKey.swift in Sources */,
+				8E995BB71EABDA7100CE8364 /* BatteryRegistryPropertyKey.swift in Sources */,
 				8E995BB51EABDA6800CE8364 /* BatteryState.swift in Sources */,
 				8E7373DB1EACB78500F10AD7 /* TimeRemainingInfoType.swift in Sources */,
 				C5696AB62573C861001316FC /* Percentage.swift in Sources */,
 				8EAE0D211EB4EFBF00E3D594 /* SourceInfoType.swift in Sources */,
+				C5696AC42573E180001316FC /* PowerSource.swift in Sources */,
 				C5D7EB48209891D500012A81 /* BatteryHealthType.swift in Sources */,
 				8EAE0D231EB4EFD000E3D594 /* TemperatureInfoType.swift in Sources */,
 				8E7373DF1EACBB3300F10AD7 /* PowerUsageInfoType.swift in Sources */,
@@ -528,10 +533,11 @@
 				8E995BAF1EABD8C800CE8364 /* BatteryError.swift in Sources */,
 				C5696ABA2573DAA1001316FC /* TimeRemaining.swift in Sources */,
 				8EE1296A1C4663F7000D404F /* ApplicationController.swift in Sources */,
-				8E995BB31EABD8C800CE8364 /* RegistryKey.swift in Sources */,
+				8E995BB31EABD8C800CE8364 /* BatteryRegistryPropertyKey.swift in Sources */,
 				8E31BF9F1D42651F00055A5B /* BatteryImageCache.swift in Sources */,
 				C5EEDA6920276240004DE64C /* PreferenceKey.swift in Sources */,
 				8EE1296E1C469326000D404F /* StatusBarIcon.swift in Sources */,
+				C5696AC12573E0F9001316FC /* PowerSource.swift in Sources */,
 				8EBEB4461C466091001DBE91 /* AppDelegate.swift in Sources */,
 				8EE129701C4695B5000D404F /* BatteryService.swift in Sources */,
 				C5696AB42573C7A1001316FC /* Percentage.swift in Sources */,

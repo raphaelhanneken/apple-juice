@@ -7,15 +7,15 @@
 import Foundation
 
 class SourceInfoType: NSObject, BatteryInfoTypeProtocol {
-    var title: String
-    var value: String
+    // MARK: Lifecycle
 
     init(_ battery: BatteryService?) {
         title = NSLocalizedString("Power Source", comment: "")
-        if let src = battery?.powerSource {
-            value = "\(src)"
-        } else {
-            value = "--"
-        }
+        value = NSLocalizedString(battery?.powerSource.rawValue ?? "", value: "--", comment: "")
     }
+
+    // MARK: Internal
+
+    var title: String
+    var value: String
 }

@@ -10,7 +10,7 @@ import IOKit.ps
 /// Notification name for the power source changed callback.
 let powerSourceChangedNotification = "com.raphaelhanneken.apple-juice.powersourcechanged"
 
-/// Posts a notification every time the power source changes.
+/// Post a notification every time the power source changes.
 private let powerSourceCallback: IOPowerSourceCallbackType = { _ in
     NotificationCenter.default.post(name: Notification.Name(rawValue: powerSourceChangedNotification),
                                     object: nil)
@@ -38,6 +38,7 @@ final class BatteryService {
         else {
             return nil
         }
+
         if charged, plugged {
             return .chargedAndPlugged
         }
@@ -79,16 +80,12 @@ final class BatteryService {
     }
 
     /// The source from which the Mac currently draws its power.
-    var powerSource: String {
+    var powerSource: PowerSource {
         guard let plugged = isPlugged else {
-            return NSLocalizedString("Unknown", comment: "")
+            return .unknown
         }
 
-        if plugged {
-            return NSLocalizedString("Power Adapter", comment: "")
-        }
-
-        return NSLocalizedString("Battery", comment: "")
+        return plugged ? .powerAdapter : .battery
     }
 
     /// Checks whether the battery is charging and connected to a power outlet.
@@ -147,48 +144,47 @@ final class BatteryService {
     /// An IOService object that matches battery's IO service dictionary.
     private var service: io_object_t = BatteryService.connectionClosed
 
-    /// Opens a connection to the battery's IOService object.
+    /// Open a connection to the battery's IOService object.
     ///
     /// - throws: A BatteryError if something went wrong.
     private func openServiceConnection() throws {
         service = IOServiceGetMatchingService(kIOMasterPortDefault,
-                                              IOServiceNameMatching(RegistryKey.service.rawValue))
+                                              IOServiceNameMatching(BatteryRegistryPropertyKey.service.rawValue))
 
         if service == BatteryService.connectionClosed {
-            throw BatteryError
-                .serviceNotFound("Opening the provided IOService (\(RegistryKey.service.rawValue)) failed.")
+            throw BatteryError.serviceNotFound("Opening the provided IOService (\(BatteryRegistryPropertyKey.service.rawValue)) failed.")
         }
     }
 
-    /// Closes the connection the the battery's IOService object.
+    /// Close the connection the to the battery's IOService object.
     ///
     /// - returns: True, when the IOService connection was successfully closed.
     private func closeServiceConnection() -> Bool {
         if kIOReturnSuccess == IOObjectRelease(service) {
             service = BatteryService.connectionClosed
         }
-
         return (service == BatteryService.connectionClosed)
     }
 
-    /// Get the registry entry's property for the supplied SmartBatteryKey.
+    /// Get a registry entry for the supplied property key.
     ///
-    /// - parameter key: A SmartBatteryKey to get the corresponding registry entry's property.
-    /// - returns: The registry entry for the provided SmartBatteryKey.
-    private func getRegistryProperty(forKey key: RegistryKey) -> AnyObject? {
-        IORegistryEntryCreateCFProperty(service, key.rawValue as CFString?, nil, 0)
-            .takeRetainedValue()
+    /// - parameter key: A BatteryRegistryPropertyKey to get the corresponding registry entry.
+    /// - returns: The registry entry for the provided BatteryRegistryPropertyKey.
+    private func getRegistryProperty(forKey key: BatteryRegistryPropertyKey) -> Any? {
+        IORegistryEntryCreateCFProperty(service, key.rawValue as CFString?, nil, 0).takeRetainedValue()
     }
 
-    private func getPowerSourceProperty(forKey key: RegistryKey) -> Any? {
+    /// Get a power source entry for the supplied property key.
+    ///
+    /// - parameter key: A BatteryRegistryPropertyKey to get the corresponding power source entry.
+    /// - returns: The power sorce entry for the given property.
+    private func getPowerSourceProperty(forKey key: BatteryRegistryPropertyKey) -> Any? {
         let psInfo = IOPSCopyPowerSourcesInfo().takeRetainedValue()
         let psList = IOPSCopyPowerSourcesList(psInfo).takeRetainedValue() as? [CFDictionary]
-
         guard let powerSources = psList else {
             return nil
         }
         let powerSource = powerSources[0] as NSDictionary
-
         return powerSource[key.rawValue]
     }
 }
