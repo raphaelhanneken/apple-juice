@@ -80,7 +80,7 @@ final class StatusBarItem: NSObject {
     /// - parameter battery: The battery to build the status bar title for.
     private func setTitle(_ battery: BatteryService?) {
         guard let button = item.button,
-              let percentage = battery?.percentageFormatted,
+              let percentage = battery?.percentage.formatted,
               let timeRemaining = battery?.timeRemainingFormatted
         else {
             return

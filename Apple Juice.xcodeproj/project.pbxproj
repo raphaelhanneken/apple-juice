@@ -42,7 +42,9 @@
 		8EE129721C46CA1B000D404F /* UserPreferences.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EE129711C46CA1B000D404F /* UserPreferences.swift */; };
 		8EE129741C46D3C7000D404F /* StatusNotification.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EE129731C46D3C7000D404F /* StatusNotification.swift */; };
 		8EF30ED31D32B3170010BC49 /* BatteryService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EE1296F1C4695B5000D404F /* BatteryService.swift */; };
-		C52233AF25575A0A00526725 /* NSImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = C52233AE25575A0A00526725 /* NSImage.swift */; };
+		C52233AF25575A0A00526725 /* NSImageExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = C52233AE25575A0A00526725 /* NSImageExtension.swift */; };
+		C5696AB42573C7A1001316FC /* Percentage.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5696AB32573C7A1001316FC /* Percentage.swift */; };
+		C5696AB62573C861001316FC /* Percentage.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5696AB32573C7A1001316FC /* Percentage.swift */; };
 		C57FE28B255CA29000E4E2B4 /* Sparkle.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C57FE287255CA25F00E4E2B4 /* Sparkle.framework */; };
 		C57FE28C255CA29000E4E2B4 /* Sparkle.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = C57FE287255CA25F00E4E2B4 /* Sparkle.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		C57FE291255CA2EB00E4E2B4 /* Sparkle.framework.dSYM in Resources */ = {isa = PBXBuildFile; fileRef = C57FE290255CA2EB00E4E2B4 /* Sparkle.framework.dSYM */; };
@@ -142,7 +144,7 @@
 		8EF30EE81D32D0ED0010BC49 /* TodayViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TodayViewController.xib; sourceTree = "<group>"; };
 		8EF30EEA1D32D0FA0010BC49 /* ListRowViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ListRowViewController.xib; sourceTree = "<group>"; };
 		8EF30EF01D32D1C70010BC49 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		C52233AE25575A0A00526725 /* NSImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NSImage.swift; sourceTree = "<group>"; };
+		C52233AE25575A0A00526725 /* NSImageExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NSImageExtension.swift; sourceTree = "<group>"; };
 		C526408E22A29A5E00D46AE0 /* Apple Juice.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "Apple Juice.entitlements"; sourceTree = "<group>"; };
 		C566887025630F9C005D745C /* Apple Juice Today.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "Apple Juice Today.entitlements"; sourceTree = "<group>"; };
 		C5696AA12573C11F001316FC /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/MainMenu.strings; sourceTree = "<group>"; };
@@ -151,6 +153,7 @@
 		C5696AA42573C12B001316FC /* it */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = it; path = it.lproj/MainMenu.strings; sourceTree = "<group>"; };
 		C5696AA52573C12F001316FC /* pt-BR */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "pt-BR"; path = "pt-BR.lproj/MainMenu.strings"; sourceTree = "<group>"; };
 		C5696AA62573C132001316FC /* es */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = es; path = es.lproj/MainMenu.strings; sourceTree = "<group>"; };
+		C5696AB32573C7A1001316FC /* Percentage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Percentage.swift; sourceTree = "<group>"; };
 		C57FE287255CA25F00E4E2B4 /* Sparkle.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Sparkle.framework; path = Carthage/Build/Mac/Sparkle.framework; sourceTree = "<group>"; };
 		C57FE290255CA2EB00E4E2B4 /* Sparkle.framework.dSYM */ = {isa = PBXFileReference; lastKnownFileType = wrapper.dsym; name = Sparkle.framework.dSYM; path = Carthage/Build/Mac/Sparkle.framework.dSYM; sourceTree = "<group>"; };
 		C59FD5E125614C3000D50FC1 /* LaunchAtLogin.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = LaunchAtLogin.framework; path = Carthage/Build/Mac/LaunchAtLogin.framework; sourceTree = "<group>"; };
@@ -262,7 +265,8 @@
 				8E995BA91EABD8C800CE8364 /* BatteryError.swift */,
 				8EE129711C46CA1B000D404F /* UserPreferences.swift */,
 				C5EEDA6820276240004DE64C /* PreferenceKey.swift */,
-				C52233AE25575A0A00526725 /* NSImage.swift */,
+				C52233AE25575A0A00526725 /* NSImageExtension.swift */,
+				C5696AB32573C7A1001316FC /* Percentage.swift */,
 				8EE129681C4661BA000D404F /* UI */,
 				8EE129671C4661AC000D404F /* Resources */,
 				8E03E9DC1C4BCFBA00D12D11 /* Supporting Files */,
@@ -496,6 +500,7 @@
 				8E995BB71EABDA7100CE8364 /* RegistryKey.swift in Sources */,
 				8E995BB51EABDA6800CE8364 /* BatteryState.swift in Sources */,
 				8E7373DB1EACB78500F10AD7 /* TimeRemainingInfoType.swift in Sources */,
+				C5696AB62573C861001316FC /* Percentage.swift in Sources */,
 				8EAE0D211EB4EFBF00E3D594 /* SourceInfoType.swift in Sources */,
 				C5D7EB48209891D500012A81 /* BatteryHealthType.swift in Sources */,
 				8EAE0D231EB4EFD000E3D594 /* TemperatureInfoType.swift in Sources */,
@@ -513,7 +518,7 @@
 				8EE129741C46D3C7000D404F /* StatusNotification.swift in Sources */,
 				8E995BB11EABD8C800CE8364 /* NotificationKey.swift in Sources */,
 				8EE129721C46CA1B000D404F /* UserPreferences.swift in Sources */,
-				C52233AF25575A0A00526725 /* NSImage.swift in Sources */,
+				C52233AF25575A0A00526725 /* NSImageExtension.swift in Sources */,
 				8E995BB41EABD8C800CE8364 /* StatusBarItem.swift in Sources */,
 				8E995BAF1EABD8C800CE8364 /* BatteryError.swift in Sources */,
 				8EE1296A1C4663F7000D404F /* ApplicationController.swift in Sources */,
@@ -523,6 +528,7 @@
 				8EE1296E1C469326000D404F /* StatusBarIcon.swift in Sources */,
 				8EBEB4461C466091001DBE91 /* AppDelegate.swift in Sources */,
 				8EE129701C4695B5000D404F /* BatteryService.swift in Sources */,
+				C5696AB42573C7A1001316FC /* Percentage.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

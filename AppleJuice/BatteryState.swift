@@ -18,16 +18,16 @@ public let drawingPrecision = 5.4
 ///                current percentage as argument.
 enum BatteryState: Equatable {
     case chargedAndPlugged
-    case charging(percentage: Int)
-    case discharging(percentage: Int)
+    case charging(percentage: Percentage)
+    case discharging(percentage: Percentage)
 
     // MARK: Internal
 
     /// The current percentage.
-    var percentage: Int {
+    var percentage: Percentage {
         switch self {
         case .chargedAndPlugged:
-            return 100
+            return Percentage(numeric: 100)
         case .charging(let percentage):
             return percentage
         case .discharging(let percentage):
@@ -41,16 +41,18 @@ enum BatteryState: Equatable {
 /// - parameter lhs: A BatteryStatusType.
 /// - parameter rhs: Another BatteryStatusType.
 /// - returns: True if the supplied BatteryStatusType's are equal. Otherwise false.
-func == (lhs: BatteryState, rhs: BatteryState) -> Bool {
+func ==(lhs: BatteryState, rhs: BatteryState) -> Bool {
     switch (lhs, rhs) {
     case (.chargedAndPlugged, .chargedAndPlugged),
          (.charging, .charging):
         return true
     case (.discharging(let lhsPercentage), .discharging(let rhsPercentage)):
+        guard let lhs = lhsPercentage.numeric, let rhs = rhsPercentage.numeric else {
+            return false
+        }
         // Divide the percentages by the defined drawing precision; So that the battery image
         // only gets redrawn, when it actually differs.
-        return round(Double(lhsPercentage) / drawingPrecision)
-            == round(Double(rhsPercentage) / drawingPrecision)
+        return round(Double(lhs) / drawingPrecision) == round(Double(rhs ) / drawingPrecision)
     default:
         return false
     }

@@ -16,10 +16,10 @@ struct StatusNotification {
     /// - returns: An optional StatusNotification; Return nil when the notificationKey
     ///            is invalid or nil.
     init?(forState state: BatteryState?) {
-        guard let state = state, state != .charging(percentage: 0) else {
+        guard let state = state, state != .charging(percentage: Percentage(numeric: 0)) else {
             return nil
         }
-        guard let key = NotificationKey(rawValue: state.percentage), key != .invalid else {
+        guard let key = NotificationKey(rawValue: state.percentage.numeric ?? 0), key != .invalid else {
             return nil
         }
         self.notificationKey = key

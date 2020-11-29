@@ -3,7 +3,7 @@ excluded:
   - Carthage
 
 # Rules
-line_length: 120
+line_length: 125
 
 disabled_rules:
   - block_based_kvo

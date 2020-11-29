@@ -94,7 +94,7 @@ final class ApplicationController: NSObject {
 
         var timeRemaining = battery.timeRemainingFormatted
         if UserPreferences.showTime {
-            timeRemaining = battery.percentageFormatted
+            timeRemaining = battery.percentage.formatted
         }
 
         let paragraphStyle = NSMutableParagraphStyle()

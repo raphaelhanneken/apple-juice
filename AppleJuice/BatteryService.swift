@@ -32,11 +32,9 @@ final class BatteryService {
 
     /// The current status of the battery, e.g. charging.
     var state: BatteryState? {
-        guard
-            let charging = isCharging,
-            let plugged = isPlugged,
-            let charged = isCharged,
-            let percentage = percentage
+        guard let charging = isCharging,
+              let plugged = isPlugged,
+              let charged = isCharged
         else {
             return nil
         }
@@ -53,15 +51,14 @@ final class BatteryService {
     /// The remaining time until the battery is empty or fully charged
     /// in a human readable format, e.g. hh:mm.
     var timeRemainingFormatted: String {
-        // Unwrap required information.
         guard let charged = isCharged, let plugged = isPlugged else {
             return NSLocalizedString("Unknown", comment: "")
         }
-        // Check if the battery is charged and plugged into an unlimited power supply.
+
         if charged, plugged {
             return NSLocalizedString("Charged Notification Title", comment: "")
         }
-        // The battery is (dis)charging, display the remaining time.
+
         if let time = timeRemaining {
             return String(format: "%d:%02d", arguments: [time / 60, time % 60])
         }
@@ -91,26 +88,8 @@ final class BatteryService {
     }
 
     /// The current percentage, based on the current charge and the maximum capacity.
-    var percentage: Int? {
-        getPowerSourceProperty(forKey: .percentage) as? Int
-    }
-
-    /// The current percentage, formatted according to the selected client locale, e.g.
-    /// en_US: 42% fr_FR: 42 %
-    var percentageFormatted: String {
-        guard let percentage = self.percentage else {
-            return NSLocalizedString("Calculating", comment: "")
-        }
-
-        let percentageFormatter = NumberFormatter()
-        percentageFormatter.numberStyle = .percent
-        percentageFormatter.generatesDecimalNumbers = false
-        percentageFormatter.localizesFormat = true
-        percentageFormatter.multiplier = 1.0
-        percentageFormatter.minimumFractionDigits = 0
-        percentageFormatter.maximumFractionDigits = 0
-
-        return percentageFormatter.string(from: percentage as NSNumber) ?? "\(percentage) %"
+    var percentage: Percentage {
+        Percentage(numeric: getPowerSourceProperty(forKey: .percentage) as? Int)
     }
 
     /// The current charge in mAh.

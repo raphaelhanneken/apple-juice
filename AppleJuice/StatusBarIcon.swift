@@ -40,7 +40,7 @@ internal struct StatusBarIcon {
                                       withImage: batteryImage(named: .chargedAndPlugged))
         case let .discharging(percentage):
             cache = BatteryImageCache(forStatus: status,
-                                      withImage: dischargingBatteryImage(forPercentage: Double(percentage)))
+                                      withImage: dischargingBatteryImage(forPercentage: Double(percentage.numeric ?? 0)))
         }
 
         return cache?.image
