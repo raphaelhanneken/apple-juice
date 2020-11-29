@@ -8,6 +8,7 @@ line_length: 120
 disabled_rules:
   - block_based_kvo
   - trailing_comma
+  - opening_brace
 
 cyclomatic_complexity:
   warning: 3
