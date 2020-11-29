@@ -1,0 +1,54 @@
+
+/* Class = "NSMenuItem"; title = "Ocultar icono de batería"; ObjectID = "2ud-eW-ev3"; */
+"2ud-eW-ev3.title" = "Ocultar icono de batería";
+
+/* Class = "NSMenuItem"; title = "Item"; ObjectID = "5bs-Uc-md4"; */
+"5bs-Uc-md4.title" = "Item";
+
+/* Class = "NSMenuItem"; title = "5 %"; ObjectID = "BqN-sm-Uru"; */
+"BqN-sm-Uru.title" = "5 %";
+
+/* Class = "NSMenuItem"; title = "15 %"; ObjectID = "IiQ-lQ-6Kw"; */
+"IiQ-lQ-6Kw.title" = "15 %";
+
+/* Class = "NSMenuItem"; title = "Unknown..."; ObjectID = "Jwd-Td-BfA"; */
+"Jwd-Td-BfA.title" = "Unknown...";
+
+/* Class = "NSMenu"; title = "Preferencias"; ObjectID = "NvE-y6-HlD"; */
+"NvE-y6-HlD.title" = "Preferencias";
+
+/* Class = "NSMenuItem"; title = "Buscar actualizaciones…"; ObjectID = "OFJ-1T-Wc5"; */
+"OFJ-1T-Wc5.title" = "Buscar actualizaciones…";
+
+/* Class = "NSMenuItem"; title = "Ocultar Información en la Barra de Menú"; ObjectID = "P1V-dr-mQS"; */
+"P1V-dr-mQS.title" = "Ocultar Información en la Barra de Menú";
+
+/* Class = "NSMenuItem"; title = "Acerca de Apple Juice…"; ObjectID = "PUB-MR-Ddo"; */
+"PUB-MR-Ddo.title" = "Acerca de Apple Juice…";
+
+/* Class = "NSMenuItem"; title = "20 %"; ObjectID = "Pag-Zv-yRx"; */
+"Pag-Zv-yRx.title" = "20 %";
+
+/* Class = "NSMenuItem"; title = "100 %"; ObjectID = "bgK-RS-y5X"; */
+"bgK-RS-y5X.title" = "100 %";
+
+/* Class = "NSMenuItem"; title = "Mostrar Hora"; ObjectID = "dQG-cI-Rwi"; */
+"dQG-cI-Rwi.title" = "Mostrar Hora";
+
+/* Class = "NSMenuItem"; title = "Salir"; ObjectID = "fXh-MN-Omu"; */
+"fXh-MN-Omu.title" = "Salir";
+
+/* Class = "NSMenuItem"; title = "Preferencias"; ObjectID = "pW7-uU-3lN"; */
+"pW7-uU-3lN.title" = "Preferencias";
+
+/* Class = "NSMenuItem"; title = "Iniciar al iniciar Sesión"; ObjectID = "ptd-2D-vLP"; */
+"ptd-2D-vLP.title" = "Iniciar al iniciar Sesión";
+
+/* Class = "NSMenu"; title = "Notificaciones"; ObjectID = "s9C-tt-TOv"; */
+"s9C-tt-TOv.title" = "Notificaciones";
+
+/* Class = "NSMenuItem"; title = "Notificaciones"; ObjectID = "uGl-yK-qDZ"; */
+"uGl-yK-qDZ.title" = "Notificaciones";
+
+/* Class = "NSMenuItem"; title = "10 %"; ObjectID = "yXd-MQ-b9b"; */
+"yXd-MQ-b9b.title" = "10 %";

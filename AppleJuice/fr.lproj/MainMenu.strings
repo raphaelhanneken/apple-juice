@@ -1,0 +1,51 @@
+
+/* Class = "NSMenuItem"; title = "Lancer au démarrage"; ObjectID = "2kL-pN-XDp"; */
+"2kL-pN-XDp.title" = "Lancer au démarrage";
+
+/* Class = "NSMenuItem"; title = "5 %"; ObjectID = "BqN-sm-Uru"; */
+"BqN-sm-Uru.title" = "5 %";
+
+/* Class = "NSMenuItem"; title = "Masquer les informations de la barre de menu"; ObjectID = "IQF-yT-9Ix"; */
+"IQF-yT-9Ix.title" = "Masquer les informations de la barre de menu";
+
+/* Class = "NSMenuItem"; title = "15 %"; ObjectID = "IiQ-lQ-6Kw"; */
+"IiQ-lQ-6Kw.title" = "15 %";
+
+/* Class = "NSMenuItem"; title = "Unknown..."; ObjectID = "Jwd-Td-BfA"; */
+"Jwd-Td-BfA.title" = "Unknown...";
+
+/* Class = "NSMenuItem"; title = "Vérifier les mises à jour"; ObjectID = "OFJ-1T-Wc5"; */
+"OFJ-1T-Wc5.title" = "Vérifier les mises à jour";
+
+/* Class = "NSMenuItem"; title = "À propos de Apple Juice..."; ObjectID = "PUB-MR-Ddo"; */
+"PUB-MR-Ddo.title" = "À propos de Apple Juice...";
+
+/* Class = "NSMenuItem"; title = "20 %"; ObjectID = "Pag-Zv-yRx"; */
+"Pag-Zv-yRx.title" = "20 %";
+
+/* Class = "NSMenuItem"; title = "Préférences"; ObjectID = "Vte-Sk-1ru"; */
+"Vte-Sk-1ru.title" = "Préférences";
+
+/* Class = "NSMenuItem"; title = "100 %"; ObjectID = "bgK-RS-y5X"; */
+"bgK-RS-y5X.title" = "100 %";
+
+/* Class = "NSMenuItem"; title = "Quitter"; ObjectID = "fXh-MN-Omu"; */
+"fXh-MN-Omu.title" = "Quitter";
+
+/* Class = "NSMenu"; title = "Préférences"; ObjectID = "pjL-JU-IvB"; */
+"pjL-JU-IvB.title" = "Préférences";
+
+/* Class = "NSMenu"; title = "Notifications"; ObjectID = "s9C-tt-TOv"; */
+"s9C-tt-TOv.title" = "Notifications";
+
+/* Class = "NSMenuItem"; title = "Masquer l'icône de la batterie"; ObjectID = "sRV-KZ-e51"; */
+"sRV-KZ-e51.title" = "Masquer l'icône de la batterie";
+
+/* Class = "NSMenuItem"; title = "Notifications"; ObjectID = "uGl-yK-qDZ"; */
+"uGl-yK-qDZ.title" = "Notifications";
+
+/* Class = "NSMenuItem"; title = "Afficher le temps restant"; ObjectID = "vkt-MB-Gn5"; */
+"vkt-MB-Gn5.title" = "Afficher le temps restant";
+
+/* Class = "NSMenuItem"; title = "10 %"; ObjectID = "yXd-MQ-b9b"; */
+"yXd-MQ-b9b.title" = "10 %";
