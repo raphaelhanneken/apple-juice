@@ -48,42 +48,18 @@ final class BatteryService {
         return .discharging(percentage: percentage)
     }
 
-    /// The remaining time until the battery is empty or fully charged
-    /// in a human readable format, e.g. hh:mm.
-    var timeRemainingFormatted: String {
-        guard let charged = isCharged, let plugged = isPlugged else {
-            return NSLocalizedString("Unknown", comment: "")
-        }
-
-        if charged, plugged {
-            return NSLocalizedString("Charged Notification Title", comment: "")
-        }
-
-        if let time = timeRemaining {
-            return String(format: "%d:%02d", arguments: [time / 60, time % 60])
-        }
-
-        return NSLocalizedString("Calculating", comment: "")
-    }
-
-    /// The remaining time in _minutes_ until the battery is empty or fully charged.
-    var timeRemaining: Int? {
-        // Get the estimated time remaining.
+    /// The estimated time remaining until the battery is empty or fully charged.
+    var timeRemaining: TimeRemaining {
         let time = IOPSGetTimeRemainingEstimate()
-
         switch time {
         case kIOPSTimeRemainingUnknown:
-            return nil
+            return TimeRemaining(minutes: nil, state: state)
         case kIOPSTimeRemainingUnlimited:
             // The battery is connected to a power outlet, get the remaining time
             // until the battery is fully charged.
-            if let prop = getRegistryProperty(forKey: .timeRemaining) as? Int, prop < 600 {
-                return prop
-            }
-            return nil
+            return TimeRemaining(minutes: getRegistryProperty(forKey: .timeRemaining) as? Int, state: state)
         default:
-            // The estimated time in minutes
-            return Int(time / 60)
+            return TimeRemaining(minutes: Int(time / 60), state: state)
         }
     }
 

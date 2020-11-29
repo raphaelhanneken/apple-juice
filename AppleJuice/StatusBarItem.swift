@@ -81,7 +81,7 @@ final class StatusBarItem: NSObject {
     private func setTitle(_ battery: BatteryService?) {
         guard let button = item.button,
               let percentage = battery?.percentage.formatted,
-              let timeRemaining = battery?.timeRemainingFormatted
+              let timeRemaining = battery?.timeRemaining.formatted
         else {
             return
         }

@@ -45,6 +45,8 @@
 		C52233AF25575A0A00526725 /* NSImageExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = C52233AE25575A0A00526725 /* NSImageExtension.swift */; };
 		C5696AB42573C7A1001316FC /* Percentage.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5696AB32573C7A1001316FC /* Percentage.swift */; };
 		C5696AB62573C861001316FC /* Percentage.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5696AB32573C7A1001316FC /* Percentage.swift */; };
+		C5696ABA2573DAA1001316FC /* TimeRemaining.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5696AB92573DAA1001316FC /* TimeRemaining.swift */; };
+		C5696ABD2573DD27001316FC /* TimeRemaining.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5696AB92573DAA1001316FC /* TimeRemaining.swift */; };
 		C57FE28B255CA29000E4E2B4 /* Sparkle.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C57FE287255CA25F00E4E2B4 /* Sparkle.framework */; };
 		C57FE28C255CA29000E4E2B4 /* Sparkle.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = C57FE287255CA25F00E4E2B4 /* Sparkle.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		C57FE291255CA2EB00E4E2B4 /* Sparkle.framework.dSYM in Resources */ = {isa = PBXBuildFile; fileRef = C57FE290255CA2EB00E4E2B4 /* Sparkle.framework.dSYM */; };
@@ -154,6 +156,7 @@
 		C5696AA52573C12F001316FC /* pt-BR */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "pt-BR"; path = "pt-BR.lproj/MainMenu.strings"; sourceTree = "<group>"; };
 		C5696AA62573C132001316FC /* es */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = es; path = es.lproj/MainMenu.strings; sourceTree = "<group>"; };
 		C5696AB32573C7A1001316FC /* Percentage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Percentage.swift; sourceTree = "<group>"; };
+		C5696AB92573DAA1001316FC /* TimeRemaining.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeRemaining.swift; sourceTree = "<group>"; };
 		C57FE287255CA25F00E4E2B4 /* Sparkle.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Sparkle.framework; path = Carthage/Build/Mac/Sparkle.framework; sourceTree = "<group>"; };
 		C57FE290255CA2EB00E4E2B4 /* Sparkle.framework.dSYM */ = {isa = PBXFileReference; lastKnownFileType = wrapper.dsym; name = Sparkle.framework.dSYM; path = Carthage/Build/Mac/Sparkle.framework.dSYM; sourceTree = "<group>"; };
 		C59FD5E125614C3000D50FC1 /* LaunchAtLogin.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = LaunchAtLogin.framework; path = Carthage/Build/Mac/LaunchAtLogin.framework; sourceTree = "<group>"; };
@@ -267,6 +270,7 @@
 				C5EEDA6820276240004DE64C /* PreferenceKey.swift */,
 				C52233AE25575A0A00526725 /* NSImageExtension.swift */,
 				C5696AB32573C7A1001316FC /* Percentage.swift */,
+				C5696AB92573DAA1001316FC /* TimeRemaining.swift */,
 				8EE129681C4661BA000D404F /* UI */,
 				8EE129671C4661AC000D404F /* Resources */,
 				8E03E9DC1C4BCFBA00D12D11 /* Supporting Files */,
@@ -491,6 +495,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C5696ABD2573DD27001316FC /* TimeRemaining.swift in Sources */,
 				8E995BB61EABDA6C00CE8364 /* BatteryError.swift in Sources */,
 				8E7373D91EACB58E00F10AD7 /* BatteryInfoTypeProtocol.swift in Sources */,
 				8EF30ED31D32B3170010BC49 /* BatteryService.swift in Sources */,
@@ -521,6 +526,7 @@
 				C52233AF25575A0A00526725 /* NSImageExtension.swift in Sources */,
 				8E995BB41EABD8C800CE8364 /* StatusBarItem.swift in Sources */,
 				8E995BAF1EABD8C800CE8364 /* BatteryError.swift in Sources */,
+				C5696ABA2573DAA1001316FC /* TimeRemaining.swift in Sources */,
 				8EE1296A1C4663F7000D404F /* ApplicationController.swift in Sources */,
 				8E995BB31EABD8C800CE8364 /* RegistryKey.swift in Sources */,
 				8E31BF9F1D42651F00055A5B /* BatteryImageCache.swift in Sources */,

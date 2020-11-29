@@ -92,7 +92,7 @@ final class ApplicationController: NSObject {
             return
         }
 
-        var timeRemaining = battery.timeRemainingFormatted
+        var timeRemaining = battery.timeRemaining.formatted
         if UserPreferences.showTime {
             timeRemaining = battery.percentage.formatted
         }

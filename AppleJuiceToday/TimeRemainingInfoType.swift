@@ -7,15 +7,15 @@
 import Foundation
 
 class TimeRemainingInfoType: NSObject, BatteryInfoTypeProtocol {
-    var title: String
-    var value: String
+    // MARK: Lifecycle
 
     init(_ battery: BatteryService?) {
-        self.title = NSLocalizedString("Time Remaining", comment: "")
-        if let value = battery?.timeRemainingFormatted {
-            self.value = value
-        } else {
-            self.value = "--"
-        }
+        title = NSLocalizedString("Time Remaining", comment: "")
+        value = battery?.timeRemaining.formatted ?? "--"
     }
+
+    // MARK: Internal
+
+    var title: String
+    var value: String
 }

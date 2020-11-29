@@ -41,7 +41,7 @@ enum BatteryState: Equatable {
 /// - parameter lhs: A BatteryStatusType.
 /// - parameter rhs: Another BatteryStatusType.
 /// - returns: True if the supplied BatteryStatusType's are equal. Otherwise false.
-func ==(lhs: BatteryState, rhs: BatteryState) -> Bool {
+func == (lhs: BatteryState, rhs: BatteryState) -> Bool {
     switch (lhs, rhs) {
     case (.chargedAndPlugged, .chargedAndPlugged),
          (.charging, .charging):
