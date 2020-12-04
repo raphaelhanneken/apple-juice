@@ -8,7 +8,11 @@ import Cocoa
 import LaunchAtLogin
 
 final class ApplicationController: NSObject {
-    // MARK: Lifecycle
+
+    private var statusItem: StatusBarItem?
+    private var battery: BatteryService!
+
+    @IBOutlet weak var applicationMenu: NSMenu!
 
     override init() {
         super.init()
@@ -19,7 +23,25 @@ final class ApplicationController: NSObject {
                                        withAction: #selector(ApplicationController.displayAppMenu(_:)),
                                        forTarget: self)
             statusItem?.update(batteryInfo: battery)
-            registerAsObserver()
+
+            // Register the ApplicationController as observer for power source and user preference changes
+            UserDefaults
+                .standard
+                .addObserver(self, forKeyPath: PreferenceKey.showTime.rawValue, options: .new, context: nil)
+
+            UserDefaults
+                .standard
+                .addObserver(self, forKeyPath: PreferenceKey.hideMenubarInfo.rawValue, options: .new, context: nil)
+
+            UserDefaults
+                .standard
+                .addObserver(self, forKeyPath: PreferenceKey.hideBatteryIcon.rawValue, options: .new, context: nil)
+
+            NotificationCenter.default
+                .addObserver(self,
+                             selector: #selector(ApplicationController.powerSourceChanged(_:)),
+                             name: NSNotification.Name(rawValue: powerSourceChangedNotification),
+                             object: nil)
         } catch {
             statusItem = StatusBarItem(
                 forError: error as? BatteryError,
@@ -46,15 +68,10 @@ final class ApplicationController: NSObject {
     ///
     /// - parameter sender: The object that sent the message.
     @objc public func displayAppMenu(_: AnyObject) {
-        updateMenuItems {
-            statusItem?.popUpMenu(applicationMenu)
-        }
+        statusItem?.popUpMenu(applicationMenu)
     }
 
     // MARK: Internal
-
-    @IBOutlet var applicationMenu: NSMenu!
-    @IBOutlet var currentCharge: NSMenuItem!
 
     @objc dynamic var launchAtLogin = LaunchAtLogin.kvo
 
@@ -74,64 +91,5 @@ final class ApplicationController: NSObject {
                                context _: UnsafeMutableRawPointer?)
     {
         statusItem?.update(batteryInfo: battery)
-    }
-
-    // MARK: Private
-
-    private var statusItem: StatusBarItem?
-    private var battery: BatteryService!
-
-    /// Updates informations within the application menu.
-    ///
-    /// - parameter completionHandler: A callback function, to be called when a menu item was updated.
-    private func updateMenuItems(_ completionHandler: () -> Void) {
-        guard let capacity = battery.capacity,
-              let charge = battery.charge,
-              let amperage = battery.amperage
-        else {
-            return
-        }
-
-        var timeRemaining = battery.timeRemaining.formatted
-        if UserPreferences.showTime {
-            timeRemaining = battery.percentage.formatted
-        }
-
-        let paragraphStyle = NSMutableParagraphStyle()
-        paragraphStyle.paragraphSpacing = 3.0
-
-        let powerSource = NSMutableAttributedString(
-            string: "\(NSLocalizedString(battery.powerSource.rawValue, comment: ""))\n",
-            attributes: [.font: NSFont.menuFont(ofSize: 13.0), .paragraphStyle: paragraphStyle])
-
-        let details = NSAttributedString(
-            string: "\(timeRemaining)  \(charge) / \(capacity) mAh (\(amperage) mA)",
-            attributes: [.font: NSFont.menuFont(ofSize: 13.0)])
-
-        powerSource.append(details)
-
-        currentCharge.attributedTitle = powerSource
-        completionHandler()
-    }
-
-    /// Registers the ApplicationController as observer for power source and user preference changes
-    private func registerAsObserver() {
-        UserDefaults
-            .standard
-            .addObserver(self, forKeyPath: PreferenceKey.showTime.rawValue, options: .new, context: nil)
-
-        UserDefaults
-            .standard
-            .addObserver(self, forKeyPath: PreferenceKey.hideMenubarInfo.rawValue, options: .new, context: nil)
-
-        UserDefaults
-            .standard
-            .addObserver(self, forKeyPath: PreferenceKey.hideBatteryIcon.rawValue, options: .new, context: nil)
-
-        NotificationCenter.default
-            .addObserver(self,
-                         selector: #selector(ApplicationController.powerSourceChanged(_:)),
-                         name: NSNotification.Name(rawValue: powerSourceChangedNotification),
-                         object: nil)
     }
 }

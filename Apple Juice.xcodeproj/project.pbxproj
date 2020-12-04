@@ -53,6 +53,8 @@
 		C57FE28C255CA29000E4E2B4 /* Sparkle.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = C57FE287255CA25F00E4E2B4 /* Sparkle.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		C57FE291255CA2EB00E4E2B4 /* Sparkle.framework.dSYM in Resources */ = {isa = PBXBuildFile; fileRef = C57FE290255CA2EB00E4E2B4 /* Sparkle.framework.dSYM */; };
 		C57FE293255CA2F600E4E2B4 /* Sparkle.framework.dSYM in CopyFiles */ = {isa = PBXBuildFile; fileRef = C57FE290255CA2EB00E4E2B4 /* Sparkle.framework.dSYM */; };
+		C5819EF4257BE32700F964E3 /* ApplicationMenuDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5819EF2257BE32700F964E3 /* ApplicationMenuDelegate.swift */; };
+		C5819EF8257BE38E00F964E3 /* MenuInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5819EF7257BE38E00F964E3 /* MenuInfoView.swift */; };
 		C59FD5E225614C3000D50FC1 /* LaunchAtLogin.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C59FD5E125614C3000D50FC1 /* LaunchAtLogin.framework */; };
 		C59FD5E325614C3000D50FC1 /* LaunchAtLogin.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = C59FD5E125614C3000D50FC1 /* LaunchAtLogin.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		C59FD5E525614C7000D50FC1 /* LaunchAtLogin.framework.dSYM in Resources */ = {isa = PBXBuildFile; fileRef = C59FD5E425614C7000D50FC1 /* LaunchAtLogin.framework.dSYM */; };
@@ -162,6 +164,8 @@
 		C5696AC02573E0F9001316FC /* PowerSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PowerSource.swift; sourceTree = "<group>"; };
 		C57FE287255CA25F00E4E2B4 /* Sparkle.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Sparkle.framework; path = Carthage/Build/Mac/Sparkle.framework; sourceTree = "<group>"; };
 		C57FE290255CA2EB00E4E2B4 /* Sparkle.framework.dSYM */ = {isa = PBXFileReference; lastKnownFileType = wrapper.dsym; name = Sparkle.framework.dSYM; path = Carthage/Build/Mac/Sparkle.framework.dSYM; sourceTree = "<group>"; };
+		C5819EF2257BE32700F964E3 /* ApplicationMenuDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ApplicationMenuDelegate.swift; sourceTree = "<group>"; };
+		C5819EF7257BE38E00F964E3 /* MenuInfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuInfoView.swift; sourceTree = "<group>"; };
 		C59FD5E125614C3000D50FC1 /* LaunchAtLogin.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = LaunchAtLogin.framework; path = Carthage/Build/Mac/LaunchAtLogin.framework; sourceTree = "<group>"; };
 		C59FD5E425614C7000D50FC1 /* LaunchAtLogin.framework.dSYM */ = {isa = PBXFileReference; lastKnownFileType = wrapper.dsym; name = LaunchAtLogin.framework.dSYM; path = Carthage/Build/Mac/LaunchAtLogin.framework.dSYM; sourceTree = "<group>"; };
 		C5D7EB47209891D500012A81 /* BatteryHealthType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BatteryHealthType.swift; sourceTree = "<group>"; };
@@ -260,6 +264,8 @@
 			children = (
 				8EBEB4451C466091001DBE91 /* AppDelegate.swift */,
 				8EE129691C4663F7000D404F /* ApplicationController.swift */,
+				C5819EF2257BE32700F964E3 /* ApplicationMenuDelegate.swift */,
+				C5819EF7257BE38E00F964E3 /* MenuInfoView.swift */,
 				8E995BAE1EABD8C800CE8364 /* StatusBarItem.swift */,
 				8EE1296D1C469326000D404F /* StatusBarIcon.swift */,
 				8E31BF9E1D42651F00055A5B /* BatteryImageCache.swift */,
@@ -536,6 +542,8 @@
 				8E995BB31EABD8C800CE8364 /* BatteryRegistryPropertyKey.swift in Sources */,
 				8E31BF9F1D42651F00055A5B /* BatteryImageCache.swift in Sources */,
 				C5EEDA6920276240004DE64C /* PreferenceKey.swift in Sources */,
+				C5819EF4257BE32700F964E3 /* ApplicationMenuDelegate.swift in Sources */,
+				C5819EF8257BE38E00F964E3 /* MenuInfoView.swift in Sources */,
 				8EE1296E1C469326000D404F /* StatusBarIcon.swift in Sources */,
 				C5696AC12573E0F9001316FC /* PowerSource.swift in Sources */,
 				8EBEB4461C466091001DBE91 /* AppDelegate.swift in Sources */,

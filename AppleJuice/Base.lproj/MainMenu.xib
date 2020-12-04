@@ -14,13 +14,14 @@
         <customObject id="-3" userLabel="Application" customClass="NSObject"/>
         <customObject id="Voe-Tx-rLC" customClass="AppDelegate" customModule="Apple_Juice" customModuleProvider="target"/>
         <customObject id="YLy-65-1bz" customClass="NSFontManager"/>
-        <customObject id="Avc-Ie-Abt" customClass="SUUpdater"/>
         <customObject id="FRD-GK-LcV" customClass="ApplicationController" customModule="Apple_Juice" customModuleProvider="target">
             <connections>
                 <outlet property="applicationMenu" destination="tlM-TC-O58" id="Cfu-rX-6U8"/>
-                <outlet property="currentCharge" destination="Jwd-Td-BfA" id="wKz-yB-mmp"/>
             </connections>
         </customObject>
+        <customObject id="hOe-ib-loY" customClass="ApplicationMenuDelegate" customModule="Apple_Juice" customModuleProvider="target"/>
+        <customObject id="Avc-Ie-Abt" customClass="SUUpdater"/>
+        <userDefaultsController representsSharedInstance="YES" id="OgL-rZ-xAG"/>
         <menu id="tlM-TC-O58">
             <items>
                 <menuItem title="Unknown..." enabled="NO" id="Jwd-Td-BfA">
@@ -72,18 +73,13 @@
                             <menuItem title="Show Time Remaining" id="Kin-Z7-Y0F">
                                 <modifierMask key="keyEquivalentModifierMask"/>
                                 <connections>
-                                    <binding destination="OgL-rZ-xAG" name="enabled" keyPath="values.HideMenubarInfoPref" id="GIu-Tw-mBC">
-                                        <dictionary key="options">
-                                            <string key="NSValueTransformerName">NSNegateBoolean</string>
-                                        </dictionary>
-                                    </binding>
                                     <binding destination="OgL-rZ-xAG" name="value" keyPath="values.ShowTimePref" id="5Mm-fA-cBY"/>
                                 </connections>
                             </menuItem>
                             <menuItem title="Hide Menu Bar Info" id="Wmn-z6-g7g">
                                 <modifierMask key="keyEquivalentModifierMask"/>
                                 <connections>
-                                    <binding destination="OgL-rZ-xAG" name="enabled" keyPath="values.HideMenubarInfoPref" id="DXf-Q2-iE8">
+                                    <binding destination="OgL-rZ-xAG" name="enabled" keyPath="values.HideBatteryIconPref" id="8HY-3f-0ET">
                                         <dictionary key="options">
                                             <string key="NSValueTransformerName">NSNegateBoolean</string>
                                         </dictionary>
@@ -132,8 +128,10 @@
                     </connections>
                 </menuItem>
             </items>
+            <connections>
+                <outlet property="delegate" destination="hOe-ib-loY" id="FJU-36-bfo"/>
+            </connections>
             <point key="canvasLocation" x="-148" y="142"/>
         </menu>
-        <userDefaultsController representsSharedInstance="YES" id="OgL-rZ-xAG"/>
     </objects>
 </document>
