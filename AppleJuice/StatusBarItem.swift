@@ -88,11 +88,14 @@ final class StatusBarItem: NSObject {
 
         let titleAttributes = [NSAttributedString.Key.font: NSFont.menuBarFont(ofSize: 11.0)]
 
-        button.attributedTitle = NSAttributedString(string: "")
         if UserPreferences.showTime {
             button.attributedTitle = NSAttributedString(string: timeRemaining, attributes: titleAttributes)
         } else {
             button.attributedTitle = NSAttributedString(string: percentage, attributes: titleAttributes)
+        }
+
+        if UserPreferences.hideMenubarInfo {
+            button.attributedTitle = NSAttributedString(string: "")
         }
     }
 }
