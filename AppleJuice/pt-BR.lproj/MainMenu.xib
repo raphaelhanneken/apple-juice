@@ -1,0 +1,139 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="17506" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
+    <dependencies>
+        <deployment identifier="macosx"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="17506"/>
+    </dependencies>
+    <objects>
+        <customObject id="-2" userLabel="File's Owner" customClass="NSApplication">
+            <connections>
+                <outlet property="delegate" destination="Voe-Tx-rLC" id="GzC-gU-4Uq"/>
+            </connections>
+        </customObject>
+        <customObject id="-1" userLabel="First Responder" customClass="FirstResponder"/>
+        <customObject id="-3" userLabel="Application" customClass="NSObject"/>
+        <customObject id="Voe-Tx-rLC" customClass="AppDelegate" customModule="Apple_Juice" customModuleProvider="target"/>
+        <customObject id="YLy-65-1bz" customClass="NSFontManager"/>
+        <customObject id="Avc-Ie-Abt" customClass="SUUpdater"/>
+        <customObject id="FRD-GK-LcV" customClass="ApplicationController" customModule="Apple_Juice" customModuleProvider="target">
+            <connections>
+                <outlet property="applicationMenu" destination="tlM-TC-O58" id="Cfu-rX-6U8"/>
+                <outlet property="currentCharge" destination="Jwd-Td-BfA" id="wKz-yB-mmp"/>
+            </connections>
+        </customObject>
+        <menu id="tlM-TC-O58">
+            <items>
+                <menuItem title="Unknown..." enabled="NO" id="Jwd-Td-BfA">
+                    <modifierMask key="keyEquivalentModifierMask"/>
+                </menuItem>
+                <menuItem isSeparatorItem="YES" id="OYt-Th-ZmC"/>
+                <menuItem title="Notificações" id="uGl-yK-qDZ">
+                    <modifierMask key="keyEquivalentModifierMask"/>
+                    <menu key="submenu" title="Notificações" id="s9C-tt-TOv">
+                        <items>
+                            <menuItem title="5 %" id="BqN-sm-Uru">
+                                <modifierMask key="keyEquivalentModifierMask"/>
+                                <connections>
+                                    <binding destination="OgL-rZ-xAG" name="value" keyPath="values.FivePercentNotificationPref" id="dFS-9B-FLf"/>
+                                </connections>
+                            </menuItem>
+                            <menuItem title="10 %" id="yXd-MQ-b9b">
+                                <modifierMask key="keyEquivalentModifierMask"/>
+                                <connections>
+                                    <binding destination="OgL-rZ-xAG" name="value" keyPath="values.TenPercentNotificationPref" id="pk3-fW-qx5"/>
+                                </connections>
+                            </menuItem>
+                            <menuItem title="15 %" id="IiQ-lQ-6Kw">
+                                <modifierMask key="keyEquivalentModifierMask"/>
+                                <connections>
+                                    <binding destination="OgL-rZ-xAG" name="value" keyPath="values.FifeteenPercentNotificationPref" id="qgh-4q-kHe"/>
+                                </connections>
+                            </menuItem>
+                            <menuItem title="20 %" id="Pag-Zv-yRx">
+                                <modifierMask key="keyEquivalentModifierMask"/>
+                                <connections>
+                                    <binding destination="OgL-rZ-xAG" name="value" keyPath="values.TwentyPercentNotificationPref" id="GGC-Ot-acB"/>
+                                </connections>
+                            </menuItem>
+                            <menuItem isSeparatorItem="YES" id="fZI-EN-bOn"/>
+                            <menuItem title="100 %" id="bgK-RS-y5X">
+                                <modifierMask key="keyEquivalentModifierMask"/>
+                                <connections>
+                                    <binding destination="OgL-rZ-xAG" name="value" keyPath="values.HundredPercentNotificationPref" id="Vuz-F7-ftw"/>
+                                </connections>
+                            </menuItem>
+                        </items>
+                    </menu>
+                </menuItem>
+                <menuItem title="Preferências" id="DW3-QW-K0w">
+                    <modifierMask key="keyEquivalentModifierMask"/>
+                    <menu key="submenu" title="Preferências" id="hVl-Ps-dws">
+                        <items>
+                            <menuItem title="Mostrar Hora" id="WN6-cv-Qzo">
+                                <modifierMask key="keyEquivalentModifierMask"/>
+                                <connections>
+                                    <binding destination="OgL-rZ-xAG" name="enabled" keyPath="values.HideMenubarInfoPref" id="1ea-8Y-45g">
+                                        <dictionary key="options">
+                                            <string key="NSValueTransformerName">NSNegateBoolean</string>
+                                        </dictionary>
+                                    </binding>
+                                    <binding destination="OgL-rZ-xAG" name="value" keyPath="values.ShowTimePref" id="tR1-jb-reQ"/>
+                                </connections>
+                            </menuItem>
+                            <menuItem title="Ocultar Informações da Barra de Menus" id="mdp-Pi-6ki">
+                                <modifierMask key="keyEquivalentModifierMask"/>
+                                <connections>
+                                    <binding destination="OgL-rZ-xAG" name="enabled" keyPath="values.HideBatteryIconPref" id="yMd-OK-DWy">
+                                        <dictionary key="options">
+                                            <string key="NSValueTransformerName">NSNegateBoolean</string>
+                                        </dictionary>
+                                    </binding>
+                                    <binding destination="OgL-rZ-xAG" name="value" keyPath="values.HideMenubarInfoPref" id="dlp-u5-pe5"/>
+                                </connections>
+                            </menuItem>
+                            <menuItem title="Ocultar ícone da bateria" id="6ZN-LT-o1s">
+                                <modifierMask key="keyEquivalentModifierMask"/>
+                                <connections>
+                                    <binding destination="OgL-rZ-xAG" name="value" keyPath="values.HideBatteryIconPref" id="gND-DS-P9i"/>
+                                    <binding destination="OgL-rZ-xAG" name="enabled" keyPath="values.HideMenubarInfoPref" id="kAW-Tg-Sog">
+                                        <dictionary key="options">
+                                            <string key="NSValueTransformerName">NSNegateBoolean</string>
+                                        </dictionary>
+                                    </binding>
+                                </connections>
+                            </menuItem>
+                            <menuItem title="Lançar no Login" id="OfX-Ly-QXO">
+                                <modifierMask key="keyEquivalentModifierMask"/>
+                                <connections>
+                                    <binding destination="FRD-GK-LcV" name="value" keyPath="launchAtLogin.isEnabled" id="LBC-bF-GdO"/>
+                                </connections>
+                            </menuItem>
+                        </items>
+                    </menu>
+                </menuItem>
+                <menuItem isSeparatorItem="YES" id="HoG-Jh-UIk"/>
+                <menuItem title="Buscar por Atualizações…" id="OFJ-1T-Wc5">
+                    <modifierMask key="keyEquivalentModifierMask"/>
+                    <connections>
+                        <action selector="checkForUpdates:" target="Avc-Ie-Abt" id="Aqj-nm-y4m"/>
+                    </connections>
+                </menuItem>
+                <menuItem title="Sobre a Apple Juice…" id="PUB-MR-Ddo">
+                    <modifierMask key="keyEquivalentModifierMask"/>
+                    <connections>
+                        <action selector="orderFrontStandardAboutPanel:" target="-1" id="vXr-y6-aUC"/>
+                    </connections>
+                </menuItem>
+                <menuItem isSeparatorItem="YES" id="bcW-nq-A9L"/>
+                <menuItem title="Sair" id="fXh-MN-Omu">
+                    <modifierMask key="keyEquivalentModifierMask"/>
+                    <connections>
+                        <action selector="terminate:" target="-1" id="f0e-26-aRM"/>
+                    </connections>
+                </menuItem>
+            </items>
+            <point key="canvasLocation" x="-148" y="142"/>
+        </menu>
+        <userDefaultsController representsSharedInstance="YES" id="OgL-rZ-xAG"/>
+    </objects>
+</document>
