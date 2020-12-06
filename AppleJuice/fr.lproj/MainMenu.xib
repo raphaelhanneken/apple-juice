@@ -14,13 +14,14 @@
         <customObject id="-3" userLabel="Application" customClass="NSObject"/>
         <customObject id="Voe-Tx-rLC" customClass="AppDelegate" customModule="Apple_Juice" customModuleProvider="target"/>
         <customObject id="YLy-65-1bz" customClass="NSFontManager"/>
-        <customObject id="Avc-Ie-Abt" customClass="SUUpdater"/>
         <customObject id="FRD-GK-LcV" customClass="ApplicationController" customModule="Apple_Juice" customModuleProvider="target">
             <connections>
                 <outlet property="applicationMenu" destination="tlM-TC-O58" id="Cfu-rX-6U8"/>
-                <outlet property="currentCharge" destination="Jwd-Td-BfA" id="wKz-yB-mmp"/>
             </connections>
         </customObject>
+        <customObject id="3XL-bu-bkW" customClass="ApplicationMenuDelegate" customModule="Apple_Juice" customModuleProvider="target"/>
+        <customObject id="Avc-Ie-Abt" customClass="SUUpdater"/>
+        <userDefaultsController representsSharedInstance="YES" id="OgL-rZ-xAG"/>
         <menu id="tlM-TC-O58">
             <items>
                 <menuItem title="Unknown..." enabled="NO" id="Jwd-Td-BfA">
@@ -132,8 +133,10 @@
                     </connections>
                 </menuItem>
             </items>
+            <connections>
+                <outlet property="delegate" destination="3XL-bu-bkW" id="bRv-rZ-MLR"/>
+            </connections>
             <point key="canvasLocation" x="-148" y="142"/>
         </menu>
-        <userDefaultsController representsSharedInstance="YES" id="OgL-rZ-xAG"/>
     </objects>
 </document>
