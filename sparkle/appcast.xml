@@ -7,8 +7,12 @@
         <language>en</language>
 
         <item>
-            <title>Apple Juice v2020.11</title>
+            <title>Apple Juice</title>
             <description><![CDATA[
+                <p><b>Apple Juice v2020.12.0</b></p>
+                <ul>
+                    <li>New application menu view build with SwiftUI</li>
+                </ul>
                 <p><b>Apple Juice v2020.11.2</b></p>
                 <ul>
                     <li>Improved 🇫🇷 french translations by <a href="https://github.com/nicopasla">@nicopasla</a></li>
@@ -25,14 +29,14 @@
                   Build with Xcode Version 12.2 (12B45b) using Swift 5.3
                 </p>
             ]]></description>
-            <pubDate>Sun, 15 Nov 2020 16:00:00 +0100</pubDate>
+            <pubDate>Tue, 08 Dec 2020 23:00:00 +0100</pubDate>
             <sparkle:minimumSystemVersion>10.12</sparkle:minimumSystemVersion>
             <enclosure
-                url="https://github.com/raphaelhanneken/apple-juice/releases/download/2020.11.2/Apple.Juice.dmg"
-                sparkle:version="393"
-                sparkle:shortVersionString="2020.11.2"
-                sparkle:dsaSignature="MCwCFGF4VZLHcVKto/fiLbXtsWeawscDAhRJZJJSTjjadKFAwdoZHx5s/oyqNQ=="
-                length="18278988"
+                url="https://github.com/raphaelhanneken/apple-juice/releases/download/2020.12.0/Apple.Juice.dmg"
+                sparkle:version="420"
+                sparkle:shortVersionString="2020.12.0"
+                sparkle:dsaSignature="MCwCFHZwv4iAToIFJURPlgyYhzCSKKs4AhQxspDp4Rbo29ZvDKlJS7/3U5A1uw=="
+                length="18573674"
                 type="application/octet-stream"/>
         </item>
 
