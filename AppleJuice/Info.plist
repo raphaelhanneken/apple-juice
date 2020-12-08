@@ -32,6 +32,13 @@
 	<dict>
 		<key>NSExceptionDomains</key>
 		<dict>
+			<key>raphaelhanneken.com</key>
+			<dict>
+				<key>NSIncludesSubdomains</key>
+				<true/>
+				<key>NSTemporaryExceptionAllowsInsecureHTTPLoads</key>
+				<true/>
+			</dict>
 			<key>github-cloud.s3.amazonaws.com</key>
 			<dict>
 				<key>NSIncludesSubdomains</key>
