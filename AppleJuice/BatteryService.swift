@@ -152,7 +152,7 @@ final class BatteryService {
                                               IOServiceNameMatching(BatteryRegistryPropertyKey.service.rawValue))
 
         if service == BatteryService.connectionClosed {
-            throw BatteryError.serviceNotFound("Opening the provided IOService (\(BatteryRegistryPropertyKey.service.rawValue)) failed.")
+            throw BatteryError.serviceNotFound("Opening (\(BatteryRegistryPropertyKey.service.rawValue)) service failed")
         }
     }
 

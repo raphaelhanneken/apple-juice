@@ -7,7 +7,8 @@
 import Cocoa
 
 final class StatusBarItem: NSObject {
-    // MARK: Lifecycle
+    private let item: NSStatusItem!
+    private var icon: StatusBarIcon?
 
     /// Creates a new battery status bar item object.
     ///
@@ -53,9 +54,6 @@ final class StatusBarItem: NSObject {
     }
 
     // MARK: Private
-
-    private let item: NSStatusItem!
-    private var icon: StatusBarIcon?
 
     /// Sets the status bar item's battery icon.
     ///

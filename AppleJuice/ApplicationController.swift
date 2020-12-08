@@ -14,6 +14,8 @@ final class ApplicationController: NSObject {
 
     @IBOutlet weak var applicationMenu: NSMenu!
 
+    @objc dynamic var launchAtLogin = LaunchAtLogin.kvo
+
     override init() {
         super.init()
 
@@ -72,8 +74,6 @@ final class ApplicationController: NSObject {
     }
 
     // MARK: Internal
-
-    @objc dynamic var launchAtLogin = LaunchAtLogin.kvo
 
     /// This message is sent to the receiver when the value at the specified key path relative to the given object
     /// has changed. The receiver must be registered as an observer for the specified keyPath and object.

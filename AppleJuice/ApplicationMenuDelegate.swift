@@ -1,9 +1,7 @@
 //
-//  MenuController.swift
-//  Apple Juice
-//
-//  Created by Raphael Hanneken on 28.11.20.
-//  Copyright © 2020 Raphael Hanneken. All rights reserved.
+// MenuController.swift
+// Apple Juice
+// https://github.com/raphaelhanneken/apple-juice
 //
 
 import Cocoa
@@ -34,17 +32,17 @@ class ApplicationMenuDelegate: NSObject, NSMenuDelegate {
         }
 
         item.attributedTitle = getAttributedMenuItemTitle()
-//        if #available(OSX 10.15, *) {
-//            let hostingView = NSHostingView(rootView: MenuInformationView())
-//            hostingView.frame = NSRect(x: 0,
-//                                       y: 0,
-//                                       width: hostingView.intrinsicContentSize.width,
-//                                       height: hostingView.intrinsicContentSize.height)
+        if #available(OSX 11.0, *) {
+            let hostingView = NSHostingView(rootView: MenuInfoView())
+            hostingView.frame = NSRect(x: 0,
+                                       y: 0,
+                                       width: hostingView.intrinsicContentSize.width,
+                                       height: hostingView.intrinsicContentSize.height)
 
-//            item.view = hostingView
-//        } else {
-//            item.attributedTitle = getAttributedMenuItemTitle()
-//        }
+            item.view = hostingView
+        } else {
+            item.attributedTitle = getAttributedMenuItemTitle()
+        }
     }
 
     private func getAttributedMenuItemTitle() -> NSAttributedString {
