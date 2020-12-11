@@ -66,6 +66,9 @@
 		C5D7F935258622F500914115 /* AppleJuiceWidget.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5D7F934258622F500914115 /* AppleJuiceWidget.swift */; };
 		C5D7F937258622F900914115 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C5D7F936258622F900914115 /* Assets.xcassets */; };
 		C5D7F93C258622F900914115 /* AppleJuiceWidgetExtension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = C5D7F92E258622F500914115 /* AppleJuiceWidgetExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		C5D7F94D2586410E00914115 /* WidgetPreview.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5D7F94C2586410E00914115 /* WidgetPreview.swift */; };
+		C5D7F9512586415900914115 /* EntryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5D7F9502586415900914115 /* EntryView.swift */; };
+		C5D7F9552586419E00914115 /* Provider.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5D7F9542586419E00914115 /* Provider.swift */; };
 		C5EEDA6920276240004DE64C /* PreferenceKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5EEDA6820276240004DE64C /* PreferenceKey.swift */; };
 /* End PBXBuildFile section */
 
@@ -191,6 +194,9 @@
 		C5D7F936258622F900914115 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		C5D7F938258622F900914115 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		C5D7F939258622F900914115 /* AppleJuiceWidget.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = AppleJuiceWidget.entitlements; sourceTree = "<group>"; };
+		C5D7F94C2586410E00914115 /* WidgetPreview.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WidgetPreview.swift; sourceTree = "<group>"; };
+		C5D7F9502586415900914115 /* EntryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EntryView.swift; sourceTree = "<group>"; };
+		C5D7F9542586419E00914115 /* Provider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Provider.swift; sourceTree = "<group>"; };
 		C5EEDA6820276240004DE64C /* PreferenceKey.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PreferenceKey.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -344,12 +350,12 @@
 			isa = PBXGroup;
 			children = (
 				8EE1297C1C46F891000D404F /* NotificationCenter.framework */,
-				C59FD5E425614C7000D50FC1 /* LaunchAtLogin.framework.dSYM */,
 				C59FD5E125614C3000D50FC1 /* LaunchAtLogin.framework */,
-				C57FE290255CA2EB00E4E2B4 /* Sparkle.framework.dSYM */,
 				C57FE287255CA25F00E4E2B4 /* Sparkle.framework */,
 				C5D7F92F258622F500914115 /* WidgetKit.framework */,
 				C5D7F931258622F500914115 /* SwiftUI.framework */,
+				C59FD5E425614C7000D50FC1 /* LaunchAtLogin.framework.dSYM */,
+				C57FE290255CA2EB00E4E2B4 /* Sparkle.framework.dSYM */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -358,6 +364,9 @@
 			isa = PBXGroup;
 			children = (
 				C5D7F934258622F500914115 /* AppleJuiceWidget.swift */,
+				C5D7F94C2586410E00914115 /* WidgetPreview.swift */,
+				C5D7F9502586415900914115 /* EntryView.swift */,
+				C5D7F9542586419E00914115 /* Provider.swift */,
 				C5D7F9432586233700914115 /* Resources */,
 				C5D7F9422586232200914115 /* Supporting Files */,
 			);
@@ -650,6 +659,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C5D7F9512586415900914115 /* EntryView.swift in Sources */,
+				C5D7F9552586419E00914115 /* Provider.swift in Sources */,
+				C5D7F94D2586410E00914115 /* WidgetPreview.swift in Sources */,
 				C5D7F935258622F500914115 /* AppleJuiceWidget.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -921,12 +933,12 @@
 				CLANG_ENABLE_OBJC_WEAK = YES;
 				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
 				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
-				CODE_SIGN_ENTITLEMENTS = AppleJuiceWidget/AppleJuiceWidget.entitlements;
+				CODE_SIGN_ENTITLEMENTS = "AppleJuiceWidget/Supporting Files/AppleJuiceWidget.entitlements";
 				CODE_SIGN_IDENTITY = "-";
 				CODE_SIGN_STYLE = Automatic;
 				ENABLE_HARDENED_RUNTIME = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
-				INFOPLIST_FILE = AppleJuiceWidget/Info.plist;
+				INFOPLIST_FILE = "AppleJuiceWidget/Supporting Files/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/../Frameworks",
@@ -954,12 +966,12 @@
 				CLANG_ENABLE_OBJC_WEAK = YES;
 				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
 				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
-				CODE_SIGN_ENTITLEMENTS = AppleJuiceWidget/AppleJuiceWidget.entitlements;
+				CODE_SIGN_ENTITLEMENTS = "AppleJuiceWidget/Supporting Files/AppleJuiceWidget.entitlements";
 				CODE_SIGN_IDENTITY = "-";
 				CODE_SIGN_STYLE = Automatic;
 				ENABLE_HARDENED_RUNTIME = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
-				INFOPLIST_FILE = AppleJuiceWidget/Info.plist;
+				INFOPLIST_FILE = "AppleJuiceWidget/Supporting Files/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/../Frameworks",
