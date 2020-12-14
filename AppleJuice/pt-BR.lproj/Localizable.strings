@@ -2,19 +2,19 @@
 
 "Battery" = "Bateria";
 "Calculating" = "Calculando...";
-"Charge" = "Carga:";
+"Charge" = "Carga";
 "Charged" = "Carregada";
 "Charged Notification Message" = "Sua bateria está carregada completamente";
 "Charged Notification Title" = "Carregada";
 "Cycle Count" = "Contagem de Ciclo";
-"Health" = "Condição:";
+"Health" = "CondiçãoF";
 "Low Battery Notification Message" = "O Mac entrará em repouso se não for conectado a uma tomada";
 "Low Battery Notification Title" = "%@ restante";
-"Percentage" = "Porcentagem:";
+"Percentage" = "Porcentagem";
 "Power Adapter" = "Adaptador de Energia";
-"Power Source" = "Fonte de Energia:";
-"Power Usage" = "Uso de Energia:";
-"Temperature" = "Temperatura:";
-"Time Remaining" = "Tempo Restante:";
+"Power Source" = "Fonte de Energia";
+"Power Usage" = "Uso de Energia";
+"Temperature" = "Temperatura";
+"Time Remaining" = "Tempo Restante";
 "Unknown" = "Desconhecido";
 "Watts" = "Watts";

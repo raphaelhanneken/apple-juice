@@ -69,6 +69,14 @@
 		C5D7F94D2586410E00914115 /* WidgetPreview.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5D7F94C2586410E00914115 /* WidgetPreview.swift */; };
 		C5D7F9512586415900914115 /* EntryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5D7F9502586415900914115 /* EntryView.swift */; };
 		C5D7F9552586419E00914115 /* Provider.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5D7F9542586419E00914115 /* Provider.swift */; };
+		C5D7F9642587743000914115 /* BatteryService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EE1296F1C4695B5000D404F /* BatteryService.swift */; };
+		C5D7F9672587750B00914115 /* BatteryState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E995BAA1EABD8C800CE8364 /* BatteryState.swift */; };
+		C5D7F96A2587750F00914115 /* Percentage.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5696AB32573C7A1001316FC /* Percentage.swift */; };
+		C5D7F96D2587751300914115 /* TimeRemaining.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5696AB92573DAA1001316FC /* TimeRemaining.swift */; };
+		C5D7F9702587751700914115 /* PowerSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5696AC02573E0F9001316FC /* PowerSource.swift */; };
+		C5D7F9732587751C00914115 /* BatteryRegistryPropertyKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E995BAD1EABD8C800CE8364 /* BatteryRegistryPropertyKey.swift */; };
+		C5D7F9782587790F00914115 /* BatteryError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E995BA91EABD8C800CE8364 /* BatteryError.swift */; };
+		C5D7F97D25878F8000914115 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 8EBF29EC1C485493005BBAE0 /* Localizable.strings */; };
 		C5EEDA6920276240004DE64C /* PreferenceKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5EEDA6820276240004DE64C /* PreferenceKey.swift */; };
 /* End PBXBuildFile section */
 
@@ -547,6 +555,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				C5D7F937258622F900914115 /* Assets.xcassets in Resources */,
+				C5D7F97D25878F8000914115 /* Localizable.strings in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -660,9 +669,16 @@
 			buildActionMask = 2147483647;
 			files = (
 				C5D7F9512586415900914115 /* EntryView.swift in Sources */,
+				C5D7F9642587743000914115 /* BatteryService.swift in Sources */,
 				C5D7F9552586419E00914115 /* Provider.swift in Sources */,
+				C5D7F9702587751700914115 /* PowerSource.swift in Sources */,
+				C5D7F9732587751C00914115 /* BatteryRegistryPropertyKey.swift in Sources */,
+				C5D7F9782587790F00914115 /* BatteryError.swift in Sources */,
+				C5D7F96A2587750F00914115 /* Percentage.swift in Sources */,
+				C5D7F9672587750B00914115 /* BatteryState.swift in Sources */,
 				C5D7F94D2586410E00914115 /* WidgetPreview.swift in Sources */,
 				C5D7F935258622F500914115 /* AppleJuiceWidget.swift in Sources */,
+				C5D7F96D2587751300914115 /* TimeRemaining.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -936,6 +952,7 @@
 				CODE_SIGN_ENTITLEMENTS = "AppleJuiceWidget/Supporting Files/AppleJuiceWidget.entitlements";
 				CODE_SIGN_IDENTITY = "-";
 				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 420;
 				ENABLE_HARDENED_RUNTIME = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				INFOPLIST_FILE = "AppleJuiceWidget/Supporting Files/Info.plist";
@@ -945,6 +962,7 @@
 					"@executable_path/../../../../Frameworks",
 				);
 				MACOSX_DEPLOYMENT_TARGET = 11.0;
+				MARKETING_VERSION = 2020.12.0;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				PRODUCT_BUNDLE_IDENTIFIER = com.raphaelhanneken.applejuice.AppleJuiceWidget;
@@ -969,6 +987,7 @@
 				CODE_SIGN_ENTITLEMENTS = "AppleJuiceWidget/Supporting Files/AppleJuiceWidget.entitlements";
 				CODE_SIGN_IDENTITY = "-";
 				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 420;
 				ENABLE_HARDENED_RUNTIME = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				INFOPLIST_FILE = "AppleJuiceWidget/Supporting Files/Info.plist";
@@ -978,6 +997,7 @@
 					"@executable_path/../../../../Frameworks",
 				);
 				MACOSX_DEPLOYMENT_TARGET = 11.0;
+				MARKETING_VERSION = 2020.12.0;
 				MTL_FAST_MATH = YES;
 				PRODUCT_BUNDLE_IDENTIFIER = com.raphaelhanneken.applejuice.AppleJuiceWidget;
 				PRODUCT_NAME = "$(TARGET_NAME)";

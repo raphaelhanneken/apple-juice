@@ -9,6 +9,7 @@ disabled_rules:
   - block_based_kvo
   - trailing_comma
   - opening_brace
+  - identifier_name
 
 cyclomatic_complexity:
   warning: 3

@@ -9,7 +9,7 @@ import WidgetKit
 
 struct AppleJuiceWidget_Previews: PreviewProvider {
     static var previews: some View {
-        AppleJuiceWidgetEntryView(entry: BatteryEntry(date: Date()))
+        AppleJuiceWidgetEntryView(entry: WidgetData(date: Date(), rows: []))
             .previewContext(WidgetPreviewContext(family: .systemMedium))
     }
 }

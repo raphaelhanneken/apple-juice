@@ -23,14 +23,14 @@
 
 //  Properties
 
-"Time Remaining"     = "Tempo Rimanente:";
-"Percentage"         = "Percentuale:";
-"Power Usage"        = "Consumo di Energia:";
-"Charge"             = "Carica:";
-"Cycle Count"        = "Cicli di Carica:";
-"Temperature"        = "Temperatura:";
-"Power Source"       = "Alimentazione:";
-"Health"             = "Condizione:";
+"Time Remaining"     = "Tempo Rimanente";
+"Percentage"         = "Percentuale";
+"Power Usage"        = "Consumo di Energia";
+"Charge"             = "Carica";
+"Cycle Count"        = "Cicli di Carica";
+"Temperature"        = "Temperatura";
+"Power Source"       = "Alimentazione";
+"Health"             = "Condizione";
 
 
 //  Units
