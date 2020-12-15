@@ -25,12 +25,10 @@ struct AppleJuiceWidgetEntryView: View {
         VStack {
             ForEach(entry.rows) { row in
                 HStack {
-                    Text(row.title)
+                    Text(row.title).bold()
                     Spacer()
                     Text(row.value)
                 }
-                .padding(.bottom, 2.0)
-
                 Divider()
             }
         }
