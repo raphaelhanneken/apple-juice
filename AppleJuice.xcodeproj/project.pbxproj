@@ -745,7 +745,7 @@
 					"@executable_path/../../../../Frameworks",
 				);
 				MACOSX_DEPLOYMENT_TARGET = 10.12;
-				MARKETING_VERSION = 2020.12.0;
+				MARKETING_VERSION = 2020.12.1;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.raphaelhanneken.applejuice.Apple-Juice-Today";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
@@ -770,7 +770,7 @@
 					"@executable_path/../../../../Frameworks",
 				);
 				MACOSX_DEPLOYMENT_TARGET = 10.12;
-				MARKETING_VERSION = 2020.12.0;
+				MARKETING_VERSION = 2020.12.1;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.raphaelhanneken.applejuice.Apple-Juice-Today";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
@@ -905,7 +905,7 @@
 					"@executable_path/../Frameworks",
 				);
 				MACOSX_DEPLOYMENT_TARGET = 10.12;
-				MARKETING_VERSION = 2020.12.0;
+				MARKETING_VERSION = 2020.12.1;
 				PRODUCT_BUNDLE_IDENTIFIER = com.raphaelhanneken.applejuice;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
@@ -931,7 +931,7 @@
 					"@executable_path/../Frameworks",
 				);
 				MACOSX_DEPLOYMENT_TARGET = 10.12;
-				MARKETING_VERSION = 2020.12.0;
+				MARKETING_VERSION = 2020.12.1;
 				PRODUCT_BUNDLE_IDENTIFIER = com.raphaelhanneken.applejuice;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
@@ -962,7 +962,7 @@
 					"@executable_path/../../../../Frameworks",
 				);
 				MACOSX_DEPLOYMENT_TARGET = 11.0;
-				MARKETING_VERSION = 2020.12.0;
+				MARKETING_VERSION = 2020.12.1;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				PRODUCT_BUNDLE_IDENTIFIER = com.raphaelhanneken.applejuice.AppleJuiceWidget;
@@ -997,7 +997,7 @@
 					"@executable_path/../../../../Frameworks",
 				);
 				MACOSX_DEPLOYMENT_TARGET = 11.0;
-				MARKETING_VERSION = 2020.12.0;
+				MARKETING_VERSION = 2020.12.1;
 				MTL_FAST_MATH = YES;
 				PRODUCT_BUNDLE_IDENTIFIER = com.raphaelhanneken.applejuice.AppleJuiceWidget;
 				PRODUCT_NAME = "$(TARGET_NAME)";

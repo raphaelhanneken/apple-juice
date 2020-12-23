@@ -21,13 +21,14 @@ class MenuInfoViewModel: ObservableObject {
             batteryService = nil
         }
 
-        update()
-
-    NotificationCenter.default
+        NotificationCenter
+            .default
             .addObserver(self,
                          selector: #selector(MenuInfoViewModel.powerSourceChanged(_:)),
                          name: NSNotification.Name(rawValue: powerSourceChangedNotification),
                          object: nil)
+
+        update()
     }
 
     @objc public func powerSourceChanged(_: AnyObject) {

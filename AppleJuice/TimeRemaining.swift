@@ -9,9 +9,10 @@ import Foundation
 struct TimeRemaining {
     let minutes: Int?
     let state: BatteryState?
+    let realisticThreshold = 35 * 60
 
     var formatted: String {
-        guard let minutesRemaining = minutes, let batteryState = state else {
+        guard let minutesRemaining = minutes, let batteryState = state, minutesRemaining < realisticThreshold else {
             return NSLocalizedString("Calculating", comment: "")
         }
 
