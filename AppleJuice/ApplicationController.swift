@@ -6,6 +6,7 @@
 
 import Cocoa
 import LaunchAtLogin
+import WidgetKit
 
 final class ApplicationController: NSObject {
 
@@ -63,6 +64,21 @@ final class ApplicationController: NSObject {
 
         if let notification = StatusNotification(forState: battery.state) {
             notification.postNotification()
+        }
+
+        guard #available(OSX 11, *), let percentage = battery.state?.percentage.numeric else {
+            return
+        }
+
+        if battery.state == .charging(percentage: Percentage(numeric: nil)), percentage % 5 == 0 {
+            WidgetCenter.shared.reloadTimelines(ofKind: "com.raphaelhanneken.applejuice.AppleJuiceWidget")
+            NSLog("Updating Widget \(Date().description)")
+            return
+        }
+        if battery.state == .discharging(percentage: battery.percentage), percentage % 2 == 0 {
+            WidgetCenter.shared.reloadTimelines(ofKind: "com.raphaelhanneken.applejuice.AppleJuiceWidget")
+            NSLog("Updating Widget \(Date().description)")
+            return
         }
     }
 

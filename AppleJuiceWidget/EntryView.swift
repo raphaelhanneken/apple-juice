@@ -10,6 +10,15 @@ import WidgetKit
 struct WidgetData: TimelineEntry {
     let date: Date
     let rows: [DataRow]
+
+    var timestamp: String {
+        let dateFormatter = DateFormatter()
+        dateFormatter.timeStyle = .medium
+        dateFormatter.dateStyle = .none
+        dateFormatter.locale = Locale.current
+
+        return dateFormatter.string(from: date)
+    }
 }
 
 struct DataRow: Identifiable {
@@ -20,9 +29,8 @@ struct DataRow: Identifiable {
 
 struct AppleJuiceWidgetEntryView: View {
     var entry: Provider.Entry
-
     var body: some View {
-        VStack {
+        VStack(alignment: .trailing, spacing: 5) {
             ForEach(entry.rows) { row in
                 HStack {
                     Text(row.title).bold()
@@ -31,6 +39,7 @@ struct AppleJuiceWidgetEntryView: View {
                 }
                 Divider()
             }
+            Text(entry.timestamp)
         }
         .padding(.all)
     }
