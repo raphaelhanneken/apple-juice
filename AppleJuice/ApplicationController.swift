@@ -70,6 +70,7 @@ final class ApplicationController: NSObject {
             return
         }
 
+        NSLog("ApplicationController.powerSourceChanged \(percentage)%")
         if battery.state == .charging(percentage: Percentage(numeric: nil)), percentage % 5 == 0 {
             WidgetCenter.shared.reloadTimelines(ofKind: "com.raphaelhanneken.applejuice.AppleJuiceWidget")
             NSLog("Updating Widget \(Date().description)")
