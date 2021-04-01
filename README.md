@@ -18,7 +18,7 @@ You can get even more information about your current battery status, without clu
 
 * Install *Apple Juice* from the published binary, by downloading the [latest release](https://github.com/raphaelhanneken/apple-juice/releases/latest) and dropping it into your Applications folder.
 
-* Install *Apple Juice* using [Homebrew](https://brew.sh/), using the command `brew cask install apple-juice`
+* Install *Apple Juice* using [Homebrew](https://brew.sh/), using the command `brew install --cask apple-juice`
 
 * You can also download the source code and build it yourself. You'll have to have [Carthage](https://github.com/Carthage/Carthage) installed, and run `carthage bootstrap`, inside the project folder, to pull in the required dependencies.
 
