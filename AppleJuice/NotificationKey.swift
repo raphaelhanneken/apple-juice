@@ -18,5 +18,6 @@ enum NotificationKey: Int {
     case tenPercent = 10
     case fifeteenPercent = 15
     case twentyPercent = 20
+    case eighteenPercent = 80
     case hundredPercent = 100
 }
