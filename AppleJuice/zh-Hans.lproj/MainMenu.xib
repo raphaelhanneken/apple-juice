@@ -114,7 +114,7 @@
                         <action selector="checkForUpdates:" target="Avc-Ie-Abt" id="Aqj-nm-y4m"/>
                     </connections>
                 </menuItem>
-                <menuItem title="关于…" state="on" id="PUB-MR-Ddo">
+                <menuItem title="关于…" id="PUB-MR-Ddo">
                     <modifierMask key="keyEquivalentModifierMask"/>
                     <connections>
                         <action selector="orderFrontStandardAboutPanel:" target="-1" id="vXr-y6-aUC"/>
