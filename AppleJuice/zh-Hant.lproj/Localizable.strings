@@ -1,0 +1,38 @@
+//  Localizable.strings
+//  Apple Juice
+//
+//  Chinese, Traditional
+
+
+//  Menu Items
+
+"Charged"       = "充電完成";
+"Unknown"       = "未知";
+"Battery"       = "電池";
+"Power Adapter" = "電源適配器";
+"Calculating"   = "計算中…";
+
+
+//  Notifications
+
+"Charged Notification Title"       = "充電完成";
+"Charged Notification Message"     = "您的電池現已完成充電。";
+"Low Battery Notification Title"   = "%@ 剩余";
+"Low Battery Notification Message" = "如果不插上電源適配器，您的 Mac 即將進入休眠。";
+
+
+//  Properties
+
+"Time Remaining"     = "剩余時間:";
+"Percentage"         = "百分比:";
+"Power Usage"        = "電量:";
+"Charge"             = "充電:";
+"Cycle Count"        = "循環計數:";
+"Temperature"        = "溫度:";
+"Power Source"       = "電源:";
+"Health"             = "狀態:";
+
+
+//  Units
+
+"Watts" = "瓦特";
