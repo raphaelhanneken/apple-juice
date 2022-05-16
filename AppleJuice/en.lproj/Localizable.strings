@@ -12,6 +12,21 @@
 "Power Adapter" = "Power Adapter";
 "Calculating"   = "Calculating…";
 
+// Static menu item strings
+"menu_bat_status"    = "Unknown…";
+"menu_prefs"         = "Preferences";
+"menu_notifications" = "Notifications";
+"menu_add_notif" = "Add notification";
+"menu_on_bat" = "On battery";
+"menu_charging" = "Power Adapter";
+"menu_show_time_remaining" = "Show Remaining Time";
+"menu_show_per_while_eta" = "Show Percentage during ETA Calculation";
+"menu_hide_info" = "Hide Menu Bar Info";
+"menu_hide_bat" = "Hide Battery Icon";
+"menu_launch_at_login" = "Launch at Login";
+"menu_check_updates" = "Check for Updates…";
+"menu_about" = "About Apple Juice…";
+"menu_quit" = "Quit";
 
 //  Notifications
 

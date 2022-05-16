@@ -11,6 +11,7 @@ final class ApplicationController: NSObject {
 
     private var statusItem: StatusBarItem?
     private var battery: BatteryService!
+    private let notificationSubmenu = NotificationSubmenu()
 
     @IBOutlet weak var applicationMenu: NSMenu!
 
@@ -25,11 +26,24 @@ final class ApplicationController: NSObject {
                                        withAction: #selector(ApplicationController.displayAppMenu(_:)),
                                        forTarget: self)
             statusItem?.update(batteryInfo: battery)
+            
 
             // Register the ApplicationController as observer for power source and user preference changes
             UserDefaults
                 .standard
-                .addObserver(self, forKeyPath: PreferenceKey.showTime.rawValue, options: .new, context: nil)
+                .addObserver(self, forKeyPath: PreferenceKey.showTimeBat.rawValue, options: .new, context: nil)
+            
+            UserDefaults
+                .standard
+                .addObserver(self, forKeyPath: PreferenceKey.showTimeCharge.rawValue, options: .new, context: nil)
+            
+            UserDefaults
+                .standard
+                .addObserver(self, forKeyPath: PreferenceKey.showPercentageETA.rawValue, options: .new, context: nil)
+            
+            UserDefaults
+                .standard
+                .addObserver(self, forKeyPath: PreferenceKey.percentagesNotifications.rawValue, options: .new, context: nil)
 
             UserDefaults
                 .standard
@@ -91,5 +105,6 @@ final class ApplicationController: NSObject {
                                context _: UnsafeMutableRawPointer?)
     {
         statusItem?.update(batteryInfo: battery)
+        notificationSubmenu.update(mainMenu: applicationMenu)
     }
 }

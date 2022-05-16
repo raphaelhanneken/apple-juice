@@ -51,7 +51,8 @@ class ApplicationMenuDelegate: NSObject, NSMenuDelegate {
               let amperage = batteryService?.amperage,
               let percentage = batteryService?.percentage,
               let timeRemaining = batteryService?.timeRemaining,
-              let powerSource = batteryService?.powerSource
+              let powerSource = batteryService?.powerSource,
+              let isCharging = batteryService?.isCharging
         else {
             return NSAttributedString(string: NSLocalizedString("Unknown", comment: "Information missing"))
         }
@@ -59,7 +60,7 @@ class ApplicationMenuDelegate: NSObject, NSMenuDelegate {
         let paragraphStyle = NSMutableParagraphStyle()
         paragraphStyle.paragraphSpacing = 3.0
 
-        let remaining = UserPreferences.showTime ? percentage.formatted : timeRemaining.formatted
+        let remaining = ((UserPreferences.showTimeBat && !isCharging) || (UserPreferences.showTimeCharge && isCharging)) ? timeRemaining.formatted : percentage.formatted
 
         let powerSourceLabel = NSMutableAttributedString(
             string: powerSource.localizedDescription,

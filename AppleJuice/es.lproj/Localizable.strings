@@ -12,6 +12,21 @@
 "Power Adapter" = "Adaptador de Corriente";
 "Calculating"   = "Calculando…";
 
+// Static menu item strings
+"menu_bat_status"    = "Desconocido…";
+"menu_prefs"         = "Preferencias";
+"menu_notifications" = "Notificaciones";
+"menu_add_notif" = "Add notification";
+"menu_on_bat" = "Batería";
+"menu_charging" = "Adaptador de Corriente";
+"menu_show_time_remaining" = "Mostrar Hora";
+"menu_show_per_while_eta" = "Show Percentage during ETA Calculation";
+"menu_hide_info" = "Ocultar Información en la Barra de Menú";
+"menu_hide_bat" = "Ocultar icono de batería";
+"menu_launch_at_login" = "Iniciar al iniciar Sesión";
+"menu_check_updates" = "Buscar actualizaciones…";
+"menu_about" = "Acerca de Apple Juice…";
+"menu_quit" = "Salir";
 
 //  Notifications
 

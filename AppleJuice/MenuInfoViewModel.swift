@@ -23,11 +23,11 @@ class MenuInfoViewModel: ObservableObject {
 
         update()
 
-    NotificationCenter.default
-            .addObserver(self,
-                         selector: #selector(MenuInfoViewModel.powerSourceChanged(_:)),
-                         name: NSNotification.Name(rawValue: powerSourceChangedNotification),
-                         object: nil)
+        NotificationCenter.default
+                .addObserver(self,
+                             selector: #selector(MenuInfoViewModel.powerSourceChanged(_:)),
+                             name: NSNotification.Name(rawValue: powerSourceChangedNotification),
+                             object: nil)
     }
 
     @objc public func powerSourceChanged(_: AnyObject) {
@@ -40,14 +40,15 @@ class MenuInfoViewModel: ObservableObject {
               let currentCharge = batteryService?.charge,
               let maxCapacity = batteryService?.capacity,
               let amperage = batteryService?.amperage,
-              let powerSource = batteryService?.powerSource
+              let powerSource = batteryService?.powerSource,
+              let isCharging = batteryService?.isCharging
         else {
             return
         }
 
         self.powerSource = powerSource.localizedDescription
         self.currentCharge = String(format: "%i / %i mAh (%i mA)", currentCharge, maxCapacity, amperage)
-        if UserPreferences.showTime {
+        if (UserPreferences.showTimeBat && !isCharging) || (UserPreferences.showTimeCharge && isCharging){
             self.remaining = percentage.formatted
         } else {
             self.remaining = timeRemaining.formatted

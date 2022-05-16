@@ -79,15 +79,21 @@ final class StatusBarItem: NSObject {
     private func setTitle(_ battery: BatteryService?) {
         guard let button = item.button,
               let percentage = battery?.percentage.formatted,
-              let timeRemaining = battery?.timeRemaining.formatted
+              let isCharging = battery?.isCharging
         else {
             return
+        }
+        var timeRemaining: String? = nil
+        if battery?.timeRemaining.minutes != nil {
+            timeRemaining = battery?.timeRemaining.formatted
+        } else {
+            timeRemaining = UserPreferences.showPercentageETA ? percentage : battery?.timeRemaining.formatted
         }
 
         let titleAttributes = [NSAttributedString.Key.font: NSFont.menuBarFont(ofSize: 11.0)]
 
-        if UserPreferences.showTime {
-            button.attributedTitle = NSAttributedString(string: timeRemaining, attributes: titleAttributes)
+        if (UserPreferences.showTimeBat && !isCharging) || (UserPreferences.showTimeCharge && isCharging) {
+            button.attributedTitle = NSAttributedString(string: timeRemaining ?? "Error while displaying remaining time", attributes: titleAttributes)
         } else {
             button.attributedTitle = NSAttributedString(string: percentage, attributes: titleAttributes)
         }

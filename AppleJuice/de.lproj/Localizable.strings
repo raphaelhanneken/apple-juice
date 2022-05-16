@@ -12,6 +12,21 @@
 "Power Adapter" = "Netzteil";
 "Calculating"   = "Berechne…";
 
+// Static menu item strings
+"menu_bat_status"    = "Unbekannt…";
+"menu_prefs"         = "Einstellungen";
+"menu_notifications" = "Benachrichtigungen";
+"menu_add_notif" = "Benachrichtigung hinzufügen";
+"menu_on_bat" = "Batterie";
+"menu_charging" = "Netzteil";
+"menu_show_time_remaining" = "Restzeit anzeigen";
+"menu_show_per_while_eta" = "Prozent während der Berechnung"; // ?
+"menu_hide_info" = "Menüleisteninfo ausblenden";
+"menu_hide_bat" = "Batteriesymbol ausblenden";
+"menu_launch_at_login" = "Beim Login starten";
+"menu_check_updates" = "Nach Updates suchen…";
+"menu_about" = "Über Apple Juice…";
+"menu_quit" = "Beenden";
 
 //  Notifications
 
