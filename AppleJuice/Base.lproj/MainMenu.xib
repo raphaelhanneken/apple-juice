@@ -41,6 +41,7 @@
                             <menuItem isSeparatorItem="YES" identifier="separator" id="HoG-Jh-UIk"/>
                             <menuItem title="Add notification" id="Dvk-tQ-PLN">
                                 <modifierMask key="keyEquivalentModifierMask"/>
+                                <menu key="submenu" id="qJ3-LZ-OT7"/>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="string" keyPath="xibLocKey" value="menu_add_notif"/>
                                 </userDefinedRuntimeAttributes>
@@ -172,7 +173,7 @@
             <connections>
                 <outlet property="delegate" destination="hOe-ib-loY" id="FJU-36-bfo"/>
             </connections>
-            <point key="canvasLocation" x="-482" y="-51"/>
+            <point key="canvasLocation" x="-1869" y="-193"/>
         </menu>
     </objects>
 </document>

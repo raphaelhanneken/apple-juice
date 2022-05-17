@@ -12,7 +12,7 @@ final class ApplicationController: NSObject {
     private var statusItem: StatusBarItem?
     private var battery: BatteryService!
     private let notificationSubmenu = NotificationSubmenu()
-
+    
     @IBOutlet weak var applicationMenu: NSMenu!
 
     @objc dynamic var launchAtLogin = LaunchAtLogin.kvo
@@ -87,6 +87,7 @@ final class ApplicationController: NSObject {
         statusItem?.popUpMenu(applicationMenu)
     }
 
+    
     // MARK: Internal
 
     /// This message is sent to the receiver when the value at the specified key path relative to the given object

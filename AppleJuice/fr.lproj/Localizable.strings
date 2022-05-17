@@ -28,6 +28,8 @@
 "menu_about" = "À propos d'Apple Juice...";
 "menu_quit" = "Quitter";
 
+// UI buttons
+"ui_cancel" = "Annuler";
 
 //  Notifications
 

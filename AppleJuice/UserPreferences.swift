@@ -68,6 +68,11 @@ final class UserPreferences: NSObject {
     static func removeNotif(p: Int) {
         userDefaults.set(percentagesNotification.filter {$0 != p}, forKey: PreferenceKey.percentagesNotifications.rawValue)
     }
+    
+    static func addNotif(p: Int) {
+        let newPercentages : [Int] = percentagesNotification+[p]
+        userDefaults.set(newPercentages.sorted() , forKey: PreferenceKey.percentagesNotifications.rawValue)
+    }
 
     // MARK: Private
 

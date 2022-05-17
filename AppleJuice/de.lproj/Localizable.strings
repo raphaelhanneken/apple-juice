@@ -28,6 +28,9 @@
 "menu_about" = "Über Apple Juice…";
 "menu_quit" = "Beenden";
 
+// UI buttons
+"ui_cancel" = "Abbrechen";
+
 //  Notifications
 
 "Charged Notification Title"       = "Vollständig geladen";

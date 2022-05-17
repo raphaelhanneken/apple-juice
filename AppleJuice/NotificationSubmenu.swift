@@ -8,6 +8,7 @@ import Foundation
 import AppKit
 
 class NotificationSubmenu {
+        
     public func update(mainMenu : NSMenu?) {
         guard let notifSubmenu = mainMenu?.item(at: 2)?.submenu else {
             return
@@ -16,20 +17,26 @@ class NotificationSubmenu {
         while notifSubmenu.item(at: 0)?.identifier?.rawValue != "separator" {
             notifSubmenu.removeItem(at: 0)
         }
-        guard let addNotifMenuItem = notifSubmenu.item(at: 1) else {
+        guard let addNotifSubmenu = notifSubmenu.item(at: 1)?.submenu else {
             return
         }
-        addNotifMenuItem.action = #selector(NotificationSubmenu.addNotif(menuItem:))
-        addNotifMenuItem.target = self
-        
-        for p in UserPreferences.percentagesNotification.reversed() {
+        while addNotifSubmenu.numberOfItems > 0 {
+            addNotifSubmenu.removeItem(at: 0)
+        }
+        for i in 1..<21 {
+            let p = 5*(21-i)
+            let existingNotif = UserPreferences.percentagesNotification.contains(p)
             let perMenuItem = NSMenuItem(title: Percentage(numeric: p).formatted,
-                                         action: #selector(NotificationSubmenu.removeNotif(menuItem:)),
+                                         action: existingNotif ? #selector(NotificationSubmenu.removeNotif(menuItem:)) : #selector(NotificationSubmenu.addNotif(menuItem:)),
                                          keyEquivalent: "")
-            perMenuItem.state = .on
+            perMenuItem.state = existingNotif ? .on : .off
             perMenuItem.target = self
             perMenuItem.identifier = NSUserInterfaceItemIdentifier(String(p))
-            notifSubmenu.insertItem(perMenuItem, at: 0)
+            if existingNotif {
+                notifSubmenu.insertItem(perMenuItem, at: 0)
+            } else {
+                addNotifSubmenu.insertItem(perMenuItem, at: 0)
+            }
         }
     }
     
@@ -38,7 +45,7 @@ class NotificationSubmenu {
     }
     
     @objc public func addNotif(menuItem: NSMenuItem) {
-        return
+        UserPreferences.addNotif(p: Int(menuItem.identifier?.rawValue ?? "-1") ?? -1)
     }
     
 }

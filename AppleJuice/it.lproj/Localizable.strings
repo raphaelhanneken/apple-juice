@@ -28,6 +28,9 @@
 "menu_about" = "Informazioni su Apple Juice…";
 "menu_quit" = "Esci";
 
+// UI buttons
+"ui_cancel" = "Annulla";
+
 //  Notifications
 
 "Charged Notification Title"       = "Carico";
