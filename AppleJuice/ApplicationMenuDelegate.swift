@@ -60,7 +60,7 @@ class ApplicationMenuDelegate: NSObject, NSMenuDelegate {
         let paragraphStyle = NSMutableParagraphStyle()
         paragraphStyle.paragraphSpacing = 3.0
 
-        let remaining = ((UserPreferences.showTimeBat && !isCharging) || (UserPreferences.showTimeCharge && isCharging)) ? timeRemaining.formatted : percentage.formatted
+        let remaining = ((UserPreferences.showTimeBat && !isCharging) || (UserPreferences.showTimeCharge && isCharging)) ? percentage.formatted : timeRemaining.formatted
 
         let powerSourceLabel = NSMutableAttributedString(
             string: powerSource.localizedDescription,
