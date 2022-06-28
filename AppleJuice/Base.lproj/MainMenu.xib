@@ -156,7 +156,7 @@
                         <userDefinedRuntimeAttribute type="string" keyPath="xibLocKey" value="menu_about"/>
                     </userDefinedRuntimeAttributes>
                     <connections>
-                        <action selector="orderFrontStandardAboutPanel:" target="-1" id="vXr-y6-aUC"/>
+                        <action selector="showAbout:" target="hOe-ib-loY" id="80O-TS-mf7"/>
                     </connections>
                 </menuItem>
                 <menuItem isSeparatorItem="YES" id="bcW-nq-A9L"/>

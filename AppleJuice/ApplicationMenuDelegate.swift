@@ -21,6 +21,11 @@ class ApplicationMenuDelegate: NSObject, NSMenuDelegate {
             NSLog(error.localizedDescription)
         }
     }
+    
+    @IBAction func showAbout(_ sender: Any) {
+        NSApp.orderFrontStandardAboutPanel(sender)
+        NSApp.activate(ignoringOtherApps: true)
+    }
 
     // MARK: Private
 
