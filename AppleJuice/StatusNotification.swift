@@ -9,6 +9,8 @@ import Foundation
 /// Posts user notifications about the current charging status.
 struct StatusNotification {
     // MARK: Lifecycle
+    
+    private let currentPercentage: Int
 
     /// Initializes a new StatusNotification.
     ///
@@ -19,10 +21,7 @@ struct StatusNotification {
         guard let state = state, state != .charging(percentage: Percentage(numeric: 0)) else {
             return nil
         }
-        guard let key = NotificationKey(rawValue: state.percentage.numeric ?? 0), key != .invalid else {
-            return nil
-        }
-        self.notificationKey = key
+        self.currentPercentage = state.percentage.numeric ?? 0
     }
 
     // MARK: Internal
@@ -31,14 +30,11 @@ struct StatusNotification {
     func postNotification() {
         if self.shouldPresentNotification() {
             NSUserNotificationCenter.default.deliver(self.createUserNotification())
-            UserPreferences.lastNotified = self.notificationKey
+            UserPreferences.lastNotified = self.currentPercentage
         }
     }
 
     // MARK: Private
-
-    /// The current notification's key.
-    private let notificationKey: NotificationKey
 
     /// Check whether to present a notification to the user or not. Depending on the
     /// users preferences and whether the user already got notified about the current
@@ -46,8 +42,8 @@ struct StatusNotification {
     ///
     /// - returns: Whether to present a notification for the current battery percentage
     private func shouldPresentNotification() -> Bool {
-        (self.notificationKey != UserPreferences.lastNotified
-            && UserPreferences.notifications.contains(self.notificationKey))
+        let percentages = UserPreferences.percentagesNotification
+        return percentages.contains(self.currentPercentage) && self.currentPercentage != UserPreferences.lastNotified
     }
 
     /// Create a user notification for the current battery status
@@ -65,7 +61,7 @@ struct StatusNotification {
     ///
     /// - returns: The notification title
     private func getNotificationTitle() -> String {
-        if self.notificationKey == .hundredPercent {
+        if self.currentPercentage == 100 {
             return NSLocalizedString("Charged Notification Title", comment: "")
         }
         return String.localizedStringWithFormat(NSLocalizedString("Low Battery Notification Title", comment: ""),
@@ -76,7 +72,7 @@ struct StatusNotification {
     ///
     /// - returns: The notification text
     private func getNotificationText() -> String {
-        if self.notificationKey == .hundredPercent {
+        if self.currentPercentage == 100 {
             return NSLocalizedString("Charged Notification Message", comment: "")
         }
         return NSLocalizedString("Low Battery Notification Message", comment: "")
@@ -95,7 +91,7 @@ struct StatusNotification {
         percentageFormatter.minimumFractionDigits = 0
         percentageFormatter.maximumFractionDigits = 0
 
-        return percentageFormatter.string(from: self.notificationKey.rawValue as NSNumber)
-            ?? "\(self.notificationKey.rawValue) %"
+        return percentageFormatter.string(from: self.currentPercentage as NSNumber)
+            ?? "\(self.currentPercentage) %"
     }
 }

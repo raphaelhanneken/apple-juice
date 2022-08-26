@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="17506" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="20037" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
     <dependencies>
         <deployment identifier="macosx"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="17506"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="20037"/>
     </dependencies>
     <objects>
         <customObject id="-2" userLabel="File's Owner" customClass="NSApplication">
@@ -26,58 +26,82 @@
             <items>
                 <menuItem title="Unknown..." enabled="NO" id="Jwd-Td-BfA">
                     <modifierMask key="keyEquivalentModifierMask"/>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="string" keyPath="xibLocKey" value="menu_bat_status_unknown"/>
+                    </userDefinedRuntimeAttributes>
                 </menuItem>
                 <menuItem isSeparatorItem="YES" id="OYt-Th-ZmC"/>
                 <menuItem title="Notifications" id="uGl-yK-qDZ">
                     <modifierMask key="keyEquivalentModifierMask"/>
                     <menu key="submenu" title="Notifications" id="s9C-tt-TOv">
                         <items>
-                            <menuItem title="5 %" id="BqN-sm-Uru">
+                            <menuItem title="15 %" id="BqN-sm-Uru">
                                 <modifierMask key="keyEquivalentModifierMask"/>
-                                <connections>
-                                    <binding destination="OgL-rZ-xAG" name="value" keyPath="values.FivePercentNotificationPref" id="dFS-9B-FLf"/>
-                                </connections>
                             </menuItem>
-                            <menuItem title="10 %" id="yXd-MQ-b9b">
+                            <menuItem isSeparatorItem="YES" identifier="separator" id="HoG-Jh-UIk"/>
+                            <menuItem title="Add notification" id="Dvk-tQ-PLN">
                                 <modifierMask key="keyEquivalentModifierMask"/>
-                                <connections>
-                                    <binding destination="OgL-rZ-xAG" name="value" keyPath="values.TenPercentNotificationPref" id="pk3-fW-qx5"/>
-                                </connections>
-                            </menuItem>
-                            <menuItem title="15 %" id="IiQ-lQ-6Kw">
-                                <modifierMask key="keyEquivalentModifierMask"/>
-                                <connections>
-                                    <binding destination="OgL-rZ-xAG" name="value" keyPath="values.FifeteenPercentNotificationPref" id="qgh-4q-kHe"/>
-                                </connections>
-                            </menuItem>
-                            <menuItem title="20 %" id="Pag-Zv-yRx">
-                                <modifierMask key="keyEquivalentModifierMask"/>
-                                <connections>
-                                    <binding destination="OgL-rZ-xAG" name="value" keyPath="values.TwentyPercentNotificationPref" id="GGC-Ot-acB"/>
-                                </connections>
-                            </menuItem>
-                            <menuItem isSeparatorItem="YES" id="fZI-EN-bOn"/>
-                            <menuItem title="100 %" id="bgK-RS-y5X">
-                                <modifierMask key="keyEquivalentModifierMask"/>
-                                <connections>
-                                    <binding destination="OgL-rZ-xAG" name="value" keyPath="values.HundredPercentNotificationPref" id="Vuz-F7-ftw"/>
-                                </connections>
+                                <menu key="submenu" id="qJ3-LZ-OT7"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="string" keyPath="xibLocKey" value="menu_add_notif"/>
+                                </userDefinedRuntimeAttributes>
                             </menuItem>
                         </items>
                     </menu>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="string" keyPath="xibLocKey" value="menu_notifications"/>
+                    </userDefinedRuntimeAttributes>
                 </menuItem>
                 <menuItem title="Preferences" id="tiY-Hf-wFt">
                     <modifierMask key="keyEquivalentModifierMask"/>
                     <menu key="submenu" title="Preferences" id="kuh-P6-ZjK">
                         <items>
-                            <menuItem title="Show Time Remaining" id="Kin-Z7-Y0F">
+                            <menuItem title="On battery" id="lVh-Os-Ltq">
                                 <modifierMask key="keyEquivalentModifierMask"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="string" keyPath="xibLocKey" value="menu_on_bat"/>
+                                </userDefinedRuntimeAttributes>
+                            </menuItem>
+                            <menuItem title="Show Time Remaining" indentationLevel="1" id="Kin-Z7-Y0F">
+                                <modifierMask key="keyEquivalentModifierMask"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="string" keyPath="xibLocKey" value="menu_show_time_remaining"/>
+                                </userDefinedRuntimeAttributes>
                                 <connections>
-                                    <binding destination="OgL-rZ-xAG" name="value" keyPath="values.ShowTimePref" id="5Mm-fA-cBY"/>
+                                    <binding destination="OgL-rZ-xAG" name="value" keyPath="values.ShowTimeBatPref" id="nRp-gx-SfQ"/>
+                                </connections>
+                            </menuItem>
+                            <menuItem isSeparatorItem="YES" id="Olo-ub-6Cx"/>
+                            <menuItem title="Charging" id="HJw-pV-bbx">
+                                <modifierMask key="keyEquivalentModifierMask"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="string" keyPath="xibLocKey" value="menu_charging"/>
+                                </userDefinedRuntimeAttributes>
+                            </menuItem>
+                            <menuItem title="Show Time Remaining" indentationLevel="1" id="tza-sa-3fF">
+                                <modifierMask key="keyEquivalentModifierMask"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="string" keyPath="xibLocKey" value="menu_show_time_remaining"/>
+                                </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <binding destination="OgL-rZ-xAG" name="value" keyPath="values.ShowTimeChargePref" id="LSh-EL-s4G"/>
+                                </connections>
+                            </menuItem>
+                            <menuItem isSeparatorItem="YES" id="ylj-gG-Uds"/>
+                            <menuItem title="Show Percentage during ETA Calculation" id="D2D-m9-6t9">
+                                <modifierMask key="keyEquivalentModifierMask"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="string" keyPath="xibLocKey" value="menu_show_per_while_eta"/>
+                                </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <binding destination="OgL-rZ-xAG" name="value" keyPath="values.ShowPercentageETAPref" id="X6y-J6-GGq"/>
                                 </connections>
                             </menuItem>
                             <menuItem title="Hide Menu Bar Info" id="Wmn-z6-g7g">
                                 <modifierMask key="keyEquivalentModifierMask"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="string" keyPath="xibLocKey" value="menu_hide_info"/>
+                                </userDefinedRuntimeAttributes>
                                 <connections>
                                     <binding destination="OgL-rZ-xAG" name="enabled" keyPath="values.HideBatteryIconPref" id="8HY-3f-0ET">
                                         <dictionary key="options">
@@ -89,6 +113,9 @@
                             </menuItem>
                             <menuItem title="Hide Battery Icon" id="sbN-Mr-efU">
                                 <modifierMask key="keyEquivalentModifierMask"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="string" keyPath="xibLocKey" value="menu_hide_bat"/>
+                                </userDefinedRuntimeAttributes>
                                 <connections>
                                     <binding destination="OgL-rZ-xAG" name="value" keyPath="values.HideBatteryIconPref" id="6p3-vG-TYg"/>
                                     <binding destination="OgL-rZ-xAG" name="enabled" keyPath="values.HideMenubarInfoPref" id="avg-d2-Fsg">
@@ -100,29 +127,44 @@
                             </menuItem>
                             <menuItem title="Launch at Login" id="gXB-33-x5J">
                                 <modifierMask key="keyEquivalentModifierMask"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="string" keyPath="xibLocKey" value="menu_launch_at_login"/>
+                                </userDefinedRuntimeAttributes>
                                 <connections>
                                     <binding destination="FRD-GK-LcV" name="value" keyPath="launchAtLogin.isEnabled" id="Zx9-Yu-AB5"/>
                                 </connections>
                             </menuItem>
                         </items>
                     </menu>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="string" keyPath="xibLocKey" value="menu_prefs"/>
+                    </userDefinedRuntimeAttributes>
                 </menuItem>
-                <menuItem isSeparatorItem="YES" id="HoG-Jh-UIk"/>
+                <menuItem isSeparatorItem="YES" id="CQH-z6-Moz"/>
                 <menuItem title="Check for Updates…" id="OFJ-1T-Wc5">
                     <modifierMask key="keyEquivalentModifierMask"/>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="string" keyPath="xibLocKey" value="menu_check_updates"/>
+                    </userDefinedRuntimeAttributes>
                     <connections>
                         <action selector="checkForUpdates:" target="Avc-Ie-Abt" id="Aqj-nm-y4m"/>
                     </connections>
                 </menuItem>
                 <menuItem title="About Apple Juice…" id="PUB-MR-Ddo">
                     <modifierMask key="keyEquivalentModifierMask"/>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="string" keyPath="xibLocKey" value="menu_about"/>
+                    </userDefinedRuntimeAttributes>
                     <connections>
-                        <action selector="orderFrontStandardAboutPanel:" target="-1" id="vXr-y6-aUC"/>
+                        <action selector="showAbout:" target="hOe-ib-loY" id="80O-TS-mf7"/>
                     </connections>
                 </menuItem>
                 <menuItem isSeparatorItem="YES" id="bcW-nq-A9L"/>
                 <menuItem title="Quit" id="fXh-MN-Omu">
                     <modifierMask key="keyEquivalentModifierMask"/>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="string" keyPath="xibLocKey" value="menu_quit"/>
+                    </userDefinedRuntimeAttributes>
                     <connections>
                         <action selector="terminate:" target="-1" id="f0e-26-aRM"/>
                     </connections>
@@ -131,7 +173,7 @@
             <connections>
                 <outlet property="delegate" destination="hOe-ib-loY" id="FJU-36-bfo"/>
             </connections>
-            <point key="canvasLocation" x="-148" y="142"/>
+            <point key="canvasLocation" x="-1869" y="-193"/>
         </menu>
     </objects>
 </document>

@@ -20,8 +20,13 @@
 enum BatteryRegistryPropertyKey: String {
     case isPlugged = "ExternalConnected"
     case isCharging = "IsCharging"
+    #if arch(arm64)
+    case currentCharge = "AppleRawCurrentCapacity"
+    case maxCapacity = "AppleRawMaxCapacity"
+    #else
     case currentCharge = "CurrentCapacity"
     case maxCapacity = "MaxCapacity"
+    #endif
     case fullyCharged = "FullyCharged"
     case cycleCount = "CycleCount"
     case temperature = "Temperature"
